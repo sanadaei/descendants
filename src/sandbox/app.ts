@@ -1,7 +1,7 @@
 import { executeContinuityDays } from './continuityProgression.js';
 import { archiveInquiryEvaluation, createExplorationInquiry, surveyInquiry, trialInquiryProcedure, visibleInquiries, type InquiryPrediction } from './explorationInquiry.js';
 import { accessibleArtifactRecords, collectArtifactRecord, decodeArtifactRecord } from './loreArtifacts.js';
-import { adoptLegacyProject, setLegacyProjectPaused, setLegacyProjectWorkers, startLegacyProject, type LegacyProjectKind } from './legacyProject.js';
+import { adoptLegacyProject, renewLegacyProjectRecord, setLegacyProjectPaused, setLegacyProjectWorkers, startLegacyProject, type LegacyProjectKind } from './legacyProject.js';
 import { setEducationMentor } from './educationSimulation.js';
 import { knownMapLocation } from './knowledgeSpatial.js';
 import type { AreaProjection, SpatialRef, WorldEntity, WorldProvider } from '../worldbridge/contract.js';
@@ -1100,6 +1100,10 @@ export class SandboxApp {
     if (action==='legacy-start') {
       const actor=this.knowledgeAgent(); if(!actor)return;
       void this.directAction(60,()=>{const project=startLegacyProject(this.state,actor.id,button.dataset.kind as LegacyProjectKind);return `${project.name}の設計をArchiveに保存しました。作業者と資材を選び、日々の作業を続けられます。`;}); return;
+    }
+    if (action==='legacy-renew-record') {
+      const actor=this.knowledgeAgent();if(!actor)return;
+      void this.directAction(60,()=>{renewLegacyProjectRecord(this.state,actor.id,button.dataset.projectId??'');return '残っている根拠から設計記録を書き直しました。投入資材と進捗を保持し、新しい現物を計画へ接続しました。';});return;
     }
     if (action==='legacy-adopt') {
       const actor=this.knowledgeAgent(); if(!actor)return;

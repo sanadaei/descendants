@@ -184,3 +184,13 @@ test('resource lots age each day and preserved food degrades more slowly than ra
   assert.ok(preserved.freshness > separate.freshness);
   assert.ok(preserved.freshness < 1);
 });
+
+test('consuming many fractional harvest lots preserves the exact requested material commitment',async()=>{
+  const {state}=await initial();const {consumeResourceLots,recordResourceProduction}=await import('../.test-dist/sandbox/resourceLedger.js');
+  consumeResourceLots(state,{resourceKey:'timber',amount:state.settlement.resources.timber});
+  for(let n=0;n<100;n++)recordResourceProduction(state,{resourceKey:'timber',amount:.137456789+n*.000000031,harvesterIds:[]});
+  const before=resourceLotTotal(state,'timber'),lines=consumeResourceLots(state,{resourceKey:'timber',amount:10});
+  assert.ok(lines.length>50);assert.ok(Math.abs(lines.reduce((sum,line)=>sum+line.quantity,0)-10)<1e-9);
+  assert.ok(Math.abs(before-resourceLotTotal(state,'timber')-10)<1e-6);
+  assert.equal(state.settlement.resources.timber,resourceLotTotal(state,'timber'));
+});

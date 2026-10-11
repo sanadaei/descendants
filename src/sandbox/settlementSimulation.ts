@@ -1,5 +1,5 @@
 import { researchWorkMultiplier } from './researchApplications.js';
-import { simulateLegacyProjects } from './legacyProject.js';
+import { legacyProjectMaterialDemand, simulateLegacyProjects } from './legacyProject.js';
 import { simulateEducationInterval } from './educationSimulation.js';
 import { generatePersonName } from './naming.js';
 import { agentAbilityFactors } from './aging.js';
@@ -42,9 +42,9 @@ function resourceStockingFactor(state: SandboxGameState, task: LaborTask): numbe
   const band = task === 'medicine'
     ? { actual: r.medicine, soft: Math.max(28, pop * 0.85), hard: Math.max(44, pop * 1.25) }
     : task === 'records'
-      ? { actual: r.records, soft: Math.max(18, pop * 0.55), hard: Math.max(36, pop * 1.0) }
+      ? { actual: r.records, soft: Math.max(18, pop * 0.55, legacyProjectMaterialDemand(state,'records')), hard: Math.max(36, pop * 1.0, legacyProjectMaterialDemand(state,'records') + 8) }
       : task === 'explore-prep'
-        ? { actual: r.scrap, soft: Math.max(24, pop * 0.75), hard: Math.max(48, pop * 1.5) }
+        ? { actual: r.scrap, soft: Math.max(24, pop * 0.75, legacyProjectMaterialDemand(state,'scrap')), hard: Math.max(48, pop * 1.5, legacyProjectMaterialDemand(state,'scrap') + 8) }
         : null;
   if (!band || band.actual <= band.soft) return 1;
   if (band.actual >= band.hard) return 0;
@@ -66,8 +66,9 @@ function taskNeedPressure(state: SandboxGameState, task: LaborTask): number {
   // settlement has a meaningful housing buffer, builders should stop consuming scarce timber.
   // Likewise, preserve a small emergency timber reserve and let salvage/gathering replenish it.
   const repairBase = housingBuffer < 5 ? 8 : housingBuffer < 8 ? 0 : -10;
-  const timberStarved = r.timber < 8;
-  const exploreMaterialNeed = Math.max(0, (pop * 0.75 - r.timber) / Math.max(4, pop / 8));
+  const timberDemand = legacyProjectMaterialDemand(state,'timber');
+  const timberStarved = r.timber < Math.max(8,timberDemand);
+  const exploreMaterialNeed = Math.max(0, (Math.max(pop * .75,timberDemand) - r.timber) / Math.max(4, pop / 8));
   const targets = {
     forage: resourceNeed(14, r.food / pop),
     water: resourceNeed(16, r.water / pop),
@@ -75,7 +76,7 @@ function taskNeedPressure(state: SandboxGameState, task: LaborTask): number {
     repair: timberStarved ? -12 : repairBase,
     sanitation: Math.max(0, (75 - state.settlement.sanitation) / 6),
     care: Math.max(0, livingAgents(state).filter((agent) => agent.health < 65 || agentAgeYears(state, agent) < 13).length / 2),
-    records: resourceNeed(4, state.settlement.resources.records / 10, -6),
+    records: resourceNeed(Math.max(4,legacyProjectMaterialDemand(state,'records') / 10), state.settlement.resources.records / 10, -6),
     guard: Math.max(0, (55 - state.settlement.defense) / 7) + knownExternalConflict / 24 + observedConflictGuardDemand(state),
     rest: 1,
     'explore-prep': Math.max(-3, 2 + exploreMaterialNeed - Math.max(0, r.scrap - pop) / Math.max(10, pop / 2)),
@@ -234,7 +235,7 @@ function executeTask(state: SandboxGameState, agent: SandboxAgent, task: LaborTa
   }
   // Local gathering/salvage is the renewable timber route. Repair consumes this stock later;
   // keeping the routes separate prevents repair labor from creating its own input material.
-  const timberTarget = Math.max(12, settlementAgents(state).length * 0.75);
+  const timberTarget = Math.max(12, settlementAgents(state).length * 0.75, legacyProjectMaterialDemand(state,'timber'));
   if (state.settlement.resources.timber < timberTarget && task === 'forage') { try { recordResourceProduction(state,{resourceKey:'timber',amount:output*0.16,harvesterIds:[agent.id],sourcePreference:deterministicProductionPreference(agent.id,'timber',state.clock.day),note:`${agent.name} gathered woody material while foraging.`}); } catch {} }
   if (state.settlement.resources.timber < timberTarget && task === 'explore-prep') { try { recordResourceProduction(state,{resourceKey:'timber',amount:output*0.42,harvesterIds:[agent.id],sourcePreference:deterministicProductionPreference(agent.id,'timber',state.clock.day),note:`${agent.name} salvaged construction material during exploration preparation.`}); } catch {} }
   if (task === 'sanitation') state.settlement.sanitation = clamp(state.settlement.sanitation + output * 0.5);
@@ -245,7 +246,7 @@ function executeTask(state: SandboxGameState, agent: SandboxAgent, task: LaborTa
     state.settlement.childcareCapacity = clamp(state.settlement.childcareCapacity + output * 0.05, 0, 30);
   }
   if (task === 'guard') state.settlement.defense = clamp(state.settlement.defense + output * 0.05);
-  if (task === 'repair' && state.settlement.resources.timber > 2 * factor) {
+  if (task === 'repair' && state.settlement.resources.timber > 2 * factor + legacyProjectMaterialDemand(state,'timber')) {
     consumeResourceLots(state,{resourceKey:'timber',amount:2*factor});
     if (chance(state, Math.min(0.35, output / 50))) state.settlement.housingCapacity += 1;
   }
