@@ -392,7 +392,9 @@ export function consumeResourceLots(state: SandboxGameState, input: ConsumeResou
     if (remaining <= 1e-9) break;
     const used = Math.min(lot.quantity,remaining);
     if (used <= 0) continue;
-    lot.quantity = round(lot.quantity-used); remaining = round(remaining-used); lines.push({lotId:lot.id,quantity:used});
+    // Round the persisted remainder once per lot, but keep the requested total exact across lots.
+    // Rounding this accumulator for every source made many small harvests underfund a phase.
+    lot.quantity = round(lot.quantity-used); remaining = Math.max(0,remaining-used); lines.push({lotId:lot.id,quantity:used});
   }
   syncSettlementResourceAggregates(state); return lines;
 }

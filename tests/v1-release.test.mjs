@@ -13,7 +13,7 @@ test('current release promotes the provider-backed sandbox with generated-world 
   const pkg = JSON.parse(await read('package.json'));
   const contract = JSON.parse(await read('VERSION_CONTRACT.json'));
   const worldgen = JSON.parse(await read('public/worldgen/runtime-manifest.json'));
-  assert.equal(version, '1.2.0');
+  assert.equal(version, '1.2.1');
   assert.equal(pkg.version, version);
   assert.equal(contract.appVersion, version);
   assert.equal(worldgen.engineVersion, '1.5.0');

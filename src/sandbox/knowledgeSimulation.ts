@@ -60,7 +60,8 @@ function recordKnowledge(state: SandboxGameState, hours: number, summary: Sandbo
   const recorders = settlementAgents(state).filter((agent) => agent.currentTask === 'records' && agent.knowledgeIds.length > 0);
   for (const recorder of recorders) {
     if (!chance(state, Math.min(0.5, hours / 36 + recorder.skills.records / 500))) continue;
-    const candidateIds = recorder.knowledgeIds.filter((id) => !state.records.some((record) => record.knowledgeIds.includes(id)));
+    const candidateIds = recorder.knowledgeIds.filter((id) => state.knowledge.some((entry) => entry.id === id && !entry.lost)
+      && !state.records.some((record) => record.knowledgeIds.includes(id) && record.integrity > .05 && record.copies > 0));
     if (!candidateIds.length) continue;
     const knowledgeId = choose(state, candidateIds);
     const knowledge = state.knowledge.find((entry) => entry.id === knowledgeId); if (!knowledge) continue;
@@ -79,10 +80,13 @@ function recordKnowledge(state: SandboxGameState, hours: number, summary: Sandbo
 }
 
 function degradeRecords(state: SandboxGameState, hours: number): void {
+  if (!Number.isFinite(hours) || hours <= 0) return;
   const factor = hours / (24 * 365);
+  const storageFactor = legacyFacilityActive(state,'archive') ? .5 : 1;
   for (const record of state.records) {
     const protection = state.settlement.sanitation / 250 + Math.min(0.3, record.copies * 0.03);
-    record.integrity = Math.max(0, record.integrity - Math.max(0.0001, (0.08 - protection * 0.05) * factor) * (legacyFacilityActive(state,'archive') ? .5 : 1));
+    // The minimum is an annual rate, not a loss charged on every simulation substep.
+    record.integrity = Math.max(0, record.integrity - Math.max(0.0001, 0.08 - protection * 0.05) * factor * storageFactor);
     if (record.integrity <= 0.05) state.settlement.activeRecordIds = state.settlement.activeRecordIds.filter((id) => id !== record.id);
   }
 }
@@ -203,9 +207,10 @@ export function simulateKnowledgeInterval(state: SandboxGameState, hours: number
   degradeRecords(state, hours);
   const lostOrReassigned = detectLostKnowledge(state, summary);
   if (state.records.length > 300) {
-    const projectRecordIds = new Set((state.legacyProjects ?? []).map((project) => project.recordId));
+    const projectRecordIds = new Set((state.legacyProjects ?? []).flatMap((project) => [project.recordId,...(project.recordHistory ?? []).map((entry) => entry.recordId)]));
     const removable = state.records.filter((record) => record.integrity <= 0.05 && !projectRecordIds.has(record.id)).slice(0, state.records.length - 300);
     const ids = new Set(removable.map((record) => record.id)); state.records = state.records.filter((record) => !ids.has(record.id));
+    for (const institution of state.settlement.institutions) institution.recordIds = institution.recordIds.filter((id) => !ids.has(id));
   }
   if (transmitted || recorded || lostOrReassigned) syncLegacyKnowledgeShadow(state);
 }

@@ -133,6 +133,18 @@ function assertContinuityState(value: Record<string,unknown>, agentIds: Set<stri
       const charter=(value.records as Record<string,unknown>[]).find((record)=>record.id===project.recordId);
       if(!roots.includes(String(project.knowledgeId))||workers.length>4||roots.some((id)=>!(charter?.knowledgeIds as string[]).includes(id)))throw new Error('Invalid legacy project charter basis.');
       assertInteger('legacy project day',project.createdDay,1);if(project.pauseReason!==undefined&&typeof project.pauseReason!=='string')throw new Error('Invalid legacy project pause reason.');
+      if (project.recordHistory !== undefined) {
+        if (!Array.isArray(project.recordHistory) || !project.recordHistory.length) throw new Error('Invalid project record history.');
+        const seen = new Set<string>(); let previousDay = 0;
+        for (const entry of project.recordHistory) {
+          if (!isRecord(entry) || !recordIds.has(String(entry.recordId)) || !agentIds.has(String(entry.authorId)) || seen.has(String(entry.recordId))) throw new Error('Invalid project record history references.');
+          assertInteger('project record history day',entry.day,1);
+          const record = (value.records as Record<string,unknown>[]).find((candidate) => candidate.id === entry.recordId);
+          if (entry.day < previousDay || record?.authorId !== entry.authorId || record?.createdDay !== entry.day || roots.some((id) => !(record?.knowledgeIds as string[]).includes(id))) throw new Error('Invalid project record history source.');
+          previousDay = entry.day as number; seen.add(String(entry.recordId));
+        }
+        if ((project.recordHistory.at(-1) as Record<string,unknown>).recordId !== project.recordId) throw new Error('Project current record history mismatch.');
+      }
       if(!Array.isArray(project.phases)||project.phases.length!==3||!Array.isArray(project.contributors)||!Array.isArray(project.stewardHistory)||!project.stewardHistory.length)throw new Error('Invalid legacy project history.');
       for(const phase of project.phases){
         if(!isRecord(phase)||typeof phase.name!=='string'||typeof phase.funded!=='boolean'||!isRecord(phase.materials)||!Array.isArray(phase.committed))throw new Error('Invalid legacy project phase.');

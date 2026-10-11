@@ -5,18 +5,19 @@ import { ContentPackRegistry, WorldgenEngine, parseWorldRecipe } from '../vendor
 import { MockWorldProvider } from '../.test-dist/worldbridge/mockWorldProvider.js';
 import { createInitialSandboxState } from '../.test-dist/sandbox/bootstrap.js';
 import { ensureDailyLoopState } from '../.test-dist/sandbox/dailyActionLoop.js';
+import { executeContinuityDays } from '../.test-dist/sandbox/continuityProgression.js';
 import { advanceSandbox } from '../.test-dist/sandbox/engine.js';
 import { addExpeditionOrder, launchExpedition } from '../.test-dist/sandbox/expeditionSimulation.js';
 import { ensureDirectPlayState, reserveDirectActivity } from '../.test-dist/sandbox/directPlay.js';
 import { archiveInquiryEvaluation, createExplorationInquiry, readableEvaluations, surveyInquiry, trialInquiryProcedure, visibleInquiries } from '../.test-dist/sandbox/explorationInquiry.js';
 import { accessibleArtifactRecords, collectArtifactRecord, decodeArtifactRecord, readableEvidenceText } from '../.test-dist/sandbox/loreArtifacts.js';
-import { adoptLegacyProject, projectPrerequisites, setLegacyProjectWorkers, simulateLegacyProjects, startLegacyProject } from '../.test-dist/sandbox/legacyProject.js';
+import { adoptLegacyProject, legacyProjectMaterialDemand, legacyRecordRenewalProblem, projectPrerequisites, renewLegacyProjectRecord, setLegacyProjectPaused, setLegacyProjectWorkers, simulateLegacyProjects, startLegacyProject } from '../.test-dist/sandbox/legacyProject.js';
 import { legacyFacilityActive } from '../.test-dist/sandbox/legacyProjectBenefits.js';
 import { addObservedKnowledge, institutionalizeKnowledgeRecord, simulateKnowledgeInterval } from '../.test-dist/sandbox/knowledgeSimulation.js';
 import { depositCarriedResourcesAtSettlement, harvestGeneratedResource, observeGeneratedEntity, spatialDistanceKm } from '../.test-dist/sandbox/localExploration.js';
-import { recordAgentDeath } from '../.test-dist/sandbox/lifeCourseSimulation.js';
+import { recordAgentDeath, simulateNaturalMortality } from '../.test-dist/sandbox/lifeCourseSimulation.js';
 import { knownMapLocation } from '../.test-dist/sandbox/knowledgeSpatial.js';
-import { naturalDeathDay } from '../.test-dist/sandbox/aging.js';
+import { agentAbilityFactors, naturalDeathDay } from '../.test-dist/sandbox/aging.js';
 import { startResearchProject, simulateResearchInterval } from '../.test-dist/sandbox/researchSimulation.js';
 import { adjustResourceStock, processResourceLot, resourceLotTotal } from '../.test-dist/sandbox/resourceLedger.js';
 import { simulateSettlementInterval } from '../.test-dist/sandbox/settlementSimulation.js';
@@ -59,7 +60,7 @@ function readingLoop(state,actor) {
 function fundAndFinish(state,project) {
   for(const phase of project.phases){for(const [key,amount]of Object.entries(phase.materials))adjustResourceStock(state,key,amount,'test phase budget');phase.requiredHours=1;}
   state.clock.minuteOfDay=1000;state.clock.day+=2;
-  for(let i=0;i<9&&project.status!=='completed';i++)simulateLegacyProjects(state,24,summary(state));
+  for(let i=0;i<30&&project.status!=='completed';i++)simulateLegacyProjects(state,24,summary(state));
   assert.equal(project.status,'completed');
 }
 let realFixture;
@@ -267,5 +268,129 @@ test('real event routes create and survey an inquiry asynchronously, select its 
     await click('legacy-start',{kind:'archive'});const project=state.legacyProjects[0];assert.ok(project);
     const workersCard={querySelectorAll:()=>[{dataset:{legacyWorker:actor.id}}]};await click('legacy-workers',{projectId:project.id},workersCard);assert.deepEqual(project.workerIds,[actor.id]);
     await click('legacy-pause',{projectId:project.id,paused:'1'});assert.equal(project.status,'paused');
+    const oldRecord=project.recordId,oldPhases=structuredClone(project.phases),cloth=resourceLotTotal(state,'cloth');
+    state.records.find(r=>r.id===oldRecord).integrity=0;
+    await click('legacy-renew-record',{projectId:project.id});assert.notEqual(project.recordId,oldRecord);assert.deepEqual(project.phases,oldPhases);
+    assert.ok(Math.abs(cloth-resourceLotTotal(state,'cloth')-.1)<1e-6);assert.equal(project.recordHistory.at(-1).recordId,project.recordId);
   }finally{for(const [key,descriptor]of Object.entries(saved)){if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}}
+});
+
+test('record decay charges elapsed years consistently at 24-hour, 6-hour and 1-hour subdivisions',async()=>{
+  const {state,actor}=await fixture();const knowledge=addObservedKnowledge(state,[actor.id],[],'劣化率の検証用の記録',.5);
+  const record=institutionalizeKnowledgeRecord(state,actor.id,knowledge.id);state.agents.forEach(a=>{a.currentTask='rest';});
+  const losses=[];
+  for(const hours of [24,6,1]){
+    const copy=structuredClone(state);for(let n=0;n<365*24/hours;n++)simulateKnowledgeInterval(copy,hours,summary(copy));
+    losses.push(record.integrity-copy.records.find(r=>r.id===record.id).integrity);
+  }
+  const expected=.08-(state.settlement.sanitation/250+Math.min(.3,record.copies*.03))*.05;
+  for(const loss of losses)assert.ok(Math.abs(loss-expected)<1e-10,`${loss} must match annual rate ${expected}`);
+});
+
+test('rewriting a failed charter reconnects paid work without spending phase materials again',async()=>{
+  const {state,actor}=await fixture();readingLoop(state,actor);const project=startLegacyProject(state,actor.id,'archive');state.clock.day+=2;
+  simulateLegacyProjects(state,24,summary(state));const previous=state.records.find(r=>r.id===project.recordId),credits=structuredClone(project.phases[0].committed),work=project.phases[0].workHours;
+  previous.integrity=0;simulateLegacyProjects(state,24,summary(state));assert.equal(project.phases[0].workHours,work);assert.ok(project.pauseReason);
+  const legacySave=structuredClone(state);delete legacySave.legacyProjects[0].recordHistory;
+  const older=importSandboxSave(JSON.stringify(legacySave));renewLegacyProjectRecord(older,actor.id,project.id);assert.equal(older.legacyProjects[0].recordHistory.length,2);
+  const cloth=resourceLotTotal(state,'cloth'),timber=resourceLotTotal(state,'timber');renewLegacyProjectRecord(state,actor.id,project.id);
+  assert.notEqual(project.recordId,previous.id);assert.equal(previous.integrity,0);assert.ok(Math.abs(cloth-resourceLotTotal(state,'cloth')-.1)<1e-6);assert.equal(resourceLotTotal(state,'timber'),timber);
+  simulateLegacyProjects(state,24,summary(state));assert.ok(project.phases[0].workHours>work);assert.deepEqual(project.phases[0].committed,credits);
+  assert.equal(project.recordHistory.length,2);assert.equal(project.recordHistory.at(-1).recordId,project.recordId);assert.deepEqual(importSandboxSave(JSON.stringify(state)).legacyProjects,state.legacyProjects);
+  for(const mutate of [p=>p.recordHistory[1].recordId='missing',p=>p.recordHistory[1].authorId='missing',p=>p.recordHistory[1].day--,p=>p.recordHistory.reverse()]){
+    const broken=structuredClone(state);mutate(broken.legacyProjects[0]);assert.throws(()=>importSandboxSave(JSON.stringify(broken)));
+  }
+  for(let i=0;i<310;i++)state.records.push({...previous,id:`record:garbage:${i}`});simulateKnowledgeInterval(state,6,summary(state));
+  assert.ok(state.records.some(r=>r.id===previous.id));assert.ok(importSandboxSave(JSON.stringify(state)));
+});
+
+test('thirty ordinary daily plans retain funded work, practice and renewable charter access',async()=>{
+  const {provider,state,actor}=await fixture();readingLoop(state,actor);const project=startLegacyProject(state,actor.id,'archive');
+  const workers=state.agents.filter(a=>state.clock.day-a.bornDay>=16*365).slice(0,4);setLegacyProjectWorkers(state,actor.id,project.id,workers.map(a=>a.id));
+  const before=workers.map(a=>a.skills.records),firstRecord=project.recordId;
+  const result=await executeContinuityDays(provider,state,30,{onDay:async(day)=>{if(day===10)renewLegacyProjectRecord(state,actor.id,project.id);}});
+  assert.equal(result.completedDays,30);assert.equal(state.dailyLoop.lastMorningReport.day,state.clock.day);assert.equal(state.agents.filter(a=>a.alive).length,14);
+  assert.ok(project.phases[0].funded&&project.phases[0].workHours>0);assert.notEqual(project.recordId,firstRecord);
+  workers.forEach((a,i)=>{assert.ok(a.skills.records>before[i]);assert.ok(a.experience['legacy:records']>0);});
+  assert.deepEqual(importSandboxSave(JSON.stringify(state)).legacyProjects,state.legacyProjects);
+});
+
+test('rewriting requires readable living memory or a physical source, not institution flags or remote memories',async()=>{
+  const {state,actor}=await fixture();readingLoop(state,actor);const project=startLegacyProject(state,actor.id,'archive'),other=state.agents.find(a=>a.id!==actor.id);
+  state.clock.day+=2;const original=state.records.find(r=>r.id===project.recordId);
+  assert.equal(legacyRecordRenewalProblem(state,other.id,project),undefined,'a healthy physical archive is readable');
+  original.integrity=0;
+  assert.match(legacyRecordRenewalProblem(state,other.id,project),/読める根拠/);
+  const before=JSON.stringify(state);assert.throws(()=>renewLegacyProjectRecord(state,other.id,project.id),/読める根拠/);assert.equal(JSON.stringify(state),before);
+  assert.equal(legacyRecordRenewalProblem(state,actor.id,project),undefined,'the author still remembers every root');
+  actor.expeditionId='unreported-field';assert.throws(()=>renewLegacyProjectRecord(state,actor.id,project.id),/現地/);actor.expeditionId=null;
+  state.knowledge.find(k=>k.id===project.knowledgeIds[1]).lost=true;assert.throws(()=>renewLegacyProjectRecord(state,actor.id,project.id),/失われた/);
+});
+
+test('renewing a completed waterworks charter restores actual filtration without rebuilding equipment',async()=>{
+  const {state,actor,water}=await waterLoop(),project=startLegacyProject(state,actor.id,'waterworks');fundAndFinish(state,project);
+  const phases=structuredClone(project.phases),previous=state.records.find(r=>r.id===project.recordId);previous.integrity=0;
+  assert.equal(legacyFacilityActive(state,'waterworks'),false);renewLegacyProjectRecord(state,actor.id,project.id);
+  assert.equal(legacyFacilityActive(state,'waterworks'),true);assert.deepEqual(project.phases,phases);
+  harvestGeneratedResource(state,actor.id,water,'water',2);const [lot]=depositCarriedResourcesAtSettlement(state,[actor.id]);const before=structuredClone(lot.waterQuality);
+  const processed=processResourceLot(state,lot.id,'filtered',[actor.id]);assert.ok(Math.abs(processed.waterQuality.microbialRisk-before.microbialRisk*.3)<1e-8);assert.equal(processed.waterQuality.chemicalRisk,before.chemicalRisk);
+});
+
+test('ordinary record labor can copy a remembered claim again after its former copy deteriorates',async()=>{
+  const {state,actor}=await fixture();const k=addObservedKnowledge(state,[actor.id],[],'失われていない記憶の再記録',.6),old=institutionalizeKnowledgeRecord(state,actor.id,k.id);old.integrity=0;
+  state.agents.forEach(a=>a.currentTask='rest');actor.currentTask='records';actor.knowledgeIds=[k.id];
+  for(let i=0;i<40&&!state.records.some(r=>r.id!==old.id&&r.knowledgeIds.includes(k.id));i++)simulateKnowledgeInterval(state,6,summary(state));
+  assert.ok(state.records.some(r=>r.id!==old.id&&r.knowledgeIds.includes(k.id)&&r.integrity>.05));assert.equal(k.lost,false);
+});
+
+test('project practice and fatigue accrue only for the time actually allocated',async()=>{
+  const {state,actor}=await fixture();readingLoop(state,actor);const project=startLegacyProject(state,actor.id,'archive');state.clock.day+=2;
+  const initial=actor.skills.records,abilities=agentAbilityFactors(state,actor),fatigue=actor.fatigue;
+  const allocated=simulateLegacyProjects(state,6,summary(state));assert.equal(allocated.get(actor.id),.25);
+  assert.ok(Math.abs(actor.skills.records-initial-.25*.002*abilities.learning)<1e-9);
+  assert.ok(Math.abs(actor.fatigue-fatigue-8*.25/6/Math.max(.3,abilities.physical))<1e-9);assert.equal(actor.experience['legacy:records'],.25);
+  const before=structuredClone(actor);simulateLegacyProjects(state,6,summary(state),new Map([[actor.id,6]]));assert.equal(actor.skills.records,before.skills.records);assert.equal(actor.fatigue,before.fatigue);
+  assert.ok(project.phases[0].workHours>0);
+});
+
+test('an unpaid waterworks phase raises ordinary timber collection above the reserve cap',async()=>{
+  const {state,provider,actor}=await waterLoop(),project=startLegacyProject(state,actor.id,'waterworks');
+  adjustResourceStock(state,'timber',12-state.settlement.resources.timber,'controlled depleted timber reserve');
+  assert.equal(legacyProjectMaterialDemand(state,'timber'),40);assert.ok(state.settlement.resources.timber<40);
+  for(let day=0;day<90&&!project.phases[0].funded;day++)await advanceSandbox(provider,state,1440);
+  assert.equal(project.phases[0].funded,true);assert.ok(project.phases[0].workHours>0);
+  const timberCommitted=project.phases[0].committed.filter(l=>l.resourceKey==='timber').reduce((sum,l)=>sum+l.quantity,0);
+  assert.ok(Math.abs(timberCommitted-40)<1e-6,`committed timber ${timberCommitted}`);
+  assert.equal(legacyProjectMaterialDemand(state,'timber'),0);
+  const draft=structuredClone(state);draft.legacyProjects[0].phases[0].workHours=8000;assert.equal(legacyProjectMaterialDemand(draft,'scrap'),30);
+  setLegacyProjectPaused(draft,actor.id,project.id,true);assert.equal(legacyProjectMaterialDemand(draft,'scrap'),0);
+  assert.ok(importSandboxSave(JSON.stringify(state)));
+});
+
+test('project-only daily stress retains full-size phases, natural succession and renewed records over 40 years',async(t)=>{
+  // Isolate project/knowledge/lifespan integration: subsistence, ordinary work and fatigue recovery are supplied fixture conditions.
+  // Phase hours remain the shipped 4,000 + 6,000 + 8,000. This is not a 40-year full-campaign balance test.
+  const {state,actor}=await fixture();readingLoop(state,actor);const project=startLegacyProject(state,actor.id,'archive');state.clock.day+=2;
+  const start=state.clock.day,heir=state.agents.find(a=>a.id!==actor.id&&start-a.bornDay>=16*365);heir.parentIds=[actor.id];heir.bornDay=start-20*365;
+  for(let age=65;age<90;age++){actor.bornDay=start-age*365;const remaining=naturalDeathDay(state,actor)-start;if(remaining>=365&&remaining<8*365)break;}
+  assert.ok(naturalDeathDay(state,actor)>start&&naturalDeathDay(state,actor)<start+8*365);
+  const workers=[actor,heir,...state.agents.filter(a=>a.id!==actor.id&&a.id!==heir.id&&start-a.bornDay>=16*365).slice(0,2)];workers.forEach(a=>a.skills.records=75);
+  setLegacyProjectWorkers(state,actor.id,project.id,workers.map(a=>a.id));
+  for(const phase of project.phases)for(const [key,quantity]of Object.entries(phase.materials))adjustResourceStock(state,key,quantity,'controlled long-run phase budget');
+  const stockBefore=structuredClone(state.settlement.resources);let deathDay,completedDay,rewrites=0;
+  for(let day=0;day<40*365;day++){
+    state.clock.day=start+day;const step=summary(state);simulateNaturalMortality(state,step);
+    for(const a of state.agents){if(a.alive){a.health=100;a.fatigue=20;}a.currentTask='rest';}
+    if(!actor.alive&&!deathDay){deathDay=state.clock.day;adoptLegacyProject(state,heir.id,project.id);setLegacyProjectWorkers(state,heir.id,project.id,workers.filter(a=>a.alive).map(a=>a.id));}
+    const current=state.records.find(r=>r.id===project.recordId);if(current.integrity<.3){renewLegacyProjectRecord(state,heir.id,project.id);rewrites++;}
+    for(let part=0;part<4;part++){state.clock.minuteOfDay=part*360;simulateLegacyProjects(state,6,step);simulateKnowledgeInterval(state,6,step);}
+    if(project.status==='completed'&&!completedDay)completedDay=state.clock.day;
+  }
+  assert.ok(deathDay&&deathDay<completedDay);assert.equal(project.status,'completed');assert.deepEqual(project.phases.map(p=>p.requiredHours),[4000,6000,8000]);
+  assert.ok(project.contributors.some(c=>c.agentId===actor.id&&c.hours>0));assert.ok(project.contributors.some(c=>c.agentId===heir.id&&c.hours>0));assert.ok(rewrites>0);
+  assert.equal(legacyFacilityActive(state,'archive'),true);assert.equal(project.stewardId,heir.id);assert.equal(project.stewardHistory.length,2);
+  assert.ok(Math.abs(stockBefore.timber-state.settlement.resources.timber-30)<1e-6);assert.ok(Math.abs(stockBefore.scrap-state.settlement.resources.scrap-8)<1e-6);
+  assert.ok(Math.abs(stockBefore.cloth-state.settlement.resources.cloth-(8+rewrites*.1))<1e-6);
+  assert.deepEqual(importSandboxSave(JSON.stringify(state)).legacyProjects,state.legacyProjects);
+  t.diagnostic(`project-only years=40, founder death year=${((deathDay-start)/365).toFixed(2)}, completion year=${((completedDay-start)/365).toFixed(2)}, charter rewrites=${rewrites}`);
 });

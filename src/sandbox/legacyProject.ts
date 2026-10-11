@@ -1,12 +1,13 @@
 import { accessibleEvidence, atSettlement } from './evidenceAccess.js';
+import { agentAbilityFactors } from './aging.js';
 import { readableTrials, visibleInquiries } from './explorationInquiry.js';
 import { accessibleArtifactRecords } from './loreArtifacts.js';
 import { addObservedKnowledge, institutionalizeKnowledgeRecord } from './knowledgeSimulation.js';
 import { researchApplicationIsActive } from './researchApplications.js';
 import { syncLegacyKnowledgeShadow } from './knowledgeLegacyAdapter.js';
-import { reservedHoursDuringCurrentInterval } from './directPlay.js';
-import { consumeResourceLots, ensureResourceLedgerState } from './resourceLedger.js';
-import { addChronicle, agentAgeYears, effectiveSkill, findAgent, nextStateId } from './stateUtils.js';
+import { reserveDirectActivity, reservedHoursDuringCurrentInterval } from './directPlay.js';
+import { consumeResourceLots, ensureResourceLedgerState, recordResourceProduction } from './resourceLedger.js';
+import { addChronicle, agentAgeYears, clamp, effectiveSkill, findAgent, nextStateId } from './stateUtils.js';
 import type { SandboxGameState, SandboxStepSummary, SettlementResourceKey } from './types.js';
 
 export type LegacyProjectKind = 'waterworks'|'archive';
@@ -15,6 +16,7 @@ export interface LegacyProject {
   knowledgeId: string; knowledgeIds: string[]; recordId: string; createdDay: number; status: 'active'|'paused'|'completed';
   phases: Array<{name:string;requiredHours:number;workHours:number;materials:Partial<Record<SettlementResourceKey,number>>;committed:Array<{lotId:string;resourceKey:SettlementResourceKey;quantity:number}>;funded:boolean}>;
   contributors: Array<{agentId:string;hours:number}>; stewardHistory: Array<{agentId:string;day:number}>; pauseReason?: string;
+  recordHistory?: Array<{recordId:string;authorId:string;day:number}>;
 }
 export function legacyProjectLabel(kind: LegacyProjectKind): string { return kind === 'waterworks' ? '世代をつなぐ水管理設備' : '共同体の記録庫'; }
 export function projectPrerequisites(state: SandboxGameState, actorId: string, kind: LegacyProjectKind): string[] {
@@ -56,9 +58,59 @@ export function startLegacyProject(state: SandboxGameState, actorId: string, kin
   ]).map((phase) => ({...phase,workHours:0,committed:[],funded:false}));
   const project: LegacyProject = {id:nextStateId(state,'legacy-project'),kind,name,founderId:actorId,stewardId:actorId,workerIds:[actorId],knowledgeId:knowledge.id,knowledgeIds:[knowledge.id,...basis],recordId:record.id,createdDay:state.clock.day,status:'active',phases,contributors:[],stewardHistory:[{agentId:actorId,day:state.clock.day}]};
   (state.legacyProjects ??= []).push(project);
+  project.recordHistory = [{recordId:record.id,authorId:record.authorId,day:record.createdDay}];
   syncLegacyKnowledgeShadow(state);
   addChronicle(state,{kind:'knowledge',title:`${name}を始めた`,text:'設計は物理的な記録へ保存した。担当者が代わっても設備・投入資材・作業履歴を保持する。',entityIds:[project.id,record.id,actorId]});
   return project;
+}
+
+/** Only the next unpaid phase creates demand; paused plans and already committed stock do not. */
+export function legacyProjectMaterialDemand(state: SandboxGameState, key: SettlementResourceKey): number {
+  return (state.legacyProjects ?? []).filter((project) => project.status === 'active').reduce((total,project) => {
+    const phase = project.phases.find((entry) => entry.workHours < entry.requiredHours);
+    return total + (phase && !phase.funded ? phase.materials[key] ?? 0 : 0);
+  },0);
+}
+
+/** Institutional membership alone cannot recreate a record whose physical source has failed. */
+export function legacyRecordRenewalProblem(state: SandboxGameState, actorId: string, project: LegacyProject): string | undefined {
+  const actor = findAgent(state,actorId);
+  if (!actor || !atSettlement(state,actorId)) return '現地で設計記録を参照する必要があります。';
+  if (!state.settlement.institutions.some((entry) => entry.kind === 'records')) return '記録を保管する場所が必要です。';
+  for (const id of project.knowledgeIds) {
+    const entry = state.knowledge.find((knowledge) => knowledge.id === id && !knowledge.lost);
+    if (!entry) return '失われた根拠は書き直せません。';
+    const physicalSource = state.settlement.localKnowledgeIds.includes(id) && state.records.some((record) =>
+      state.settlement.activeRecordIds.includes(record.id) && record.knowledgeIds.includes(id) && record.integrity > .05 && record.copies > 0);
+    if (!actor.knowledgeIds.includes(id) && !physicalSource) return '読める根拠が不足しています。記憶を持つ住民との会話か、残った記録が必要です。';
+  }
+  if (state.settlement.resources.cloth < .1) return '記録の製本に布0.1が必要です。';
+  return undefined;
+}
+
+export function renewLegacyProjectRecord(state: SandboxGameState, actorId: string, projectId: string): void {
+  const project = state.legacyProjects?.find((entry) => entry.id === projectId);
+  if (!project) throw new Error('共同体の計画が見つかりません。');
+  const problem = legacyRecordRenewalProblem(state,actorId,project);
+  if (problem) throw new Error(problem);
+  const previous = state.records.find((entry) => entry.id === project.recordId)!;
+  reserveDirectActivity(state,[actorId],'records',60,`${project.name}の設計と根拠を書き直した。`,project.id);
+  consumeResourceLots(state,{resourceKey:'cloth',amount:.1});
+  const record = {id:nextStateId(state,'record'),title:`${project.name} / 設計と継承記録`,
+    body:project.knowledgeIds.map((id) => state.knowledge.find((entry) => entry.id === id)!.claim).join('\n'),
+    createdDay:state.clock.day,authorId:actorId,knowledgeIds:[...project.knowledgeIds],copies:1,integrity:.97};
+  state.records.push(record); state.settlement.activeRecordIds.push(record.id);
+  state.settlement.institutions.find((entry) => entry.kind === 'records')!.recordIds.push(record.id);
+  for (const id of project.knowledgeIds) {
+    if (!state.settlement.localKnowledgeIds.includes(id)) state.settlement.localKnowledgeIds.push(id);
+    state.knowledge.find((entry) => entry.id === id)!.carrier = 'record';
+  }
+  project.recordHistory ??= [{recordId:previous.id,authorId:previous.authorId,day:previous.createdDay}];
+  project.recordHistory.push({recordId:record.id,authorId:actorId,day:state.clock.day}); project.recordId = record.id;
+  delete project.pauseReason;
+  recordResourceProduction(state,{resourceKey:'records',amount:1,harvesterIds:[actorId],sourcePreference:['institutional','records'],label:`records · ${record.title}`,note:'Existing readable roots copied and bound; old project work and material commitments retained.'});
+  syncLegacyKnowledgeShadow(state);
+  addChronicle(state,{kind:'knowledge',title:`${project.name}の設計記録を更新`,text:'読める記憶または現物から設計と根拠を新しい写しへ移した。過去の記録、設備、投入資材、進捗を保持した。',entityIds:[project.id,previous.id,record.id,actorId]});
 }
 
 function availableProject(state: SandboxGameState, actorId: string, projectId: string): LegacyProject {
@@ -106,9 +158,16 @@ export function simulateLegacyProjects(state: SandboxGameState, hours: number, s
     for (const agent of workers) {
       if (!agent || phase.workHours >= phase.requiredHours) continue;
       const remaining = hours-reservedHoursDuringCurrentInterval(state,agent.id,hours)-(education.get(agent.id)??0)-(allocated.get(agent.id)??0);
-      const rate = Math.max(.25,Math.min(1.5,effectiveSkill(state,agent,project.kind === 'waterworks' ? 'construction' : 'records')/60));
+      const skill = project.kind === 'waterworks' ? 'construction' : 'records';
+      const rate = Math.max(.25,Math.min(1.5,effectiveSkill(state,agent,skill)/60));
       const spent = Math.max(0,Math.min(hours/24,remaining,(phase.requiredHours-phase.workHours)/rate));
+      if (spent <= 0) continue;
       allocated.set(agent.id,(allocated.get(agent.id)??0)+spent); phase.workHours = Math.min(phase.requiredHours,phase.workHours+spent*rate);
+      // Use the same practice and exertion rates as ordinary labor, for time actually spent.
+      const abilities = agentAbilityFactors(state,agent);
+      agent.skills[skill] = Math.min(100,agent.skills[skill] + spent * .002 * abilities.learning);
+      agent.experience[`legacy:${skill}`] = (agent.experience[`legacy:${skill}`] ?? 0) + spent;
+      agent.fatigue = clamp(agent.fatigue + 8 * spent / 6 / Math.max(.3,abilities.physical));
       let contribution = project.contributors.find((entry) => entry.agentId === agent.id);
       if (!contribution) { contribution = {agentId:agent.id,hours:0}; project.contributors.push(contribution); }
       contribution.hours += spent;
