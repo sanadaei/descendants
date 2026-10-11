@@ -410,6 +410,9 @@ export interface ResearchProject {
   sampleItemId?: string;
   sampleSourceEntityId?: string;
   practicalOutcome?: string;
+  /** Actual research hours; absent on saves from before labor allocation was connected. */
+  contributors?: Array<{ agentId: string; hours: number }>;
+  pauseReason?: string;
 }
 
 export interface AnomalyUtilizationPractice {
@@ -1406,6 +1409,8 @@ export interface SandboxGameState {
   settlement: SettlementState;
   agents: SandboxAgent[];
   pregnancies: PregnancyState[];
+  /** Latest scheduled conception slot processed, in elapsed game minutes. */
+  lastConceptionCheckAbsoluteMinute?: number;
   knowledge: KnowledgeEntry[];
   /** I1-E persisted epistemic sidecar. Optional only for legacy schemaVersion=1 save migration. */
   knowledgeStore?: KnowledgeStoreSnapshotV1;

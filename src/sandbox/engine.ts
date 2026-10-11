@@ -4,7 +4,6 @@ import { addGameMinutes, advanceWorldClock, gameClockToWorldTick } from '../worl
 import { simulateExpeditionsInterval } from './expeditionSimulation.js';
 import { refreshExternalActors } from './externalSimulation.js';
 import { simulateKnowledgeInterval } from './knowledgeSimulation.js';
-import { simulateResearchInterval } from './researchSimulation.js';
 import { simulateSettlementInterval } from './settlementSimulation.js';
 import { synchronizeIncidentLedger, synchronizeIncidentResponseOperations } from './incidentService.js';
 import { evaluateSurvivalCampaign } from './survivalCampaign.js';
@@ -26,7 +25,8 @@ function replayDigest(state: SandboxGameState): string {
     agents: state.agents.map((agent) => [agent.id, agent.alive, Math.round(agent.health * 100) / 100, Math.round(agent.fatigue * 100) / 100, agent.currentTask, agent.expeditionId]),
     expeditions: state.expeditions.map((entry) => [entry.id, entry.status, Math.round(entry.position.x * 100) / 100, Math.round(entry.position.y * 100) / 100, entry.communication, entry.doctrineId, entry.pace ?? 'normal', entry.supplies.food, entry.supplies.water, entry.supplies.medicine, entry.supplies.tools, entry.routePlan ? [entry.routePlan.topologyStatus ?? 'active', entry.routePlan.replanCount ?? 0, entry.routePlan.currentWaypointIndex, entry.routePlan.basisTick ?? null, entry.routePlan.relationIds, entry.routePlan.blockedAtTick ?? null] : null]),
     knowledge: state.knowledge.map((entry) => [entry.id, entry.lost, entry.holderIds.length, entry.requiresPhysicalSample ?? false, entry.physicalEvidenceSourceEntityId ?? null, entry.claim, entry.confidence, entry.entityObservation ?? null, entry.treatmentObservation ?? null]),
-    research: (state.researchProjects ?? []).map((entry) => [entry.id, entry.status, Math.round(entry.progress * 100) / 100, Math.round(entry.confidence * 10000) / 10000, entry.resultKnowledgeId ?? null, entry.sampleItemId ?? null, entry.sampleSourceEntityId ?? null]),
+    research: (state.researchProjects ?? []).map((entry) => [entry.id, entry.status, Math.round(entry.progress * 100) / 100, Math.round(entry.confidence * 10000) / 10000, entry.resultKnowledgeId ?? null, entry.sampleItemId ?? null, entry.sampleSourceEntityId ?? null, entry.researcherIds, entry.contributors ?? [], entry.pauseReason ?? null]),
+    reproduction: [state.lastConceptionCheckAbsoluteMinute ?? null, state.pregnancies],
     anomalyPractices: (state.anomalyPractices ?? []).map((entry) => [entry.id, entry.domain, entry.attempts, Math.round(entry.mastery * 100) / 100, Math.round(entry.stability * 100) / 100, entry.lastOutcome]),
     learning: state.agents.map((a)=>[a.id,a.bornDay,a.deathDay,a.causeOfDeath,a.skills,a.aptitude??null,a.education??null,a.naming??null]),
     researchApplications: state.researchApplications??[],
@@ -165,7 +165,6 @@ async function simulateChunk(provider: WorldProvider, state: SandboxGameState, m
   simulateSettlementInterval(state, hours, summary);
   await simulateExpeditionsInterval(provider, state, hours, summary);
   simulateKnowledgeInterval(state, hours, summary);
-  simulateResearchInterval(state, hours, summary);
   validateLeaderControl(state);
   if (state.clock.day !== previousDay || state.diagnostics.stepCount === 0) await refreshExternalActors(provider, state, summary);
   updateContinuity(state);

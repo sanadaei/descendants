@@ -103,8 +103,9 @@ export function resourceLotTotal(state: SandboxGameState, key: SettlementResourc
 }
 
 export function syncSettlementResourceAggregates(state: SandboxGameState): void {
-  ensureResourceLedgerState(state);
-  for (const key of SETTLEMENT_RESOURCE_KEYS) state.settlement.resources[key] = resourceLotTotal(state, key);
+  const totals = Object.fromEntries(SETTLEMENT_RESOURCE_KEYS.map((key) => [key,0])) as Record<SettlementResourceKey,number>;
+  for (const lot of ensureResourceLedgerState(state).lots) if (lot.quantity > 0) totals[lot.resourceKey] += lot.quantity;
+  for (const key of SETTLEMENT_RESOURCE_KEYS) state.settlement.resources[key] = totals[key];
 }
 
 /** All new stock changes go through lots. Aggregate reconciliation is for legacy callers only. */
@@ -381,11 +382,18 @@ export function regenerateResourceSources(state: SandboxGameState, days: number)
 
 export function consumeResourceLots(state: SandboxGameState, input: ConsumeResourceLotsInput): Array<{lotId:string;quantity:number}> {
   if (!Number.isFinite(input.amount) || input.amount <= 0) return [];
+  const lines = consumeFromCandidateLots(resourceLots(state,input.resourceKey),input);
+  syncSettlementResourceAggregates(state); return lines;
+}
+
+/** Candidate objects remain live; quantities are checked again for each recipient. */
+function consumeFromCandidateLots(lots: ResourceLotState[], input: ConsumeResourceLotsInput): Array<{lotId:string;quantity:number}> {
+  if (!Number.isFinite(input.amount) || input.amount <= 0) return [];
   const lotIdSet = input.lotIds?.length ? new Set(input.lotIds) : null;
   const subtypeSet = input.subtypes?.length ? new Set(input.subtypes) : null;
   const excluded = new Set(input.excludedLotIds ?? []);
-  const candidates = resourceLots(state,input.resourceKey)
-    .filter((lot)=>!excluded.has(lot.id) && (!lotIdSet || lotIdSet.has(lot.id)) && (!subtypeSet || subtypeSet.has(lot.subtype)))
+  const candidates = lots
+    .filter((lot)=>lot.quantity>0 && !excluded.has(lot.id) && (!lotIdSet || lotIdSet.has(lot.id)) && (!subtypeSet || subtypeSet.has(lot.subtype)))
     .sort((a,b)=>a.createdDay-b.createdDay || a.createdMinuteOfDay-b.createdMinuteOfDay || a.id.localeCompare(b.id));
   let remaining = input.amount; const lines:Array<{lotId:string;quantity:number}>=[];
   for (const lot of candidates) {
@@ -396,7 +404,7 @@ export function consumeResourceLots(state: SandboxGameState, input: ConsumeResou
     // Rounding this accumulator for every source made many small harvests underfund a phase.
     lot.quantity = round(lot.quantity-used); remaining = Math.max(0,remaining-used); lines.push({lotId:lot.id,quantity:used});
   }
-  syncSettlementResourceAggregates(state); return lines;
+  return lines;
 }
 
 export function reconcileResourceLedgerToAggregates(state: SandboxGameState, context: string): void {
@@ -710,10 +718,10 @@ export interface ResourceDistributionResult {
   lines: Array<{ lotId: string; quantity: number }>;
 }
 
-function matchingLotsForRule(state: SandboxGameState, rule: { lotIds: string[]; subtypes: string[]; resourceKey: SettlementResourceKey }): ResourceLotState[] {
+function matchingLotsForRule(lots: ResourceLotState[], rule: { lotIds: string[]; subtypes: string[]; resourceKey: SettlementResourceKey }): ResourceLotState[] {
   const lotIds = rule.lotIds.length ? new Set(rule.lotIds) : null;
   const subtypes = rule.subtypes.length ? new Set(rule.subtypes) : null;
-  return resourceLots(state,rule.resourceKey).filter((lot)=>(!lotIds||lotIds.has(lot.id))&&(!subtypes||subtypes.has(lot.subtype)));
+  return lots.filter((lot)=>lot.quantity>0&&(!lotIds||lotIds.has(lot.id))&&(!subtypes||subtypes.has(lot.subtype)));
 }
 
 function totalLotQuantity(lots: ResourceLotState[], excluded = new Set<string>()): number {
@@ -735,6 +743,9 @@ export function distributeDailyConsumable(
     results[agentId] = { needed, allocated:0, fraction:needed>0?0:1, contaminationExposure:0, lines:[] };
   }
   if (activeIds.length===0) return results;
+  // A distribution creates no lots. Keep references even after consumption for quality/provenance.
+  const candidates = resourceLots(state,resourceKey);
+  const lotById = new Map(candidates.map((lot) => [lot.id,lot]));
   const groups = new Map(ledger.allocationGroups.map((entry)=>[entry.id,entry]));
   const rules = ledger.allocationRules.filter((entry)=>entry.enabled&&entry.resourceKey===resourceKey&&groups.has(entry.groupId)).sort((a,b)=>{
     const specificity=(rule:typeof a)=>(rule.lotIds.length?2:0)+(rule.subtypes.length?1:0);
@@ -744,7 +755,7 @@ export function distributeDailyConsumable(
   for (const rule of rules.filter((entry)=>entry.exclusive)) {
     const group=groups.get(rule.groupId)!;
     if (!group.memberIds.some((id)=>results[id] && results[id]!.needed>0)) continue;
-    for (const lot of matchingLotsForRule(state,rule)) exclusiveLotIds.add(lot.id);
+    for (const lot of matchingLotsForRule(candidates,rule)) exclusiveLotIds.add(lot.id);
   }
   const appendLines=(agentId:string,lines:Array<{lotId:string;quantity:number}>)=>{
     const result=results[agentId]!;
@@ -759,28 +770,28 @@ export function distributeDailyConsumable(
     const targets=memberIds.map((agentId)=>({agentId,amount:Math.min(perPersonCap,Math.max(0,results[agentId]!.needed-results[agentId]!.allocated))})).filter((entry)=>entry.amount>0);
     const totalTarget=targets.reduce((sum,entry)=>sum+entry.amount,0);
     if(totalTarget<=0) continue;
-    const ownExclusive=new Set(rule.exclusive?matchingLotsForRule(state,rule).map((lot)=>lot.id):[]);
+    const ownExclusive=new Set(rule.exclusive?matchingLotsForRule(candidates,rule).map((lot)=>lot.id):[]);
     const blocked=new Set([...exclusiveLotIds].filter((id)=>!ownExclusive.has(id)));
-    const candidates=matchingLotsForRule(state,rule).filter((lot)=>!blocked.has(lot.id));
-    const available=totalLotQuantity(candidates);
+    const matching=matchingLotsForRule(candidates,rule).filter((lot)=>!blocked.has(lot.id));
+    const available=totalLotQuantity(matching);
     const share=Math.min(1,available/totalTarget);
     for(const target of targets){
       const amount=target.amount*share;
       if(amount<=1e-9) continue;
-      const lines=consumeResourceLots(state,{resourceKey,amount,lotIds:rule.lotIds,subtypes:rule.subtypes,excludedLotIds:[...blocked]});
+      const lines=consumeFromCandidateLots(candidates,{resourceKey,amount,lotIds:rule.lotIds,subtypes:rule.subtypes,excludedLotIds:[...blocked]});
       appendLines(target.agentId,lines);
     }
   }
   const remaining=activeIds.map((agentId)=>({agentId,amount:Math.max(0,results[agentId]!.needed-results[agentId]!.allocated)})).filter((entry)=>entry.amount>1e-9);
   const totalRemaining=remaining.reduce((sum,entry)=>sum+entry.amount,0);
   if(totalRemaining>0){
-    const fallbackLots=resourceLots(state,resourceKey).filter((lot)=>!exclusiveLotIds.has(lot.id));
+    const fallbackLots=candidates.filter((lot)=>!exclusiveLotIds.has(lot.id));
     const available=totalLotQuantity(fallbackLots);
     const share=Math.min(1,available/totalRemaining);
     for(const target of remaining){
       const amount=target.amount*share;
       if(amount<=1e-9) continue;
-      const lines=consumeResourceLots(state,{resourceKey,amount,excludedLotIds:[...exclusiveLotIds]});
+      const lines=consumeFromCandidateLots(candidates,{resourceKey,amount,excludedLotIds:[...exclusiveLotIds]});
       appendLines(target.agentId,lines);
     }
   }
@@ -789,7 +800,7 @@ export function distributeDailyConsumable(
     const result=results[agentId]!;
     let effectiveAllocated=0; let riskWeighted=0;
     for(const line of result.lines) {
-      const lot=ledger.lots.find((entry)=>entry.id===line.lotId);
+      const lot=lotById.get(line.lotId);
       const waterRisk=lot?.waterQuality ? Math.max(lot.waterQuality.microbialRisk,lot.waterQuality.chemicalRisk,lot.waterQuality.turbidity*0.35) : 0;
       const risk=Math.max(lot?.contaminationRisk??0,waterRisk);
       const quality=lot ? clamp01((lot.condition*0.25)+(lot.freshness*0.35)+((1-risk)*0.4)) : 1;

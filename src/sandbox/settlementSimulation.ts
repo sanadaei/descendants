@@ -1,4 +1,5 @@
 import { researchWorkMultiplier } from './researchApplications.js';
+import { simulateResearchInterval } from './researchSimulation.js';
 import { legacyProjectMaterialDemand, simulateLegacyProjects } from './legacyProject.js';
 import { simulateEducationInterval } from './educationSimulation.js';
 import { generatePersonName } from './naming.js';
@@ -489,18 +490,34 @@ function ensureLeadership(state: SandboxGameState, summary: SandboxStepSummary):
   addChronicle(state, { kind: 'leadership', title: `${next.name} became acting leader`, text: `Succession followed ${state.settlement.successionRule}; player convenience does not override social legitimacy.`, entityIds: [next.id, ...(current ? [current.id] : [])] });
 }
 
-function maybeConceive(state: SandboxGameState): void {
-  if (state.clock.minuteOfDay !== 0 && state.clock.minuteOfDay !== 360) return;
+export function simulateConceptionInterval(state: SandboxGameState, hours: number): void {
+  if (!Number.isFinite(hours) || hours <= 0) return;
+  const end = (state.clock.day - 1) * 1440 + state.clock.minuteOfDay;
+  const start = Math.max(end - hours * 60, state.lastConceptionCheckAbsoluteMinute ?? -1);
+  // Crossing the two daily slots is sufficient. Direct play can leave every substep off the hour.
+  for (let dayIndex = Math.max(0,Math.floor(start/1440)); dayIndex <= Math.floor(end/1440); dayIndex++) {
+    for (const minute of [0,360]) {
+      const slot = dayIndex * 1440 + minute;
+      if (slot <= start || slot > end) continue;
+      state.lastConceptionCheckAbsoluteMinute = slot;
+      checkConception(state,dayIndex+1,minute);
+    }
+  }
+}
+
+function checkConception(state: SandboxGameState, day: number, minute: number): void {
   const adults = settlementAgents(state).filter((agent) => agentAgeYears(state, agent) >= 18 && agentAgeYears(state, agent) <= 43 && agent.health >= 55);
   const pregnantIds = new Set(state.pregnancies.filter((entry) => entry.outcome === 'ongoing').map((entry) => entry.pregnantAgentId));
   for (const female of adults.filter((agent) => agent.sex === 'female' && !pregnantIds.has(agent.id))) {
-    const partner = female.partnerIds.map((id) => findAgent(state, id)).find((agent): agent is SandboxAgent => Boolean(agent?.alive && agent.sex === 'male' && (agent.residence ? agent.residence === 'settlement' : agent.expeditionId === null)));
+    const partner = female.partnerIds.map((id) => findAgent(state, id)).find((agent): agent is SandboxAgent => Boolean(agent?.alive && agent.sex === 'male' && agentAgeYears(state,agent) >= 18 && agent.health >= 55 && !agent.expeditionId && (!agent.residence || agent.residence === 'settlement')));
     if (!partner) continue;
     const fertility = ((female.genetics.loci.fertility ?? 50) + (partner.genetics.loci.fertility ?? 50)) / 200;
     const scarcity = Math.min(1, state.settlement.resources.food / Math.max(1, settlementAgents(state).length * 8));
-    if (!chance(state, 0.0009 * fertility * scarcity)) continue;
-    const pregnancy: PregnancyState = { id: nextStateId(state, 'pregnancy'), parentIds: [female.id, partner.id], pregnantAgentId: female.id, conceptionDay: state.clock.day, expectedDay: state.clock.day + randomInt(state, 266, 286), outcome: 'ongoing', anomalyTags: [] };
+    const key = `${female.id}:${partner.id}:${day}:${minute}:conception`;
+    if (scopedRandom(state.seed,key) >= 0.0009 * fertility * scarcity) continue;
+    const pregnancy: PregnancyState = { id: nextStateId(state, 'pregnancy'), parentIds: [female.id, partner.id], pregnantAgentId: female.id, conceptionDay: day, expectedDay: day + 266 + Math.floor(scopedRandom(state.seed,`${key}:duration`)*21), outcome: 'ongoing', anomalyTags: [] };
     state.pregnancies.push(pregnancy);
+    pregnantIds.add(female.id);
   }
 }
 
@@ -678,10 +695,13 @@ export function simulateSettlementInterval(state: SandboxGameState, hours: numbe
   matureChildren(state);
   const educationHours = simulateEducationInterval(state,hours,summary);
   const projectHours = simulateLegacyProjects(state,hours,summary,educationHours);
+  const otherWork = new Map(educationHours);
+  for (const [id,spent] of projectHours) otherWork.set(id,(otherWork.get(id)??0)+spent);
+  const researchHours = simulateResearchInterval(state,hours,summary,otherWork);
   const local = settlementAgents(state);
   for (const agent of local) {
     const reservedHours = reservedHoursDuringCurrentInterval(state, agent.id, hours);
-    const laborHours = Math.max(0, hours - reservedHours - (educationHours.get(agent.id) ?? 0) - (projectHours.get(agent.id) ?? 0));
+    const laborHours = Math.max(0, hours - reservedHours - (otherWork.get(agent.id) ?? 0) - (researchHours.get(agent.id) ?? 0));
     if (reservedHours >= hours - 1e-9) {
       agent.currentPlan = { id: nextStateId(state, 'plan'), kind: 'rest', priority: 100, reason: 'time reserved by direct player activity' };
       agent.currentTask = 'rest';
@@ -705,7 +725,7 @@ export function simulateSettlementInterval(state: SandboxGameState, hours: numbe
   clinicCare(state, hours, summary);
   adaptSocialRelations(state, hours);
   adaptPartnerships(state);
-  maybeConceive(state);
+  simulateConceptionInterval(state,hours);
   processPregnancies(state, summary);
   mortality(state, summary);
   ensureLeadership(state, summary);

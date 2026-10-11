@@ -324,6 +324,10 @@ function assertState(value: unknown): asserts value is SandboxGameState {
   assertInteger('clock.day', value.clock.day, 1);
   assertInteger('clock.minuteOfDay', value.clock.minuteOfDay, 0, 1439);
   assertInteger('clock.worldTick', value.clock.worldTick, 0);
+  if (value.lastConceptionCheckAbsoluteMinute !== undefined) {
+    assertInteger('last conception check',value.lastConceptionCheckAbsoluteMinute,0,((value.clock.day as number)-1)*1440+(value.clock.minuteOfDay as number));
+    if (![0,360].includes((value.lastConceptionCheckAbsoluteMinute as number)%1440)) throw new Error('Invalid conception check slot.');
+  }
   assertInteger('clockPolicy.worldTicksPerDay', value.clockPolicy.worldTicksPerDay, 1);
   assertFinite('clockPolicy.activeRadiusKm', value.clockPolicy.activeRadiusKm, 0);
   assertInteger('clockPolicy.activeDetailRank', value.clockPolicy.activeDetailRank, 0);
@@ -556,6 +560,15 @@ function assertState(value: unknown): asserts value is SandboxGameState {
       if (typeof project.sourceKnowledgeId !== 'string' || !knowledgeIds.has(project.sourceKnowledgeId)) throw new Error(`Sandbox save research ${projectId} references unknown source knowledge.`);
       for (const id of project.basisKnowledgeIds) if (typeof id !== 'string' || !knowledgeIds.has(id)) throw new Error(`Sandbox save research ${projectId} references unknown basis knowledge ${String(id)}.`);
       for (const id of project.researcherIds) if (typeof id !== 'string' || !agentIds.has(id)) throw new Error(`Sandbox save research ${projectId} references unknown researcher ${String(id)}.`);
+      if (project.pauseReason !== undefined) assertId('research pause reason',project.pauseReason);
+      if (project.contributors !== undefined) {
+        if (!Array.isArray(project.contributors)) throw new Error('Invalid research contributors.');
+        const contributors = new Set<string>();
+        for (const entry of project.contributors) {
+          if (!isRecord(entry) || typeof entry.agentId !== 'string' || !agentIds.has(entry.agentId) || contributors.has(entry.agentId)) throw new Error('Invalid or duplicate research contributor.');
+          contributors.add(entry.agentId); assertFinite('research contribution hours',entry.hours,0);
+        }
+      }
       if (project.resultKnowledgeId !== undefined && (typeof project.resultKnowledgeId !== 'string' || !knowledgeIds.has(project.resultKnowledgeId))) throw new Error(`Sandbox save research ${projectId} references unknown result knowledge.`);
       if (!['active','completed','abandoned'].includes(String(project.status))) throw new Error(`Sandbox save research ${projectId} has invalid status.`);
       if (project.status === 'completed' && (project.progress !== 100 || typeof project.resultKnowledgeId !== 'string')) throw new Error(`Sandbox save completed research ${projectId} is incomplete.`);
