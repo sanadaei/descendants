@@ -14,6 +14,25 @@ import {
 
 async function initial(seed=92001){ const provider=new MockWorldProvider(); const state=await createInitialSandboxState(provider,{seed}); return {provider,state}; }
 
+test('distribution through a large exhausted history retains FIFO quantities, consumed-lot quality and saved provenance',async()=>{
+  const {state}=await initial(92014);
+  const {recordResourceProduction,distributeDailyConsumable,syncSettlementResourceAggregates}=await import('../.test-dist/sandbox/resourceLedger.js');
+  const ids=state.agents.filter(a=>a.alive&&!a.expeditionId).map(a=>a.id).sort().slice(0,3),ledger=state.resourceLedger;
+  const old=resourceLots(state,'food')[0];old.quantity=1.25;old.condition=.5;old.freshness=.2;old.contaminationRisk=.4;old.createdMinuteOfDay=0;
+  for(const lot of resourceLots(state,'food').slice(1))lot.quantity=0;
+  const clean=recordResourceProduction(state,{resourceKey:'food',amount:1.75,sourceId:old.sourceId});clean.condition=1;clean.freshness=1;clean.contaminationRisk=0;
+  const histories=Array.from({length:5000},(_,i)=>({...structuredClone(old),id:`lot:exhausted:${i}`,quantity:0}));ledger.lots.unshift(...histories);syncSettlementResourceAggregates(state);
+  const length=ledger.lots.length,result=distributeDailyConsumable(state,'food',Object.fromEntries(ids.map(id=>[id,1])),24);
+  assert.deepEqual(result[ids[0]].lines,[{lotId:old.id,quantity:1}]);
+  assert.deepEqual(result[ids[1]].lines,[{lotId:old.id,quantity:.25},{lotId:clean.id,quantity:.75}]);
+  assert.deepEqual(result[ids[2]].lines,[{lotId:clean.id,quantity:1}]);
+  for(const [i,expected]of [.435,.85875,1].entries())assert.ok(Math.abs(result[ids[i]].fraction-expected)<1e-12);
+  assert.equal(result[ids[0]].contaminationExposure,.4);assert.equal(result[ids[1]].contaminationExposure,.1);assert.equal(result[ids[2]].contaminationExposure,0);
+  assert.equal(state.settlement.resources.food,0);assert.equal(ledger.lots.length,length);assert.equal(old.quantity,0);assert.equal(clean.quantity,0);
+  assert.deepEqual(ledger.lots.slice(0,5000),histories);const restored=importSandboxSave(JSON.stringify(state));
+  assert.deepEqual(restored.resourceLedger.recentDistributions,ledger.recentDistributions);assert.equal(restored.resourceLedger.lots.find(l=>l.id===old.id).sourceId,old.sourceId);
+});
+
 test('player can save a reusable named allocation group from settlement roster ids', async()=>{
   const {state}=await initial();
   const residents=state.agents.filter((agent)=>agent.alive&&!agent.expeditionId).slice(0,3);

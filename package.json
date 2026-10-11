@@ -1,7 +1,7 @@
 {
   "name": "the-descendants-of-criminals",
   "private": true,
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "module",
   "engines": {
     "node": ">=22.12.0"
@@ -59,7 +59,8 @@
     "audit:i2u-external-queue-execution": "node tools/audit-i2u-external-queue-execution.mjs",
     "audit:i2v-external-queue-batch": "node tools/audit-i2v-external-queue-batch.mjs",
     "audit:i2w-external-batch-readback-retry": "node tools/audit-i2w-external-batch-readback-retry.mjs",
-    "audit:i2x-external-batch-view": "node tools/audit-i2x-external-batch-view.mjs"
+    "audit:i2x-external-batch-view": "node tools/audit-i2x-external-batch-view.mjs",
+    "test:long-run": "npm run test:compile && node tools/verify-long-campaign.mjs"
   },
   "devDependencies": {
     "typescript": "5.8.3",

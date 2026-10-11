@@ -10,7 +10,7 @@ import { addExpeditionOrder, campExpedition, expeditionMemberReadiness, launchEx
 import { createEncounter, setEncounterInstruction } from './encounterSimulation.js';
 import { externalActionAvailability, externalActionDurationMinutes, issueExternalAction, type ExternalActionKind } from './externalActions.js';
 import { conductExternalPersonContact } from './externalContact.js';
-import { startResearchProject } from './researchSimulation.js';
+import { startResearchProject, updateResearchParticipants } from './researchSimulation.js';
 import { attemptAnomalyUtilization } from './anomalyUtilization.js';
 import { proposeLaborPriority } from './politicalSimulation.js';
 import { requestDirectClinicCare } from './settlementSimulation.js';
@@ -1136,6 +1136,11 @@ export class SandboxApp {
     if (action==='stop-continuity') { this.#stopContinuity=true; return; }
     if (action==='continue-days') { void this.advanceContinuity(Number(button.dataset.days)); return; }
     if (action==='research') { try { const project = startResearchProject(this.state, button.dataset.knowledgeId ?? ''); void this.save(`Research started: ${project.id}.`); } catch(error) { this.toast(error instanceof Error ? error.message : String(error)); } return; }
+    if (action==='research-workers') {
+      const actor=this.knowledgeAgent(),card=button.closest<HTMLElement>('[data-research-card]');if(!actor||!card)return;
+      const ids=[...card.querySelectorAll<HTMLInputElement>('[data-research-worker]:checked:not(:disabled)')].map((entry)=>entry.dataset.researchWorker??'');
+      try{updateResearchParticipants(this.state,actor.id,button.dataset.projectId??'',ids);void this.save('元の根拠と進捗を保持し、研究の担当者・現物を更新しました。');}catch(error){this.toast(error instanceof Error?error.message:String(error));}return;
+    }
     if (action==='incident-adapter-toggle') {
       const enabled=isI2F1IncidentAdapterEnabled();
       try { window.localStorage.setItem(I2_F1_INCIDENT_STORAGE_KEY,enabled?'0':'1'); } catch { this.toast('緊急対応回線の設定を保存できませんでした。'); return; }
