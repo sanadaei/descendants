@@ -1,5 +1,6 @@
+import { recordAgentDeath } from './lifeCourseSimulation.js';
 import { chance, randomInt } from './rng.js';
-import { addExpeditionChronicle, clamp, findAgent, nextStateId } from './stateUtils.js';
+import { addExpeditionChronicle, clamp, effectiveSkill, findAgent, nextStateId } from './stateUtils.js';
 import type { EncounterActorState, EncounterInstruction, EncounterQueueAction, EncounterState, ExpeditionState, SandboxGameState, SandboxStepSummary } from './types.js';
 
 function actorInitiative(actor: EncounterActorState): number {
@@ -41,8 +42,8 @@ export function createEncounter(
     return {
       agentId, side: 'expedition', x: 1, y: 1 + index, health: agent?.health ?? 50,
       actionState: agent ? clamp(100 - agent.fatigue) : 50,
-      agility: agent ? Math.round((agent.skills.scouting + agent.skills.combat) / 2) : 50,
-      judgment: agent ? Math.round((agent.skills.leadership + agent.skills.survival) / 2) : 50,
+      agility: agent ? Math.round((effectiveSkill(state,agent,'scouting') + effectiveSkill(state,agent,'combat')) / 2) : 50,
+      judgment: agent ? Math.round((effectiveSkill(state,agent,'leadership') + effectiveSkill(state,agent,'survival')) / 2) : 50,
       morale: agent?.morale ?? 50,
     };
   });
@@ -135,10 +136,9 @@ export function resolveEncounterRound(state: SandboxGameState, encounterId: stri
       agent.health = clamp(Math.min(agent.health, actor.health));
       if (actor.health > 0) recordEncounterTrauma(state, encounter, agent.id, preEncounterHealth, agent.health);
       if (actor.health <= 0) {
-        agent.health = 0; agent.alive = false; agent.deathDay = state.clock.day; agent.causeOfDeath = `killed during ${encounter.id}`;
+        agent.health = 0; recordAgentDeath(state,agent,`killed during ${encounter.id}`);
         if (!encounter.casualties.includes(agent.id)) encounter.casualties.push(agent.id);
         if (summary && !summary.deaths.includes(agent.id)) summary.deaths.push(agent.id);
-        addExpeditionChronicle(state, encounter.expeditionId, { kind: 'death', title: `${agent.name} died during an encounter`, text: agent.causeOfDeath, entityIds: [agent.id, encounter.id, encounter.expeditionId] }, { witnessedByAgentIds: state.expeditions.find((candidate) => candidate.id === encounter.expeditionId)?.memberIds.filter((id) => id !== agent.id) ?? [] });
       }
     }
     summary?.encounterUpdates.push(`${encounter.id} resolved; casualties=${encounter.casualties.length}.`);

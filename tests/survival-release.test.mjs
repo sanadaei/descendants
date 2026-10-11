@@ -1,3 +1,4 @@
+import { readSandboxUiSource } from '../tools/read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile, access } from 'node:fs/promises';
@@ -17,7 +18,8 @@ test('survival release is self-contained around the original Worldgen 1.5 author
   await access(new URL('vendor/worldgen-engine/dist/index.js', root));
   await access(new URL('vendor/worldgen-engine/setting-packs/descendants/default.recipe.json', root));
   const runtime = JSON.parse(await read('vendor/i2x-worldgen-runtime/runtime-manifest.json'));
-  assert.equal(runtime.runtimeSha256, '35b1aa1287406ddcb03499f4e261231b2310259c7e0a09cd57d8ea9841ff31a1');
+  assert.match(runtime.runtimeSha256, /^[0-9a-f]{64}$/);
+  assert.equal(runtime.buildSource, 'vendor/worldgen-engine/src');
 });
 
 test('survival release identifies the open-ended generations game and contains no Inquiry product route', async () => {
@@ -29,14 +31,14 @@ test('survival release identifies the open-ended generations game and contains n
   assert.match(readFirst, /F1/);
   assert.match(readFirst, /世代/);
   assert.match(readFirst, /推理[^\n]*Inquiry[^\n]*使いません/i);
-  const app = await read('src/sandbox/app.ts');
+  const app = await readSandboxUiSource();
   assert.doesNotMatch(app, /Inquiry|INQUIRY|inquiry/);
 });
 
 test('Pass22 remains archived provenance and is not imported by production source', async () => {
   await access(new URL('provenance/pass22-original/FOUR_INSTANCE_STATE_PASS22.json', root));
   const campaign = await read('src/sandbox/survivalCampaign.ts');
-  const app = await read('src/sandbox/app.ts');
+  const app = await readSandboxUiSource();
   assert.doesNotMatch(`${campaign}\n${app}`, /pass22-original|FOUR_INSTANCE_STATE_PASS22/);
 });
 

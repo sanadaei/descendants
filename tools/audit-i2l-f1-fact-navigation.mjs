@@ -1,10 +1,11 @@
+import { readSandboxUiSource } from './read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { compileTestDist } from './compile-test-dist.mjs';
 
 const code = await compileTestDist();
 if (code !== 0) process.exit(code);
-const appSource = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+const appSource = await readSandboxUiSource();
 const cssSource = await readFile(new URL('../src/styles.css', import.meta.url), 'utf8');
 const {
   filterIncidentResponseDebriefs,

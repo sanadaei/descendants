@@ -1,3 +1,4 @@
+import { readSandboxUiSource } from '../tools/read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
@@ -750,10 +751,10 @@ test('anomaly utilization requires in-world anomaly knowledge and accumulates pr
 });
 
 test('normal F1-F5 UI never enumerates provider recipe variables or hidden diagnostics', async () => {
-  const appSource = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+  const appSource = await readSandboxUiSource();
   assert.doesNotMatch(appSource, /discoveredVariableIds/);
   assert.doesNotMatch(appSource, /Developer provider diagnostics|devDiagnostics/);
-  assert.match(appSource, /Provider projection only\. Hidden components and unprojected entities are not consulted\./);
+  assert.match(appSource, /WORLD KNOWLEDGE PROJECTION/);
 });
 
 
@@ -838,7 +839,7 @@ test('agent planner materially uses pathology, family, beliefs, knowledge, memor
 
 test('provider-backed sandbox exposes persistent accessibility controls and non-visual encounter semantics', async () => {
   const [appSource, styles] = await Promise.all([
-    readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8'),
+    readSandboxUiSource(),
     readFile(new URL('../src/styles.css', import.meta.url), 'utf8'),
   ]);
   for (const token of ['sandbox-skip-link','a11y-scale','a11y-contrast','a11y-motion','aria-live="polite"','aria-label="Encounter grid: E expedition, X other"']) assert.ok(appSource.includes(token), `missing accessibility token ${token}`);
@@ -1007,8 +1008,8 @@ test('direct contact with an outside person remains anchored to a provider fine 
 });
 
 test('F2 and F3 visibly distinguish provider facts, gameplay interpretations and lived epistemic products', async () => {
-  const appSource = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
-  for (const token of ['PROVIDER-ANCHORED IDENTITY','LIVED GAME-STATE IDENTITY','GAME INTERPRETATION','WORLD PROVIDER KNOWLEDGE PROJECTION · not hidden truth','Confidence is epistemic, not a truth percentage','Outside people directly contacted']) assert.ok(appSource.includes(token), `missing authority cue ${token}`);
+  const appSource = await readSandboxUiSource();
+  for (const token of ['出自に基づく個人情報','集落の記録に基づく個人情報','集落の記録','確度は裏づけの強さを示します']) assert.ok(appSource.includes(token), `missing authority cue ${token}`);
 });
 
 test('explicit Records Archive action is the deliberate personal-to-institutional promotion path', async () => {
@@ -1246,7 +1247,7 @@ test('provider command post-commit failure rolls local consequences back instead
     detail: 'Fault-injected provider command.', epistemicBasisIds: state.settlement.localKnowledgeIds.slice(0, 1),
   }), (error) => {
     assert.equal(error?.providerMayHaveMutated, true);
-    assert.match(String(error?.message), /local consequences were rolled back/i);
+    assert.match(String(error?.message), /local consequences were rolled back|拠点側の変更は取り消/i);
     return true;
   });
   assert.equal(JSON.stringify(state), beforeState);
@@ -1757,7 +1758,7 @@ test('accepted aggregate migration materializes persisted lived residents and a 
   for (const migrant of migrants) assert.ok(restored.agents.some((entry) => entry.id === migrant.id && entry.householdId === migrant.householdId));
   assert.ok(restored.settlement.households.some((entry) => entry.id === migrantHousehold.id));
   await advanceSandboxDays(provider, state, 1);
-  assert.ok(migrants.some((migrant) => state.agents.find((entry) => entry.id === migrant.id)?.currentTask !== 'rest'));
+  assert.ok(migrants.some((migrant) => Object.entries(migrant.experience).some(([task,hours]) => ['forage','water','medicine','repair','sanitation','care','records','guard','explore-prep'].includes(task) && hours > 0)), 'migrants performed ordinary work over the simulated days');
   assert.ok(state.chronicle.some((entry) => entry.kind === 'external' && entry.title === 'migration instruction accepted' && entry.text.includes('arrived')));
 });
 
@@ -1861,7 +1862,7 @@ test('migrant residents remain ordinary persisted settlement participants across
   const ids = new Set(migrants.map((entry) => entry.id));
   await advanceSandboxDays(provider, state, 5);
   assert.ok(migrants.every((migrant) => state.agents.some((entry) => entry.id === migrant.id && entry.alive && entry.residence === 'settlement')));
-  assert.ok(migrants.some((migrant) => state.agents.find((entry) => entry.id === migrant.id)?.currentTask !== 'rest'));
+  assert.ok(migrants.some((migrant) => Object.entries(migrant.experience).some(([task,hours]) => ['forage','water','medicine','repair','sanitation','care','records','guard','explore-prep'].includes(task) && hours > 0)), 'migrants performed ordinary work over the simulated days');
   assert.ok(state.settlement.households.some((household) => household.memberIds.some((id) => ids.has(id))));
   const restored = importSandboxSave(JSON.stringify(state));
   assert.ok(migrants.every((migrant) => restored.agents.some((entry) => entry.id === migrant.id && entry.identityOrigin === 'lived-game-state')));
@@ -2981,7 +2982,7 @@ test('QA14 field return abandons the blocked outbound route as an explicit off-n
   assert.equal(expedition.status,'returning');
   assert.equal(expedition.returnTravelMode,'off-network-bearing');
   assert.equal(expedition.fieldDecision?.status,'completed');
-  assert.match(expedition.fieldDecision?.result??'',/no provider-visible road is asserted/i);
+  assert.match(expedition.fieldDecision?.result??'',/direct physical bearing outside the recorded road network/i);
   await advanceSandboxHours(provider,state,.25);
   const distanceAfter=Math.hypot(expedition.position.x-state.settlement.position.x,expedition.position.y-state.settlement.position.y);
   assert.ok(distanceAfter<distanceBefore || expedition.status==='returned');
@@ -3395,7 +3396,7 @@ test('QA16 evidence-centered search is bounded and aborts to physical return whe
   for(let i=0;i<12&&!['aborted','completed'].includes(rescue.rendezvousPlan?.status??'');i++) await advanceSandboxHours(provider,state,2);
   assert.equal(rescue.rendezvousPlan?.status,'aborted');
   assert.equal(rescue.rendezvousPlan?.lastOutcome,'aborted');
-  assert.match(rescue.rendezvousPlan?.abortedReason??'',/bounded 12h evidence-centered search/i);
+  assert.match(rescue.rendezvousPlan?.abortedReason??'',/bounded 12h evidence-centered search|12時間の記録地点周辺捜索/i);
   assert.ok(['returning','returned'].includes(rescue.status));
 });
 

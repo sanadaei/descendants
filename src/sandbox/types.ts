@@ -144,6 +144,9 @@ export interface SandboxAgent {
   sampleWeight?: number;
   name: string;
   sex: Sex;
+  naming?: { languageVersion: 1; givenName: string; familyName: string; fullName: string; sourceName?: string };
+  aptitude?: AgentSkills;
+  education?: { mentorId: string | null; focus: SkillKey; hours: number; lastKnowledgeHour: number };
   bornDay: number;
   alive: boolean;
   deathDay: number | null;
@@ -388,6 +391,7 @@ export interface ResearchProject {
   resultKnowledgeId?: string;
   sampleItemId?: string;
   sampleSourceEntityId?: string;
+  practicalOutcome?: string;
 }
 
 export interface AnomalyUtilizationPractice {
@@ -1084,6 +1088,8 @@ export interface IncidentResponseResourceReservation {
   reserved: IncidentResponseResourceAmounts;
   consumed: IncidentResponseResourceAmounts;
   returned: IncidentResponseResourceAmounts;
+  /** Physical quantities held out of settlement lots; absent in legacy saves. */
+  heldLots?: Partial<Record<'food' | 'water' | 'medicine' | 'tools', Array<{lotId: string; quantity: number}>>>;
 }
 
 export interface IncidentResponseResourceStateV1 {
@@ -1357,6 +1363,7 @@ export interface DailyLoopStateV1 {
 }
 
 export interface SandboxGameState {
+  researchApplications?: import('./researchApplications.js').ResearchApplication[];
   schemaVersion: 1;
   saveId: string;
   seed: number;

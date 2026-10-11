@@ -1,3 +1,4 @@
+import { initializeNames } from './naming.js';
 import type { KnowledgeRecord, WorldEntity, WorldProvider } from '../worldbridge/contract.js';
 import { acceptWorldProvider } from '../worldbridge/providerGuard.js';
 import { DEFAULT_MOCK_CLOCK_POLICY, type WorldClockPolicy } from '../worldbridge/worldClock.js';
@@ -146,6 +147,7 @@ export async function createInitialSandboxState(provider: WorldProvider, options
     providerMutations: { nextCommandOrdinal: 1, providerCommitGeneration: 0, retiredThroughOrdinal: 0, retiredReceiptCount: 0, retiredAcceptedCount: 0, retiredRejectedCount: 0, retiredEventCount: 0, retiredCausalRecordCount: 0, commandReceipts: [] },
     diagnostics: { stepCount: 0, lastWorldAdvanceFrom: accepted.manifest.currentTick, lastWorldAdvanceTo: activeManifest.currentTick, replayHash: '' },
   };
+  initializeNames(state);
   initializeResourceLedgerFromWorld(state);
   syncLegacyKnowledgeShadow(state);
   synchronizeIncidentLedger(state);

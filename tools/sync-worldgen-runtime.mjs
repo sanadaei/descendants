@@ -1,3 +1,4 @@
+import { runTsc } from './tsc-runner.mjs';
 import { createHash } from 'node:crypto';
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -11,6 +12,10 @@ const distRoot = path.join(executionRoot, 'dist');
 const settingRoot = path.join(executionRoot, 'setting-packs', 'descendants');
 const sourcePackage = JSON.parse(await readFile(path.join(sourceRoot, 'package.json'), 'utf8'));
 const sourceRecipe = JSON.parse(await readFile(path.join(sourceRoot, 'setting-packs', 'descendants', 'default.recipe.json'), 'utf8'));
+// Integration uses the bundled source authority, not an external checkout.
+if (!(await stat(path.join(sourceRoot, 'dist', 'index.js')).catch(() => null))?.isFile()) {
+  if (await runTsc(projectRoot, 'vendor/worldgen-engine/tsconfig.json') !== 0) throw new Error('Worldgen source build failed.');
+}
 const executionManifest = JSON.parse(await readFile(path.join(executionRoot, 'runtime-manifest.json'), 'utf8'));
 
 if (sourcePackage.name !== '@descendants/worldgen-engine' || sourcePackage.version !== '1.5.0') {

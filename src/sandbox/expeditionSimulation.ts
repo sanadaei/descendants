@@ -1,3 +1,5 @@
+import { agentAbilityFactors } from './aging.js';
+import { adjustResourceStock, reconcileResourceLedgerToAggregates } from './resourceLedger.js';
 import type { AreaProjection, SpatialRef, WorldEntity, WorldProvider } from '../worldbridge/contract.js';
 import { issueProviderCommandOnce, nextProviderCommandId } from './providerMutationJournal.js';
 import { chance, randomInt } from './rng.js';
@@ -11,7 +13,7 @@ import { activeBlockedCampHours, advanceBlockedCampDecision, applyProviderBounde
 import { beginOffNetworkReturn, completeOffNetworkReturn, interruptOffNetworkReturn, providerReturnTerrainAssessment, recordOffNetworkReturnProgress } from './fieldReturnSimulation.js';
 import { promoteRendezvousRequestAfterVerifiedLink, resolveRendezvousRequest, transmittedRendezvousPosition } from './rendezvousSimulation.js';
 import { advanceRendezvousLifecycle, createResponderRendezvousPlan, ensureLegacyResponderRendezvousPlan, rendezvousFreezesMovement, rendezvousSearchWaypoint, syncResponderTurnback } from './rendezvousEncounterSimulation.js';
-import { addChronicle, addExpeditionChronicle, agentAgeYears, clamp, findAgent, nextStateId, settlementAgents } from './stateUtils.js';
+import { addChronicle, addExpeditionChronicle, agentAgeYears, clamp, effectiveSkill, findAgent, nextStateId, settlementAgents } from './stateUtils.js';
 import { revealExpeditionChronicleToSettlement } from './chronicleVisibility.js';
 import { depositCarriedResourcesAtSettlement } from './localExploration.js';
 import type {
@@ -76,7 +78,7 @@ export interface SettlementSupplyReserveReadiness {
 
 function expeditionTravelSpeedKmPerHour(state: SandboxGameState, memberIds: string[], pace: ExpeditionPace): number {
   const members = memberIds.map((id) => findAgent(state, id)).filter((agent): agent is SandboxAgent => Boolean(agent?.alive));
-  const avgScouting = members.reduce((sum, agent) => sum + agent.skills.scouting, 0) / Math.max(1, members.length);
+  const avgScouting = members.reduce((sum, agent) => sum + effectiveSkill(state,agent,'scouting'), 0) / Math.max(1, members.length);
   const paceSpeed = pace === 'cautious' ? 0.72 : pace === 'fast' ? 1.28 : 1;
   return Math.max(0.5, (2.4 + avgScouting / 80) * paceSpeed);
 }
@@ -160,11 +162,12 @@ function defaultSupplies(memberCount: number): ExpeditionState['supplies'] {
 }
 
 function takeSettlementSupplies(state: SandboxGameState, supplies: ExpeditionState['supplies']): void {
+  reconcileResourceLedgerToAggregates(state, 'legacy expedition stock');
   const mapping: Array<[keyof ExpeditionState['supplies'], keyof SandboxGameState['settlement']['resources']]> = [['food','food'],['water','water'],['medicine','medicine'],['tools','scrap']];
   for (const [expKey, settlementKey] of mapping) {
     if (state.settlement.resources[settlementKey] < supplies[expKey]) throw new Error(`Insufficient ${settlementKey} for expedition.`);
   }
-  for (const [expKey, settlementKey] of mapping) state.settlement.resources[settlementKey] -= supplies[expKey];
+  for (const [expKey, settlementKey] of mapping) adjustResourceStock(state, settlementKey, -supplies[expKey], 'Expedition departure');
 }
 
 export function launchExpedition(state: SandboxGameState, options: LaunchExpeditionOptions): ExpeditionState {
@@ -274,7 +277,7 @@ function applyCampRest(state: SandboxGameState, expedition: ExpeditionState, hou
   for (const id of expedition.memberIds) {
     const agent = findAgent(state, id); if (!agent?.alive) continue;
     const recovery = hours * (hasFood && hasWater ? 5.2 : hasWater ? 3.1 : 1.2);
-    agent.fatigue = clamp(agent.fatigue - recovery);
+    agent.fatigue = clamp(agent.fatigue - recovery * agentAbilityFactors(state,agent).recovery);
     agent.needs.rest = clamp(agent.needs.rest - hours * 4.5);
     if (hasFood && hasWater && agent.health < 100) agent.health = clamp(agent.health + hours * 0.18);
   }
@@ -340,7 +343,7 @@ function moveToward(expedition: ExpeditionState, target: SpatialRef, state: Sand
   const travel = Math.min(magnitude, speedKmPerHour * hours * clamp(speedMultiplier, 0.1, 2));
   expedition.position.x += dx / magnitude * travel; expedition.position.y += dy / magnitude * travel;
   if (expedition.position.z !== undefined || target.z !== undefined) expedition.position.z = (expedition.position.z ?? 0) + dz / magnitude * travel;
-  for (const agent of members) if (agent) agent.fatigue = clamp(agent.fatigue + hours * fatigueRate * Math.max(0.1, fatigueMultiplier));
+  for (const agent of members) if (agent) agent.fatigue = clamp(agent.fatigue + hours * fatigueRate * Math.max(0.1, fatigueMultiplier) / Math.max(.3,agentAbilityFactors(state,agent).physical));
 }
 
 function remainingProviderRouteRelationIds(plan: ExpeditionRoutePlan): string[] {
@@ -858,7 +861,7 @@ function finishReturn(state: SandboxGameState, expedition: ExpeditionState, summ
   const returnedResourceLots = depositCarriedResourcesAtSettlement(state, expedition.memberIds);
   if (returnedResourceLots.length) summary.expeditionUpdates.push(`${expedition.id} returned ${returnedResourceLots.length} provenance-tracked resource lot(s).`);
   delete expedition.routeEntityId; delete expedition.routeWaypoint; delete expedition.routeWaypointReached; delete expedition.routePlan;
-  state.settlement.resources.food += expedition.supplies.food; state.settlement.resources.water += expedition.supplies.water; state.settlement.resources.medicine += expedition.supplies.medicine; state.settlement.resources.scrap += expedition.supplies.tools;
+  adjustResourceStock(state, 'food', expedition.supplies.food, 'Expedition return'); adjustResourceStock(state, 'water', expedition.supplies.water, 'Expedition return'); adjustResourceStock(state, 'medicine', expedition.supplies.medicine, 'Expedition return'); adjustResourceStock(state, 'scrap', expedition.supplies.tools, 'Expedition return');
   summary.expeditionUpdates.push(`${expedition.id} returned.`);
   revealExpeditionChronicleToSettlement(state, expedition.id, `return:${expedition.id}:${state.clock.day}:${state.clock.minuteOfDay}`, { includeNonRoutine: true });
   addChronicle(state, { kind: 'expedition', title: 'Expedition returned', text: `${expedition.id} returned with ${expedition.observations.length} observations.`, entityIds: [expedition.id, ...expedition.memberIds] });

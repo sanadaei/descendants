@@ -1,3 +1,4 @@
+import { simulateNaturalMortality } from './lifeCourseSimulation.js';
 import type { WorldProvider } from '../worldbridge/contract.js';
 import { addGameMinutes, advanceWorldClock, gameClockToWorldTick } from '../worldbridge/worldClock.js';
 import { simulateExpeditionsInterval } from './expeditionSimulation.js';
@@ -27,6 +28,8 @@ function replayDigest(state: SandboxGameState): string {
     knowledge: state.knowledge.map((entry) => [entry.id, entry.lost, entry.holderIds.length, entry.requiresPhysicalSample ?? false, entry.physicalEvidenceSourceEntityId ?? null]),
     research: (state.researchProjects ?? []).map((entry) => [entry.id, entry.status, Math.round(entry.progress * 100) / 100, Math.round(entry.confidence * 10000) / 10000, entry.resultKnowledgeId ?? null, entry.sampleItemId ?? null, entry.sampleSourceEntityId ?? null]),
     anomalyPractices: (state.anomalyPractices ?? []).map((entry) => [entry.id, entry.domain, entry.attempts, Math.round(entry.mastery * 100) / 100, Math.round(entry.stability * 100) / 100, entry.lastOutcome]),
+    learning: state.agents.map((a)=>[a.id,a.bornDay,a.deathDay,a.causeOfDeath,a.skills,a.aptitude??null,a.education??null,a.naming??null]),
+    researchApplications: state.researchApplications??[],
     policies: (state.policyProposals ?? []).map((entry) => [entry.id, entry.task, entry.delta, entry.status, entry.supporterIds.length, entry.opponentIds.length]),
     external: state.externalActors.map((entry) => [entry.entityId, Math.round(entry.localTrust * 100) / 100, entry.tradeExperience, entry.migrationBalance, Math.round(entry.conflictPressure * 100) / 100]),
     externalContacts: (state.externalContacts ?? []).map((entry) => [entry.externalPersonId, entry.societyEntityId ?? null, entry.interactionCount, entry.lastContactDay, entry.lastContactMinute, entry.knowledgeIds.length]),
@@ -71,7 +74,7 @@ function replayDigest(state: SandboxGameState): string {
       reservation.phase, reservation.reservedAt, reservation.lastUpdatedAt, reservation.settledAt ?? null,
       reservation.reserved.food, reservation.reserved.water, reservation.reserved.medicine, reservation.reserved.tools,
       reservation.consumed.food, reservation.consumed.water, reservation.consumed.medicine, reservation.consumed.tools,
-      reservation.returned.food, reservation.returned.water, reservation.returned.medicine, reservation.returned.tools,
+      reservation.returned.food, reservation.returned.water, reservation.returned.medicine, reservation.returned.tools, reservation.heldLots ?? null,
     ]) : null,
     incidentResponseEvidenceUses: state.incidentResponseEvidenceUses ? [
       state.incidentResponseEvidenceUses.nextUseOrdinal,
@@ -157,6 +160,7 @@ async function simulateChunk(provider: WorldProvider, state: SandboxGameState, m
   }
   const hours = minutes / 60;
   if (dayBoundary) { regenerateResourceSources(state, 1); ageResourceLots(state, 1); }
+  simulateNaturalMortality(state, summary);
   simulateSettlementInterval(state, hours, summary);
   await simulateExpeditionsInterval(provider, state, hours, summary);
   simulateKnowledgeInterval(state, hours, summary);

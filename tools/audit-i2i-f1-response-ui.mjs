@@ -1,3 +1,4 @@
+import { readSandboxUiSource } from './read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -6,7 +7,7 @@ import { compileTestDist } from './compile-test-dist.mjs';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const code = await compileTestDist();
 if (code !== 0) process.exit(code);
-const appSource = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+const appSource = await readSandboxUiSource();
 const cssSource = await readFile(new URL('../src/styles.css', import.meta.url), 'utf8');
 const { createInitialSandboxState } = await import('../.test-dist/sandbox/bootstrap.js');
 const { MockWorldProvider } = await import('../.test-dist/worldbridge/mockWorldProvider.js');
@@ -27,8 +28,8 @@ const { importSandboxSave, sandboxRepository } = await import('../.test-dist/san
 const requiredActions = ['incident-adapter-toggle','incident-response-member','incident-assign','incident-dispatch','incident-stand-down','incident-resource-use'];
 for (const action of requiredActions) assert.ok(appSource.includes(`data-action="${action}"`), `missing UI action ${action}`);
 for (const seam of ['assignIncidentResponseTeam','dispatchIncidentResponseTeam','standDownIncidentResponseTeam','applyIncidentResponseEvidenceResourceUse','incidentResponseDebriefs']) assert.ok(appSource.includes(seam), `missing response seam ${seam}`);
-assert.ok(appSource.includes('OFF (SAFE DEFAULT)'));
-assert.ok(appSource.includes('no hidden cause inference · no implicit success/failure'));
+assert.ok(appSource.includes('RESPONSE CHANNEL OFFLINE'));
+assert.ok(appSource.includes('Visibility loss or operation completion alone does not resolve this incident'));
 assert.ok(!appSource.includes('resolvePersistedIncident(this.state'));
 assert.ok(cssSource.includes('.desc-pda-response-panel'));
 assert.equal(isI2F1IncidentAdapterEnabled(), false, 'Node audit must retain default-off incident adapter');

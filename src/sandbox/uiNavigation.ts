@@ -5,7 +5,7 @@ const FUNCTION_KEY_VIEW: Readonly<Record<string, PrimaryViewId>> = Object.freeze
   F1: 'exploration', F2: 'body', F3: 'knowledge', F4: 'inventory', F5: 'chronicle',
 });
 
-const BUSY_SAFE_ACTIONS = new Set(['view','inspect-agent','daily-detail','daily-morning-toggle','select-local-entity','select-world-entity','map-scope','a11y-scale','a11y-contrast','a11y-motion','export','export-recovery-report','export-quarantine']);
+const BUSY_SAFE_ACTIONS = new Set(['stop-continuity','view','inspect-agent','daily-detail','daily-morning-toggle','select-local-entity','select-world-entity','map-scope','a11y-scale','a11y-contrast','a11y-motion','export','export-recovery-report','export-quarantine']);
 
 export function viewForFunctionKey(key: string): PrimaryViewId | undefined { return FUNCTION_KEY_VIEW[key]; }
 

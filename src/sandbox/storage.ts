@@ -283,6 +283,23 @@ function assertState(value: unknown): asserts value is SandboxGameState {
     if (typeof agent.alive !== 'boolean') throw new Error(`Sandbox save has invalid alive flag for ${String(agent.id)}.`);
     if (!Array.isArray(agent.parentIds) || !Array.isArray(agent.partnerIds) || !Array.isArray(agent.knowledgeIds) || !Array.isArray(agent.pathology) || !Array.isArray(agent.memories) || !Array.isArray(agent.beliefs) || !Array.isArray(agent.relations)) throw new Error(`Sandbox save has incomplete agent state for ${String(agent.id)}.`);
     if (agent.residence !== undefined && !['settlement','expedition','external','unknown'].includes(String(agent.residence))) throw new Error(`Sandbox save has invalid residence for ${String(agent.id)}.`);
+    if (agent.naming !== undefined) {
+      if (!isRecord(agent.naming) || agent.naming.languageVersion!==1) throw new Error('Invalid naming language version.');
+      if (agent.naming.sourceName!==undefined) assertId('agent source name',agent.naming.sourceName);
+      for (const key of ['givenName','familyName','fullName']) assertId(`agent naming ${key}`,agent.naming[key]);
+      if (agent.naming.fullName!==`${agent.naming.givenName} ${agent.naming.familyName}` || agent.name!==agent.naming.fullName) throw new Error('Agent name disagrees with naming record.');
+    }
+    if (agent.aptitude !== undefined) {
+      if (!isRecord(agent.aptitude)) throw new Error('Invalid aptitude.');
+      for (const key of ['survival','medicine','construction','foraging','scouting','combat','care','records','leadership','trade']) assertFinite(`aptitude ${key}`,agent.aptitude[key],0,100);
+    }
+    if (agent.education !== undefined) {
+      const education=agent.education;
+      if (!isRecord(education) || !(String(education.focus) in (agent.skills as Record<string,unknown>))) throw new Error('Invalid education focus.');
+      if (education.mentorId!==null && (typeof education.mentorId!=='string' || !agentIds.has(education.mentorId) || education.mentorId===agent.id)) throw new Error('Invalid education mentor.');
+      assertFinite('education hours',education.hours,0);
+      assertFinite('education lastKnowledgeHour',education.lastKnowledgeHour,0,education.hours as number);
+    }
     if (agent.personality !== undefined) {
       if (!isRecord(agent.personality)) throw new Error(`Sandbox save has invalid personality for ${String(agent.id)}.`);
       for (const axis of ['curiosity','caution','sociability','autonomy','empathy']) assertFinite(`agent ${String(agent.id)} personality.${axis}`, agent.personality[axis], 0, 100);
@@ -392,11 +409,26 @@ function assertState(value: unknown): asserts value is SandboxGameState {
   }
   for (const id of settlement.activeRecordIds as unknown[]) if (typeof id !== 'string' || !recordIds.has(id)) throw new Error(`Sandbox save settlement references unknown record ${String(id)}.`);
 
+  if (value.researchApplications !== undefined) {
+    if (!Array.isArray(value.researchApplications)) throw new Error('Invalid research applications.');
+    const seen=new Set<string>();
+    for (const application of value.researchApplications as unknown[]) {
+      if (!isRecord(application) || typeof application.projectId!=='string' || seen.has(application.projectId)) throw new Error('Invalid or duplicate research application.');
+      seen.add(application.projectId);
+      if (!['medicine','water','forage','repair','records','explore-prep'].includes(String(application.domain))) throw new Error('Invalid research application domain.');
+      assertFinite('research application strength',application.strength,0,.15);
+      assertInteger('research application uses',application.uses,0);
+      if (typeof application.knowledgeId!=='string' || !knowledgeIds.has(application.knowledgeId)) throw new Error('Research application requires result knowledge.');
+      const project=Array.isArray(value.researchProjects)?value.researchProjects.find((p)=>isRecord(p)&&p.id===application.projectId):undefined;
+      if (!isRecord(project) || project.status!=='completed' || project.resultKnowledgeId!==application.knowledgeId) throw new Error('Research application is not backed by completed research.');
+    }
+  }
   if (value.researchProjects !== undefined) {
     if (!Array.isArray(value.researchProjects)) throw new Error('Sandbox save has invalid researchProjects.');
     assertUniqueIdRecords('research', value.researchProjects as unknown[]);
     for (const raw of value.researchProjects as unknown[]) {
       const project = raw as Record<string, unknown>;
+      if (project.practicalOutcome!==undefined) assertId('research practical outcome',project.practicalOutcome);
       const projectId = String(project.id);
       assertFinite(`research ${projectId} progress`, project.progress, 0, 100);
       assertFinite(`research ${projectId} confidence`, project.confidence, 0, 1);
@@ -916,6 +948,21 @@ function assertState(value: unknown): asserts value is SandboxGameState {
         const reserved = amounts.reserved[key]; const consumed = amounts.consumed[key]; const returned = amounts.returned[key];
         if (consumed > reserved + 1e-6 || returned > reserved - consumed + 1e-6) throw new Error(`Sandbox save incidentResponseResources ${String(raw.id)} over-accounts ${key}.`);
       }
+      if (raw.heldLots !== undefined) {
+        if (!isRecord(raw.heldLots) || raw.sourceKind!=='settlement') throw new Error('Invalid held resource lots.');
+        const ledger=isRecord(value.resourceLedger)&&Array.isArray(value.resourceLedger.lots)?value.resourceLedger.lots:[];
+        for (const key of amountKeys) {
+          const lines=raw.heldLots[key];
+          if (!Array.isArray(lines)) throw new Error('Missing held resource lot lines.');
+          let sum=0; const ids=new Set<string>();
+          for (const line of lines) {
+            if (!isRecord(line) || typeof line.lotId!=='string' || ids.has(line.lotId)) throw new Error('Invalid held lot reference.');
+            ids.add(line.lotId); assertFinite('held lot quantity',line.quantity,0); sum+=line.quantity as number;
+            if (!ledger.some((lot)=>isRecord(lot)&&lot.id===line.lotId&&lot.resourceKey===(key==='tools'?'scrap':key))) throw new Error('Unknown or mismatched held lot.');
+          }
+          if (!isRecord(raw.reserved) || !near(sum,raw.reserved[key] as number)) throw new Error('Held lots disagree with reservation budget.');
+        }
+      }
       const phase = String(raw.phase); const operationPhase = String(operation.phase);
       if (phase === 'reserved') {
         if (!['mobilizing','working','returning'].includes(operationPhase) || raw.settledAt !== undefined) throw new Error(`Sandbox save incidentResponseResources ${String(raw.id)} active reservation is inconsistent.`);
@@ -1304,6 +1351,7 @@ function assertState(value: unknown): asserts value is SandboxGameState {
   if (Array.isArray(value.researchProjects)) {
     for (const raw of value.researchProjects as unknown[]) {
       const project = raw as Record<string, unknown>;
+      if (project.practicalOutcome!==undefined) assertId('research practical outcome',project.practicalOutcome);
       if (project.sampleItemId !== undefined && (typeof project.sampleItemId !== 'string' || !physicalInventoryIds.has(project.sampleItemId))) throw new Error(`Sandbox save research ${String(project.id)} references unknown physical sample.`);
       if (project.sampleSourceEntityId !== undefined && typeof project.sampleSourceEntityId !== 'string') throw new Error(`Sandbox save research ${String(project.id)} has invalid sample source.`);
     }

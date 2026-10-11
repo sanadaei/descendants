@@ -1,8 +1,9 @@
+import { readSandboxUiSource } from '../tools/read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 
-const app = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+const app = await readSandboxUiSource();
 
 test('F4 exposes detailed provenance lots and source quality instead of only scalar stock', ()=>{
   for (const token of ['RESOURCE LOTS','data-resource-lot-id','SOURCE / PROVENANCE','freshness','contamination','water quality','Custody']) {

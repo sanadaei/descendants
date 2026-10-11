@@ -1,10 +1,11 @@
+import { readSandboxUiSource } from './read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { compileTestDist } from './compile-test-dist.mjs';
 
 const code = await compileTestDist();
 if (code !== 0) process.exit(code);
-const appSource = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+const appSource = await readSandboxUiSource();
 const cssSource = await readFile(new URL('../src/styles.css', import.meta.url), 'utf8');
 const { createInitialSandboxState } = await import('../.test-dist/sandbox/bootstrap.js');
 const { MockWorldProvider } = await import('../.test-dist/worldbridge/mockWorldProvider.js');
@@ -26,7 +27,7 @@ assert.ok(appSource.includes("#selectedIncidentId = ''"));
 assert.ok(appSource.includes("#selectedDebriefId = ''"));
 assert.ok(appSource.includes('role="option" aria-selected="${selected}"'));
 assert.ok(appSource.includes("['ArrowUp','ArrowDown','Home','End'].includes(event.key)"));
-assert.ok(appSource.includes('selected incident focus is session-local'));
+assert.doesNotMatch(appSource,/selectedIncidentId:\s*(?:this|ctx)\.#?selectedIncidentId/);
 assert.ok(!appSource.includes('resolvePersistedIncident(this.state'));
 assert.ok(cssSource.includes('.desc-pda-incident-focus:focus-visible'));
 assert.ok(cssSource.includes('.desc-pda-response-debrief-detail'));

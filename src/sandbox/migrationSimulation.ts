@@ -1,20 +1,14 @@
+import { generatePersonName } from './naming.js';
 import { scopedRandom } from './rng.js';
 import { nextStateId, settlementAgents } from './stateUtils.js';
 import type { AgentRole, AgentSkills, Household, SandboxAgent, SandboxGameState } from './types.js';
 import type { JsonValue, WorldEntity, WorldProvider } from '../worldbridge/contract.js';
 
 const MIGRANT_ROLES: AgentRole[] = ['medic','scout','builder','forager','water','caregiver','recorder','guard','generalist'];
-const FIRST_NAMES = ['Ari','Mara','Niko','Sena','Tavi','Lina','Rin','Oren','Mika','Eli','Noa','Kira','Toma','Vera','Sami','Ira'];
-const LAST_NAMES = ['Vale','Rook','Sen','Mori','Aster','Kade','Lorn','Venn','Hale','Dara','Iven','Orra'];
 const SKILL_KEYS: Array<keyof AgentSkills> = ['survival','medicine','construction','foraging','scouting','combat','care','records','leadership','trade'];
 
 function boundedInt(seed:number, scope:string, min:number, max:number):number {
   return min + Math.floor(scopedRandom(seed, scope) * (max - min + 1));
-}
-function migrantName(state:SandboxGameState,id:string):string {
-  const first=FIRST_NAMES[boundedInt(state.seed,`${id}:first`,0,FIRST_NAMES.length-1)]!;
-  const last=LAST_NAMES[boundedInt(state.seed,`${id}:last`,0,LAST_NAMES.length-1)]!;
-  return `${first} ${last}`;
 }
 function skills(state:SandboxGameState,id:string,role:AgentRole):AgentSkills {
   const result=Object.fromEntries(SKILL_KEYS.map((key,index)=>[key,boundedInt(state.seed,`${id}:skill:${index}`,25,64)])) as AgentSkills;
@@ -54,7 +48,7 @@ export function materializeNegotiatedMigrants(
     const skillSet=skills(state,id,role);
     const agent:SandboxAgent={
       id,identityOrigin:'lived-game-state',profileAuthority:{identity:'lived-game-state',name:'lived-game-state',household:'lived-game-state',age:'lived-game-state',sex:'lived-game-state',role:'lived-game-state',skills:'lived-game-state',genetics:'lived-game-state',healthBaseline:'lived-game-state',personality:'lived-game-state',faith:'lived-game-state'},
-      name:migrantName(state,id),sex,bornDay:state.clock.day-age*365-boundedInt(state.seed,`${id}:born-offset`,0,364),alive:true,deathDay:null,causeOfDeath:'',role,householdId,parentIds:[],partnerIds:[],
+      name:generatePersonName(state.seed,id,householdId).fullName,naming:generatePersonName(state.seed,id,householdId),sex,bornDay:state.clock.day-age*365-boundedInt(state.seed,`${id}:born-offset`,0,364),alive:true,deathDay:null,causeOfDeath:'',role,householdId,parentIds:[],partnerIds:[],
       genetics:{lineageMarker:`LIVED-${id.split(':').at(-1)}`,loci:{resilience:boundedInt(state.seed,`${id}:resilience`,28,72),metabolism:boundedInt(state.seed,`${id}:metabolism`,28,72),fertility:boundedInt(state.seed,`${id}:fertility`,28,72)},anomalyTraits:[]},
       health:boundedInt(state.seed,`${id}:health`,72,94),fatigue:boundedInt(state.seed,`${id}:fatigue`,12,34),morale:boundedInt(state.seed,`${id}:morale`,42,68),
       needs:{hunger:boundedInt(state.seed,`${id}:hunger`,12,28),thirst:boundedInt(state.seed,`${id}:thirst`,10,24),rest:boundedInt(state.seed,`${id}:rest`,12,28),safety:boundedInt(state.seed,`${id}:safety`,18,38),belonging:boundedInt(state.seed,`${id}:belonging`,28,52)},
@@ -142,7 +136,7 @@ async function materializeProviderConfirmedArrival(
   const agent:SandboxAgent={
     id:entity.id,identityOrigin:'world-provider',profileAuthority:{identity:'provider-projected',name:providerName?'provider-projected':'game-derived',household:'lived-game-state',age:'game-derived',sex:'game-derived',role:Array.isArray(entity.components.roles)?'provider-projected':'game-derived',skills:'game-derived',genetics:'game-derived',healthBaseline:'game-derived',personality:'game-derived',faith:'game-derived'},
     worldEntityId:entity.id,...(anchorId?{identityAnchorId:anchorId}:{}),worldProvenanceIds:[...new Set([...(anchor?.provenanceIds??[]),...entity.provenanceIds])],materializationProvenanceIds:[...new Set([...entity.provenanceIds,...sourceIds])],sampleWeight:typeof entity.components.sampleWeight==='number'?Math.max(1,entity.components.sampleWeight):1,
-    name:providerName??`Resident ${entity.id}`,sex,bornDay:state.clock.day-age*365-boundedInt(state.seed,`${entity.id}:provider-born-offset`,0,364),alive:true,deathDay:null,causeOfDeath:'',role,householdId,parentIds:[],partnerIds:[],
+    name:providerName??generatePersonName(state.seed,entity.id,householdId).fullName,sex,bornDay:state.clock.day-age*365-boundedInt(state.seed,`${entity.id}:provider-born-offset`,0,364),alive:true,deathDay:null,causeOfDeath:'',role,householdId,parentIds:[],partnerIds:[],
     genetics:{lineageMarker:`WG-MIG-${Math.abs(entity.id.split('').reduce((a,c)=>((a*33)^c.charCodeAt(0))|0,5381)).toString(16)}`,loci:{resilience:boundedInt(state.seed,`${entity.id}:resilience`,28,76),metabolism:boundedInt(state.seed,`${entity.id}:metabolism`,28,76),fertility:boundedInt(state.seed,`${entity.id}:fertility`,28,76)},anomalyTraits:[]},
     health:boundedInt(state.seed,`${entity.id}:health`,72,95),fatigue:boundedInt(state.seed,`${entity.id}:fatigue`,10,34),morale:boundedInt(state.seed,`${entity.id}:morale`,42,70),needs:{hunger:boundedInt(state.seed,`${entity.id}:hunger`,10,28),thirst:boundedInt(state.seed,`${entity.id}:thirst`,8,24),rest:boundedInt(state.seed,`${entity.id}:rest`,10,28),safety:boundedInt(state.seed,`${entity.id}:safety`,16,38),belonging:boundedInt(state.seed,`${entity.id}:belonging`,25,48)},skills:skills(state,entity.id,role),goals:['establish-home','support-household'],fears:['displacement'],beliefs:[],
     memories:[{id:nextStateId(state,'memory'),day:state.clock.day,kind:'social',text:`Provider-confirmed arrival from ${sourceEntityId}.`,salience:78,sourceIds:[sourceEntityId,entity.id,...sourceIds]}],relations:[],knowledgeIds:[],pathology:[],authority:{offices:[],legitimacy:boundedInt(state.seed,`${entity.id}:legitimacy`,22,48),obedience:boundedInt(state.seed,`${entity.id}:obedience`,40,72),refusalThreshold:boundedInt(state.seed,`${entity.id}:refusal`,45,72)},currentPlan:null,currentTask:'rest',expeditionId:null,residence:'settlement',experience:{'migration:arrival-day':state.clock.day},personality:{curiosity:boundedInt(state.seed,`${entity.id}:curiosity`,35,72),caution:boundedInt(state.seed,`${entity.id}:caution`,38,74),sociability:boundedInt(state.seed,`${entity.id}:social`,32,72),autonomy:boundedInt(state.seed,`${entity.id}:autonomy`,36,74),empathy:boundedInt(state.seed,`${entity.id}:empathy`,38,76)},faith:{commitment:boundedInt(state.seed,`${entity.id}:faith`,0,70),interpretationTags:['provider-anchored-migrant']},affiliationIds:[householdId,sourceEntityId],socialStatus:{standing:boundedInt(state.seed,`${entity.id}:standing`,16,36),dependency:boundedInt(state.seed,`${entity.id}:dependency`,12,48),outsider:boundedInt(state.seed,`${entity.id}:outsider`,52,78)},

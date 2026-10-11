@@ -1,3 +1,4 @@
+import { readSandboxUiSource } from '../tools/read-sandbox-ui.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -5,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-const app = await readFile(path.join(root, 'src/sandbox/app.ts'), 'utf8');
+const app = await readSandboxUiSource();
 const css = await readFile(path.join(root, 'src/styles.css'), 'utf8');
 const audio = await readFile(path.join(root, 'src/sandbox/pdaAudio.ts'), 'utf8');
 

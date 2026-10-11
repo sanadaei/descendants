@@ -1,8 +1,9 @@
+import { readSandboxUiSource } from '../tools/read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 
-const app = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+const app = await readSandboxUiSource();
 const css = await readFile(new URL('../src/styles.css', import.meta.url), 'utf8');
 const readModel = await readFile(new URL('../src/sandbox/dailyCommandReadModel.ts', import.meta.url), 'utf8');
 
@@ -79,8 +80,8 @@ test('Daily Command Center routes concerns to existing authoritative detail surf
   for (const target of ['body','inventory','expedition','map','knowledge','chronicle','task']) {
     assert.match(app, new RegExp(`target === '${target}'|target==='${target}'`), `missing Daily Command target route: ${target}`);
   }
-  assert.match(app, /this\.#inspectedAgentId = agentId/);
-  assert.match(app, /this\.#pdaTaskPanel = 'expedition'/);
+  assert.match(app, /(?:this|ctx)\.#?inspectedAgentId = agentId/);
+  assert.match(app, /(?:this|ctx)\.#?pdaTaskPanel = 'expedition'/);
 });
 
 test('Morning Report and MANUAL interruption hand off directly to authoritative detail surfaces', () => {
@@ -133,7 +134,7 @@ test('Daily Command header provides a no-state-change jump directly to Today pla
 });
 
 test('same-day plan rerenders preserve campaign scroll but a new morning starts at the report top', () => {
-  assert.match(app, /data-scroll-day="\$\{this\.state\.clock\.day\}"/);
+  assert.match(app, /data-scroll-day="\$\{(?:this|ctx)\.state\.clock\.day\}"/);
   assert.match(app, /previousCampaign\.dataset\.scrollDay/);
   assert.match(app, /nextCampaign\?\.dataset\.scrollDay===previousCampaignScroll\.day/);
   assert.match(app, /action==='daily-plan-jump'[\s\S]*?event\.preventDefault\(\)[\s\S]*?scrollIntoView/);
@@ -160,7 +161,7 @@ test('crisis response shortlist offers one-click canonical DailyPlan assignments
   for (const token of ['CRISIS CREW', '危機対応候補', 'command.crisisRecommendations', 'data-action="daily-quick-assign"', 'data-crisis-response']) {
     assert.ok(app.includes(token), `missing crisis response shortlist token: ${token}`);
   }
-  assert.match(app, /setDailyAssignment\(this\.state,agentId,task\)/);
+  assert.match(app, /setDailyAssignment\((?:this|ctx)\.state,agentId,task\)/);
   assert.match(css, /\.desc-daily-crisis-response/);
 });
 
@@ -170,7 +171,7 @@ test('crisis crew explains candidate fit and supports two-person canonical batch
   }
   assert.match(app, /candidate\.reasons\.map/);
   assert.match(app, /agentIds\.split\(','\)/);
-  assert.match(app, /setDailyAssignment\(this\.state,agentId,task\)/);
+  assert.match(app, /setDailyAssignment\((?:this|ctx)\.state,agentId,task\)/);
 });
 
 test('compact crisis crew keeps Today plan dense enough for 1280x720 execution', () => {
@@ -209,7 +210,7 @@ test('crisis follow-up can restore yesterday staffing gap in one canonical actio
   for (const token of ['continuityShortfall', 'fillCandidateIds', 'workedSameTaskYesterday', 'daily-fill-crisis-gap', '昨日水準へ補充', '昨日担当は後順位']) {
     assert.ok(app.includes(token) || readModel.includes(token), `missing P8 continuity/rotation token: ${token}`);
   }
-  assert.match(app, /action==='daily-fill-crisis-gap'[\s\S]*?setDailyAssignment\(this\.state,agentId,task\)/);
+  assert.match(app, /action==='daily-fill-crisis-gap'[\s\S]*?setDailyAssignment\((?:this|ctx)\.state,agentId,task\)/);
   assert.match(app, /recommendation\.fillCandidateIds[\s\S]*?join\(','\)/);
   assert.match(app, /recommendation\.continuityShortfall > 0/);
   assert.match(readModel, /昨日も\$\{laborTaskDisplayName\(definition\.task\)\}/);
@@ -220,7 +221,7 @@ test('crisis crew can rotate one repeated responder with a fresh rest or records
   for (const token of ['rotationSwap', 'daily-rotate-crisis', '1名交代', 'data-outgoing-agent-id', 'data-incoming-agent-id', 'data-incoming-previous-task']) {
     assert.ok(app.includes(token) || readModel.includes(token), `missing P9 crisis rotation swap token: ${token}`);
   }
-  assert.match(app, /action==='daily-rotate-crisis'[\s\S]*?setDailyAssignment\(this\.state,outgoingAgentId,incomingPreviousTask\)[\s\S]*?setDailyAssignment\(this\.state,incomingAgentId,task\)/);
+  assert.match(app, /action==='daily-rotate-crisis'[\s\S]*?setDailyAssignment\((?:this|ctx)\.state,outgoingAgentId,incomingPreviousTask\)[\s\S]*?setDailyAssignment\((?:this|ctx)\.state,incomingAgentId,task\)/);
 });
 
 test('crisis rotation swap names both sides in its accessible label', () => {
@@ -231,7 +232,7 @@ test('multi-crisis crew exposes candidate conflicts and a canonical conflict-avo
   for (const token of ['crisisConflicts', 'crisisBalanceAssignments', 'STAFF CONFLICT', 'daily-balance-crises', '他危機候補']) {
     assert.ok(app.includes(token) || readModel.includes(token), `missing P10 multi-crisis coordination token: ${token}`);
   }
-  assert.match(app, /action==='daily-balance-crises'[\s\S]*?setDailyAssignment\(this\.state,agentId,task\)/);
+  assert.match(app, /action==='daily-balance-crises'[\s\S]*?setDailyAssignment\((?:this|ctx)\.state,agentId,task\)/);
 });
 
 test('crisis crew renders explicit response order and conflict balancing follows the same ordered assignments', () => {
@@ -247,7 +248,7 @@ test('top response-order crisis exposes a one-person canonical FOCUS #1 action',
   for (const token of ['crisisFocusAssignment', 'FOCUS #1', 'daily-focus-top-crisis', '#1へ1名配置']) {
     assert.ok(app.includes(token) || readModel.includes(token), `missing P12 focus-action token: ${token}`);
   }
-  assert.match(app, /action==='daily-focus-top-crisis'[\s\S]*?setDailyAssignment\(this\.state,agentId,task\)/);
+  assert.match(app, /action==='daily-focus-top-crisis'[\s\S]*?setDailyAssignment\((?:this|ctx)\.state,agentId,task\)/);
   assert.match(app, /data-action="daily-focus-top-crisis"[\s\S]*?data-priority-order="\$\{command\.crisisFocusAssignment\.priorityOrder\}"/);
 });
 
@@ -294,7 +295,7 @@ test('completed crisis coverage exposes a one-person recovery action back to the
   for (const token of ['crisisRecovery', 'RECOVERY CAPACITY', 'daily-release-crisis-excess', '余剰1名を戻す']) {
     assert.ok(app.includes(token) || readModel.includes(token), `missing P15 crisis recovery token: ${token}`);
   }
-  assert.match(app, /action==='daily-release-crisis-excess'[\s\S]*?setDailyAssignment\(this\.state,agentId,returnTask\)/);
+  assert.match(app, /action==='daily-release-crisis-excess'[\s\S]*?setDailyAssignment\((?:this|ctx)\.state,agentId,returnTask\)/);
   assert.match(app, /data-action="daily-release-crisis-excess"[\s\S]*?data-return-task="\$\{command\.crisisRecovery\.assignment\.returnTask\}"/);
 });
 
@@ -318,7 +319,7 @@ test('plan balance exposes one safe baseline recovery action without changing re
   for (const token of ['planBalanceRecovery', 'CREW RECOVERY', 'daily-restore-plan-balance', '前日構成へ戻す']) {
     assert.ok(app.includes(token) || readModel.includes(token), `missing P18 balance-recovery token: ${token}`);
   }
-  assert.match(app, /action==='daily-restore-plan-balance'[\s\S]*?setDailyAssignment\(this\.state,agentId,returnTask\)/);
+  assert.match(app, /action==='daily-restore-plan-balance'[\s\S]*?setDailyAssignment\((?:this|ctx)\.state,agentId,returnTask\)/);
   assert.doesNotMatch(readModel, /planBalanceRecoveryTarget|planBalanceRecoveryRequired/);
 });
 
@@ -326,7 +327,7 @@ test('daily command exposes non-authoritative rest pressure using the existing v
   for (const token of ['restPressure', 'REST PRESSURE', '休養圧', 'daily-rest-resident', '休養へ']) {
     assert.ok(app.includes(token) || readModel.includes(token), `missing P19 rest-pressure token: ${token}`);
   }
-  assert.match(app, /action==='daily-rest-resident'[\s\S]*?setDailyAssignment\(this\.state,agentId,'rest'\)/);
+  assert.match(app, /action==='daily-rest-resident'[\s\S]*?setDailyAssignment\((?:this|ctx)\.state,agentId,'rest'\)/);
   assert.match(readModel, /fatigue >= 45 \|\| agent\.health <= 70/);
   assert.doesNotMatch(readModel, /restPressureTarget|restPressureRequired|restPressureHistory/);
 });
@@ -422,7 +423,7 @@ test('P27 command pulse exposes MORNING PLAN EXECUTE READBACK without changing c
     '#commandPulsePhase', 'desc-command-signal', 'desc-command-execution-curtain',
     'ORDERS SEALED', 'DAY CYCLE ACTIVE', 'SETTLEMENT CLOCK', 'playCommandCommit',
   ]) assert.ok(app.includes(token) || css.includes(token), `missing P27 command pulse token: ${token}`);
-  assert.match(app, /await\s+executeCommittedPlan\(this\.provider,this\.state\)/);
+  assert.match(app, /await\s+executeCommittedPlan\((?:this|ctx)\.provider,(?:this|ctx)\.state\)/);
   assert.doesNotMatch(app, /command\.readiness==='risk'[^\n]*disabled/);
 });
 
@@ -440,7 +441,7 @@ test('P28 PLAN BOARD groups the visible roster into crisis normal rest and field
   }
   for (const lane of ['crisis','normal','rest','field']) assert.ok(app.includes(`data-plan-board-lane="${lane}"`), `missing P28 lane ${lane}`);
   assert.match(app, /previousTask\s*!==\s*row\.assignedTask|row\.previousTask\s*!==\s*row\.assignedTask/);
-  assert.match(app, /action==='daily-board-assign'[\s\S]*?setDailyAssignment\(this\.state,agentId,task\)/);
+  assert.match(app, /action==='daily-board-assign'[\s\S]*?setDailyAssignment\((?:this|ctx)\.state,agentId,task\)/);
   const selectionHandler = app.match(/if \(action==='daily-board-select'\) \{([\s\S]*?)\n    \}/)?.[1] ?? '';
   assert.doesNotMatch(selectionHandler, /setDailyAssignment|executeCommittedPlan|commitDailyPlan/);
   assert.ok(app.includes('data-action="daily-assignment"'), 'existing assignment select must remain');
@@ -459,18 +460,18 @@ test('P29 captures final staff moves before first commit, preserves them across 
   for (const token of ['#pendingAssignmentMoves', '#assignmentConsequenceReadback', 'assignmentConsequenceReadback', 'DUTY REPORT', 'AFTER-ACTION OBSERVATION']) {
     assert.ok(app.includes(token), `missing P29 token: ${token}`);
   }
-  assert.match(app, /currentPlan\.status==='draft'[\s\S]*?#pendingAssignmentMoves[\s\S]*?commitDailyPlan\(this\.state\)/);
+  assert.match(app, /currentPlan\.status==='draft'[\s\S]*?#pendingAssignmentMoves[\s\S]*?commitDailyPlan\((?:this|ctx)\.state\)/);
   const interruptedBranch = app.match(/if\(result\.status==='interrupted'\)\s*\{([\s\S]*?)\}\s*else\s*\{/);
   assert.ok(interruptedBranch, 'missing interrupted branch');
   assert.doesNotMatch(interruptedBranch[1], /#pendingAssignmentMoves\s*=\s*\[\]/);
-  assert.match(app, /assignmentConsequenceReadback\(this\.#pendingAssignmentMoves,result\.report\)/);
+  assert.match(app, /assignmentConsequenceReadback\((?:this|ctx)\.#?pendingAssignmentMoves,result\.report\)/);
   assert.match(app, /#pendingAssignmentMoves\s*=\s*\[\]/);
   assert.match(app, /DUTY REPORT[\s\S]*?data-daily-target="body"/);
   assert.doesNotMatch(app, /DUTY REPORT[\s\S]{0,1600}?(?:success rate|efficiency|成功率|効率|resource contribution)/i);
 });
 
 test('P30 morning replan routes observed staff-move alerts back to PLAN BOARD without automatic reassignment', () => {
-  assert.match(app, /morningReplanQueue\(this\.#assignmentConsequenceReadback,command\.residentRows,command\.restPressure\)/);
+  assert.match(app, /morningReplanQueue\((?:this|ctx)\.#?assignmentConsequenceReadback,command\.residentRows,command\.restPressure\)/);
   for (const token of ['DUTY REVIEW', '要観察員の勤務照合', 'ON DUTY', 'REASSIGNED', 'MORNING WATCH']) {
     assert.ok(app.includes(token), `missing P30 morning replan token: ${token}`);
   }
@@ -482,7 +483,7 @@ test('P30 morning replan routes observed staff-move alerts back to PLAN BOARD wi
   assert.doesNotMatch(focusHandler, /setDailyAssignment|commitDailyPlan|executeCommittedPlan/);
   const restHandler = app.match(/if \(action==='daily-replan-rest'\) \{([\s\S]*?)\n    \}/)?.[1] ?? '';
   assert.match(restHandler, /restPressure\?\.candidates\.some/);
-  assert.match(restHandler, /setDailyAssignment\(this\.state,agentId,'rest'\)/);
+  assert.match(restHandler, /setDailyAssignment\((?:this|ctx)\.state,agentId,'rest'\)/);
 });
 
 test('F1 player-facing copy contains no developer-facing metatext or raw labor task ids', () => {

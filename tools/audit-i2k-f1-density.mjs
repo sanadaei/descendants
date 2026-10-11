@@ -1,10 +1,11 @@
+import { readSandboxUiSource } from './read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { compileTestDist } from './compile-test-dist.mjs';
 
 const code = await compileTestDist();
 if (code !== 0) process.exit(code);
-const appSource = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+const appSource = await readSandboxUiSource();
 const cssSource = await readFile(new URL('../src/styles.css', import.meta.url), 'utf8');
 const { createInitialSandboxState } = await import('../.test-dist/sandbox/bootstrap.js');
 const { MockWorldProvider } = await import('../.test-dist/worldbridge/mockWorldProvider.js');
@@ -25,7 +26,7 @@ for (const action of ['incident-debrief-filter','incident-density-toggle','incid
 }
 for (const filter of ['all','completed','aborted','evidence','resource']) assert.ok(appSource.includes(`'${filter}'`));
 assert.ok(appSource.includes("#incidentResponseDensity: IncidentResponseDensity = 'standard'"));
-assert.ok(appSource.includes('incident/debrief filters and density are session-local'));
+assert.doesNotMatch(appSource,/(?:incidentDebriefFilter|incidentResponseDensity):\s*(?:this|ctx)\.#?(?:incidentDebriefFilter|incidentResponseDensity)/);
 assert.ok(cssSource.includes('.desc-pda-response-status-strip'));
 assert.ok(cssSource.includes('.desc-pda-response-panel.is-compact'));
 assert.ok(cssSource.includes('.desc-pda-response-toolbar'));

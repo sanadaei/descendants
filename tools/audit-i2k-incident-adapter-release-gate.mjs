@@ -1,14 +1,15 @@
+import { readSandboxUiSource } from './read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 import { constants } from 'node:fs';
 
 const service = await readFile(new URL('../src/sandbox/incidentService.ts', import.meta.url), 'utf8');
-const app = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+const app = await readSandboxUiSource();
 const evidenceUrl = new URL('../I2K_HUMAN_VISUAL_ACCEPTANCE.json', import.meta.url);
 
 assert.ok(service.includes("globalThis.localStorage.getItem(I2_F1_INCIDENT_STORAGE_KEY) === '1'"), 'Incident adapter is no longer explicit opt-in');
 assert.ok(service.includes('Feature-flagged F1 adapter. Default OFF.'), 'Default-OFF contract marker missing');
-assert.ok(app.includes("?'ON':'OFF (SAFE DEFAULT)'"), 'F10 safe-default label missing');
+assert.ok(app.includes('data-action="incident-adapter-toggle"') && app.includes('RESPONSE CHANNEL OFFLINE'), 'F10 opt-in control or offline state missing');
 
 let evidence = null;
 try {

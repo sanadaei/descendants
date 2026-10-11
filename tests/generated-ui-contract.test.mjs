@@ -1,3 +1,4 @@
+import { readSandboxUiSource } from '../tools/read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
@@ -7,14 +8,14 @@ const root=fileURLToPath(new URL('..',import.meta.url));
 const read=(rel)=>readFile(path.join(root,rel),'utf8');
 
 test('generated-world shell promotes F1-F5 surfaces inside the Descendants terminal UI', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const css=await read('src/styles.css');
-  for(const pair of [['exploration','F1'],['body','F2'],['knowledge','F3'],['inventory','F4'],['chronicle','F5']]) {
+  for(const pair of [['task','F1'],['body','F2'],['knowledge','F3'],['inventory','F4'],['chronicle','F5']]) {
     assert.match(app,new RegExp(`'${pair[0]}'[^\\n]+'${pair[1]}'`));
   }
   assert.match(app,/desc-pda-hardware/);
   assert.match(app,/type PdaTab = .*'map'.*'residents'.*'system'/);
-  assert.match(app,/DESCENDANTS FIELD TERMINAL/);
+  assert.match(app,/DESCENDANTS PDA OS/);
   assert.match(app,/pdaExpeditionPreparation/);
   assert.match(app,/data-action="pda-task-panel"/);
   assert.match(app,/desc-pda-secondary-index/);
@@ -23,7 +24,7 @@ test('generated-world shell promotes F1-F5 surfaces inside the Descendants termi
 });
 
 test('remote UI uses report/viewpoint projections instead of direct hidden expedition truth', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/REMOTE \/ CURRENT STATUS UNKNOWN/);
   assert.match(app,/chronicleViewpoint/);
   assert.match(app,/projectChronicle/);
@@ -47,7 +48,7 @@ test('portable build copies only generated-world static support', async()=>{
 });
 
 test('generated direct-play UI binds LOCAL projection, physical samples and equipment without quest omniscience', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const local=await read('src/sandbox/localExploration.ts');
   const direct=await read('src/sandbox/directPlay.ts');
   assert.match(app,/FIELD ACTIONS \/ CURRENT RANGE/);
@@ -64,9 +65,9 @@ test('generated direct-play UI binds LOCAL projection, physical samples and equi
 });
 
 test('F3 read-switch candidate is feature-gated, fail-closed, and feeds the existing F3 renderer without changing action IDs', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const projection=await read('src/sandbox/knowledgeF3Projection.ts');
-  assert.match(app,/selectF3KnowledgeReadModel\(this\.state, holder\?\.id \?\? null\)/);
+  assert.match(app,/selectF3KnowledgeReadModel\((?:this|ctx)\.state, holder\?\.id \?\? null\)/);
   assert.match(app,/const personal = f3Read\.personal/);
   assert.match(app,/const institutional = f3Read\.institutional/);
   assert.match(projection,/descendants\.i1c\.f3-read-v2\.v1/);
@@ -75,10 +76,10 @@ test('F3 read-switch candidate is feature-gated, fail-closed, and feeds the exis
 });
 
 test('I1-D compare remains feature-gated while I1-D2 may select the shadow WORLD read only through the fail-closed selector', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const graph=await read('src/sandbox/knowledgeGraphProjection.ts');
-  assert.match(app,/compareWorldGraphProjectionsIfEnabled\(this\.state, controlled\.id, this\.#worldProjection\)/);
-  assert.match(app,/selectWorldGraphReadModel\(this\.state, controlled\.id, this\.#worldProjection\)/);
+  assert.match(app,/compareWorldGraphProjectionsIfEnabled\((?:this|ctx)\.state, controlled\.id, (?:this|ctx)\.#?worldProjection\)/);
+  assert.match(app,/selectWorldGraphReadModel\((?:this|ctx)\.state, controlled\.id, (?:this|ctx)\.#?worldProjection\)/);
   assert.match(app,/return read\.entities/);
   assert.match(graph,/descendants\.i1d\.world-compare\.v1/);
   assert.match(graph,/descendants\.i1d\.world-read-v2\.v1/);
@@ -88,10 +89,10 @@ test('I1-D compare remains feature-gated while I1-D2 may select the shadow WORLD
 });
 
 test('F3 exposes co-located conversation, explicit Archive promotion and sample-gated research', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const knowledge=await read('src/sandbox/knowledgeSimulation.ts');
   const research=await read('src/sandbox/researchSimulation.ts');
-  assert.match(app,/Knowledge \/ Conversation \/ Archive/);
+  assert.match(app,/知識・会話・Archive/);
   assert.match(app,/data-action="conversation"/);
   assert.match(app,/data-action="archive-knowledge"/);
   assert.match(app,/Physical sample required at settlement/);
@@ -102,7 +103,7 @@ test('F3 exposes co-located conversation, explicit Archive promotion and sample-
 });
 
 test('F1 expedition preparation exposes editable crew loadout pace and doctrine instead of a hard-coded suggested party', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const expedition=await read('src/sandbox/expeditionSimulation.ts');
   assert.match(app,/EXPEDITION PREPARATION/);
   assert.match(app,/data-action="prep-crew"/);
@@ -116,7 +117,7 @@ test('F1 expedition preparation exposes editable crew loadout pace and doctrine 
 });
 
 test('F1 exposes coordinate WORLD-LOCAL switching, direct camp/WEDO and observed situation synthesis', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const local=await read('src/sandbox/localExploration.ts');
   const expedition=await read('src/sandbox/expeditionSimulation.ts');
   const situations=await read('src/sandbox/situationSynthesis.ts');
@@ -137,7 +138,7 @@ test('F1 exposes coordinate WORLD-LOCAL switching, direct camp/WEDO and observed
 
 
 test('politics, external society actions and anomaly practice remain reachable inside F1-F3 instead of dead legacy subviews', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/settlementPolicyPanel\(\)/);
   assert.match(app,/ASSEMBLY \/ LABOR PRIORITIES/);
   assert.match(app,/world-selected-actions/);
@@ -150,7 +151,7 @@ test('politics, external society actions and anomaly practice remain reachable i
 });
 
 test('every rendered generated-world data-action is routed and busy updates serialize mutations', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const rendered=[...app.matchAll(/data-action=["']([^"']+)/g)].map((match)=>match[1]).filter((action)=>!action.startsWith('${'));
   const clickHandled=new Set([...app.matchAll(/action===["']([^"']+)["']/g)].map((match)=>match[1]));
   const changeHandled=new Set([...app.matchAll(/\[data-action=["']([^"']+)["']\]/g)].map((match)=>match[1]));
@@ -159,16 +160,16 @@ test('every rendered generated-world data-action is routed and busy updates seri
   assert.deepEqual(missing,[],`unrouted generated-world UI actions: ${missing.join(', ')}`);
   assert.match(app,/指令処理中です。完了まで次の操作は保留されます。/);
   assert.match(app,/isBusySafeUiAction/);
-  assert.match(app,/if \(this\.#busy[^\n]+this\.toast\('指令処理中です。現在の行動が完了するまで待機してください。/);
+  assert.match(app,/if \((?:this|ctx)\.#?busy[^\n]+(?:this|ctx)\.toast\('指令処理中です。現在の行動が完了するまで待機してください。/);
   assert.doesNotMatch(app,/private settlementView\(\)/);
   assert.doesNotMatch(app,/private peopleView\(\)/);
   assert.match(app,/ACTIVE COMMAND HOLDER/);
-  assert.match(app,/proposeLaborPriority\(this\.state,[^;]+proposer\.id\)/);
+  assert.match(app,/proposeLaborPriority\((?:this|ctx)\.state,[^;]+proposer\.id\)/);
 });
 
 
 test('keyboard/focus accessibility contract preserves focus across renders and supplies tab semantics', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const css=await read('src/styles.css');
   assert.match(app,/role="tablist"/);
   assert.match(app,/role="tab"/);
@@ -199,23 +200,23 @@ test('primary-view keyboard state machine survives 250k transitions and busy gat
 });
 
 test('save/import/reset UI transactions serialize destructive persistence and do not erase failure notices on render', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/private async importSave\(file: File\)/);
-  assert.match(app,/this\.#busy = true; this\.render\(\);/);
+  assert.match(app,/(?:this|ctx)\.#?busy = true; (?:this|ctx)\.render\(\);/);
   assert.match(app,/assertImportedSaveProviderCompatible\(next, manifest\)/);
   const safety=await read('src/sandbox/worldMutationSafety.ts');
   assert.match(safety,/Save WorldProvider identity does not match the active provider/);
   assert.match(app,/private async resetSave\(\)/);
   assert.match(app,/window\.confirm\('Delete the current settlement archive\?'\)/);
-  assert.match(app,/await this\.repository\.clear\(\); window\.location\.reload\(\)/);
+  assert.match(app,/await (?:this|ctx)\.repository\.clear\(\); window\.location\.reload\(\)/);
   assert.match(app,/let notice = message \?\? ''/);
-  assert.match(app,/this\.render\(\);\n\s+if \(notice\) this\.toast\(notice\)/);
+  assert.match(app,/(?:this|ctx)\.render\(\);\n\s+if \(notice\) (?:this|ctx)\.toast\(notice\)/);
 });
 
 test('startup recovery separates corrupt saves, unavailable persistence and provider fallback without silent overwrite', async()=>{
   const main=await read('src/main.ts');
   const storage=await read('src/sandbox/storage.ts');
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(storage,/loadRecoverable\(\)/);
   assert.match(storage,/corrupt-save-quarantined/);
   assert.match(storage,/Put-before-delete in one transaction/);
@@ -245,7 +246,7 @@ test('multi-tab persistence uses revisioned envelopes so stale tabs cannot overw
 });
 
 test('lifecycle and provider-failure recovery fail closed instead of persisting partial world mutations', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const storage=await read('src/sandbox/storage.ts');
   const engine=await read('src/sandbox/engine.ts');
   const main=await read('src/main.ts');
@@ -268,20 +269,20 @@ test('lifecycle and provider-failure recovery fail closed instead of persisting 
 });
 
 test('provider uncertainty offers in-process reconstruction from the last committed snapshot before falling back to reload', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const main=await read('src/main.ts');
   assert.match(app,/recoverProvider\?:/);
   assert.match(app,/resynchronizeProvider/);
-  assert.match(app,/structuredClone\(this\.#lastCommittedState\)/);
+  assert.match(app,/structuredClone\((?:this|ctx)\.#?lastCommittedState\)/);
   assert.match(app,/assertProviderAligned\(recovered\.provider, committed\)/);
-  assert.match(app,/this\.provider = recovered\.provider/);
+  assert.match(app,/(?:this|ctx)\.provider = recovered\.provider/);
   assert.match(app,/WORLD LINKを最後に確認されたArchiveから復旧しました。指令を再開できます。/);
   assert.match(main,/createRealWorldRuntime\(\{ snapshot \}\)/);
   assert.match(main,/new SnapshotWorldProvider\(snapshot\)/);
 });
 
 test('F1 exposes a screenshot-verified vertical field cycle without turning guidance into authored quest state', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const css=await read('src/styles.css');
   assert.match(app,/FIELD CYCLE \/ OPERATION GUIDE/);
   assert.match(app,/1 TARGET/);
@@ -300,19 +301,19 @@ test('F1 exposes a screenshot-verified vertical field cycle without turning guid
 });
 
 test('returned field evidence stays reachable through an explicit co-located F3 knowledge-holder viewpoint without transferring control', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/knowledgeEligibleAgents\(\)/);
   assert.match(app,/記録閲覧者 \/ 同席者/);
   assert.match(app,/同席者の携行記録を閲覧しても、指揮権やArchive登録は変更されません。/);
   assert.match(app,/recent.*status==='returned'/s);
-  assert.match(app,/const speaker=this\.knowledgeAgent\(\)/);
-  assert.match(app,/const author=this\.knowledgeAgent\(\)/);
-  assert.doesNotMatch(app,/this\.state\.settlement\.leaderId\s*=\s*this\.#knowledgeAgentId/);
+  assert.match(app,/const speaker=(?:this|ctx)\.knowledgeAgent\(\)/);
+  assert.match(app,/const author=(?:this|ctx)\.knowledgeAgent\(\)/);
+  assert.doesNotMatch(app,/(?:this|ctx)\.state\.settlement\.leaderId\s*=\s*(?:this|ctx)\.#?knowledgeAgentId/);
 });
 
 
 test('returned physical samples stay visibly inspectable through a co-located F4 inventory-holder viewpoint without transferring control', async() => {
-  const app = await read('src/sandbox/app.ts');
+  const app = await readSandboxUiSource();
   assert.match(app, /data-action=\"inventory-agent\"/);
   assert.match(app, /Inspecting another co-located person’s carried items does not transfer control or ownership/);
   assert.match(app, /physical-sample/);
@@ -323,23 +324,23 @@ test('returned physical samples stay visibly inspectable through a co-located F4
 });
 
 test('known external-society primary commands precede secondary relationship/debrief detail', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/Known relationship \/ settlement action<\/strong><div class="external-action-buttons">/);
   assert.match(app,/external-action-buttons.*external-relation-readout.*LATEST VISIBLE OUTCOME/s);
 });
 
 test('visual QA can deterministically enter the real WEDO simulation without exposing a production debug control', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/visualQaEncounterControlsEnabled/);
-  assert.match(app,/this\.#providerMode === 'mock-diagnostic' && this\.#persistenceMode !== 'durable'/);
+  assert.match(app,/(?:this|ctx)\.#?providerMode === 'mock-diagnostic' && (?:this|ctx)\.#?persistenceMode !== 'durable'/);
   assert.match(app,/data-action="qa-trigger-encounter"/);
   assert.match(app,/WEDO接触を開始/);
-  assert.match(app,/createEncounter\(this\.state,expedition,doctrine\.encounterInstruction,2\)/);
+  assert.match(app,/createEncounter\((?:this|ctx)\.state,expedition,doctrine\.encounterInstruction,2\)/);
   assert.match(app,/この端末ではWEDO接触誘発コマンドを使用できません。/);
 });
 
 test('active WEDO keeps canonical primary controls and live encounter HP ahead of expedition detail', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const expedition=await read('src/sandbox/expeditionSimulation.ts');
   const css=await read('src/styles.css');
   assert.match(app,/activeEncounter\.actors\.filter/);
@@ -358,25 +359,25 @@ test('active WEDO keeps canonical primary controls and live encounter HP ahead o
 
 
 test('generated F1 inspector preserves scroll across same-context mutations but resets when context identity changes', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/explorationInspectorScrollKey/);
-  assert.match(app,/data-scroll-key="\$\{esc\(this\.explorationInspectorScrollKey\(\)\)\}"/);
+  assert.match(app,/data-scroll-key="\$\{esc\(explorationInspectorScrollKey\(ctx\)\)\}"/);
   assert.match(app,/previousInspectorScroll/);
   assert.match(app,/nextInspector\?\.dataset\.scrollKey === previousInspectorScroll\.key/);
   assert.match(app,/nextInspector\.scrollTop = previousInspectorScroll\.top/);
-  assert.match(app,/`world:\$\{this\.#selectedWorldEntityId \|\| 'none'\}`/);
-  assert.match(app,/`local:\$\{this\.#selectedLocalEntityId \|\| 'none'\}`/);
+  assert.match(app,/`world:\$\{(?:this|ctx)\.#?selectedWorldEntityId \|\| 'none'\}`/);
+  assert.match(app,/`local:\$\{(?:this|ctx)\.#?selectedLocalEntityId \|\| 'none'\}`/);
   assert.match(app,/`wedo:\$\{activeEncounterId\}`/);
 });
 
 
 test('main direct-play content preserves scroll across same-context rerenders and resets on subject/view changes', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/mainContentScrollKey/);
-  assert.match(app,/data-scroll-key="\$\{esc\(this\.mainContentScrollKey\(\)\)\}"/);
-  assert.match(app,/`body:\$\{this\.#inspectedAgentId \|\| this\.state\.settlement\.leaderId\}`/);
-  assert.match(app,/`knowledge:\$\{this\.#knowledgeAgentId \|\| this\.controlledAgent\(\)\?\.id \|\| this\.state\.settlement\.leaderId\}`/);
-  assert.match(app,/`inventory:\$\{this\.#inventoryAgentId \|\| this\.controlledAgent\(\)\?\.id \|\| this\.state\.settlement\.leaderId\}`/);
+  assert.match(app,/data-scroll-key="\$\{esc\((?:this|ctx)\.mainContentScrollKey\(\)\)\}"/);
+  assert.match(app,/`body:\$\{(?:this|ctx)\.#?inspectedAgentId \|\| (?:this|ctx)\.state\.settlement\.leaderId\}`/);
+  assert.match(app,/`knowledge:\$\{(?:this|ctx)\.#?knowledgeAgentId \|\| (?:this|ctx)\.controlledAgent\(\)\?\.id \|\| (?:this|ctx)\.state\.settlement\.leaderId\}`/);
+  assert.match(app,/`inventory:\$\{(?:this|ctx)\.#?inventoryAgentId \|\| (?:this|ctx)\.controlledAgent\(\)\?\.id \|\| (?:this|ctx)\.state\.settlement\.leaderId\}`/);
   assert.match(app,/previousContentScroll/);
   assert.match(app,/nextContent\?\.dataset\.scrollKey === previousContentScroll\.key/);
   assert.match(app,/nextContent\.scrollTop = previousContentScroll\.top/);
@@ -384,13 +385,13 @@ test('main direct-play content preserves scroll across same-context rerenders an
 
 
 test('injury recovery is visible and actionable across F1 crew preparation and F2 clinic care', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const expedition=await read('src/sandbox/expeditionSimulation.ts');
   const settlement=await read('src/sandbox/settlementSimulation.ts');
   const css=await read('src/styles.css');
   assert.match(app,/EXPEDITION FITNESS/);
-  assert.match(app,/RECOVERING \/ NOT FIT TO DEPART/);
-  assert.match(app,/Request clinic care · 60 min/);
+  assert.match(app,/RECOVERING/);
+  assert.match(app,/診療を受ける · 60分/);
   assert.match(app,/data-action="clinic-care"/);
   assert.match(app,/expeditionMemberReadiness/);
   assert.match(app,/readiness\.ready\?'':'unfit'/);
@@ -407,7 +408,7 @@ test('injury recovery is visible and actionable across F1 crew preparation and F
 
 
 test('assembly UI exposes one deliberation per labor topic per canonical day instead of repeat-vote spam', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const politics=await read('src/sandbox/politicalSimulation.ts');
   const css=await read('src/styles.css');
   assert.match(app,/laborPriorityProposalAvailability/);
@@ -420,7 +421,7 @@ test('assembly UI exposes one deliberation per labor topic per canonical day ins
 
 
 test('assembly UI surfaces persistent coalition continuity from prior votes', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const politics=await read('src/sandbox/politicalSimulation.ts');
   assert.match(app,/political memory · \$\{repeatedSupport\} repeated support/);
   assert.match(app,/switched side/);
@@ -430,7 +431,7 @@ test('assembly UI surfaces persistent coalition continuity from prior votes', as
 });
 
 test('external society primary actions surface cooldown state instead of allowing relationship-value spam', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const external=await read('src/sandbox/externalActions.ts');
   const css=await read('src/styles.css');
   assert.match(app,/externalActionAvailability/);
@@ -452,29 +453,28 @@ test('F4 settlement stock keeps readable resource/value/action cells at standard
 });
 
 test('F2 distinguishes provider-confirmed migrant identity from lived migrant fallback without implying provider household migration', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const migration=await read('src/sandbox/migrationSimulation.ts');
-  assert.match(app,/ORIGIN ARCHIVE \/ MIGRANT/);
+  assert.match(app,/移住が確認された個人/);
+  assert.match(app,/交渉後に迎えた移住者/);
   assert.match(app,/この個人の移住確認だけでは元世帯全体の移動は確定しません/);
-  assert.match(app,/origin migrant/);
-  assert.match(app,/local migrant/);
-  assert.match(app,/household <b>\$\{authorityLabel\(authority\?\.household\)\}/);
+  assert.match(app,/authorityLabel\(inspected\.profileAuthority\?\.household\)/);
   assert.match(migration,/migration-specific payload fields are strong enough to transfer provider identity authority/);
   assert.doesNotMatch(migration,/ids\.push\(\.\.\.event\.actorIds,\.\.\.event\.targetIds/);
 });
 
 test('QA8 external conflict UI surfaces provider-observed consequences and displaced status without inventing hidden facts', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/LATEST OBSERVED CONSEQUENCE/);
   assert.match(app,/recentObservedConflict\.injuredIndividualIds/);
   assert.match(app,/recentObservedConflict\.displacedIndividualIds/);
   assert.match(app,/recentObservedConflict\.affectedRouteEntityIds/);
   assert.match(app,/stock loss/);
-  assert.match(app,/displaced \/ whereabouts unknown/);
+  assert.match(app,/REMOTE \/ CURRENT STATUS UNKNOWN/);
 });
 
 test('QA9 displacement recovery UI keeps returned and unresolved residents simultaneously visible from provider evidence', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const situation=await read('src/sandbox/situationSynthesis.ts');
   assert.match(app,/returned-to-settlement local ID/);
   assert.match(app,/LATEST OBSERVED CONSEQUENCE/);
@@ -487,7 +487,7 @@ test('QA9 displacement recovery UI keeps returned and unresolved residents simul
 
 
 test('QA11 household displacement UI distinguishes explicit household evidence from individual displacement', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const situation=await read('src/sandbox/situationSynthesis.ts');
   const conflict=await read('src/sandbox/externalConflictSimulation.ts');
   assert.match(app,/displaced household ID/);
@@ -501,7 +501,7 @@ test('QA11 household displacement UI distinguishes explicit household evidence f
 });
 
 test('QA10 expedition preparation exposes direct-vs-known-route choice and provider-observed route evidence without treating silence as safety', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const conflict=await read('src/sandbox/externalConflictSimulation.ts');
   const expedition=await read('src/sandbox/expeditionSimulation.ts');
   const types=await read('src/sandbox/types.ts');
@@ -522,7 +522,7 @@ test('QA10 expedition preparation exposes direct-vs-known-route choice and provi
 });
 
 test('QA12 route preparation exposes provider-visible topology alternatives without claiming unseen safe routes', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const planning=await read('src/sandbox/routePlanning.ts');
   const expedition=await read('src/sandbox/expeditionSimulation.ts');
   const conflict=await read('src/sandbox/externalConflictSimulation.ts');
@@ -544,7 +544,7 @@ test('QA12 route preparation exposes provider-visible topology alternatives with
 });
 
 test('QA13 field UI exposes dynamic provider-route state and never promises an unseen detour', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const expedition=await read('src/sandbox/expeditionSimulation.ts');
   const planning=await read('src/sandbox/routePlanning.ts');
   assert.match(app,/CHARTED ROUTE/);
@@ -558,7 +558,7 @@ test('QA13 field UI exposes dynamic provider-route state and never promises an u
 
 
 test('QA14 field UI requires explicit blocked-route decisions and surfaces provider-bounded camp exposure', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const field=await read('src/sandbox/fieldDecisionSimulation.ts');
   const expedition=await read('src/sandbox/expeditionSimulation.ts');
   const storage=await read('src/sandbox/storage.ts');
@@ -578,7 +578,7 @@ test('QA14 field UI requires explicit blocked-route decisions and surfaces provi
 });
 
 test('QA15 field UI exposes physical off-network return and communication-bounded rendezvous without hidden tracking', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const fieldReturn=await read('src/sandbox/fieldReturnSimulation.ts');
   const rendezvous=await read('src/sandbox/rendezvousSimulation.ts');
   const field=await read('src/sandbox/fieldDecisionSimulation.ts');
@@ -599,7 +599,7 @@ test('QA15 field UI exposes physical off-network return and communication-bounde
 });
 
 test('ZONE-PDA adopted mainline gives F2-F5 dedicated data surfaces and a map-to-expedition launch path', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const css=await read('src/styles.css');
   for(const method of ['pdaBodyPanel','pdaKnowledgePanel','pdaInventoryPanel','pdaChroniclePanel']) assert.match(app,new RegExp(`private ${method}\\(`));
   assert.match(app,/DESCENDANTS \/ PDA DATA SURFACE/);
@@ -609,17 +609,17 @@ test('ZONE-PDA adopted mainline gives F2-F5 dedicated data surfaces and a map-to
   assert.match(app,/VISIBLE HISTORY \/ EVENT LOG/);
   assert.match(app,/if \(action==='set-prep-target'\)[^\n]+#pdaTaskPanel='expedition'[^\n]+#pdaTab='task'/);
   assert.match(app,/data-action="launch" class="launch"/);
-  assert.match(app,/this\.#pdaTaskPanel='overview'; this\.#pdaTab='task'/);
+  assert.match(app,/(?:this|ctx)\.#?pdaTaskPanel='overview'; (?:this|ctx)\.#?pdaTab='task'/);
   assert.match(css,/\.desc-pda-data-panel/);
   assert.match(css,/\.desc-pda-chronicle-ledger/);
 });
 
 
 test('I1-D2 WORLD read-switch wiring remains feature-flagged and fail-closed behind the existing map seam', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const projection=await read('src/sandbox/knowledgeGraphProjection.ts');
   assert.match(app,/selectWorldGraphReadModel/);
-  assert.match(app,/const read = selectWorldGraphReadModel\(this\.state, controlled\.id, this\.#worldProjection\)/);
+  assert.match(app,/const read = selectWorldGraphReadModel\((?:this|ctx)\.state, controlled\.id, (?:this|ctx)\.#?worldProjection\)/);
   assert.match(app,/return read\.entities/);
   assert.match(app,/data-action="set-prep-target" data-entity-id="\$\{esc\(selectedWorld\.id\)\}"/);
   assert.match(app,/data-action="select-world-entity" data-entity-id="\$\{esc\(entry\.id\)\}"/);
@@ -630,7 +630,7 @@ test('I1-D2 WORLD read-switch wiring remains feature-flagged and fail-closed beh
 });
 
 test('I2-I F1 response controls remain explicit opt-in and do not replace the safe legacy default', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const incidents=await read('src/sandbox/incidentService.ts');
   assert.match(app,/緊急対応回線:/);
   assert.match(app,/data-action="incident-adapter-toggle"/);
@@ -641,21 +641,21 @@ test('I2-I F1 response controls remain explicit opt-in and do not replace the sa
 });
 
 test('I2-I F1 response write controls route only through bounded I2-C/I2-G seams', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   for(const action of ['incident-response-member','incident-assign','incident-dispatch','incident-stand-down','incident-resource-use']) assert.match(app,new RegExp(`data-action="${action}"`));
-  assert.match(app,/assignIncidentResponseTeam\(this\.state,incidentId,\[\.\.\.this\.#incidentResponderDraftIds\],field\)/);
-  assert.match(app,/dispatchIncidentResponseTeam\(this\.state,button\.dataset\.teamId/);
-  assert.match(app,/standDownIncidentResponseTeam\(this\.state,button\.dataset\.teamId/);
-  assert.match(app,/applyIncidentResponseEvidenceResourceUse\(this\.state,incidentId/);
-  assert.doesNotMatch(app,/resolvePersistedIncident\(this\.state/);
+  assert.match(app,/assignIncidentResponseTeam\((?:this|ctx)\.state,incidentId,\[\.\.\.(?:this|ctx)\.#?incidentResponderDraftIds\],field\)/);
+  assert.match(app,/dispatchIncidentResponseTeam\((?:this|ctx)\.state,button\.dataset\.teamId/);
+  assert.match(app,/standDownIncidentResponseTeam\((?:this|ctx)\.state,button\.dataset\.teamId/);
+  assert.match(app,/applyIncidentResponseEvidenceResourceUse\((?:this|ctx)\.state,incidentId/);
+  assert.doesNotMatch(app,/resolvePersistedIncident\((?:this|ctx)\.state/);
 });
 
 test('I2-I F1 status surface reads structured operation resource evidence and debrief facts without causal prose', async()=>{
-  const app=await read('src/sandbox/app.ts');
-  assert.match(app,/incidentResponseOperations\(this\.state, incident\.id, field\)/);
-  assert.match(app,/incidentResponseResourceReservations\(this\.state, incident\.id, field\)/);
-  assert.match(app,/incidentResponseEvidenceResourceUses\(this\.state, incident\.id, field\)/);
-  assert.match(app,/incidentResponseDebriefs\(this\.state, incident\.id, field\)/);
+  const app=await readSandboxUiSource();
+  assert.match(app,/incidentResponseOperations\((?:this|ctx)\.state, incident\.id, field\)/);
+  assert.match(app,/incidentResponseResourceReservations\((?:this|ctx)\.state, incident\.id, field\)/);
+  assert.match(app,/incidentResponseEvidenceResourceUses\((?:this|ctx)\.state, incident\.id, field\)/);
+  assert.match(app,/incidentResponseDebriefs\((?:this|ctx)\.state, incident\.id, field\)/);
   assert.match(app,/Visibility loss or operation completion alone does not resolve this incident/);
   assert.match(app,/operator confirmation never asserts causal success/);
   assert.match(app,/未確認の原因や結果は確定記録にしません/);
@@ -670,18 +670,18 @@ test('I2-I response panel preserves bounded ZONE_PDA layout with responsive coll
 
 
 test('I2-J F1 incident rows expose selectable observer-safe focus without persisting a new authority', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/data-action="incident-focus"/);
   assert.match(app,/data-incident-id="\$\{esc\(signal\.id\)\}"/);
   assert.match(app,/role="option" aria-selected="\$\{selected\}"/);
   assert.match(app,/#selectedIncidentId = ''/);
-  assert.match(app,/read\.incidents\.find\(\(incident\)=>incident\.id===this\.#selectedIncidentId\) \?\? read\.incidents\[0\]/);
+  assert.match(app,/read\.incidents\.find\(\(incident\)=>incident\.id===(?:this|ctx)\.#?selectedIncidentId\) \?\? read\.incidents\[0\]/);
   assert.match(app,/Selected Incident is no longer observer-visible/);
-  assert.doesNotMatch(app,/selectedIncidentId:\s*this\.#selectedIncidentId/);
+  assert.doesNotMatch(app,/selectedIncidentId:\s*(?:this|ctx)\.#?selectedIncidentId/);
 });
 
 test('I2-J incident focus supports bounded keyboard listbox navigation', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/\['ArrowUp','ArrowDown','Home','End'\]\.includes\(event\.key\)/);
   assert.match(app,/data-incident-index="\$\{index\}"/);
   assert.match(app,/#focusAfterRender=`\[data-action="incident-focus"\]\[data-incident-index="\$\{next\}"\]`/);
@@ -689,7 +689,7 @@ test('I2-J incident focus supports bounded keyboard listbox navigation', async()
 });
 
 test('I2-J debrief history navigation remains structured-fact only', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   for(const action of ['incident-debrief-select','incident-debrief-prev','incident-debrief-next']) assert.match(app,new RegExp(`data-action="${action}"`));
   assert.match(app,/DEBRIEF FACT \$\{debriefIndex\+1\}\/\$\{debriefs\.length\}/);
   assert.match(app,/selectedDebrief\.chronology\.startedAt/);
@@ -709,36 +709,36 @@ test('I2-J compact and accessibility rules provide focus visibility and touch-si
 });
 
 test('I2-J selected incident feeds both task detail and response panel from the same read model', async()=>{
-  const app=await read('src/sandbox/app.ts');
-  assert.match(app,/const selectedIncident = this\.selectedF1Incident\(incidentRead\)/);
+  const app=await readSandboxUiSource();
+  assert.match(app,/const selectedIncident = (?:this|ctx)\.selectedF1Incident\(incidentRead\)/);
   assert.match(app,/situations\.find\(\(entry\)=>entry\.id===selectedIncident\.id\)/);
-  assert.match(app,/this\.pdaIncidentResponsePanel\(incidentRead\)/);
+  assert.match(app,/(?:this|ctx)\.pdaIncidentResponsePanel\(incidentRead\)/);
   assert.match(app,/対応記録は選択中の事案と現地報告のみ/);
 });
 
 
 test('I2-K debrief filters are bounded presentation-only fact selectors', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   for(const filter of ['all','completed','aborted','evidence','resource']) assert.match(app,new RegExp(`'${filter}'`));
   assert.match(app,/data-action="incident-debrief-filter"/);
   assert.match(app,/entry\.terminalPhase==='completed'/);
   assert.match(app,/entry\.terminalPhase==='aborted'/);
   assert.match(app,/entry\.positiveEvidence\.length>0/);
   assert.match(app,/entry\.evidenceResourceUses\.length>0/);
-  assert.doesNotMatch(app,/incidentDebriefFilter:\s*this\.#incidentDebriefFilter/);
+  assert.doesNotMatch(app,/incidentDebriefFilter:\s*(?:this|ctx)\.#?incidentDebriefFilter/);
 });
 
 test('I2-K response density is session-local and never becomes save authority', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/#incidentResponseDensity: IncidentResponseDensity = 'standard'/);
   assert.match(app,/data-action="incident-density-toggle"/);
-  assert.match(app,/this\.#incidentResponseDensity==='compact'\?'standard':'compact'/);
+  assert.match(app,/(?:this|ctx)\.#?incidentResponseDensity==='compact'\?'standard':'compact'/);
   assert.match(app,/DENSITY: COMPACT/);
-  assert.doesNotMatch(app,/incidentResponseDensity:\s*this\.#incidentResponseDensity/);
+  assert.doesNotMatch(app,/incidentResponseDensity:\s*(?:this|ctx)\.#?incidentResponseDensity/);
 });
 
 test('I2-K status strip reports bounded response fact counts without causal assessment', async()=>{
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   assert.match(app,/desc-pda-response-status-strip/);
   assert.match(app,/dispatched<\/span>/);
   assert.match(app,/in progress<\/span>/);
@@ -758,7 +758,7 @@ test('I2-K compact density and filter controls remain touch and contrast accessi
 
 test('I2-K release gate remains structurally default-off until explicit visual acceptance exists', async()=>{
   const service=await read('src/sandbox/incidentService.ts');
-  const app=await read('src/sandbox/app.ts');
+  const app=await readSandboxUiSource();
   const gate=await read('tools/audit-i2k-incident-adapter-release-gate.mjs');
   assert.match(service,/getItem\(I2_F1_INCIDENT_STORAGE_KEY\) === '1'/);
   assert.match(service,/Feature-flagged F1 adapter\. Default OFF/);

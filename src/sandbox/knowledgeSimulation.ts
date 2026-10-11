@@ -17,7 +17,7 @@ function upsertBelief(state: SandboxGameState, agent: SandboxAgent, entry: Knowl
   if (agent.beliefs.length > 60) agent.beliefs.splice(0, agent.beliefs.length - 60);
 }
 
-function copyKnowledge(state: SandboxGameState, entry: KnowledgeEntry, fromId: string, toId: string): boolean {
+export function copyKnowledge(state: SandboxGameState, entry: KnowledgeEntry, fromId: string, toId: string): boolean {
   const target = findAgent(state, toId);
   if (!target || target.knowledgeIds.includes(entry.id)) return false;
   target.knowledgeIds.push(entry.id);
