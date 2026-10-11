@@ -1,3 +1,4 @@
+import { readSandboxUiSource } from '../tools/read-sandbox-ui.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -165,14 +166,14 @@ test('I2 F1 read switch is opt-in and uses incident ranking only when enabled', 
 });
 
 test('I2 F1 source wiring centralizes task list/detail on the same adapter read model', async () => {
-  const app = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+  const app = await readSandboxUiSource();
   assert.match(app, /import \{ selectF1IncidentReadModel \} from '\.\/incidentService\.js'/);
   assert.match(app, /private f1SituationReadModel\(\)/);
-  assert.match(app, /return selectF1IncidentReadModel\(this\.state, field, field \? this\.#localProjection : null\)/);
-  assert.match(app, /private pdaTaskList\(read = this\.f1SituationReadModel\(\)\)/);
-  assert.match(app, /const incidentRead = this\.f1SituationReadModel\(\)/);
-  assert.match(app, /this\.pdaTaskList\(incidentRead\)/);
-  assert.match(app, /const selectedIncident = this\.selectedF1Incident\(incidentRead\)/);
+  assert.match(app, /return selectF1IncidentReadModel\((?:this|ctx)\.state, field, field \? (?:this|ctx)\.#?localProjection : null\)/);
+  assert.match(app, /private pdaTaskList\(read = (?:this|ctx)\.f1SituationReadModel\(\)\)/);
+  assert.match(app, /const incidentRead = (?:this|ctx)\.f1SituationReadModel\(\)/);
+  assert.match(app, /(?:this|ctx)\.pdaTaskList\(incidentRead\)/);
+  assert.match(app, /const selectedIncident = (?:this|ctx)\.selectedF1Incident\(incidentRead\)/);
 });
 
 test('I2-B bootstrap creates a bounded observer-safe incident lifecycle sidecar without presentation text', async () => {

@@ -1,4 +1,5 @@
-import { addChronicle, clamp, findAgent, nextStateId, settlementAgents } from './stateUtils.js';
+import { applyCompletedResearch } from './researchApplications.js';
+import { addChronicle, clamp, effectiveSkill, findAgent, nextStateId, settlementAgents } from './stateUtils.js';
 import { syncLegacyKnowledgeShadow } from './knowledgeLegacyAdapter.js';
 import type { KnowledgeEntry, PhysicalInventoryItem, ResearchProject, SandboxGameState, SandboxStepSummary } from './types.js';
 
@@ -95,6 +96,7 @@ function completeResearch(state: SandboxGameState, project: ResearchProject, sum
     const researcher=findAgent(state,researcherId);
     if(researcher && !researcher.knowledgeIds.includes(result.id)) researcher.knowledgeIds.push(result.id);
   }
+  applyCompletedResearch(state,project,result,source);
   project.resultKnowledgeId = result.id; project.completedDay = state.clock.day; project.status = 'completed'; project.progress = 100;
   summary.knowledgeUpdates.push(`${project.id} completed with confidence ${Math.round(confidence * 100)}%.`);
   addChronicle(state, { kind: 'knowledge', title: 'Research result recorded', text: `${result.claim}. This remains an epistemic product; research did not reveal hidden World Truth directly.`, entityIds: [project.id, result.id, ...project.researcherIds, ...(project.sampleItemId ? [project.sampleItemId] : [])] });
@@ -104,7 +106,7 @@ export function simulateResearchInterval(state: SandboxGameState, hours: number,
   for (const project of projects(state).filter((entry) => entry.status === 'active')) {
     const researchers = project.researcherIds.map((id) => findAgent(state, id)).filter((agent) => Boolean(agent?.alive && (agent.residence ? agent.residence === 'settlement' : agent.expeditionId === null)));
     if (!researchers.length || !researchSampleStillPresent(state, project)) continue;
-    const competence = researchers.reduce((sum, agent) => sum + ((agent?.skills.records ?? 35) * 0.38 + (agent?.skills.medicine ?? 35) * 0.22 + (agent?.skills.scouting ?? 35) * 0.2 + (agent?.personality?.curiosity ?? 50) * 0.2), 0) / researchers.length;
+    const competence = researchers.reduce((sum, agent) => sum + ((agent ? effectiveSkill(state,agent,'records') : 35) * 0.38 + (agent ? effectiveSkill(state,agent,'medicine') : 35) * 0.22 + (agent ? effectiveSkill(state,agent,'scouting') : 35) * 0.2 + (agent?.personality?.curiosity ?? 50) * 0.2), 0) / researchers.length;
     const recordSupport = Math.min(1, state.settlement.resources.records / 12);
     const sampleSupport = project.sampleItemId ? 1.08 : 1;
     const delta = hours / 24 * (2.2 + competence / 24) * (0.65 + recordSupport * 0.35) * sampleSupport;

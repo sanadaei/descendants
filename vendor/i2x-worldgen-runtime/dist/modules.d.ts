@@ -1,0 +1,15 @@
+import type { WorldgenModule } from './registry.js';
+export declare const kernelModule: WorldgenModule;
+export declare const geographyModule: WorldgenModule;
+export declare const ecologyModule: WorldgenModule;
+export declare const populationModule: WorldgenModule;
+export declare const historyModule: WorldgenModule;
+export declare const societyModule: WorldgenModule;
+export declare const historicalDepthModule: WorldgenModule;
+export declare const worldLawsModule: WorldgenModule;
+export declare const knowledgeModule: WorldgenModule;
+export declare const informationEcologyModule: WorldgenModule;
+export declare const motifModule: WorldgenModule;
+export declare const loreEvolutionModule: WorldgenModule;
+export declare const lodModule: WorldgenModule;
+export declare const builtinModules: WorldgenModule[];

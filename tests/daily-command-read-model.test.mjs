@@ -1005,11 +1005,11 @@ test('morning outcomes expose observed fatigue and health deltas for prior crisi
   const load = view.outcomes.find((entry) => entry.id === 'outcome-responder-load');
   assert.ok(load);
   assert.match(load.title, /危機担当.*実測/);
-  assert.match(load.detail, /Resident 01.*採集.*疲労 \+18.*HP -3/);
-  assert.match(load.detail, /Resident 02.*給水.*疲労 -7.*HP \+2/);
+  assert.match(load.detail, new RegExp(`${adults[0].name}.*採集.*疲労 \\+18.*HP -3`));
+  assert.match(load.detail, new RegExp(`${adults[1].name}.*給水.*疲労 -7.*HP \\+2`));
   assert.doesNotMatch(load.detail, /交代効果|ローテーション効果|因果確定/);
   assert.ok(load.detail.length < 170, `responder load should stay compact, got ${load.detail.length} chars`);
-  assert.match(load.detail, /Resident \d+/);
+  assert.ok(load.detail.includes(adults[0].name));
 });
 
 test('multi-crisis staffing marks overlapping candidates and proposes unique uncovered assignments without stealing active crisis staff', async () => {

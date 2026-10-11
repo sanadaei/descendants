@@ -1,3 +1,4 @@
+import { adjustResourceStock } from './resourceLedger.js';
 import type { JsonValue, SpatialRef, WorldProvider } from '../worldbridge/contract.js';
 import { clamp, nextStateId, settlementAgents } from './stateUtils.js';
 import type { ExternalConflictObservation, ExternalConflictObservationKind, ExpeditionState, SandboxAgent, SandboxGameState, SettlementResourceKey } from './types.js';
@@ -214,7 +215,7 @@ function applyExplicitLocalConsequences(state: SandboxGameState, observation: Ex
     });
   }
   for (const [key, amount] of Object.entries(observation.resourceLoss) as Array<[SettlementResourceKey, number]>) {
-    state.settlement.resources[key] = Math.max(0, state.settlement.resources[key] - amount);
+    adjustResourceStock(state,key,-amount,'Observed external resource loss');
   }
 }
 

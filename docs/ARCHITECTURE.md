@@ -1,8 +1,8 @@
-# Architecture 1.0.0
+# Architecture 1.1.0
 
 ## Active product runtime
 
-アプリケーションは `1.0.0` です。Production startup は `src/main.ts` から provider-backed sandbox を起動します。
+アプリケーションは `1.1.0` です。Production startup は `src/main.ts` から provider-backed sandbox を起動します。
 
 ```text
 src/main.ts
@@ -109,3 +109,11 @@ The persisted positive-evidence record is auditable lifecycle metadata. `support
 The reconciliation is atomic. It first verifies evidence-kind policy, returned reserve capacity, and current canonical stock; only then does it debit the same source (`settlement.resources.medicine/scrap` or expedition `supplies.medicine/tools`) and reclassify the matching reservation amount from `returned` to `consumed`. Persistence requires the sum of I2-G use records to equal medicine/tool consumption in each reservation.
 
 Evidence kinds are deliberately narrow: medicine is permitted for `recorded-case-cleared` and `field-health-threshold`; tools are permitted for `communication-restored`, `encounter-resolved`, and `research-sample-present`. This permission means only that the observed positive fact is compatible with recording explicit use. It does not establish causal effectiveness. I2-G never mutates health/pathology, hidden causes, WorldProvider truth, Agent tasks, or Incident lifecycle.
+
+## Generations and presentation (1.1.0)
+
+`aging.ts` は習得技能とは独立した年齢能力を供給し、`lifeCourseSimulation.ts` が死亡・物理的な遺品継承を共通処理します。`naming.ts` は命名専用言語 Neral v1、`educationSimulation.ts` は師の作業時間を使う教育、`researchApplications.ts` は対象別の非加算型手順改善を担当します。
+
+`app.ts` の画面描画を `src/sandbox/ui` の画面別モジュールへ分離し、イベント・Provider操作・保存はアプリケーションに残します。資源スカラーはロット台帳の集計射影、Incident資源は元ロットを参照する引当です。移行用Knowledge射影とIncidentのdefault OFFは維持します。
+
+仕様・既存セーブへの影響・改善順序は [GENERATIONS_AND_NAMING.md](GENERATIONS_AND_NAMING.md) を参照してください。

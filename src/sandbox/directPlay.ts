@@ -1,3 +1,4 @@
+import { generatePlaceName, isNamedPlace } from './naming.js';
 import type { WorldEntity } from '../worldbridge/contract.js';
 import { clamp, findAgent, nextStateId } from './stateUtils.js';
 import type {
@@ -120,6 +121,7 @@ export function collectPhysicalSample(state: SandboxGameState, agentId: string, 
 }
 
 export function entityName(entity: WorldEntity): string {
+  if (isNamedPlace(entity)) return generatePlaceName(entity);
   const name = entity.components.name ?? entity.components.label;
   return typeof name === 'string' ? name : `${entity.kind} ${entity.id}`;
 }

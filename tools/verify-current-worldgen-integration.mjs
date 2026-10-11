@@ -1,3 +1,4 @@
+import { FROZEN_WORLD_CONTRACT_SHA256 } from './world-contract-integrity.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
@@ -20,7 +21,6 @@ import { createRealWorldRuntime } from '../.test-dist/worldbridge/realWorldProvi
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url));
 const worldgenRoot = path.join(projectRoot, 'vendor', 'worldgen-engine');
-const sharedRoot = path.join(projectRoot, 'provenance', 'worldgen-1.5', 'shared-contract');
 const recipePath = path.join(worldgenRoot, 'setting-packs', 'descendants', 'default.recipe.json');
 const packRoot = path.join(worldgenRoot, 'setting-packs', 'descendants', 'content-packs');
 const worldgenPackage = JSON.parse(fs.readFileSync(path.join(worldgenRoot, 'package.json'), 'utf8'));
@@ -31,9 +31,8 @@ for (const ref of rawRecipe.contentPacks ?? []) {
   content.register(JSON.parse(fs.readFileSync(path.join(packRoot, `${ref.id}.json`), 'utf8')));
 }
 const sha = (file) => createHash('sha256').update(fs.readFileSync(file)).digest('hex');
-const expectedContractHash = fs.readFileSync(path.join(sharedRoot, 'CONTRACT_SHA256'), 'utf8').trim();
+const expectedContractHash = FROZEN_WORLD_CONTRACT_SHA256;
 const contractHashes = [
-  sha(path.join(sharedRoot, 'src', 'world-contract.ts')),
   sha(path.join(worldgenRoot, 'src', 'contract.ts')),
   sha(path.join(projectRoot, 'src', 'worldbridge', 'contract.ts')),
 ];

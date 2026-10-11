@@ -1,3 +1,4 @@
+import { readSandboxUiSource } from '../tools/read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
@@ -5,7 +6,7 @@ import { readFile } from 'node:fs/promises';
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 
 test('F1 keeps open-ended survival continuity metrics inside the Morning Report command surface', async () => {
-  const app = await read('src/sandbox/app.ts');
+  const app = await readSandboxUiSource();
   const command = await read('src/sandbox/dailyCommandReadModel.ts');
   assert.match(app, /deriveSurvivalCampaignView/);
   assert.match(app, /deriveDailyCommandView/);
@@ -18,14 +19,14 @@ test('F1 keeps open-ended survival continuity metrics inside the Morning Report 
   assert.match(command, /input\.campaign\.waterDays/);
   assert.match(app, /campaign\.livingDescendants/);
   assert.match(app, /campaign\.milestones\.filter/);
-  assert.match(app, /SURVIVAL CONTINUITY/);
+  assert.match(app, /MORNING REPORT/);
 });
 
-test('player-facing time progression is committed through EXECUTE PLAN rather than a raw day button', async () => {
-  const app = await read('src/sandbox/app.ts');
+test('player-facing time progression is committed through BEGIN OPERATIONS rather than a raw day button', async () => {
+  const app = await readSandboxUiSource();
   assert.doesNotMatch(app, /data-action="advance" data-hours="24"/);
   assert.doesNotMatch(app, />\+1日<|>\+1 day</);
-  assert.match(app, /EXECUTE PLAN/);
+  assert.match(app, /BEGIN OPERATIONS/);
   assert.match(app, /data-action="execute-plan"/);
 });
 

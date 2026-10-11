@@ -1,6 +1,6 @@
-# The Descendants of Criminals 1.0.0
+# The Descendants of Criminals 1.1.0
 
-**The Descendants of Criminals 1.0.0** は、生成世界の中で集落を維持し、住民を配置し、探索・医療・記録・研究・世代交代を続けるサバイバルゲームです。固定された勝敗・期限・エンディングはありません。
+**The Descendants of Criminals 1.1.0** は、生成世界の中で集落を維持し、住民を配置し、探索・医療・記録・研究・世代交代を続けるサバイバルゲームです。固定された勝敗・期限・エンディングはありません。
 
 Legacy Content Studio is removed. 製品起動経路は generated-world direct-play game に一本化されています。
 
@@ -26,13 +26,15 @@ F1の指令端末を中心に、次の1日ループを同じゲーム状態上�
 - 要観察員を勤務盤へ戻して再配置
 - 食料・水・医療・人口・遠征状態を確認して次の日へ
 
+1.1.0では年齢別能力・寿命死、Neralによる命名、教育・遺品継承、対象別研究手順を扱います。F1の7日・30日・1年継続は既存の日次計画を反復し、出生・死亡・重大な悪化・手動介入で停止します。
+
 F2 Body / Equipment、F3 Knowledge、F4 Inventory、F5 Chronicle、住民・地図・Systemは同じ `SandboxGameState` とworld clockを共有します。
 
 ## 開発用コマンド
 
 ```bash
 npm ci
-npm run check
+npm run verify
 npm run build:portable
 npm run test:compile
 npm run test:unit
@@ -45,8 +47,11 @@ npm run desktop
 
 通常プレイと継続開発に必要な本体だけを外側に残しています。過去の監査ログ、旧スクリーンショット、差分、検証レポートなどは **`_development_records_2026-09-17.zip`** にまとめています。必要になった場合だけ展開してください。
 
-主要文書は次の6点だけ外側に残しています。
+主要文書:
 
+- `docs/GENERATIONS_AND_NAMING.md` — 能力カーブ・寿命・Neral命名規則・教育・研究成果
+- `docs/IMPLEMENTATION_REPORT_1.1.0.md` — 変更内容と検証結果
+- `CHANGELOG.md`
 - `docs/ARCHITECTURE.md`
 - `docs/VERSIONING.md`
 - `docs/IMPLEMENTATION_REPORT_1.0.0.md`
@@ -56,7 +61,7 @@ npm run desktop
 
 ## Version contract
 
-- application: `1.0.0`
+- application: `1.1.0`
 - sandbox save schema: `1`
 - WorldProvider contract: `1.0.0`
 - Worldgen engine: `1.5.0`

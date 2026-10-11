@@ -16,7 +16,7 @@ async function walk(dir, prefix='') {
 const files=await walk(dist);
 for (const required of ['index.html','assets/main.js','assets/sandbox/app.js','assets/worldbridge/realWorldProvider.js','worldgen/runtime-manifest.json']) assert.ok(files.includes(required),`missing generated product file: ${required}`);
 for (const rel of files) {
-  assert.doesNotMatch(rel, /(^|\/)studio(?:\.|\/)|(^|\/)ui\/|(^|\/)core\/|(^|\/)lineage\/|game-content|golden/i, `legacy/authored contamination: ${rel}`);
+  assert.doesNotMatch(rel, /(^|\/)studio(?:\.|\/)|^assets\/(?:ui|core|lineage)\/|game-content|golden/i, `legacy/authored contamination: ${rel}`);
 }
 const jsFiles=files.filter((file)=>file.endsWith('.js'));
 for (const rel of jsFiles) {

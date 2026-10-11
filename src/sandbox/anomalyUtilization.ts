@@ -1,9 +1,10 @@
+import { adjustResourceStock, reconcileResourceLedgerToAggregates } from './resourceLedger.js';
 import type { WorldEntity, WorldProvider } from '../worldbridge/contract.js';
 import { addObservedKnowledge } from './knowledgeSimulation.js';
 import { ProviderMutationUncertainError, restoreSandboxState } from './worldMutationSafety.js';
 import { issueProviderCommandOnce, nextProviderCommandId } from './providerMutationJournal.js';
 import { chance, randomInt } from './rng.js';
-import { addChronicle, clamp, findAgent, nextStateId, settlementAgents } from './stateUtils.js';
+import { addChronicle, clamp, effectiveSkill, findAgent, nextStateId, settlementAgents } from './stateUtils.js';
 import type { AnomalyUtilizationDomain, AnomalyUtilizationPractice, KnowledgeEntry, SandboxAgent, SandboxGameState } from './types.js';
 
 function practices(state: SandboxGameState): AnomalyUtilizationPractice[] {
@@ -32,19 +33,19 @@ export function anomalyBasisForKnowledge(state: SandboxGameState, entry: Knowled
   return { variableId, targetId };
 }
 
-function operatorScore(agent: SandboxAgent, domain: AnomalyUtilizationDomain): number {
+function operatorScore(state: SandboxGameState, agent: SandboxAgent, domain: AnomalyUtilizationDomain): number {
   const curiosity = agent.personality?.curiosity ?? 50;
-  if (domain === 'medicine') return agent.skills.medicine * 0.55 + agent.skills.records * 0.2 + curiosity * 0.25;
-  if (domain === 'communication') return agent.skills.records * 0.35 + agent.skills.scouting * 0.35 + curiosity * 0.3;
-  if (domain === 'defense') return agent.skills.leadership * 0.35 + agent.skills.scouting * 0.35 + agent.skills.construction * 0.3;
-  return agent.skills.construction * 0.45 + agent.skills.records * 0.25 + curiosity * 0.3;
+  if (domain === 'medicine') return effectiveSkill(state,agent,'medicine') * 0.55 + effectiveSkill(state,agent,'records') * 0.2 + curiosity * 0.25;
+  if (domain === 'communication') return effectiveSkill(state,agent,'records') * 0.35 + effectiveSkill(state,agent,'scouting') * 0.35 + curiosity * 0.3;
+  if (domain === 'defense') return effectiveSkill(state,agent,'leadership') * 0.35 + effectiveSkill(state,agent,'scouting') * 0.35 + effectiveSkill(state,agent,'construction') * 0.3;
+  return effectiveSkill(state,agent,'construction') * 0.45 + effectiveSkill(state,agent,'records') * 0.25 + curiosity * 0.3;
 }
 
 function selectOperators(state: SandboxGameState, domain: AnomalyUtilizationDomain, requested?: string[]): SandboxAgent[] {
   const requestedSet = requested?.length ? new Set(requested) : null;
   return settlementAgents(state)
     .filter((agent) => agent.alive && (!requestedSet || requestedSet.has(agent.id)) && agent.health >= 30 && agent.fatigue < 92)
-    .sort((a, b) => operatorScore(b, domain) - operatorScore(a, domain))
+    .sort((a, b) => operatorScore(state,b, domain) - operatorScore(state,a, domain))
     .slice(0, 3);
 }
 
@@ -71,7 +72,7 @@ function applyPracticalEffect(state: SandboxGameState, domain: AnomalyUtilizatio
   }
   if (domain === 'production') {
     const yieldAmount = 0.5 + efficacy * 2;
-    state.settlement.resources.fuel += yieldAmount;
+    adjustResourceStock(state, 'fuel', yieldAmount, 'Observed anomaly production');
     return `A repeatable local process yielded ${yieldAmount.toFixed(1)} units of usable fuel-equivalent output.`;
   }
   if (domain === 'defense') {
@@ -121,11 +122,12 @@ export async function attemptAnomalyUtilization(provider: WorldProvider, state: 
       if (!operators.some((agent) => agent.knowledgeIds.includes(source.id)) && !state.settlement.localKnowledgeIds.includes(source.id)) throw new Error('Operators lack an in-world basis for the attempt.');
       const target = await firstExistingTarget(provider, state, source, basis.variableId);
       if (!target) throw new Error('No provider-backed target can be associated with the selected anomaly claim.');
+      reconcileResourceLedgerToAggregates(state, 'legacy anomaly stock');
       const costScrap = request.domain === 'production' || request.domain === 'defense' ? 1.5 : 0.6;
       const costFuel = request.domain === 'communication' ? 1.2 : 0.4;
       if (state.settlement.resources.scrap < costScrap || state.settlement.resources.fuel < costFuel) throw new Error('Insufficient local materials for a controlled anomaly-utilization attempt.');
-      state.settlement.resources.scrap -= costScrap;
-      state.settlement.resources.fuel -= costFuel;
+      adjustResourceStock(state, 'scrap', -costScrap, 'Anomaly experiment materials');
+      adjustResourceStock(state, 'fuel', -costFuel, 'Anomaly experiment fuel');
 
       let practice = practices(state).find((entry) => entry.sourceKnowledgeId === source.id && entry.domain === request.domain && entry.targetEntityId === target.id);
       if (!practice) {
@@ -155,7 +157,7 @@ export async function attemptAnomalyUtilization(provider: WorldProvider, state: 
         return { practice, accepted: false, success: false, outcome: practice.lastOutcome };
       }
 
-      const competence = operators.reduce((sum, agent) => sum + operatorScore(agent, request.domain), 0) / operators.length;
+      const competence = operators.reduce((sum, agent) => sum + operatorScore(state,agent, request.domain), 0) / operators.length;
       const masteryBonus = practice.mastery / 250;
       const successChance = clamp(0.08 + source.confidence * 0.42 + competence / 260 + masteryBonus, 0.08, 0.9);
       const success = chance(state, successChance);

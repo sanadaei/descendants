@@ -1,3 +1,4 @@
+import { ageSkillFactor } from './aging.js';
 import type { SandboxAgent, SandboxChronicleEntry, SandboxGameState } from './types.js';
 
 export function nextStateId(state: SandboxGameState, prefix: string): string {
@@ -67,4 +68,8 @@ export function skillContribution(agent: SandboxAgent, skill: keyof SandboxAgent
   const moraleFactor = clamp(0.55 + agent.morale / 220, 0.55, 1);
   const equipmentBonus = Number(agent.experience[`equipment:skill:${String(skill)}`] ?? 0);
   return Math.max(0, agent.skills[skill] + equipmentBonus) * healthFactor * fatigueFactor * moraleFactor;
+}
+
+export function effectiveSkill(state: SandboxGameState, agent: SandboxAgent, skill: keyof SandboxAgent['skills']): number {
+  return skillContribution(agent, skill) * ageSkillFactor(state, agent, skill);
 }

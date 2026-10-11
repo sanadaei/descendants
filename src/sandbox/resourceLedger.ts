@@ -106,6 +106,24 @@ export function syncSettlementResourceAggregates(state: SandboxGameState): void 
   for (const key of SETTLEMENT_RESOURCE_KEYS) state.settlement.resources[key] = resourceLotTotal(state, key);
 }
 
+/** All new stock changes go through lots. Aggregate reconciliation is for legacy callers only. */
+export function adjustResourceStock(state: SandboxGameState, key: SettlementResourceKey, delta: number, note: string): void {
+  if (!Number.isFinite(delta)) throw new Error('Resource adjustment must be finite.');
+  if (delta < 0) consumeResourceLots(state, { resourceKey: key, amount: -delta });
+  else if (delta > 0) appendLot(state, key, delta, createAdjustmentSource(state, key), { note, label: `${key} · ${note}` });
+  syncSettlementResourceAggregates(state);
+}
+
+export function restoreReservedResourceLots(state: SandboxGameState, lines: Array<{lotId: string; quantity: number}>, fraction: number): void {
+  const ledger = ensureResourceLedgerState(state);
+  for (const line of lines) {
+    const lot = ledger.lots.find((entry) => entry.id === line.lotId);
+    if (!lot) throw new Error('Reserved resource lot is missing.');
+    lot.quantity = round(lot.quantity + line.quantity * Math.max(0, Math.min(1, fraction)));
+  }
+  syncSettlementResourceAggregates(state);
+}
+
 interface RecordResourceProductionInput {
   resourceKey: SettlementResourceKey;
   amount: number;

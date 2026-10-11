@@ -1,3 +1,4 @@
+import { readSandboxUiSource } from '../tools/read-sandbox-ui.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -105,7 +106,7 @@ test('I1 consolidation exported sidecar identity equals deterministic legacy-der
 });
 
 test('I1 consolidation F10 and target-selection source wiring uses the verified repository/read seams', async () => {
-  const app = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+  const app = await readSandboxUiSource();
   const safety = await readFile(new URL('../src/sandbox/worldMutationSafety.ts', import.meta.url), 'utf8');
   assert.match(app, /data-action="export"/);
   assert.match(app, /data-action="import"/);

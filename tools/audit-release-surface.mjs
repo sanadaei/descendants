@@ -1,3 +1,4 @@
+import { readSandboxUiSource } from './read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { access, readFile, readdir } from 'node:fs/promises';
@@ -55,7 +56,7 @@ assert.deepEqual(unreachable, [...testOnlyExpected].sort(), `unexpected release-
 const testsText = (await Promise.all((await walk(path.join(root, 'tests'), (file) => file.endsWith('.mjs'))).map((file) => readFile(file, 'utf8')))).join('\n');
 for (const module of testOnlyExpected) assert.match(testsText, new RegExp(module.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\\\.ts$/, '\\.(?:js|ts)')), `test-only module is not covered: ${module}`);
 
-const app = await readFile(path.join(srcRoot, 'sandbox', 'app.ts'), 'utf8');
+const app = await readSandboxUiSource();
 const renderedActions = new Set([...app.matchAll(/data-action=["']([^"']+)/g)].map((match) => match[1]));
 const clickActions = new Set([...app.matchAll(/action===["']([^"']+)["']/g)].map((match) => match[1]));
 const changeActions = new Set([...app.matchAll(/\[data-action=["']([^"']+)["']\]/g)].map((match) => match[1]));
@@ -67,7 +68,8 @@ assert.doesNotMatch(app, /private (?:settlementView|peopleView|medicineView|know
 assert.doesNotMatch(app, /\.lossState\b/, 'release UI directly references hidden expedition lossState');
 assert.doesNotMatch(app, /discoveredVariableIds|Developer provider diagnostics|devDiagnostics/, 'release UI exposes provider recipe diagnostics');
 assert.match(app, /isBusySafeUiAction/);
-assert.match(app, /acting local command perspective/);
+assert.match(app, /ACTIVE COMMAND HOLDER/);
+assert.match(app, /private controlledAgent\(\)/);
 assert.match(app, /role="tablist"/);
 assert.match(app, /restoreFocus/);
 assert.match(app, /private async resetSave\(\)/);
@@ -130,7 +132,11 @@ assert.equal(meta.worldgen.engineVersion, runtime.engineVersion);
 assert.equal(runtime.recipeId, 'descendants-sandbox-default');
 assert.match(runtime.runtimeSha256, /^[0-9a-f]{64}$/);
 
-const packageRoot = path.resolve(root, '..');
+// ZIP handoff integrity is a separate, explicit mode; a Git checkout has no sibling release package.
+const packageFlag=process.argv.indexOf('--package-root');
+if (packageFlag>=0) {
+  assert.ok(process.argv[packageFlag+1],'--package-root requires a directory');
+const packageRoot = path.resolve(process.argv[packageFlag + 1]);
 const packageManifestPath = path.join(packageRoot, 'PACKAGE_CONTENT_SHA256.txt');
 const packageManifestText = await readFile(packageManifestPath, 'utf8');
 const packageManifest = new Map();
@@ -160,10 +166,11 @@ for (const file of packageFiles) {
   assert.equal(packageManifest.get(portableRelative(packageRoot, file)), digest, `package SHA mismatch: ${portableRelative(packageRoot, file)}`);
 }
 
-const releaseManifestPath = path.resolve(root, '..', 'V1_RELEASE_MANIFEST.json');
+const releaseManifestPath = path.join(packageRoot, 'V1_RELEASE_MANIFEST.json');
 try {
   const releaseManifest = JSON.parse(await readFile(releaseManifestPath, 'utf8'));
-  assert.equal(releaseManifest.mainRegression?.passed, 198, 'release manifest has stale Main regression count');
+  const mainTestSource=await readFile(path.join(root,'tests','sandbox-game-loop.test.mjs'),'utf8');
+  assert.equal(releaseManifest.mainRegression?.passed,[...mainTestSource.matchAll(/^test\(/gm)].length,'release manifest has stale Main regression count');
   assert.equal(releaseManifest.mainRegression?.failed, 0);
   assert.equal(releaseManifest.releaseSurfaceAudit?.releaseReachableTypeScript, reachable.size, 'release manifest has stale reachable TypeScript count');
   assert.equal(releaseManifest.releaseSurfaceAudit?.intentionalTestOnlyTypeScript, testOnlyExpected.size);
@@ -177,7 +184,9 @@ try {
 }
 
 const currentEvidenceFiles = ['CONTINUE_HERE.md','FINAL_VERIFICATION.txt','FINAL_INTEGRATION_REPORT.md','FINAL_V1_RELEASE_REPORT.md','Descendants/CHANGELOG.md','Descendants/docs/IMPLEMENTATION_REPORT_1.0.0.md'];
-const currentEvidence = (await Promise.all(currentEvidenceFiles.map((name)=>readFile(path.resolve(root,'..',name), 'utf8')))).join('\n');
+const currentEvidence = (await Promise.all(currentEvidenceFiles.map((name)=>readFile(path.resolve(packageRoot,name), 'utf8')))).join('\n');
 assert.doesNotMatch(currentEvidence, /\b141\s*\/\s*141\b|\b131\s*\/\s*131\b|\b123\s*\/\s*123\b|\b98\s*\/\s*98\b|\b94\s*\/\s*94\b|\b85\s*\/\s*85\b|\b81\s*\/\s*81\b|\b79\s*\/\s*79\b|\b77\s*\/\s*77\b|\b73\s*\/\s*73\b|\b44\s*\/\s*44\b|\b31\s*\/\s*33\b|\b30\s*\/\s*32\b|\b29\s*\/\s*32\b|\b28\s*\/\s*31\b|\b113 files\b|\b111 files\b|\b109 files\b|\b107 files\b|\b506\s*\/\s*506\b|\b502\s*\/\s*502\b|\b500\s*\/\s*500\b|\b496\s*\/\s*496\b/, 'stale pre-hardening release evidence remains in current metadata');
+
+}
 
 console.log(`Release surface audit: PASS (${reachable.size}/${tsFiles.length} release-reachable TS; ${testOnlyExpected.size} intentional test-only; ${renderedActions.size} routed UI actions; ${distRel.length} dist files).`);

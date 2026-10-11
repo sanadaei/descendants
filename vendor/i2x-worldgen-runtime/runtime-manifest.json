@@ -4,5 +4,7 @@
   "recipeId": "descendants-sandbox-default",
   "recipeSeed": 20260908,
   "ticksPerDay": 1440,
-  "runtimeSha256": "35b1aa1287406ddcb03499f4e261231b2310259c7e0a09cd57d8ea9841ff31a1"
+  "runtimeSha256": "754a2078d88e0bd6c448895d9343fc7dec31369261b62e3461c7c73cd5232066",
+  "buildSource": "vendor/worldgen-engine/src",
+  "typescriptVersion": "5.8.3"
 }

@@ -233,7 +233,7 @@ export function deriveSurvivalCampaignView(state: SandboxGameState): SurvivalCam
     phase,
     briefing: {
       title: 'DAILY CONTINUITY',
-      premise: `${state.settlement.name} は終点のない共同体です。世界は1日ずつ進み、資源・健康・関係・遠征の結果が翌日へ残ります。`,
+      premise: `${state.settlement.name} の集落は終点のない共同体です。世界は1日ずつ進み、資源・健康・関係・遠征の結果が翌日へ残ります。`,
       objective: '日々の生存と探索を両立し、記録と次世代を積み重ねてください。勝敗や期限はありません。',
     },
     startDay: campaign.startDay,

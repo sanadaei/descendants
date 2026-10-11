@@ -1,9 +1,10 @@
+import { readSandboxUiSource } from './read-sandbox-ui.mjs';
 import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 import { constants } from 'node:fs';
 
 const service = await readFile(new URL('../src/sandbox/incidentService.ts', import.meta.url), 'utf8');
-const app = await readFile(new URL('../src/sandbox/app.ts', import.meta.url), 'utf8');
+const app = await readSandboxUiSource();
 const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 const visualUrl = new URL('../I2K_HUMAN_VISUAL_ACCEPTANCE.json', import.meta.url);
 const decisionUrl = new URL('../I2L_EXPLICIT_RELEASE_DECISION.json', import.meta.url);
@@ -11,7 +12,7 @@ const decisionUrl = new URL('../I2L_EXPLICIT_RELEASE_DECISION.json', import.meta
 const machineChecks = {
   adapterExplicitOptIn: service.includes("globalThis.localStorage.getItem(I2_F1_INCIDENT_STORAGE_KEY) === '1'"),
   defaultOffMarker: service.includes('Feature-flagged F1 adapter. Default OFF.'),
-  safeDefaultLabel: app.includes("?'ON':'OFF (SAFE DEFAULT)'"),
+  safeDefaultControl: app.includes('data-action="incident-adapter-toggle"') && app.includes('RESPONSE CHANNEL OFFLINE'),
   factSearchPresent: app.includes('data-action="incident-debrief-search"'),
   factTimelinePresent: app.includes('TIMELINE FACTS'),
   i2kReleaseGateScriptPresent: typeof pkg.scripts?.['audit:i2k-release-gate'] === 'string',

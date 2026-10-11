@@ -1,3 +1,4 @@
+import { adjustResourceStock, consumeResourceLots, reconcileResourceLedgerToAggregates, restoreReservedResourceLots } from './resourceLedger.js';
 import type { AreaProjection } from '../worldbridge/contract.js';
 import { synthesizeVisibleSituations, type SituationSeverity, type SituationSignal } from './situationSynthesis.js';
 import type {
@@ -1297,10 +1298,10 @@ function responseResourceSource(state: SandboxGameState, contextKey: IncidentCon
         tools: state.settlement.resources.scrap,
       },
       mutate: (delta) => {
-        state.settlement.resources.food = roundResourceAmount(state.settlement.resources.food + delta.food);
-        state.settlement.resources.water = roundResourceAmount(state.settlement.resources.water + delta.water);
-        state.settlement.resources.medicine = roundResourceAmount(state.settlement.resources.medicine + delta.medicine);
-        state.settlement.resources.scrap = roundResourceAmount(state.settlement.resources.scrap + delta.tools);
+        adjustResourceStock(state, 'food', delta.food, 'Incident resource transfer');
+        adjustResourceStock(state, 'water', delta.water, 'Incident resource transfer');
+        adjustResourceStock(state, 'medicine', delta.medicine, 'Incident resource transfer');
+        adjustResourceStock(state, 'scrap', delta.tools, 'Incident resource transfer');
       },
     };
   }
@@ -1624,7 +1625,10 @@ function reserveIncidentResponseResources(
   if (existing) return existing;
   const source = responseResourceSource(state, team.contextKey as IncidentContextKey);
   assertResourceBudgetAvailable(source.available, budget);
-  source.mutate({ food: -budget.food, water: -budget.water, medicine: -budget.medicine, tools: -budget.tools });
+  const heldLots: NonNullable<IncidentResponseResourceReservation['heldLots']> = {};
+  if (source.sourceKind === 'settlement') {
+    for (const key of ['food', 'water', 'medicine', 'tools'] as const) heldLots[key] = consumeResourceLots(state, { resourceKey: key === 'tools' ? 'scrap' : key, amount: budget[key] });
+  } else source.mutate({ food: -budget.food, water: -budget.water, medicine: -budget.medicine, tools: -budget.tools });
   const reservation: IncidentResponseResourceReservation = {
     id: `incident-response-resource:${team.dispatchOrdinal.toString(36)}`,
     operationId: operation.id,
@@ -1635,6 +1639,7 @@ function reserveIncidentResponseResources(
     phase: 'reserved',
     reservedAt: operation.startedAt,
     lastUpdatedAt: operation.startedAt,
+    ...(source.sourceKind === 'settlement' ? { heldLots } : {}),
     reserved: structuredClone(budget),
     consumed: zeroResponseResourceAmounts(),
     returned: zeroResponseResourceAmounts(),
@@ -1685,7 +1690,9 @@ function synchronizeIncidentResponseResourceReservation(
   if (activeResponseOperation(operation)) return;
   reservation.returned = subtractResourceAmounts(reservation.reserved, reservation.consumed);
   const source = responseResourceSource(state, reservation.contextKey as IncidentContextKey);
-  source.mutate(reservation.returned);
+  if (reservation.heldLots) {
+    for (const key of ['food', 'water', 'medicine', 'tools'] as const) restoreReservedResourceLots(state, reservation.heldLots[key] ?? [], reservation.reserved[key] > 0 ? reservation.returned[key] / reservation.reserved[key] : 0);
+  } else source.mutate(reservation.returned);
   reservation.phase = 'settled';
   reservation.settledAt = operation.completedAt ?? operation.abortedAt ?? atMinute;
   reservation.lastUpdatedAt = reservation.settledAt;
@@ -3433,6 +3440,7 @@ export function dispatchIncidentResponseTeam(state: SandboxGameState, teamId: st
   const budget = responseResourceBudget(state, team);
   const source = responseResourceSource(state, team.contextKey as IncidentContextKey);
   assertResourceBudgetAvailable(source.available, budget);
+  if (source.sourceKind==='settlement') reconcileResourceLedgerToAggregates(state,'legacy response dispatch');
   const nowMinute = stateAbsoluteMinute(state);
   team.phase = 'dispatched';
   team.dispatchedAt = nowMinute;

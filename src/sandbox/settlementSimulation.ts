@@ -1,7 +1,13 @@
+import { researchWorkMultiplier } from './researchApplications.js';
+import { simulateEducationInterval } from './educationSimulation.js';
+import { generatePersonName } from './naming.js';
+import { agentAbilityFactors } from './aging.js';
+import { recordAgentDeath } from './lifeCourseSimulation.js';
+import { adjustResourceStock } from './resourceLedger.js';
 import { chance, choose, randomInt, scopedRandom } from './rng.js';
 import { addObservedKnowledge } from './knowledgeSimulation.js';
 import { finalizeDirectActivities, reserveDirectActivity, reservedHoursByKindDuringCurrentInterval, reservedHoursDuringCurrentInterval } from './directPlay.js';
-import { addChronicle, agentAgeYears, clamp, findAgent, livingAgents, nextStateId, settlementAgents, skillContribution } from './stateUtils.js';
+import { addChronicle, agentAgeYears, clamp, findAgent, livingAgents, nextStateId, settlementAgents, effectiveSkill } from './stateUtils.js';
 import type { AgentPlan, AgentSkills, LaborTask, PathologyCase, PregnancyState, SandboxAgent, SandboxGameState, SandboxStepSummary, SkillKey } from './types.js';
 import { observedConflictGuardDemand } from './externalConflictSimulation.js';
 import { consumeResourceLots, deterministicProductionPreference, distributeDailyConsumable, recordResourceProduction } from './resourceLedger.js';
@@ -202,7 +208,7 @@ function planAgent(state: SandboxGameState, agent: SandboxAgent): AgentPlan {
 
 function workOutput(state: SandboxGameState, agent: SandboxAgent, task: LaborTask): number {
   const skill = TASK_SKILL[task];
-  const base = skill ? skillContribution(agent, skill) : 35;
+  const base = skill ? effectiveSkill(state, agent, skill) : 35;
   const jitter = randomInt(state, 75, 125) / 100;
   return Math.max(0, base * jitter / 18);
 }
@@ -210,12 +216,12 @@ function workOutput(state: SandboxGameState, agent: SandboxAgent, task: LaborTas
 function executeTask(state: SandboxGameState, agent: SandboxAgent, task: LaborTask, hours: number): void {
   const factor = hours / 6;
   if (task === 'rest') {
-    agent.fatigue = clamp(agent.fatigue - 24 * factor);
+    agent.fatigue = clamp(agent.fatigue - 24 * factor * agentAbilityFactors(state,agent).recovery);
     agent.needs.rest = clamp(agent.needs.rest - 18 * factor);
     agent.morale = clamp(agent.morale + 2 * factor);
     return;
   }
-  const output = workOutput(state, agent, task) * factor;
+  const output = workOutput(state, agent, task) * factor * researchWorkMultiplier(state,task,true);
   const resource = TASK_RESOURCE[task];
   if (resource) {
     const amount = output * (RESOURCE_PRODUCTIVITY[task] ?? 1) * resourceStockingFactor(state, task);
@@ -242,8 +248,10 @@ function executeTask(state: SandboxGameState, agent: SandboxAgent, task: LaborTa
     consumeResourceLots(state,{resourceKey:'timber',amount:2*factor});
     if (chance(state, Math.min(0.35, output / 50))) state.settlement.housingCapacity += 1;
   }
-  agent.fatigue = clamp(agent.fatigue + (task === 'guard' || task === 'forage' ? 11 : 8) * factor);
+  agent.fatigue = clamp(agent.fatigue + (task === 'guard' || task === 'forage' ? 11 : 8) * factor / Math.max(.3, agentAbilityFactors(state,agent).physical));
   agent.experience[task] = (agent.experience[task] ?? 0) + hours;
+  const practicedSkill=TASK_SKILL[task];
+  if (practicedSkill) agent.skills[practicedSkill]=Math.min(100,agent.skills[practicedSkill]+hours*.002*agentAbilityFactors(state,agent).learning);
 }
 
 function consume(state: SandboxGameState, hours: number, summary: SandboxStepSummary): void {
@@ -378,7 +386,7 @@ interface ClinicTreatmentResult { practice: FolkPractice; medicineUsed: number; 
 
 function applyClinicTreatment(state: SandboxGameState, patient: SandboxAgent, entry: PathologyCase, medic: SandboxAgent | undefined, hours: number): ClinicTreatmentResult {
   const medics = medic ? [medic] : [];
-  const efficacy = (medic?.skills.medicine ?? 36) / 100;
+  const efficacy = (medic ? effectiveSkill(state,medic,'medicine') : 36) / 100 * researchWorkMultiplier(state,'medicine',true);
   const medicineUsed = state.settlement.resources.medicine >= 0.25 ? 0.25 : 0;
   if (medicineUsed > 0) consumeResourceLots(state,{resourceKey:'medicine',amount:medicineUsed});
   const practice = chooseTreatmentPractice(state, entry.pathologyId, entry.treatmentsTried, medic);
@@ -443,12 +451,7 @@ function clinicCare(state: SandboxGameState, hours: number, summary: SandboxStep
 function mortality(state: SandboxGameState, summary: SandboxStepSummary): void {
   for (const agent of livingAgents(state)) {
     if (agent.health > 0.5) continue;
-    agent.alive = false; agent.deathDay = state.clock.day; agent.causeOfDeath = agent.pathology.some((entry) => entry.status === 'active') ? 'illness and complications' : 'deprivation/injury';
-    summary.deaths.push(agent.id);
-    addChronicle(state, { kind: 'death', title: `${agent.name} died`, text: agent.causeOfDeath, entityIds: [agent.id] });
-    for (const relation of agent.relations) {
-      const survivor = findAgent(state, relation.targetId); if (survivor?.alive) survivor.morale = clamp(survivor.morale - Math.max(2, relation.affinity / 18));
-    }
+    recordAgentDeath(state, agent, agent.pathology.some((entry) => entry.status === 'active') ? 'illness and complications' : 'deprivation/injury', summary);
   }
 }
 
@@ -489,12 +492,13 @@ function makeChild(state: SandboxGameState, pregnancy: PregnancyState): SandboxA
   if (!parentA || !parentB) return null;
   const sex = chance(state, 0.5) ? 'female' : 'male';
   const id = nextStateId(state, 'person');
-  const name = `Child ${id.split(':')[1]}`;
+  const naming = generatePersonName(state.seed,id,parentA.householdId,parentA.naming?.familyName);
+  const name = naming.fullName;
   const skills = Object.fromEntries((Object.keys(parentA.skills) as SkillKey[]).map((key) => [key, clamp(Math.round((parentA.skills[key] + parentB.skills[key]) / 2 + randomInt(state, -15, 15)), 10, 90)])) as AgentSkills;
   return {
     id, identityOrigin:'lived-game-state', profileAuthority:{identity:'lived-game-state',name:'lived-game-state',household:'lived-game-state',age:'lived-game-state',sex:'lived-game-state',role:'lived-game-state',skills:'lived-game-state',genetics:'lived-game-state',healthBaseline:'lived-game-state',personality:'lived-game-state',faith:'lived-game-state'}, name, sex, bornDay: state.clock.day, alive: true, deathDay: null, causeOfDeath: '', role: 'child', householdId: parentA.householdId,
     parentIds: [parentA.id, parentB.id], partnerIds: [], genetics: { lineageMarker: chance(state, 0.5) ? parentA.genetics.lineageMarker : parentB.genetics.lineageMarker, loci: { resilience: Math.round(((parentA.genetics.loci.resilience ?? 50) + (parentB.genetics.loci.resilience ?? 50)) / 2 + randomInt(state, -8, 8)), metabolism: Math.round(((parentA.genetics.loci.metabolism ?? 50) + (parentB.genetics.loci.metabolism ?? 50)) / 2 + randomInt(state, -8, 8)), fertility: Math.round(((parentA.genetics.loci.fertility ?? 50) + (parentB.genetics.loci.fertility ?? 50)) / 2 + randomInt(state, -8, 8)) }, anomalyTraits: [...new Set([...parentA.genetics.anomalyTraits, ...parentB.genetics.anomalyTraits].filter(() => chance(state, 0.5)).concat(pregnancy.anomalyTags))] },
-    health: randomInt(state, 74, 96), fatigue: 12, morale: 60, needs: { hunger: 12, thirst: 10, rest: 28, safety: 8, belonging: 6 }, skills,
+    naming, aptitude: skills, education: { mentorId: parentA.id, focus: 'survival', hours: 0, lastKnowledgeHour: 0 }, health: randomInt(state, 74, 96), fatigue: 12, morale: 60, needs: { hunger: 12, thirst: 10, rest: 28, safety: 8, belonging: 6 }, skills: Object.fromEntries(Object.keys(skills).map((key)=>[key,1])) as AgentSkills,
     goals: ['grow', 'stay-with-household'], fears: [], beliefs: [], memories: [], relations: [{ targetId: parentA.id, kind: 'kin', authority:'lived-game-state', affinity: 80, trust: 80, obligation: 65 }, { targetId: parentB.id, kind: 'kin', authority:'lived-game-state', affinity: 80, trust: 80, obligation: 65 }], knowledgeIds: [], pathology: [], authority: { offices: [], legitimacy: 10, obedience: 70, refusalThreshold: 65 }, currentPlan: null, currentTask: 'rest', expeditionId: null, residence: 'settlement', experience: {},
     personality: { curiosity: clamp(Math.round(((parentA.personality?.curiosity ?? 50) + (parentB.personality?.curiosity ?? 50)) / 2 + randomInt(state, -12, 12))), caution: clamp(Math.round(((parentA.personality?.caution ?? 50) + (parentB.personality?.caution ?? 50)) / 2 + randomInt(state, -12, 12))), sociability: clamp(Math.round(((parentA.personality?.sociability ?? 50) + (parentB.personality?.sociability ?? 50)) / 2 + randomInt(state, -12, 12))), autonomy: clamp(Math.round(((parentA.personality?.autonomy ?? 50) + (parentB.personality?.autonomy ?? 50)) / 2 + randomInt(state, -12, 12))), empathy: clamp(Math.round(((parentA.personality?.empathy ?? 50) + (parentB.personality?.empathy ?? 50)) / 2 + randomInt(state, -12, 12))) },
     faith: { commitment: clamp(Math.round(((parentA.faith?.commitment ?? 20) + (parentB.faith?.commitment ?? 20)) / 2 + randomInt(state, -16, 16))), interpretationTags: [...new Set([...(parentA.faith?.interpretationTags ?? []), ...(parentB.faith?.interpretationTags ?? [])])].filter(() => chance(state, 0.55)).slice(0, 2) },
@@ -645,7 +649,7 @@ function dailyDecay(state: SandboxGameState, hours: number): void {
   state.settlement.sanitation = clamp(state.settlement.sanitation - 2.4 * factor);
   state.settlement.waterSafety = clamp(state.settlement.waterSafety - 1.2 * factor);
   state.settlement.defense = clamp(state.settlement.defense - 0.5 * factor);
-  state.settlement.resources.medicine = Math.max(0, state.settlement.resources.medicine * (1 - 0.002 * factor));
+  adjustResourceStock(state, 'medicine', -state.settlement.resources.medicine * 0.002 * factor, 'Medicine deterioration');
   for (const agent of settlementAgents(state)) {
     agent.needs.safety = clamp(agent.needs.safety + Math.max(0, 50 - state.settlement.defense) * 0.01 * factor);
     agent.needs.belonging = clamp(agent.needs.belonging + 1.2 * factor);
@@ -655,10 +659,11 @@ function dailyDecay(state: SandboxGameState, hours: number): void {
 
 export function simulateSettlementInterval(state: SandboxGameState, hours: number, summary: SandboxStepSummary): void {
   matureChildren(state);
+  const educationHours = simulateEducationInterval(state,hours,summary);
   const local = settlementAgents(state);
   for (const agent of local) {
     const reservedHours = reservedHoursDuringCurrentInterval(state, agent.id, hours);
-    const laborHours = Math.max(0, hours - reservedHours);
+    const laborHours = Math.max(0, hours - reservedHours - (educationHours.get(agent.id) ?? 0));
     if (reservedHours >= hours - 1e-9) {
       agent.currentPlan = { id: nextStateId(state, 'plan'), kind: 'rest', priority: 100, reason: 'time reserved by direct player activity' };
       agent.currentTask = 'rest';
