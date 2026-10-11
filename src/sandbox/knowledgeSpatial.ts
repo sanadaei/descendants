@@ -30,9 +30,11 @@ export function knownMapLocation(state: SandboxGameState, observerId: string, en
   }
   const direct = accessible.find((entry) => entry.entityObservation?.entityId === entity.id && entry.entityObservation.position);
   if (direct?.entityObservation?.position) return { position: structuredClone(direct.entityObservation.position), uncertaintyRadiusKm: 0, estimated: false };
+  const inquiry = (state.inquiries ?? []).slice().reverse().find((entry) => entry.targetEntityId === entity.id && accessible.some((evidence) => evidence.id === entry.knowledgeId));
+  if (inquiry) return {position:structuredClone(inquiry.center),uncertaintyRadiusKm:inquiry.radiusKm,estimated:true};
   for (const entry of accessible) {
     const claim = claimPayload(entry);
-    if (!claim && /"interpretation"\s*:\s*"cartographic-estimate"/.test(entry.claim)) return { uncertaintyRadiusKm: 0, estimated: true };
+    if (!claim && /^\s*\{/.test(entry.claim) && /"interpretation"\s*:\s*"cartographic-estimate"/.test(entry.claim)) return { uncertaintyRadiusKm: 0, estimated: true };
     if (claim?.interpretation !== 'cartographic-estimate' || claim.regionId !== entity.id) continue;
     const center = claim.estimatedCenter;
     const radius = claim.uncertaintyRadiusKm;

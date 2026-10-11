@@ -69,6 +69,90 @@ function assertSpatial(label: string, value: unknown): void {
   if (value.regionId !== undefined && typeof value.regionId !== 'string') throw new Error(`Sandbox save has invalid ${label}.regionId.`);
 }
 
+/** Optional 1.2 state must remain referentially valid across deaths and degraded records. */
+function assertContinuityState(value: Record<string,unknown>, agentIds: Set<string>, knowledgeIds: Set<string>, recordIds: Set<string>): void {
+  const predictions = new Set(['water-source','ruin','route-memory','built-landscape','disturbance-stratum','archive-record']);
+  const ids = (label:string, raw:unknown, known?:Set<string>): string[] => {
+    if (!Array.isArray(raw) || raw.some((id) => typeof id !== 'string' || !id.trim() || (known && !known.has(id))) || new Set(raw).size !== raw.length) throw new Error(`Invalid ${label} references.`);
+    return raw as string[];
+  };
+  const quality = (raw:unknown):void => { if (!isRecord(raw)) throw new Error('Invalid measured water quality.');for(const key of ['microbialRisk','chemicalRisk','turbidity'])assertFinite(`trial ${key}`,raw[key],0,1); };
+  const lots = isRecord(value.resourceLedger) && Array.isArray(value.resourceLedger.lots) ? value.resourceLedger.lots.filter(isRecord) : [];
+  const lotById = new Map(lots.map((lot)=>[String(lot.id),lot]));
+  if (value.inquiries !== undefined) {
+    if (!Array.isArray(value.inquiries)) throw new Error('Invalid inquiries.');
+    const inquiryIds = assertUniqueIdRecords('inquiry',value.inquiries);
+    for (const raw of value.inquiries) {
+      const entry=raw as Record<string,unknown>;
+      if (!agentIds.has(String(entry.authorId)) || !knowledgeIds.has(String(entry.knowledgeId))) throw new Error('Invalid inquiry author or record.');
+      const basis=ids('inquiry basis',entry.basisKnowledgeIds,knowledgeIds);
+      if (!basis.length || !Array.isArray(entry.basisClaims) || entry.basisClaims.length!==basis.length || entry.basisClaims.some((claim)=>typeof claim!=='string')) throw new Error('Invalid inquiry basis snapshots.');
+      assertId('inquiry target',entry.targetEntityId);if(typeof entry.targetLabel!=='string'||typeof entry.note!=='string'||entry.note.length>400)throw new Error('Invalid inquiry text.');
+      assertSpatial('inquiry center',entry.center);assertFinite('inquiry radius',entry.radiusKm,.35);assertInteger('inquiry day',entry.createdDay,1);
+      if (!predictions.has(String(entry.prediction))) throw new Error('Invalid inquiry prediction.');
+      if (entry.revisesId!==undefined && (!inquiryIds.has(String(entry.revisesId)) || entry.revisesId===entry.id))throw new Error('Invalid inquiry revision.');
+      if (!Array.isArray(entry.evaluations)||!Array.isArray(entry.trials))throw new Error('Invalid inquiry reports.');
+      for(const rawReport of entry.evaluations){
+        if(!isRecord(rawReport)||!knowledgeIds.has(String(rawReport.knowledgeId))||rawReport.prediction!==entry.prediction||!['supports','contradicts','inconclusive'].includes(String(rawReport.outcome)))throw new Error('Invalid inquiry evaluation.');
+        assertSpatial('evaluation center',rawReport.center);assertFinite('evaluation radius',rawReport.radiusKm,.35,.35);assertInteger('evaluation day',rawReport.day,1);
+        ids('evaluation entities',rawReport.observedEntityIds);ids('evaluation observations',rawReport.observationKnowledgeIds,knowledgeIds);
+      }
+      for(const rawTrial of entry.trials){
+        if(!isRecord(rawTrial)||!knowledgeIds.has(String(rawTrial.knowledgeId))||!['boiled','filtered'].includes(String(rawTrial.method))||lotById.get(String(rawTrial.inputLotId))?.resourceKey!=='water'||lotById.get(String(rawTrial.outputLotId))?.resourceKey!=='water')throw new Error('Invalid inquiry trial references.');
+        assertInteger('trial day',rawTrial.day,1);quality(rawTrial.before);quality(rawTrial.after);
+      }
+    }
+    for(const raw of value.inquiries){
+      let current=raw as Record<string,unknown>;const seen=new Set<string>();
+      while(current.revisesId!==undefined){if(seen.has(String(current.id)))throw new Error('Cyclic inquiry revisions.');seen.add(String(current.id));current=value.inquiries.find((entry)=>isRecord(entry)&&entry.id===current.revisesId) as Record<string,unknown>;}
+    }
+  }
+  const inventory = isRecord(value.directPlay)&&Array.isArray(value.directPlay.inventory)?value.directPlay.inventory:[];
+  for(const raw of inventory){
+    if(!isRecord(raw)||raw.reading===undefined)continue;
+    const reading=raw.reading;if(raw.kind!=='record'||!isRecord(reading)||!Array.isArray(reading.fragments)||reading.fragments.some((fragment)=>typeof fragment!=='string'))throw new Error('Invalid artifact reading.');
+    ids('artifact basis',reading.basisKnowledgeIds,knowledgeIds);const leads=ids('artifact lead',reading.leadEntityIds);
+    assertFinite('artifact reading required time',reading.requiredMinutes,1);assertFinite('artifact reading time',reading.spentMinutes,0,reading.requiredMinutes);
+    if(reading.decodedKnowledgeId!==undefined&&!knowledgeIds.has(String(reading.decodedKnowledgeId)))throw new Error('Invalid decoded artifact record.');
+    if(!Array.isArray(reading.leads)||reading.leads.length!==leads.length)throw new Error('Invalid artifact lead descriptions.');
+    const described=new Set<string>();
+    for(const lead of reading.leads){if(!isRecord(lead)||typeof lead.label!=='string'||!leads.includes(String(lead.entityId))||described.has(String(lead.entityId))||!predictions.has(String(lead.prediction)))throw new Error('Invalid artifact lead description.');described.add(String(lead.entityId));if(lead.position!==undefined)assertSpatial('artifact lead position',lead.position);}
+    const observation=reading.sourceObservation;
+    if(!isRecord(observation)||observation.entityId!==raw.sourceEntityId)throw new Error('Invalid artifact observation.');
+    assertId('artifact observation kind',observation.kind);if(observation.subtype!==undefined)assertId('artifact observation subtype',observation.subtype);if(observation.traceType!==undefined)assertId('artifact observation trace',observation.traceType);
+    ids('artifact resource semantics',observation.resourceKeys,RESOURCE_KEYS);if(observation.position!==undefined)assertSpatial('artifact observation position',observation.position);
+  }
+  if(value.legacyProjects!==undefined){
+    if(!Array.isArray(value.legacyProjects)||value.legacyProjects.length>2)throw new Error('Invalid legacy projects.');assertUniqueIdRecords('legacy project',value.legacyProjects);
+    const kinds=new Set<string>();
+    for(const raw of value.legacyProjects){
+      const project=raw as Record<string,unknown>;
+      if(!['waterworks','archive'].includes(String(project.kind))||kinds.has(String(project.kind))||!['active','paused','completed'].includes(String(project.status))||typeof project.name!=='string')throw new Error('Invalid legacy project kind/status.');kinds.add(String(project.kind));
+      if(!agentIds.has(String(project.founderId))||!agentIds.has(String(project.stewardId))||!recordIds.has(String(project.recordId))||!knowledgeIds.has(String(project.knowledgeId)))throw new Error('Invalid legacy project charter references.');
+      const roots=ids('legacy project knowledge',project.knowledgeIds,knowledgeIds),workers=ids('legacy project workers',project.workerIds,agentIds);
+      const charter=(value.records as Record<string,unknown>[]).find((record)=>record.id===project.recordId);
+      if(!roots.includes(String(project.knowledgeId))||workers.length>4||roots.some((id)=>!(charter?.knowledgeIds as string[]).includes(id)))throw new Error('Invalid legacy project charter basis.');
+      assertInteger('legacy project day',project.createdDay,1);if(project.pauseReason!==undefined&&typeof project.pauseReason!=='string')throw new Error('Invalid legacy project pause reason.');
+      if(!Array.isArray(project.phases)||project.phases.length!==3||!Array.isArray(project.contributors)||!Array.isArray(project.stewardHistory)||!project.stewardHistory.length)throw new Error('Invalid legacy project history.');
+      for(const phase of project.phases){
+        if(!isRecord(phase)||typeof phase.name!=='string'||typeof phase.funded!=='boolean'||!isRecord(phase.materials)||!Array.isArray(phase.committed))throw new Error('Invalid legacy project phase.');
+        assertFinite('legacy phase required work',phase.requiredHours,1);assertFinite('legacy phase work',phase.workHours,0,phase.requiredHours);
+        for(const [key,quantity]of Object.entries(phase.materials)){if(!RESOURCE_KEYS.has(key))throw new Error('Invalid project material.');assertFinite('project material quantity',quantity,Number.EPSILON);}
+        const sums=new Map<string,number>();
+        for(const line of phase.committed){if(!isRecord(line)||lotById.get(String(line.lotId))?.resourceKey!==line.resourceKey||!RESOURCE_KEYS.has(String(line.resourceKey)))throw new Error('Invalid project material lot.');assertFinite('project committed quantity',line.quantity,Number.EPSILON);sums.set(String(line.resourceKey),(sums.get(String(line.resourceKey))??0)+line.quantity);}
+        const materials=phase.materials;
+        if(phase.funded){if([...sums.keys()].some((key)=>!(key in materials))||Object.entries(materials).some(([key,quantity])=>Math.abs((sums.get(key)??0)-(quantity as number))>1e-6))throw new Error('Invalid funded project material totals.');}
+        else if(phase.workHours!==0||phase.committed.length)throw new Error('Unfunded project cannot retain work or committed lots.');
+        if(project.status==='completed'&&(!phase.funded||phase.workHours!==phase.requiredHours))throw new Error('Incomplete legacy facility.');
+      }
+      const contributors=new Set<string>();
+      for(const credit of project.contributors){if(!isRecord(credit)||!agentIds.has(String(credit.agentId))||contributors.has(String(credit.agentId)))throw new Error('Invalid project contributor.');contributors.add(String(credit.agentId));assertFinite('project contribution hours',credit.hours,0);}
+      for(const steward of project.stewardHistory){if(!isRecord(steward)||!agentIds.has(String(steward.agentId)))throw new Error('Invalid project stewardship.');assertInteger('project stewardship day',steward.day,1);}
+      if((project.stewardHistory.at(-1) as Record<string,unknown>).agentId!==project.stewardId)throw new Error('Project stewardship history mismatch.');
+    }
+  }
+}
+
 function assertResourceRecord(value: unknown): void {
   if (!isRecord(value)) throw new Error('Sandbox save is missing settlement resources.');
   for (const key of ['food','water','medicine','timber','scrap','fuel','cloth','records']) assertFinite(`settlement.resources.${key}`, value[key], 0);
@@ -396,6 +480,7 @@ function assertState(value: unknown): asserts value is SandboxGameState {
       if (!isRecord(observation) || typeof observation.entityId !== 'string' || !(entry.subjectIds as unknown[]).includes(observation.entityId)) throw new Error('Knowledge observation requires its recorded subject.');
       assertId('knowledge observation kind', observation.kind);
       if (observation.subtype !== undefined) assertId('knowledge observation subtype', observation.subtype);
+      if (observation.traceType !== undefined) assertId('knowledge observation trace', observation.traceType);
       if (!Array.isArray(observation.resourceKeys) || observation.resourceKeys.some((key) => !['food','water','medicine','timber','scrap','fuel','cloth','records'].includes(String(key)))) throw new Error('Knowledge observation has invalid resource semantics.');
       if (entry.physicalEvidenceSourceEntityId !== undefined && observation.entityId !== entry.physicalEvidenceSourceEntityId) throw new Error('Knowledge observation and physical source disagree.');
       if (observation.position !== undefined) {
@@ -1379,6 +1464,8 @@ function assertState(value: unknown): asserts value is SandboxGameState {
       if (project.sampleSourceEntityId !== undefined && typeof project.sampleSourceEntityId !== 'string') throw new Error(`Sandbox save research ${String(project.id)} has invalid sample source.`);
     }
   }
+
+  assertContinuityState(value,agentIds,knowledgeIds,recordIds);
 
   if (value.providerMutations !== undefined) {
     if (!isRecord(value.providerMutations)) throw new Error('Sandbox save has invalid provider mutation journal.');

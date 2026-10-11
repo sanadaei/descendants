@@ -1,6 +1,6 @@
-# The Descendants of Criminals 1.1.1
+# The Descendants of Criminals 1.2.0
 
-**The Descendants of Criminals 1.1.1** は、生成世界の中で集落を維持し、住民を配置し、探索・医療・記録・研究・世代交代を続けるサバイバルゲームです。固定された勝敗・期限・エンディングはありません。
+**The Descendants of Criminals 1.2.0** は、生成世界の中で集落を維持し、住民を配置し、探索・医療・記録・研究・世代交代を続けるサバイバルゲームです。固定された勝敗・期限・エンディングはありません。
 
 Legacy Content Studio is removed. 製品起動経路は generated-world direct-play game に一本化されています。
 
@@ -25,6 +25,8 @@ F1の指令端末を中心に、次の1日ループを同じゲーム状態上�
 - 翌朝の観測記録と勤務結果を確認
 - 要観察員を勤務盤へ戻して再配置
 - 食料・水・医療・人口・遠征状態を確認して次の日へ
+
+1.2.0ではF3の調査ノートから予測・現地照合・持ち帰った水の実測・研究を通せます。現場写しの読解から次の調査を選び、水管理設備・記録庫の資材と作業を次の担い手へ継承できます。操作と所要時間は [EXPLORATION_AND_CONTINUITY.md](docs/EXPLORATION_AND_CONTINUITY.md) を参照してください。
 
 1.1.1では観測情報と研究の分類、診療結果と実用手順、地図推定と遠征先の接続を修復しています。異常医療の対象も同席する生存者に限定しています。
 
@@ -63,7 +65,7 @@ npm run desktop
 
 ## Version contract
 
-- application: `1.1.1`
+- application: `1.2.0`
 - sandbox save schema: `1`
 - WorldProvider contract: `1.0.0`
 - Worldgen engine: `1.5.0`

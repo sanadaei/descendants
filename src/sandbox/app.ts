@@ -1,4 +1,7 @@
 import { executeContinuityDays } from './continuityProgression.js';
+import { archiveInquiryEvaluation, createExplorationInquiry, surveyInquiry, trialInquiryProcedure, visibleInquiries, type InquiryPrediction } from './explorationInquiry.js';
+import { accessibleArtifactRecords, collectArtifactRecord, decodeArtifactRecord } from './loreArtifacts.js';
+import { adoptLegacyProject, setLegacyProjectPaused, setLegacyProjectWorkers, startLegacyProject, type LegacyProjectKind } from './legacyProject.js';
 import { setEducationMentor } from './educationSimulation.js';
 import { knownMapLocation } from './knowledgeSpatial.js';
 import type { AreaProjection, SpatialRef, WorldEntity, WorldProvider } from '../worldbridge/contract.js';
@@ -270,12 +273,12 @@ export class SandboxApp {
     return this.#localProjection?.entities.find((entry)=>entry.id===this.#selectedLocalEntityId);
   }
 
-  private async directAction(minutes: number, mutate: () => string): Promise<void> {
+  private async directAction(minutes: number, mutate: () => string | Promise<string>): Promise<void> {
     if (this.#busy || this.#reloadRequiredReason) return;
     const committed = structuredClone(this.state);
     this.#busy = true; this.render(); let message = '';
     try {
-      message = mutate();
+      message = await mutate();
       await advanceSandbox(this.provider, this.state, minutes);
       await this.persistCurrentState();
       await Promise.all([this.refreshLocalProjection(true), this.refreshWorldProjection(true)]);
@@ -948,6 +951,10 @@ export class SandboxApp {
       const agent=this.controlledAgent(), entity=this.#localProjection?.entities.find((entry)=>entry.id===button.dataset.entityId); if(!agent||!entity)return;
       void this.directAction(30,()=>{observeGeneratedEntity(this.state,agent.id,entity);return `Observed ${entityName(entity)}. 個人記録に追加。Archive未登録。`;}); return;
     }
+    if (action==='artifact-record') {
+      const actor=this.controlledAgent(), projection=this.#localProjection; if(!actor||!projection)return;
+      void this.directAction(45,()=>{const item=collectArtifactRecord(this.state,actor.id,button.dataset.entityId??'',projection);return `${item.name}を携行記録に残しました。F3で読解できます。`;}); return;
+    }
     if (action==='contact-external-person') {
       const agent=this.controlledAgent(), entity=this.#localProjection?.entities.find((entry)=>entry.id===button.dataset.entityId); if(!agent||!entity)return;
       void this.directAction(20,()=>{const {contact}=conductExternalPersonContact(this.state,agent.id,entity);return `Direct contact recorded with ${contact.name} (${contact.externalPersonId}). 未確認の経歴は記録していません。`;}); return;
@@ -1050,6 +1057,62 @@ export class SandboxApp {
     if (action==='return') { try { addExpeditionOrder(this.state,button.dataset.expeditionId??'','return','Return to settlement.'); void this.save('Return order recorded.'); } catch(error){this.toast(error instanceof Error?error.message:String(error));} return; }
     if (action==='rescue') {
       const targetId=button.dataset.expeditionId??''; const doctrine=this.state.doctrines.find((entry)=>entry.prioritizeRescue)??this.state.doctrines[0]; const available=settlementAgents(this.state).filter((a)=>agentAgeYears(this.state,a)>=16&&Boolean(doctrine&&expeditionMemberReadiness(a,doctrine).ready)).sort((a,b)=>b.skills.scouting-a.skills.scouting); const leader=available[0]; if(!leader){this.toast('No expedition-fit local adults are available for a rescue launch.');return;} try{launchRescueExpedition(this.state,targetId,leader.id,available.slice(0,3).map((a)=>a.id),this.#controlMode);void this.save('Rescue expedition launched.');}catch(error){this.toast(error instanceof Error?error.message:String(error));} return;
+    }
+    if (action==='inquiry-create') {
+      const actor=this.knowledgeAgent(), target=this.visibleWorldEntities().find((entry)=>entry.id===this.root.querySelector<HTMLSelectElement>('[data-inquiry-target]')?.value); if(!actor||!target)return;
+      const basis=[this.root.querySelector<HTMLSelectElement>('[data-inquiry-basis]')?.value??'',this.root.querySelector<HTMLSelectElement>('[data-inquiry-second]')?.value??''].filter(Boolean);
+      const prediction=this.root.querySelector<HTMLSelectElement>('[data-inquiry-prediction]')?.value as InquiryPrediction, note=this.root.querySelector<HTMLInputElement>('[data-inquiry-note]')?.value??'';
+      void this.directAction(10,()=>{createExplorationInquiry(this.state,actor.id,basis,target,prediction,note);return '根拠と観測予測を記録しました。現地で照合してください。';}); return;
+    }
+    if (action==='inquiry-revise') {
+      const actor=this.knowledgeAgent(), card=button.closest<HTMLElement>('[data-inquiry-card]'); if(!actor||!card)return;
+      const prior=visibleInquiries(this.state,actor.id).find((entry)=>entry.id===button.dataset.inquiryId); if(!prior)return;
+      const prediction=card.querySelector<HTMLSelectElement>('[data-inquiry-revision]')?.value as InquiryPrediction, reason=card.querySelector<HTMLInputElement>('[data-inquiry-reason]')?.value??'';
+      void this.directAction(10,()=>{const target:WorldEntity={id:prior.targetEntityId,kind:'historical-trace',components:{name:prior.targetLabel},provenanceIds:[],spatial:structuredClone(prior.center)};const revised=createExplorationInquiry(this.state,actor.id,[prior.knowledgeId],target,prediction,reason,prior.id);revised.center=structuredClone(prior.center);revised.radiusKm=prior.radiusKm;return '以前の予測と観測を残し、新しい予測を記録しました。';}); return;
+    }
+    if (action==='inquiry-target') {
+      const actor=this.controlledAgent(); if(!actor)return; const inquiry=visibleInquiries(this.state,actor.id).find((entry)=>entry.id===button.dataset.inquiryId); if(!inquiry){this.toast('操作中の住民に調査ノートを共有してください。');return;}
+      const field=this.controlledExpedition(); if(field){try{addExpeditionOrder(this.state,field.id,'move',`調査ノート: ${inquiry.targetLabel}`,{target:structuredClone(inquiry.center),epistemicBasisIds:[inquiry.knowledgeId]});void this.save('予測範囲の中心へ移動します。範囲全体の確認ではありません。');}catch(error){this.toast(error instanceof Error?error.message:String(error));}}
+      else {this.#prepTarget=structuredClone(inquiry.center);this.#prepTargetEntityId='';this.#prepRouteEntityId='';this.#pdaTaskPanel='expedition';this.#pdaTab='task';this.render();this.toast(`調査範囲を選択: ${inquiry.targetLabel} / 半径 ${inquiry.radiusKm.toFixed(2)}km。`);} return;
+    }
+    if (action==='inquiry-survey') {
+      const actor=this.knowledgeAgent(); if(!actor)return;
+      void this.directAction(60,async()=>{const result=await surveyInquiry(this.provider,this.state,actor.id,button.dataset.inquiryId??'');return result.outcome==='supports'?'予測に一致する観測を記録しました。':result.outcome==='contradicts'?'今回の現地観測は予測と一致しませんでした。':'調べた範囲ではまだ判断できません。';}); return;
+    }
+    if (action==='inquiry-trial') {
+      const actor=this.knowledgeAgent(); if(!actor)return;
+      void this.directAction(30,()=>{trialInquiryProcedure(this.state,actor.id,button.dataset.inquiryId??'',button.dataset.method as 'boiled'|'filtered');return '水1Lを処理し、処理前後の値を記録しました。この実測から研究を開始できます。';}); return;
+    }
+    if (action==='inquiry-archive-report') {
+      const actor=this.knowledgeAgent();if(!actor)return;
+      void this.directAction(60,()=>{archiveInquiryEvaluation(this.state,actor.id,button.dataset.inquiryId??'',button.dataset.knowledgeId??'');return '報告と採取元の観測記録を一緒にArchiveへ保存しました。';});return;
+    }
+    if (action==='artifact-decode') {
+      const actor=this.knowledgeAgent(); if(!actor)return;
+      void this.directAction(60,()=>decodeArtifactRecord(this.state,actor.id,button.dataset.itemId??'')?'読解記録を残しました。物的記述と伝承の解釈を照合してください。':'読解を進めました。欠損の整理にはさらに時間が必要です。'); return;
+    }
+    if (action==='artifact-lead') {
+      const actor=this.knowledgeAgent(); if(!actor)return;
+      const item=accessibleArtifactRecords(this.state,actor.id).find((entry)=>entry.id===button.dataset.itemId), reading=item?.reading, lead=reading?.leads.find((entry)=>entry.entityId===button.dataset.entityId);
+      if(!reading?.decodedKnowledgeId||!lead?.position)return;
+      void this.directAction(10,()=>{const target:WorldEntity={id:lead.entityId,kind:'historical-trace',components:{name:lead.label},provenanceIds:[],spatial:structuredClone(lead.position!)};createExplorationInquiry(this.state,actor.id,[reading.decodedKnowledgeId!],target,lead.prediction,'現場写しの配置と記述を別の観測で照合する。');return '読解した記録から次の観測予測を作りました。';}); return;
+    }
+    if (action==='legacy-start') {
+      const actor=this.knowledgeAgent(); if(!actor)return;
+      void this.directAction(60,()=>{const project=startLegacyProject(this.state,actor.id,button.dataset.kind as LegacyProjectKind);return `${project.name}の設計をArchiveに保存しました。作業者と資材を選び、日々の作業を続けられます。`;}); return;
+    }
+    if (action==='legacy-adopt') {
+      const actor=this.knowledgeAgent(); if(!actor)return;
+      void this.directAction(10,()=>{adoptLegacyProject(this.state,actor.id,button.dataset.projectId??'');reserveDirectActivity(this.state,[actor.id],'records',10,'共同体の計画の引継ぎを記録。');return '設備・投入資材・進捗を保持して計画を引き継ぎました。';}); return;
+    }
+    if (action==='legacy-workers') {
+      const actor=this.knowledgeAgent(),card=button.closest<HTMLElement>('[data-legacy-card]');if(!actor||!card)return;
+      const ids=[...card.querySelectorAll<HTMLInputElement>('[data-legacy-worker]:checked')].map((entry)=>entry.dataset.legacyWorker??'');
+      try{setLegacyProjectWorkers(this.state,actor.id,button.dataset.projectId??'',ids);void this.save('計画の担い手を更新しました。');}catch(error){this.toast(error instanceof Error?error.message:String(error));}return;
+    }
+    if (action==='legacy-pause') {
+      const actor=this.knowledgeAgent();if(!actor)return;
+      try{setLegacyProjectPaused(this.state,actor.id,button.dataset.projectId??'',button.dataset.paused==='1');void this.save('計画の作業状態を更新しました。');}catch(error){this.toast(error instanceof Error?error.message:String(error));}return;
     }
     if (action==='conversation') {
       const speaker=this.knowledgeAgent(), listener=findAgent(this.state,this.#conversationTargetId), knowledgeId=button.dataset.knowledgeId??'';
