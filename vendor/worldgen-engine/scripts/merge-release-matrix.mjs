@@ -1,0 +1,10 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+const aPath = resolve(process.argv[2] ?? '../integration-artifacts/worldgen/RELEASE_MATRIX_PART_A.json');
+const bPath = resolve(process.argv[3] ?? '../integration-artifacts/worldgen/RELEASE_MATRIX_PART_B.json');
+const outPath = resolve(process.argv[4] ?? '../integration-artifacts/worldgen/RELEASE_MATRIX_v6.json');
+const a = JSON.parse(await readFile(aPath, 'utf8')); const b = JSON.parse(await readFile(bPath, 'utf8'));
+const results = [...(a.results ?? []), ...(b.results ?? [])];
+const byId = new Map(results.map((result) => [result.id, result])); const unique = [...byId.values()];
+const report = { generatedAt:new Date().toISOString(), engineVersion:a.engineVersion ?? b.engineVersion ?? 'unknown', isolation:'release matrix executed in host-safe batches and merged by case id', caseCount:unique.length, passed:unique.filter((r)=>r.pass).length, failed:unique.filter((r)=>!r.pass).length, peakCaseRss:Math.max(0,...unique.map((r)=>Number(r.rssAfter??0))), results:unique };
+await writeFile(outPath, JSON.stringify(report,null,2)+'\n'); console.log(`[matrix-merge] ${report.passed}/${report.caseCount} PASS -> ${outPath}`); if(report.failed) process.exitCode=1;

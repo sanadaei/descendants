@@ -1,0 +1,1276 @@
+DESCENDANTS REFERENCE LEDGER
+REFERENCE_LEDGER_VERSION: 1
+POLICY_STATUS: REQUIRED_RELEASE_ARTIFACT
+LAST_UPDATED: 2026-09-10
+
+PURPOSE
+This file records external research, standards, software architectures, and source-code projects actually consulted while designing or hardening Descendants. Every future implementation tranche that materially relies on an external idea, algorithm, data model, accessibility rule, or source-code architecture must add or update an entry here before the tranche may be treated as verified.
+
+RESEARCH GOVERNANCE
+- Record sources that materially influenced design, tests, algorithms, architecture, UI/accessibility, or validation.
+- Distinguish concept adoption from code reuse. Reading source code does not authorize copying it.
+- Record license/rights information when known. If rights are unclear, treat the source as REFERENCE_ONLY and do not copy code/assets/data.
+- Preserve Descendants' canonical invariants: one authoritative simulation state, stable identity, explicit provenance, provider-bounded knowledge, deterministic/replayable state transitions, and renderer/UI non-authority.
+- Empirical models are priors or calibration references, not universal truth. Fictional/generated worlds must remain internally coherent rather than falsely claiming empirical realism.
+- A passing reference check is not evidence that a source was correctly understood; implementation tests and visual QA remain mandatory.
+
+=== REF 001 ===
+TYPE: PAPER
+TITLE: Mesa 3: Agent-based modeling with Python in 2025
+AUTHORS: Ewout ter Hoeven; Jan Kwakkel; Vincent Hess; Thomas Pike; Boyu Wang; Rht; Jackie Kazil
+YEAR: 2025
+URL: https://doi.org/10.21105/joss.07668
+LICENSE_RIGHTS: Paper CC BY 4.0; software repository handled separately below.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for explicit agent/model separation, modular simulation components, schedulers/spatial abstractions, and analysis-oriented model structure.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants remains TypeScript and does not import Mesa; architecture ideas only.
+
+=== REF 002 ===
+TYPE: SOURCE_CODE
+TITLE: Mesa agent-based modeling framework
+AUTHORS: Mesa contributors
+YEAR: 2026-current repository state consulted
+URL: https://github.com/mesa/mesa
+LICENSE_RIGHTS: Apache-2.0 repository license as shown by the project.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference implementation for modular agents, spaces, model stepping, data collection boundaries, and separation of simulation from browser visualization.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: No Python source is vendored or translated mechanically.
+
+=== REF 003 ===
+TYPE: PAPER
+TITLE: MASON: a Multi-agent Simulation Environment
+AUTHORS: Sean Luke; Claudio Cioffi-Revilla; Liviu Panait; Keith Sullivan; Gabriel Balan
+YEAR: 2005/2006 publication lineage
+URL: https://people.cs.gmu.edu/~sean/papers/
+LICENSE_RIGHTS: Publication rights remain with publisher/authors; consulted as research literature.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Strong architectural precedent for keeping model execution independent of visualization and for discrete-event/multi-agent simulation infrastructure.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Reinforces the existing rule that the renderer and F1-F5 UI are projections, never canonical simulation state.
+
+=== REF 004 ===
+TYPE: SOURCE_CODE
+TITLE: MASON and MASON DES
+AUTHORS: George Mason University MASON contributors
+YEAR: 2026-current project page consulted
+URL: https://people.cs.gmu.edu/~eclab/projects/mason/
+LICENSE_RIGHTS: Consult project distribution/license before any reuse; current use is architectural reference only.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for discrete-event scheduling, attachable visualization, and scaling simulation detail independently of presentation.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Useful for future multi-resolution/background simulation scheduling.
+
+=== REF 005 ===
+TYPE: PAPER
+TITLE: The MicSim package of R: An entry-level toolkit for continuous-time microsimulation
+AUTHORS: Sabine Zinn
+YEAR: 2014
+URL: https://doi.org/10.34196/IJM.00105
+LICENSE_RIGHTS: Paper consulted as research literature; MicSim package is GPL-2/GPL-3.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for life-course state transitions, duration dependence, open populations, and event-driven demographic simulation across age/calendar/duration time scales.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants should prefer event/state transitions for infrequent demographic changes rather than full per-person work every small tick.
+
+=== REF 006 ===
+TYPE: SOURCE_CODE
+TITLE: MicSim continuous-time microsimulation package
+AUTHORS: Sabine Zinn et al.
+YEAR: 2025 package release consulted
+URL: https://CRAN.R-project.org/package=MicSim
+LICENSE_RIGHTS: GPL-2 | GPL-3 package; no code reuse planned.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Implementation reference for demographic transition scheduling and migration/life-course examples.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Concepts may be reimplemented independently in TypeScript under Descendants' own data model.
+
+=== REF 007 ===
+TYPE: PAPER
+TITLE: Flee 3: Flexible agent-based simulation for forced migration
+AUTHORS: Diana Suleimenova et al.
+YEAR: 2024
+URL: https://doi.org/10.1016/j.jocs.2024.102371
+LICENSE_RIGHTS: Open-access paper under CC BY according to the publisher/archive.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Direct reference for conflict-driven displacement, route-network movement, demographic attributes, push/pull factors, calibration, and validating migration against observed outcomes.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Especially relevant to QA11 household displacement/recovery; provider evidence remains authoritative over model-inferred displacement.
+
+=== REF 008 ===
+TYPE: SOURCE_CODE
+TITLE: Flee agent-based modelling toolkit
+AUTHORS: Derek Groen and contributors
+YEAR: 2026-current repository state consulted
+URL: https://github.com/djgroen/flee
+LICENSE_RIGHTS: BSD-3-Clause repository license.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Source-level reference for representing geographic locations/links, individual movement, displacement flows, tests, and scalable agent movement.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: We borrow modeling ideas, not source text. Descendants additionally requires persistent household identity and epistemic/provider provenance.
+
+=== REF 009 ===
+TYPE: PAPER
+TITLE: Creating synthetic baseline populations
+AUTHORS: Richard J. Beckman; Keith A. Baggerly; Michael D. McKay
+YEAR: 1996
+URL: https://doi.org/10.1016/0965-8564(96)00004-3
+LICENSE_RIGHTS: Publisher-controlled paper; methods consulted as research literature.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for constructing joint household/person populations from aggregate constraints using iterative proportional fitting and microdata-like exemplars.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Potential future use for population generation/calibration; not used to fabricate provider-confirmed identities.
+
+=== REF 010 ===
+TYPE: PAPER
+TITLE: A universal model for mobility and migration patterns
+AUTHORS: Filippo Simini; Marta C. Gonzalez; Amos Maritan; Albert-Laszlo Barabasi
+YEAR: 2012
+URL: https://doi.org/10.1038/nature10856
+LICENSE_RIGHTS: Publisher-controlled paper; model consulted as research literature.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for population-density/intervening-opportunity effects on aggregate movement and for avoiding naive distance-only migration rules.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Radiation-style behavior may inform background aggregate priors only; local household movement still requires canonical world evidence and game-world causes.
+
+=== REF 011 ===
+TYPE: PAPER
+TITLE: A note on two problems in connexion with graphs
+AUTHORS: E. W. Dijkstra
+YEAR: 1959
+URL: https://doi.org/10.1007/BF01386390
+LICENSE_RIGHTS: Publisher-controlled paper; algorithm is foundational knowledge.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Basis for exact shortest-path/cost routing on known graph topology where no heuristic is needed.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Route discovery must not reveal hidden topology merely because the algorithm could traverse it.
+
+=== REF 012 ===
+TYPE: PAPER
+TITLE: A Formal Basis for the Heuristic Determination of Minimum Cost Paths
+AUTHORS: Peter E. Hart; Nils J. Nilsson; Bertram Raphael
+YEAR: 1968
+URL: https://doi.org/10.1109/TSSC.1968.300136
+LICENSE_RIGHTS: IEEE publication; algorithm consulted as foundational research.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Basis for A* path search over provider-visible/known topology when an admissible heuristic is available.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Heuristic optimization must not violate knowledge-bounded routing or route-specific uncertainty.
+
+=== REF 013 ===
+TYPE: STANDARD
+TITLE: H3 Geospatial Indexing System documentation and core library
+AUTHORS: H3 project contributors
+YEAR: 2026-current documentation consulted
+URL: https://h3geo.org/docs/
+LICENSE_RIGHTS: Uber H3 repository/documented core is Apache-2.0; verify the exact upstream/version before any future vendoring because third-party forks may differ.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for hierarchical spatial indexing, neighbor lookup, flow aggregation, and the critical distinction between exact logical hierarchy and approximate geometric containment.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Spatial indexes may accelerate lookup/LOD but must never replace canonical geometry or violate conservation/stable identity.
+
+=== REF 014 ===
+TYPE: PAPER
+TITLE: PCG: A Family of Simple Fast Space-Efficient Statistically Good Algorithms for Random Number Generation
+AUTHORS: Melissa E. O'Neill
+YEAR: 2014
+URL: https://www.pcg-random.org/paper.html
+LICENSE_RIGHTS: Paper/site consulted for RNG design principles; verify implementation license separately before reuse.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for reproducible, streamable pseudo-random generation and for isolating named random streams so unrelated draws do not perturb every later subsystem.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Existing deterministic replay remains mandatory; future RNG refactors should be stream-scoped and replay-tested.
+
+=== REF 015 ===
+TYPE: SOURCE_CODE
+TITLE: fast-check property-based testing framework
+AUTHORS: fast-check contributors
+YEAR: 2026-current repository state consulted
+URL: https://github.com/dubzzz/fast-check
+LICENSE_RIGHTS: Check repository license before dependency adoption; current use is design reference only.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for generative/property/model-based testing and shrinking, especially conservation, persistence, route, migration, and state-machine invariants.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants may add the dependency later after license/version review; current tests can implement selected properties without it.
+
+=== REF 016 ===
+TYPE: SOURCE_CODE
+TITLE: Cataclysm: Dark Days Ahead overmap and mapgen architecture
+AUTHORS: Cataclysm-DDA contributors
+YEAR: 2026-current repository state consulted
+URL: https://github.com/CleverRaven/Cataclysm-DDA
+LICENSE_RIGHTS: Repository license must be checked before any code/data reuse; current use is architectural reference only.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for separating abstract overmap/world structure from local-map realization, connection-aware procedural generation, and data-driven mapgen definitions.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Particularly relevant to WORLD-to-LOCAL coherence; no CDDA code or content is copied.
+
+=== REF 017 ===
+TYPE: SOURCE_CODE
+TITLE: OpenTTD simulation game source
+AUTHORS: OpenTTD contributors
+YEAR: 2026-current repository state consulted
+URL: https://github.com/OpenTTD/OpenTTD
+LICENSE_RIGHTS: GPL-2.0 project; reference only unless license compatibility is deliberately addressed.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Mature simulation-game reference for long-lived deterministic-ish simulation state, command-driven mutations, economy/network systems, save compatibility discipline, and separation of simulation logic from UI concerns.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: No OpenTTD source is copied into Descendants.
+
+=== REF 018 ===
+TYPE: STANDARD
+TITLE: Web Content Accessibility Guidelines (WCAG) 2.2
+AUTHORS: W3C Accessibility Guidelines Working Group
+YEAR: 2024 Recommendation publication
+URL: https://www.w3.org/TR/WCAG22/
+LICENSE_RIGHTS: W3C Recommendation; normative accessibility standard.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Baseline for keyboard operability, visible focus, focus not obscured, target size, contrast/readability, reflow/zoom behavior, and predictable interaction in the HTML/Electron UI. Design-freeze D17 formalizes these applicable principles as a project engineering/test profile while explicitly avoiding an unsupported formal WCAG conformance claim.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Game-specific accessibility can exceed WCAG; screenshot QA at 125/150% and high contrast remains mandatory for relevant UI changes.
+
+=== REF 019 ===
+TYPE: PAPER
+TITLE: An agent-based framework to study forced migration: A case study of Ukraine
+AUTHORS: Zakaria Mehrab; Logan Stundal; Srinivasan Venkatramanan; Samarth Swarup; Bryan Lewis; Henning S. Mortveit; Christopher L. Barrett; Abhishek Pandey; Chad R. Wells; Alison P. Galvani; Burton H. Singer; David Leblang; Rita R. Colwell; Madhav V. Marathe
+YEAR: 2024
+URL: https://doi.org/10.1093/pnasnexus/pgae080
+LICENSE_RIGHTS: Open Access PNAS Nexus article; consult the article's explicit license statement before any text/figure reuse. Current use is conceptual research reference only.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Direct reference for hierarchical person-plus-household migration modeling: person-level risk signals can feed a household-level decision, and the published model moves associated persons when the household migrates. Descendants adopts only the household-as-physical-unit concept. Unlike the research model, gameplay never infers a household move from member risk or from one displaced individual: WorldProvider must explicitly name the household identity.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: QA11 uses this to justify an explicit household displacement episode with stable household identity, episode-scoped member IDs, and provider-observed return. Members already in another known physical state are not teleported.
+
+=== REF 020 ===
+TYPE: PAPER
+TITLE: Finding the K Shortest Loopless Paths in a Network
+AUTHORS: Jin Y. Yen
+YEAR: 1971
+URL: https://doi.org/10.1287/mnsc.17.11.712
+LICENSE_RIGHTS: Management Science / INFORMS publication; algorithmic ideas consulted as published research. No text, figures, or implementation code copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Direct algorithmic basis for deterministic enumeration of multiple loopless route alternatives over the observer-bounded provider-visible relation graph. Descendants independently implements the root/spur-path structure with deterministic tie-breaking and explicit node/edge bans.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: K-shortest search never expands an edge merely because two visible points are geometrically near. Only explicit provider-visible route-link relations, or connects relations backed by an explicitly visible route entity, enter the graph.
+
+=== REF 021 ===
+TYPE: PAPER
+TITLE: Alternative routes in road networks
+AUTHORS: Ittai Abraham; Daniel Delling; Andrew V. Goldberg; Renato F. Werneck
+YEAR: 2013
+URL: https://doi.org/10.1145/2444016.2444019
+LICENSE_RIGHTS: ACM Journal of Experimental Algorithmics publication; conceptual route-quality criteria consulted under publisher terms. No article text, figures, algorithms, or code copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for treating alternative-route quality as more than rank-by-distance: useful alternatives should remain reasonably short while differing materially from the shortest route. QA12 therefore records shortest-path stretch and distance-weighted overlap for every provider-visible alternative and exposes those measurements to the player.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not yet impose arbitrary stretch/overlap thresholds or claim local optimality. Metrics remain descriptive until calibrated against gameplay, map scale, provider semantics, and human route-choice testing.
+
+=== REF 022 ===
+TYPE: PAPER
+TITLE: D* Lite
+AUTHORS: Sven Koenig; Maxim Likhachev
+YEAR: 2002
+URL: https://publications.ri.cmu.edu/d-lite/
+LICENSE_RIGHTS: AAAI/CMU research publication; algorithmic concepts consulted under publication terms. No article text, figures, or implementation code copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for dynamic path replanning when traversal knowledge changes after an initial plan. QA13 adopts the invariant that an explicitly invalidated remaining route must be reconsidered from the agent's actual current physical state before further movement.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not implement D* Lite's incremental priority-queue machinery in QA13. The observer-bounded provider-visible graph is deliberately small, so QA13 deterministically recomputes loopless alternatives from the current known node. This favors epistemic correctness and auditability over premature incremental optimization.
+
+=== REF 023 ===
+TYPE: PAPER
+TITLE: Lifelong Planning A*
+AUTHORS: Sven Koenig; Maxim Likhachev; David Furcy
+YEAR: 2004
+URL: https://doi.org/10.1016/j.artint.2003.12.001
+LICENSE_RIGHTS: Artificial Intelligence / Elsevier research publication; conceptual use only. No publication text, figures, pseudocode, or source code copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for repeated shortest-path planning under graph changes and for treating a previous route as a plan contingent on a particular graph basis rather than timeless truth. QA13 therefore persists route-basis tick/signatures, validates remaining relations against new explicit observations, and records replanning count/status.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Missing observations are not treated as graph deletions. A route edge changes only when the provider explicitly supplies contradictory/passability evidence or an explicit route-disruption event marks it impassable.
+
+=== REF 024 ===
+TYPE: SOURCE_CODE
+TITLE: robotics-d-star-lite
+AUTHORS: Alexander Zampaglione and contributors
+YEAR: 2026-current repository state consulted
+URL: https://github.com/azampagl/robotics-d-star-lite
+LICENSE_RIGHTS: Repository declares MIT License; verify the exact pinned revision and LICENSE before any future code vendoring. Current use is implementation-reference only.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Practical reference for the architecture of sensing environmental/topology changes and triggering replanning from the robot/agent's current state rather than silently following a stale path.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: No repository code was copied. Descendants uses its own provider-projection model, stable relation identities, deterministic route enumerator, persistence schema, and evidence-bounded invalidation rules.
+
+=== REF 025 ===
+TYPE: STANDARD
+TITLE: SOURCE_DATE_EPOCH specification / Reproducible Builds documentation
+AUTHORS: Reproducible Builds project contributors
+YEAR: 2026-current documentation consulted
+URL: https://reproducible-builds.org/docs/source-date-epoch/
+LICENSE_RIGHTS: Public reproducible-build specification/documentation; current use is build-design guidance. Verify site/document licensing before any substantial text reuse.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for reproducible-build discipline: wall-clock time must not silently make an otherwise identical release payload byte-different. QA13 removes the live `new Date()` value from hashed portable `build-meta.json` and marks the metadata as reproducible, so rebuilding unchanged sources does not invalidate the package SHA ledger merely because time advanced.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants currently avoids embedding a build timestamp entirely in the portable artifact. If a source/build time is required later, use a reproducible source-derived value such as SOURCE_DATE_EPOCH rather than the current wall clock, and cover it with the same package-integrity gate.
+
+=== REF 026 ===
+TYPE: PAPER
+TITLE: Planning and acting in partially observable stochastic domains
+AUTHORS: Leslie Pack Kaelbling; Michael L. Littman; Anthony R. Cassandra
+YEAR: 1998
+URL: https://www.sciencedirect.com/science/article/pii/S000437029800023X
+LICENSE_RIGHTS: Artificial Intelligence / Elsevier publication; conceptual planning architecture consulted under publisher terms. No article text, figures, pseudocode, or implementation code copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for treating action selection under partial observation as contingent on current observations rather than hidden world truth. QA14 applies this conservatively: a blocked expedition does not infer that time passage restored a route and does not automatically retry merely because a new projection later contains a possible detour; wait/camp, retry/replan, and return are explicit field decisions.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not implement a POMDP belief-state solver, optimal policy computation, or stochastic observation model from this paper. The adopted principle is the separation of observer-bounded evidence, retained state, and explicit action.
+
+=== REF 027 ===
+TYPE: PAPER
+TITLE: Wilderness Medical Society Clinical Practice Guidelines for the Out-of-Hospital Evaluation and Treatment of Accidental Hypothermia: 2019 Update
+AUTHORS: Jennifer Dow et al.; Wilderness Medical Society
+YEAR: 2019
+URL: https://pubmed.ncbi.nlm.nih.gov/31740369/
+LICENSE_RIGHTS: Wilderness & Environmental Medicine / Elsevier practice guideline; medical recommendations remain under publisher rights. Descendants uses high-level environmental-protection concepts only and copies no clinical text, tables, treatment algorithms, or thresholds.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for modeling cold/wet/wind exposure as a field hazard whose burden can be mitigated by shelter, insulation, and stopping exposure. QA14 therefore lets explicit provider-visible environmental risk accumulate while a blocked expedition waits and reduces game exposure dose while the party is in a field camp with shelter/tools.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The simulation is not a clinical hypothermia model. Its exposure-risk weights, dose scale, health/fatigue effects, and temperature calibration are gameplay abstractions and must not be interpreted as medical diagnostic or treatment guidance.
+
+=== REF 028 ===
+TYPE: PAPER
+TITLE: Wilderness Medical Society Clinical Practice Guidelines for the Prevention and Treatment of Heat Illness: 2024 Update
+AUTHORS: Kurt P. Eifling; Flavio G. Gaudio; Charles Dumke; Grant S. Lipman; Edward M. Otten; August D. Martin; Colin K. Grissom
+YEAR: 2024
+URL: https://pubmed.ncbi.nlm.nih.gov/38425235/
+LICENSE_RIGHTS: Wilderness & Environmental Medicine / SAGE practice guideline; medical recommendations remain under publisher rights. Descendants uses high-level prevention and field-exposure concepts only; no guideline text, clinical algorithm, tables, or figures are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for treating environmental heat burden, activity/rest, hydration, and environmental mitigation as interacting field constraints. QA14 keeps supply consumption active during blocked waits and represents explicit provider-visible heat/environmental severity as exposure that can alter fatigue, safety need, and eventually health.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not diagnose heat illness or reproduce medical thresholds. Numeric game calibration is deliberately labeled non-clinical and remains subject to gameplay testing.
+
+=== REF 029 ===
+TYPE: PAPER
+TITLE: Precise Localization of Mobile Robots via Odometry and Wireless Sensor Network
+AUTHORS: Guoyu Fu; Jin Zhang; Wenyuan Chen; Fengchao Peng; Pei Yang; Chunlin Chen
+YEAR: 2013
+URL: https://doi.org/10.5772/56217
+LICENSE_RIGHTS: Open-access article distributed under CC BY 3.0 according to the publisher page. Descendants uses only the high-level localization lesson; no text, figures, datasets, Kalman-filter equations, or implementation code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: QA15 uses the established limitation that dead-reckoning error accumulates without external correction as a design basis for an explicit off-network-return uncertainty value. A provider-visible navigation anchor can reduce that game-state uncertainty; hidden anchors or hidden terrain cannot.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not implement the paper's WSN localization system, Kalman filter, backward dead reckoning, measured error distribution, or empirical calibration. The uncertainty growth/reduction numbers are deliberately game-calibrated rather than claims about human or robot navigation accuracy.
+
+=== REF 030 ===
+TYPE: PAPER
+TITLE: Multi-Robot Rendezvous in Unknown Environment With Limited Communication
+AUTHORS: Kun Song; Gaoming Chen; Wenhang Liu; Zhenhua Xiong
+YEAR: 2024
+URL: https://doi.org/10.1109/LRA.2024.3460420
+LICENSE_RIGHTS: IEEE Robotics and Automation Letters publication; conceptual coordination architecture consulted under publisher terms. No article text, figures, algorithms, experiment data, or code copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: QA15 adopts the high-level separation between incomplete local exploration/knowledge, sparse communication, and an explicit rendezvous point. A field party may prepare a request while disconnected, but the settlement receives a rendezvous position only after a verified communication event. The transmitted point is a time-stamped observation rather than omniscient current tracking.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not implement PIER, relative-pose estimation, topological-map merging, or the paper's rendezvous optimizer. The game uses its own provider-bounded observations, deterministic simulation state, and physical expedition model.
+
+=== REF 031 ===
+TYPE: PAPER
+TITLE: Communication-Constrained Multi-Robot Exploration with Intermittent Rendezvous
+AUTHORS: Alysson Ribeiro da Silva; Luiz Chaimowicz; Thales Costa Silva; Ani Hsieh
+YEAR: 2023 preprint / 2024 IROS publication
+URL: https://arxiv.org/abs/2309.13494
+LICENSE_RIGHTS: Research preprint/publication consulted for design concepts. Check the exact arXiv/publication license before any substantial reuse. No article text, figures, schedules, policy code, or experimental data copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Reference for treating communication as an intermittent physical constraint and rendezvous as an explicit coordination opportunity rather than assuming permanent base connectivity. QA15 therefore persists pending-link versus transmitted rendezvous states and does not backfill hidden movement when connectivity returns.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not implement the DEC-POMDP, joint policy, Job Shop Scheduling formulation, or optimization machinery. The adopted invariant is much narrower: communication opportunity and shared location evidence must be explicit simulation events.
+
+=== REF 032 ===
+TYPE: SOURCE_CODE
+TITLE: Noetic Multi-Robot Sandbox
+AUTHORS: multirobotplayground contributors; Alysson Ribeiro da Silva and collaborators
+YEAR: 2026-current repository state consulted
+URL: https://github.com/multirobotplayground/Noetic-Multi-Robot-Sandbox
+LICENSE_RIGHTS: Repository declares GNU GPL v3.0. Current use is architecture/reference inspection only; no repository code, launch files, ROS nodes, assets, configuration, or algorithms are copied or vendored into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Practical reference that rendezvous/exploration systems benefit from making rendezvous planning and communication-constrained exploration explicit subsystems rather than implicit side effects. QA15 keeps its own rendezvous state machine separate from movement, provider observation, and renderer authority.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants is TypeScript and is not derived from the ROS workspace. GPL code was not copied, translated, or linked. Future code reuse would require a separate license/compliance review and an explicit ledger update.
+
+=== REF 033 ===
+TYPE: PAPER
+TITLE: A Framework for the Detection of Search and Rescue Patterns Using Shapelet Classification
+AUTHORS: Konstantinos Kapadais; Iraklis Varlamis; Christos Sardianos; Konstantinos Tserpes
+YEAR: 2019
+URL: https://doi.org/10.3390/fi11090192
+LICENSE_RIGHTS: Future Internet / MDPI open-access article distributed under CC BY 4.0. Descendants uses only the high-level description of established SAR maneuver geometry; no article text, figures, datasets, classifier code, synthetic-trajectory generator, or model parameters are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: QA16 replaces the earlier arbitrary golden-angle search walk with a deterministic evidence-centered expanding-square-style pattern after the bounded rendezvous wait. The datum is the latest legitimately held time-stamped rendezvous evidence or provider-visible rescue clue, never the hidden current target position. Search remains game-scaled and is capped at 12 hours before explicit abort/return.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The paper documents expanding-square and other SAR trajectory families and describes an expanding-square geometry based on repeated orthogonal turns with increasing leg lengths. Descendants independently implements only that generic geometric idea. It does not reproduce the paper's trajectory generator, noise model, classification pipeline, GENDIS/shapelet machinery, maritime sweep-width assumptions, or empirical claims.
+
+=== REF 034 ===
+TYPE: PAPER
+TITLE: Statecharts: A Visual Formalism for Complex Systems
+AUTHORS: David Harel
+YEAR: 1987
+URL: https://www.sciencedirect.com/science/article/pii/0167642387900359
+LICENSE_RIGHTS: Science of Computer Programming / Elsevier publication; statechart concepts are consulted as research literature. No article text, figures, notation artwork, algorithms, or implementation code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D01 uses hierarchical explicit states and guarded transitions to specify boot, title, recovery, primary-surface, expedition and save/reload lifecycles before implementation. The goal is to eliminate ambiguous combinations of booleans and make legal/illegal transitions auditable.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants adopts statechart-style hierarchy and transition-table discipline as design notation only. It does not reproduce Harel's diagrams or require a particular runtime statechart engine.
+
+=== REF 035 ===
+TYPE: ARTICLE
+TITLE: Presentation Model
+AUTHORS: Martin Fowler
+YEAR: 2004
+URL: https://martinfowler.com/eaaDev/PresentationModel.html
+LICENSE_RIGHTS: Martin Fowler website article; architectural pattern consulted for design guidance. No article text, diagrams, examples, or source code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D01 formalizes a player-facing presentation/read-model layer that derives screen data and interaction affordances from canonical SandboxGameState, observer-bounded provider projections and non-authoritative UI session state. Legacy ADV controls render this model and dispatch canonical actions rather than owning domain truth.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The adopted boundary is separation of presentation-specific state/behavior from domain state. Descendants keeps canonical simulation and provider authority unchanged and does not introduce a second persistent domain model.
+
+=== REF 036 ===
+TYPE: SOURCE_CODE
+TITLE: XState state machine and statechart library
+AUTHORS: Stately.ai contributors
+YEAR: 2026-current repository/documentation consulted
+URL: https://github.com/statelyai/xstate
+LICENSE_RIGHTS: Repository declares MIT License. Current Descendants use is reference inspection only; no XState source, examples, generated schema, or dependency is copied or vendored.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D01 consults XState as a mature TypeScript/JavaScript precedent for explicit state machines, guards, invoked asynchronous work and hierarchical statecharts. It informs naming and completeness checks for the design state tables.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: No runtime dependency is adopted for the Legacy ADV reintegration. Existing Descendants code already has direct action routing, persistence and authoritative simulation boundaries; adding a state-machine framework before the frozen design proves a need would create unnecessary migration risk.
+
+=== REF 037 ===
+TYPE: GUIDELINE
+TITLE: Xbox Accessibility Guideline 101: Text display
+AUTHORS: Microsoft
+YEAR: 2026-current guidance consulted
+URL: https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/101
+LICENSE_RIGHTS: Microsoft Learn accessibility guidance; consulted for design requirements only. No page text, images, examples, or implementation code are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D02 uses XAG 101 to constrain the Legacy visual system's configurable text scaling, propagation of text preferences to HUD/dialogue/errors, one-axis reading overflow, CJK prose width, and the requirement that important game text remain independently readable rather than baked into scene art.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not claim XAG certification or literal compliance with every default pixel-size recommendation in its dense 100% Legacy mode. The frozen design instead provides 125% and 150% text profiles, raises the Legacy micro-text floor, and forbids critical information from existing only in micro text. Final accessibility acceptance remains a separate D17/human-render gate.
+
+=== REF 038 ===
+TYPE: GUIDELINE
+TITLE: Xbox Accessibility Guideline 102: Contrast
+AUTHORS: Microsoft
+YEAR: 2026-current guidance consulted
+URL: https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/102
+LICENSE_RIGHTS: Microsoft Learn accessibility guidance; consulted for contrast design only. No page text, images, tools, or implementation code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D02 adopts a 4.5:1 target for standard decision-relevant text against its direct background, a 3:1 inactive-state floor, opaque/local backing surfaces for critical UI over imagery, and a first-class High Contrast palette. Frozen Legacy colours were checked for representative sRGB contrast pairs rather than accepted solely because they match the old screenshot.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The guideline is used as an accessibility design reference; Descendants does not claim platform certification. Decorative art and branding are visually separate from critical UI, and colour is never the only encoding of important state.
+
+=== REF 039 ===
+TYPE: GUIDELINE
+TITLE: Xbox Accessibility Guideline 112: UI navigation
+AUTHORS: Microsoft
+YEAR: 2026-current guidance consulted
+URL: https://learn.microsoft.com/en-us/gaming/accessibility/xbox-accessibility-guidelines/112
+LICENSE_RIGHTS: Microsoft Learn accessibility guidance; consulted for interaction/navigation design only. No page text, screenshots, UI assets, or implementation code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D02 uses XAG 112 as support for a consistent F1-F5/F10 navigation language, predictable visual focus order, visible focus that is distinct from current selection, modal focus ownership, and consistent meaning of repeated controls across screens. Design-freeze D06 additionally adopts its map-specific guidance that zoom/pan interfaces provide a non-spatial text-list route to points of interest; the Known Places list is therefore mandatory and synchronized with map selection.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Detailed keyboard mapping and assistive-technology acceptance are deferred to D17, but D02 freezes the visual focus/selection geometry so later screen documents cannot invent incompatible navigation styling.
+
+=== REF 040 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Full list
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/full-list/
+LICENSE_RIGHTS: Collaborative public game-accessibility guidance; conceptual reference only. No site text, screenshots, downloadable checklists, or assets are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D02 uses the cross-game guidance as a practical check on interface resizing, readable formatting, high contrast, non-colour-only information, sufficiently usable interactive targets, digital-input coverage, and player-controlled progression through text. These constraints are applied inside the Legacy PC-98 grammar instead of replacing it with a generic accessibility theme.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not claim conformance to every item in the full list. Applicable requirements are frozen in D02 and will receive specific implementation/test ownership in D17-D21.
+
+=== REF 041 ===
+TYPE: STANDARD
+TITLE: Indexed Database API 3.0
+AUTHORS: W3C Web Applications Working Group; editors including Steve Becker
+YEAR: 2025 Working Draft consulted in 2026
+URL: https://www.w3.org/TR/IndexedDB/
+LICENSE_RIGHTS: W3C technical report under W3C document licensing. Descendants uses the transactional persistence semantics as a platform-standard reference; no specification text, examples, tests, or implementation source are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D03 treats the current IndexedDB active-save replacement plus previous-generation backup as one commit boundary. A New Game or imported Load must not clear the old world in one transaction and write the replacement in another. The title/startup design therefore preserves the old durable save until a fully validated replacement state is ready for one atomic repository commit.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants relies on its existing repository/envelope implementation rather than reimplementing IndexedDB. The design does not claim immunity to catastrophic OS or storage-device failure; application-level previous-generation/quarantine recovery remains necessary.
+
+=== REF 042 ===
+TYPE: DOCUMENTATION
+TITLE: MDN — Using IndexedDB / browser shutdown guidance
+AUTHORS: MDN contributors
+YEAR: 2026-current documentation consulted
+URL: https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
+LICENSE_RIGHTS: MDN Web Docs content is consulted as browser-platform guidance under MDN/Mozilla terms. No page text, code examples, or diagrams are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D03 explicitly forbids relying on unload-time IndexedDB writes as the final save. Significant game mutations must reach their existing durable commit boundary while the application is running. Quit waits for an already-started commit or warns about volatile state; it never starts the only save transaction from an unload handler.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: This supplements the IndexedDB specification with practical browser-shutdown behavior. `beforeunload` is used only as a narrow loss warning/close guard when necessary, not as persistence machinery.
+
+=== REF 043 ===
+TYPE: DOCUMENTATION
+TITLE: Electron BrowserWindow and app lifecycle documentation
+AUTHORS: OpenJS Foundation / Electron contributors
+YEAR: 2026-current documentation consulted
+URL: https://www.electronjs.org/docs/latest/api/browser-window
+LICENSE_RIGHTS: Electron documentation/source project is MIT-licensed; current use is API/lifecycle design reference only. No Electron source or documentation examples are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D03 distinguishes explicit in-app Quit from OS/window close. The desktop shell may cancel a close while a known persistence commit is in flight, but ordinary clean shutdown does not trigger a last-moment world save. The renderer owns no privileged filesystem or process authority; desktop quit remains a narrow secure shell action.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D03 does not adopt the current stale authoring-oriented preload API as product architecture. D11/implementation will expose only the minimum game-facing desktop bridge needed for secure quit/file operations.
+
+=== REF 044 ===
+TYPE: DOCUMENTATION
+TITLE: MDN File API / FileReader
+AUTHORS: MDN contributors
+YEAR: 2026-current documentation consulted
+URL: https://developer.mozilla.org/en-US/docs/Web/API/File_API
+LICENSE_RIGHTS: MDN Web Docs content is consulted as web-platform guidance. No page text, samples, or implementation code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D03 defines Title `Load` as an explicit user-selected JSON import rather than inventing a multi-slot save database. Browser/Electron-compatible file selection provides bytes only after user action; Descendants then performs its own size, JSON, schema, canonical-state and provider-alignment validation before any durable replacement commit.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: File name and MIME type are treated as untrusted metadata. The selected file never becomes canonical merely because it parses as JSON; canonical validation and provider reconstruction must succeed first.
+
+=== REF 045 ===
+TYPE: PAPER
+TITLE: The Impact of Tutorials on Games of Varying Complexity
+AUTHORS: Erik Andersen; Eleanor O'Rourke; Yun-En Liu; Richard Snider; Jeff Lowdermilk; David Truong; Seth Cooper; Zoran Popović
+YEAR: 2012
+URL: https://doi.org/10.1145/2207676.2207687
+LICENSE_RIGHTS: ACM CHI publication; an author-hosted PDF was consulted for research findings. Publication rights remain with ACM/authors. No article text, figures, tables, experiment assets, or code are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D04 uses the paper's large-scale tutorial study as evidence that tutorial value depends on game complexity and that context-sensitive instructions delivered near the point of use can outperform decontextualized up-front instruction in a complex game. Descendants therefore keeps an explicit onboarding sequence because its interaction model is systemically complex, but teaches only one real leadership action in context rather than front-loading the full F1-F5 manual.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not transfer the paper's measured retention/play-time percentages to this game, does not treat the tested games as direct analogues, and does not claim that one tutorial style is universally optimal. Human D21 testing remains the acceptance source for this specific product.
+
+=== REF 046 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Include interactive tutorials
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/include-interactive-tutorials/
+LICENSE_RIGHTS: Collaborative public game-accessibility guidance; conceptual reference only. No site text, screenshots, examples, or assets are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D04 requires the first taught leadership mechanic to be performed through the real canonical assembly/labor-priority action rather than represented by a fake tutorial choice or instructions-only page. Interaction and instruction therefore occur together in the actual generated world state.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D04 does not create a separate practice level or tutorial simulation. Skipping remains permitted and has no canonical penalty.
+
+=== REF 047 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Include contextual in-game help / guidance / tips
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/include-contextual-in-game-helpguidancetips/
+LICENSE_RIGHTS: Collaborative public game-accessibility guidance; conceptual reference only. No site text, screenshots, examples, or assets are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D04 limits each Intro stage to one context-relevant help concept and deliberately does not explain equipment, provenance, research, WEDO, rescue, route planning, succession, and other later mechanics before the player encounters them. The design favors just-in-time explanation over a manual-like onboarding dump.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Detailed contextual help ownership is distributed to D05-D17. D04 only freezes the first-session teaching budget and the specific concepts it introduces.
+
+=== REF 048 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Allow all narrative and instructions to be replayed
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/allow-all-narrative-and-instructions-to-be-replayed/
+LICENSE_RIGHTS: Collaborative public game-accessibility guidance; conceptual reference only. No site text, testimonials, screenshots, examples, or assets are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D04 adopts the accessibility goal that important onboarding information remains recoverable after the Intro: controls and principles must be available through D11 Help, the next objective remains available through D05, and any real opening policy outcome remains inspectable through D10 Chronicle/policy history.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Exact decorative/generated Intro prose is not persisted as a second story store because that would violate D01's canonical-state boundary. The durable/replayable requirement is therefore applied to instructions and canonical in-world outcomes, not to byte-identical presentation wording.
+
+=== REF 049 ===
+TYPE: ARTICLE
+TITLE: 10 Usability Heuristics for User Interface Design
+AUTHORS: Jakob Nielsen; later editorial updates by Nielsen Norman Group
+YEAR: 1994; page reviewed 2024
+URL: https://www.nngroup.com/articles/ten-usability-heuristics/
+LICENSE_RIGHTS: Nielsen Norman Group article consulted for general interaction-design heuristics. No article text, diagrams, posters, or examples are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D05 uses the general heuristics of visibility of system status, recognition rather than recall, consistency, user control/freedom, error prevention, and minimalist relevance to keep ordinary F1 focused on current context and applicable actions instead of exposing every backend subsystem or requiring players to memorize hidden commands.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The heuristics are broad usability principles, not game-specific empirical acceptance criteria. D05's 30-second orientation and two-activation targets are project test heuristics that require D21 human evaluation rather than claims derived from Nielsen Norman Group.
+
+=== REF 050 ===
+TYPE: GUIDELINE
+TITLE: Xbox Accessibility Guideline 107: Input
+AUTHORS: Microsoft
+YEAR: 2026-current guidance consulted
+URL: https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/107
+LICENSE_RIGHTS: Microsoft Learn accessibility guidance consulted for design requirements only. No page text, examples, videos, screenshots, or implementation code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D05 requires ordinary F1 actions to be operable through keyboard/digital input as well as mouse, avoids mouse-only or simultaneous/held-input requirements for the ADV interface, and treats shortcuts as accelerators rather than the only discovery path.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Full control-remapping ownership is deferred to D11/D17. D05 freezes only F1's requirement that its ordinary interaction categories have digital-keyboard equivalents and no mandatory analog pointer action.
+
+=== REF 051 ===
+TYPE: GUIDELINE
+TITLE: Xbox Accessibility Guideline 113: UI focus handling
+AUTHORS: Microsoft
+YEAR: 2026-current guidance consulted
+URL: https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/113
+LICENSE_RIGHTS: Microsoft Learn accessibility guidance consulted for design requirements only. No page text, examples, videos, screenshots, or implementation code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D05 requires a clearly visible F1 focus indicator, separates keyboard focus from selected-person/selected-concern state, and specifies deterministic focus restoration after dialogue, action results, stale-target recovery, and transient pickers.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Visual focus styling itself is owned by D02/D17. D05 freezes the F1 behavioral focus contract so later implementation cannot satisfy visual styling while leaving focus movement unpredictable.
+
+=== REF 052 ===
+TYPE: GUIDELINE
+TITLE: Xbox Accessibility Guideline 114: UI context
+AUTHORS: Microsoft
+YEAR: 2026-current guidance consulted
+URL: https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/114
+LICENSE_RIGHTS: Microsoft Learn accessibility guidance consulted for design requirements only. No page text, examples, videos, screenshots, or implementation code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D05 requires controls to communicate their action/navigation meaning and canonical time cost before activation, keeps the player's current F1 hierarchy/context visible, and requires disabled/error states to explain what is expected without relying on hidden hover text.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D05 applies these UI-context principles inside the Legacy PC-98 presentation rather than adopting a generic platform menu style. Full cross-product context/accessibility verification remains D17/D21 responsibility.
+
+=== REF 053 ===
+TYPE: DOCUMENTATION
+TITLE: Cataclysm: Dark Days Ahead Documentation — Overmap Generation
+AUTHORS: Cataclysm: Dark Days Ahead contributors
+YEAR: 2026-current documentation consulted
+URL: https://docs.cataclysmdda.org/JSON/OVERMAP.html
+LICENSE_RIGHTS: The DDA documentation site states CC BY-SA 3.0 for its documentation. Descendants consults the architecture/visibility concepts only; no documentation prose, example JSON, symbols, game data, UI art, map content, or source implementation is copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D06 uses the mature overmap/local-map distinction as a precedent for keeping WORLD as an abstract regional/topological presentation and LOCAL as the physically controlled high-detail context rather than pretending one zoomable map is identical to local simulation. The documented overmap-vision concept is also used only as confirmation that player maps may legitimately expose different levels of known information; Descendants does not import DDA's five vision states and instead derives its map badges from existing knowledge/report/perception authority.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D06 route lines remain Descendants-specific schematic projections of explicit WorldProvider topology. DDA travel-cost types, overmap terrain definitions, symbols, connections, generation order, and data files are not ported. The existing REF 016 remains the broader architectural/source-code reference; this entry records the specific documentation actually consulted for D06.
+
+=== REF 054 ===
+TYPE: DOCUMENTATION
+TITLE: Dwarf Fortress Wiki — Health screen
+AUTHORS: Dwarf Fortress Wiki contributors; game system by Bay 12 Games
+YEAR: 2026-current page consulted; documented game lineage includes DF2014/current health-screen systems
+URL: https://www.dwarffortresswiki.org/index.php/DF2014:Health_screen
+LICENSE_RIGHTS: Community wiki documentation is consulted as a shipped-game behavior/interface reference. Descendants does not copy wiki prose, symbols, screenshots, body-part tables, game data, or Dwarf Fortress implementation/content. Exact wiki reuse licensing is therefore not relied upon for this design.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D07 uses the health-screen lineage only as a precedent that a deep simulation can organize player-facing health around a selected subject, recorded conditions/impairments and actionable care status rather than exposing an undifferentiated character object. Descendants deliberately keeps a much shallower body model for the frozen vertical slice because its current canonical PathologyCase has no per-limb tissue/anatomy state.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Dwarf Fortress body-part injury taxonomy, diagnosis workflow, medical labor matrix, symbols, treatment procedures and anatomy simulation are explicitly not adopted. This reference supports restraint and information organization, not expansion of Descendants medicine.
+
+=== REF 055 ===
+TYPE: STANDARD
+TITLE: WAI-ARIA Authoring Practices Guide — Listbox Pattern
+AUTHORS: W3C Web Accessibility Initiative; ARIA Authoring Practices Task Force
+YEAR: 2026-current guidance consulted
+URL: https://www.w3.org/WAI/ARIA/apg/patterns/listbox/
+LICENSE_RIGHTS: W3C accessibility guidance consulted for interaction semantics only. No specification prose, examples, JavaScript, CSS or demo implementation is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D07 uses the documented single-selection keyboard/focus model as a fallback requirement if the F2 subject picker ever must become a custom composite. The preferred first implementation remains a native HTML select because it is simpler and avoids unnecessary custom focus management. Focus and selected-subject state must remain programmatically distinct.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D07 does not mandate an ARIA listbox. A custom listbox may replace native select only after a bounded technical spike and human evidence show native selection is inadequate; if used, the implementation must follow established keyboard/selection semantics.
+
+=== REF 056 ===
+TYPE: STANDARD
+TITLE: PROV-O: The PROV Ontology / PROV Family of Documents
+AUTHORS: W3C Provenance Working Group; editors including Stian Soiland-Reyes, Stephan Zednik, Jun Zhao, Paul Groth and Luc Moreau
+YEAR: 2013 W3C Recommendation / overview
+URL: https://www.w3.org/TR/prov-o/
+LICENSE_RIGHTS: W3C Recommendation consulted as a provenance-model standard. Descendants uses only high-level conceptual distinctions concerning entities, activities, agents, derivation and attribution. No ontology source, RDF vocabulary, examples, specification prose, diagrams or serialization are copied into the game.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D08 uses W3C PROV as a disciplined external reference for keeping a claim distinct from the activity/person/institution that produced or transmitted it and for preserving derivation/source lineage without treating provenance as proof of truth. The existing KnowledgeEntry, SocialRecord and action fields remain the runtime model; D08 exposes concise human-readable source/access descriptions rather than a PROV graph.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not adopt RDF, OWL, PROV-O class names, PROV-N, bundles or a general provenance interchange layer. This reference is intentionally stopped at the conceptual level because a new provenance framework would violate the top-down/no-reinvention/no-unnecessary-complexity rules.
+
+=== REF 057 ===
+TYPE: DOCUMENTATION
+TITLE: Caves of Qud Roadmap — Journal / accumulated knowledge design
+AUTHORS: Freehold Games
+YEAR: roadmap page consulted 2026; journal feature lineage announced during development
+URL: https://cavesofqud.com/roadmap/
+LICENSE_RIGHTS: Official shipped-game/development-design page consulted as a design precedent only. No prose, UI assets, game content, historical text, code or journal data are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D08 uses the official roadmap as a shipped-game precedent for a journal that accumulates useful locations and historical information as the character learns them through play and then connects learned information back to navigation. Descendants applies only the principle that the knowledge surface grows from observation/communication rather than exposing an omniscient database; D06 remains the map authority and D10 remains Chronicle authority.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Qud's secrets, water rituals, generated sultan history, freeform notes, hotkeys, map-distance rules and UI presentation are not adopted. The reference supports the discovery-bound journal principle, not content or mechanics copying.
+
+=== REF 058 ===
+TYPE: DOCUMENTATION
+TITLE: Dungeon Crawl Stone Soup Manual — Items and inventory interaction
+AUTHORS: Dungeon Crawl Stone Soup contributors
+YEAR: 2026-current official manual consulted
+URL: https://github.com/crawl/crawl/blob/master/crawl-ref/docs/crawl_manual.rst
+LICENSE_RIGHTS: The official crawl/crawl repository states GPL-2.0-or-later for the project. Descendants consults the manual and shipped-game interaction lineage as a design precedent only; no Crawl code, manual prose, item data, keymap tables, UI assets or game content are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D09 uses the mature keyboard-first inventory lineage as a precedent for treating inventory primarily as what the controlled player character is carrying, presenting item identity before optional detail, and exposing contextual item actions without requiring mouse drag-and-drop. This supports removing QA16's arbitrary other-person inventory selector and keeping shared settlement/expedition stock visibly separate from personal carried items.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not adopt Crawl's letter slots, 52-item cap, item classes, unidentified-item system, pickup/drop commands, inscriptions, quiver/equipment commands or inventory key bindings. Current Descendants physical ownership, aggregate resources and canonical time costs remain authoritative.
+
+=== REF 059 ===
+TYPE: ARTICLE
+TITLE: Event Sourcing
+AUTHORS: Martin Fowler
+YEAR: 2005
+URL: https://martinfowler.com/eaaDev/EventSourcing.html
+LICENSE_RIGHTS: Public technical article consulted as an architectural concept reference only. Descendants does not copy article prose, diagrams, sample domain objects, code or implementation structure.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D10 uses only the high-level distinction between an application's current state and a retained sequence of events explaining how that state arose. This supports keeping F5 Chronicle as a historical projection distinct from current F1/F2/F3/F4 state. Descendants explicitly does not migrate its authoritative SandboxGameState to a general Event Sourcing architecture as part of the Legacy vertical slice.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Current SandboxGameState remains authoritative. D18/D24 may later add bounded significant-history retention if the current 500-entry Chronicle cap is insufficient, but replaying the entire simulation from events is not implied or pre-approved by this reference.
+
+=== REF 060 ===
+TYPE: DOCUMENTATION
+TITLE: Dwarf Fortress Wiki — Legends mode
+AUTHORS: Dwarf Fortress Wiki contributors; game system by Bay 12 Games
+YEAR: 2026-current page consulted; Legends lineage spans multiple Dwarf Fortress versions
+URL: https://www.dwarffortresswiki.org/index.php/Legends_mode
+LICENSE_RIGHTS: Community documentation of a shipped game is consulted only as a design precedent. Descendants does not copy wiki prose, screenshots, event taxonomy, maps, XML structure, game data or Dwarf Fortress content/implementation.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D10 uses Legends only as a precedent that a generated world can have a browsable historical layer and, importantly, that history can conceptually exist without all of it being revealed to the player. Descendants applies the latter principle much more strictly through existing Chronicle epistemic visibility, communication, return and witness routes.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not adopt Reveal All History for normal play, omniscient historical figures/civilization browsing, Legends UI, map history, XML export, ages or Dwarf Fortress event content. F5 remains viewpoint-bounded lived history rather than a global world-history encyclopedia.
+
+=== REF 061 ===
+TYPE: STANDARD
+TITLE: WAI-ARIA Authoring Practices Guide — Dialog (Modal) Pattern
+AUTHORS: W3C Web Accessibility Initiative; ARIA Authoring Practices Task Force
+YEAR: 2026-current guidance consulted
+URL: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+LICENSE_RIGHTS: W3C accessibility guidance consulted for interaction semantics. No APG example JavaScript, CSS, markup, prose, or demo implementation is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D11 adopts established modal semantics for F10 System: focus moves inside the modal, Tab/Shift+Tab remain within it, Escape backs out/closes according to the local state machine, a visible close/resume control exists, focus returns to a logical invoker, and irreversible confirmations initially focus the least destructive action when appropriate.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D11 prefers native/semantic HTML where possible and treats the APG as behavior guidance rather than source code. The System overlay remains a Descendants-specific Legacy PC-98 composition.
+
+=== REF 062 ===
+TYPE: DOCUMENTATION
+TITLE: Electron contextBridge / ipcRenderer documentation
+AUTHORS: OpenJS Foundation / Electron contributors
+YEAR: 2026-current documentation consulted
+URL: https://www.electronjs.org/docs/latest/api/context-bridge
+LICENSE_RIGHTS: Electron project/documentation is MIT-licensed; consulted as API/security guidance. No Electron source or documentation example code is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D11 requires the production renderer to receive only narrowly named desktop capabilities through an isolated preload bridge. It explicitly forbids exposing the raw ipcRenderer object, arbitrary IPC channel send functions, generic filesystem authority, BrowserWindow, or Node globals. The current authoring-era tdocDesktop preload surface must therefore be removed from the release-facing System path when implementation begins.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D11's conceptual maximum required native bridge is a product-specific requestQuit-style function unless D20 demonstrates a packaging-specific need for a similarly narrow file-dialog capability. Existing BrowserWindow security flags remain authoritative.
+
+=== REF 063 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Allow controls to be remapped / reconfigured
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/allow-controls-to-be-remapped-reconfigured/
+LICENSE_RIGHTS: Collaborative public accessibility guidance consulted conceptually. No page prose, screenshots, examples, plugin code, or assets are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D11 records control remapping as valuable prior art but deliberately does not build a new input-binding subsystem before the Legacy vertical slice. Every essential action must instead be reachable through semantic keyboard controls (Tab/Shift+Tab plus Enter/Space), with F1-F5/F10 and map letters treated as visible accelerators. D17/D21 may elevate remapping before final freeze only if accessibility testing demonstrates the current digital-control coverage is insufficient.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: This is an explicit top-down scope decision, not a claim that remapping lacks accessibility value. It prevents implementing a general key-binding framework before the project's current test question requires it.
+
+=== REF 064 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Provide separate volume controls or mutes for effects, speech and background / music
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/provide-separate-volume-controls-or-mutes-for-effects-speech-and-background-music/
+LICENSE_RIGHTS: Collaborative public accessibility guidance consulted conceptually. No page prose, screenshots, audio examples, game assets, or implementation code are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D11 uses this guidance to make a deliberate non-adoption decision for the current vertical slice: source audit shows no player-facing audio runtime, so a Legacy-looking Audio option or fake volume sliders would not control a real system and must not be shown. If audio is later approved and implemented, independent controllable streams should be reconsidered rather than adding one meaningless master toggle.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The old 0.8.4 System screenshot's Audio command is presentation lineage only and is not reproduced as a nonfunctional product option.
+
+=== REF 065 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Ensure that all settings are saved/remembered
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/ensure-that-all-settings-are-saved-remembered/
+LICENSE_RIGHTS: Collaborative public accessibility guidance consulted conceptually. No checklist text, page prose, screenshots, spreadsheet, or assets are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D11 reinforces the existing design that text scale, High Contrast and Reduced Motion are presentation preferences that should be remembered best-effort across sessions without ever becoming canonical world state. If preference persistence is unavailable, the settings remain usable for the current session and failure is reported honestly rather than coupling accessibility to world-save integrity.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The guideline is applied only to settings that actually exist in the frozen product. D11 does not invent difficulty, audio, game-speed, localization, profile, or other settings merely to populate the menu.
+
+=== REF 066 ===
+TYPE: DOCUMENTATION
+TITLE: Official Darkest Dungeon Wiki — Expeditions / Provisions / Getting Started
+AUTHORS: Darkest Dungeon Wiki contributors; game design by Red Hook Studios
+YEAR: 2026-current official wiki pages consulted; documented Darkest Dungeon lineage
+URL: https://darkestdungeon.wiki.gg/wiki/Expedition ; https://darkestdungeon.wiki.gg/wiki/Provisions ; https://darkestdungeon.wiki.gg/wiki/Getting_Started
+LICENSE_RIGHTS: Official/community-maintained game documentation consulted as a shipped-game interaction precedent only. Descendants does not copy wiki prose, UI, art, item lists, balance values, mission structures, game data or code. Reuse licensing is therefore not relied upon.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D12 uses only the high-level pre-embark staging precedent: destination/expedition commitment, party formation and deliberate provisioning occur before actual travel begins. This supports separating D12's zero-time planning surface from D13 physical travel and keeping provisions visible as a meaningful pre-departure choice. Design-freeze D13 additionally uses the same documentation's exploration/retreat structure only as a precedent that encounter disengagement and abandoning/returning from a larger expedition are distinct, legible risk-management decisions; Descendants retains its own WEDO and physical-return mechanics.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not adopt Darkest Dungeon's fixed four-hero party, dungeon missions, provision shop economy, region-specific provision heuristics, hunger events, classes, art, terminology or UI composition. Existing Descendants crew limits, supply formulas, routes, doctrines and time model remain authoritative.
+
+=== REF 067 ===
+TYPE: DOCUMENTATION
+TITLE: Battle Brothers Wiki — Getting Started / Game Mechanics / Tools and Supplies
+AUTHORS: Battle Brothers Wiki contributors; game design by Overhype Studios
+YEAR: 2026-current documentation consulted; Battle Brothers shipped-game lineage
+URL: https://battlebrothers.fandom.com/wiki/Getting_Started ; https://battlebrothers.fandom.com/wiki/Game_Mechanics ; https://battlebrothers.fandom.com/wiki/Tools_and_Supplies
+LICENSE_RIGHTS: Community documentation is consulted as a shipped-game behavior/economy reference only. Descendants does not copy wiki prose, tables, images, game data, UI, item definitions or code. Fandom community content reports CC-BY-SA unless otherwise noted, but no content is reused in the product.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D12 uses Battle Brothers only as a precedent that travel-capable groups depend on finite provisions/tools/medical resources and that carrying resources away from a settlement/company has an opportunity cost that should be visible before departure. Descendants applies this through its already-existing field-endurance and settlement-reserve calculations rather than importing a mercenary economy.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Crowns, wages, ammunition, food spoilage, trade prices, mercenary morale/desertion, Battle Brothers equipment/inventory logic and UI are explicitly not adopted. Research stops here because D12 already has sufficient prior art plus authoritative internal formulas.
+
+=== REF 068 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Do not make precise timing essential to gameplay
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/do-not-make-precise-timing-essential-to-gameplay-offer-alternatives-actions-that-can-be-carried-out-while-paused-or-a-skip-mechanism/
+LICENSE_RIGHTS: Collaborative public accessibility guidance consulted conceptually. No page prose, images, examples, code, or assets are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D13 uses this as support for preserving discrete, player-paced field and WEDO decisions instead of introducing real-time reaction windows. Canonical world time advances when the player commits a field action, but human response speed in real seconds is not a skill check in the first vertical slice.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not add pause-and-plan mechanics from any cited example; its existing action-driven simulation already supports discrete decisions.
+
+=== REF 069 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Avoid repeated inputs (button-mashing / quick time events)
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/avoid-repeated-inputs-button-mashing-quick-time-events/
+LICENSE_RIGHTS: Collaborative public accessibility guidance consulted conceptually. No prose, screenshots, examples, code, or assets are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D13 requires one semantic activation per field action and forbids using rapid repeated presses or QTE-style input as encounter difficulty. The high-level WEDO round remains a deliberate single activation after choosing a directive.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: This does not determine combat balance or outcome; it constrains only the required input method.
+
+=== REF 070 ===
+TYPE: GUIDELINE
+TITLE: Game Accessibility Guidelines — Ensure no essential information is conveyed by sounds alone
+AUTHORS: Game Accessibility Guidelines contributors
+YEAR: 2026-current guidance consulted
+URL: https://gameaccessibilityguidelines.com/ensure-no-essential-information-is-conveyed-by-sounds-alone/
+LICENSE_RIGHTS: Collaborative public accessibility guidance consulted conceptually. No prose, audio, images, examples, code, or assets are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D13 requires route-blocked states, encounter activation/results, serious field-condition warnings, navigation uncertainty and return state to remain readable through text/visual structure even if audio is later added. The frozen first slice remains fully playable muted.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D11 currently freezes no player-facing audio runtime; this D13 rule prevents future audio from becoming the sole carrier of field-critical information.
+
+=== REF 071 ===
+TYPE: PAPER
+TITLE: Do team and individual debriefs enhance performance? A meta-analysis
+AUTHORS: Scott I. Tannenbaum; Christopher P. Cerasoli
+YEAR: 2013
+URL: https://pubmed.ncbi.nlm.nih.gov/23516804/
+LICENSE_RIGHTS: Peer-reviewed Human Factors article consulted for high-level evidence about structured debriefing. No article prose, tables, figures, instruments, or copyrighted text are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D14 uses the paper only as support for making post-expedition reflection concise and structured around reconstructing experience and choosing next actions. The reported workplace/training performance effect is not treated as a predicted effect on game players, and no training instrument or debrief script is copied.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: DOI 10.1177/0018720812448394. This is conceptual design grounding, not a claim that Descendants is a training intervention.
+
+=== REF 072 ===
+TYPE: DOCUMENTATION
+TITLE: National Training Center Exercise Standard Operating Procedures — Annex A After Action Review Standards
+AUTHORS: U.S. Army National Training Center / Fort Irwin
+YEAR: 2023
+URL: https://home.army.mil/irwin/application/files/1816/9455/6714/FY23_JUNE_2023_NTC_EXSOP_RELEASEABLE.pdf
+LICENSE_RIGHTS: Official U.S. Army publication consulted as a process reference. Descendants copies no page layout, diagrams, lengthy prose, military scenario content, or training materials.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D14 adapts only the general separation between intended action, what actually happened, and what should be considered next. Player-facing terminology is translated into the neutral INTENT / ACTUAL / COST / FINDINGS / NEXT return-report grammar; no military doctrine or performance grading is imported.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Reference is used to avoid an unstructured diagnostics dump. D14 is a game return report, not a formal Army AAR.
+
+=== REF 073 ===
+TYPE: DOCUMENTATION
+TITLE: Official Darkest Dungeon Wiki — Stress / persistent post-expedition consequence
+AUTHORS: Darkest Dungeon Wiki contributors; game design by Red Hook Studios
+YEAR: 2026
+URL: https://darkestdungeon.wiki.gg/wiki/Stress
+LICENSE_RIGHTS: Official/community-maintained game documentation consulted as a shipped-game precedent only. Descendants copies no prose, art, UI, game data, formulas, classes, stress values, or code.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D14 uses only the broad shipped-game precedent that returning home need not erase every field consequence. Descendants therefore presents its already-existing persistent health/fatigue/pathology state rather than adding a return-time reset.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not adopt Darkest Dungeon's Stress system, town treatment economy, resolve, quirks, afflictions, death-door rules, or balance values. Current Descendants body model remains authoritative.
+
+
+=== REF 074 ===
+TYPE: BOOK
+TITLE: A Playful Production Process: For Game Designers (and Everyone)
+AUTHORS: Richard Lemarchand
+YEAR: 2021
+URL: https://mitpress.mit.edu/9780262045513/a-playful-production-process/
+LICENSE_RIGHTS: Commercial MIT Press book/public publisher description and table-of-contents information consulted as production-process prior art. Descendants copies no book prose, diagrams, templates, illustrations, exercises, or copyrighted design materials.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D15 uses the book only as high-level grounding for treating the vertical slice as a connected preproduction proof that crosses core systems, is playtested, uses debug/test support where useful, and retires production risk before deeper full-production expansion. Descendants deliberately includes its Title/Intro in the slice because validating the Legacy-ADV beginning is itself the project's primary product risk.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: No implementation framework is taken from the book. The user's frozen top-down/uncertainty-reduction rules and D03-D14 remain the actual Descendants design authority.
+
+=== REF 075 ===
+TYPE: ARTICLE
+TITLE: A Mini-Postmortem Roundup — War Commander section, The Vertical Slice
+AUTHORS: Game Developer Magazine Staff; War Commander section by David Scott
+YEAR: 2013
+URL: https://www.gamedeveloper.com/business/a-mini-postmortem-roundup
+LICENSE_RIGHTS: Game Developer/Informa article consulted as shipped-production/process retrospective. Descendants copies no article prose, screenshots, game data, art, UI, code, or proprietary production material.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D15 uses the War Commander retrospective only as a production precedent for developing a little of each necessary game layer and playing the result end-to-end before overdeveloping one branch. This directly supports the frozen top-down vertical-slice order and the prohibition on returning to QA17-style detail before the connected route exists.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: War Commander mechanics, Facebook/live-service design, RTS systems, monetization, content scope and UI are not adopted. The reference is used only for the process lesson about end-to-end vertical-slice breadth.
+
+=== REF 076 ===
+TYPE: DOCUMENTATION
+TITLE: Jest Snapshot Testing documentation
+AUTHORS: Jest contributors / OpenJS Foundation ecosystem
+YEAR: 2026-current documentation consulted
+URL: https://jestjs.io/docs/snapshot-testing
+LICENSE_RIGHTS: Public Jest project documentation consulted for testing-process prior art. Descendants copies no documentation prose, examples, source code, snapshot implementation, matcher code, or tooling.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: Design-freeze D16 uses only the process principle that stored snapshots are reviewable test artifacts, a mismatch can indicate either a regression or an intentional change, and expected snapshots should be updated only after the change is deliberately reviewed. D16 additionally normalizes host/runtime noise and pairs snapshots with explicit semantic invariants rather than relying on snapshot equality alone.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Jest is not adopted as a dependency by D16. Existing Descendants Node test infrastructure remains authoritative. The reference supports review/update discipline only; generated-world Golden route semantics come from first-party Legacy Golden lineage and D13-D15.
+
+=== REF 077 ===
+TYPE: STANDARD
+TITLE: WAI-ARIA Authoring Practices Guide — Developing a Keyboard Interface
+AUTHORS: W3C Web Accessibility Initiative; ARIA Authoring Practices Task Force
+YEAR: 2026-current guidance consulted
+URL: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/
+LICENSE_RIGHTS: W3C accessibility guidance consulted for keyboard/focus semantics. No APG example implementation, JavaScript, CSS, markup, diagrams, or prose is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D17 adopts the established separation between Tab navigation among components and arrow-key navigation within true composite widgets, persistent visible focus, logical focus recovery when focused elements are removed, and a clear distinction between keyboard focus and selected state. D17 also reinforces native HTML controls before custom ARIA composites.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not add role=application globally and does not implement custom composites merely for retro styling. The guidance constrains behavior only when such patterns are actually needed.
+
+=== REF 078 ===
+TYPE: GUIDELINE
+TITLE: WCAG 2.2 Understanding Success Criterion 4.1.3 — Status Messages
+AUTHORS: W3C Accessibility Guidelines Working Group
+YEAR: 2026-current Understanding document consulted
+URL: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html
+LICENSE_RIGHTS: W3C explanatory accessibility guidance consulted conceptually. No examples, prose, techniques, or implementation snippets are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D17 uses this guidance to constrain ordinary asynchronous/status feedback: success, busy, preference changes, stale-target notices and non-blocking errors should be programmatically exposed without stealing focus, normally through polite status semantics; assertive announcements are reserved for genuinely urgent blocking conditions, and unchanged state must not be re-announced on every rerender.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Existing QA16 role=status/aria-live concepts are reusable, but D17 requires duplicate suppression and the same hidden-truth boundary in live-region strings as in visible UI.
+
+=== REF 079 ===
+TYPE: DOCUMENTATION
+TITLE: MDN Web Docs — forced-colors CSS media feature
+AUTHORS: MDN contributors
+YEAR: 2026-current documentation consulted
+URL: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/forced-colors
+LICENSE_RIGHTS: MDN documentation consulted for browser/platform interoperability guidance. No example CSS, prose, screenshots, or code is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D17 requires the Electron/Chromium Legacy interface to respect operating-system forced-colour modes, including Windows High Contrast behavior, rather than globally defeating user-selected colours. Implementation may make small targeted border/decoration adjustments, prefer system colours where required, and remove scanline/texture interference while leaving user-agent colour forcing enabled.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D17 distinguishes the game's own High Contrast toggle from OS forced-colour mode. `forced-color-adjust:none` is not permitted globally and requires a narrowly documented technical justification if ever used.
+
+=== REF 080 ===
+TYPE: DOCUMENTATION
+TITLE: MDN Web Docs — IDBDatabase.transaction() / transaction durability option
+AUTHORS: MDN contributors
+YEAR: 2026-current documentation consulted
+URL: https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction
+LICENSE_RIGHTS: MDN browser-platform documentation consulted for IndexedDB transaction options and durability semantics. No page prose, examples, JavaScript, diagrams, or assets are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D18 prefers the IndexedDB `strict` durability transaction hint for canonical world writes, world replacement and recovery transactions on supported modern target runtimes, while retaining atomic transaction/revision semantics and a truthful default-durability fallback when the option is unsupported. The documentation is also used to distinguish transaction atomicity from the stronger persistence-to-storage durability hint.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D18 does not claim that a strict hint makes saves immune to all OS/filesystem/hardware failure. It is a technical durability preference, not a gameplay feature or security guarantee.
+
+=== REF 081 ===
+TYPE: DOCUMENTATION
+TITLE: MDN Web Docs — Web Locks API
+AUTHORS: MDN contributors
+YEAR: 2026-current documentation consulted
+URL: https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API
+LICENSE_RIGHTS: MDN browser-platform documentation consulted for same-origin shared/exclusive coordination semantics. No page prose, examples, code, or diagrams are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D18 retains the existing use of a named Web Lock as an optional readers/writer-style coordination aid around persistence operations. Correctness still depends on in-transaction revision/generation comparison, because Web Locks may be unavailable and coordination alone does not prove save lineage.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not use lock stealing, distributed locks, or lock state as canonical world data. The application must remain fail-closed without Web Locks.
+
+=== REF 082 ===
+TYPE: DOCUMENTATION
+TITLE: MDN Web Docs — Storage API / persistent storage buckets
+AUTHORS: MDN contributors
+YEAR: 2026-current documentation consulted
+URL: https://developer.mozilla.org/en-US/docs/Web/API/Storage_API
+LICENSE_RIGHTS: MDN browser-platform documentation consulted for best-effort versus persistent storage retention and `navigator.storage.persist()` capability. No documentation prose, examples, code, or diagrams are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D18 treats persistent-storage permission as a best-effort eviction-resilience enhancement where the runtime supports it. Denial/unavailability must not change canonical save semantics, and the application never presents the API as a guarantee against all data loss. Explicit validated JSON export remains the first-slice portable backup path.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Electron packaging/origin behavior may make this API unavailable or unnecessary; D18 allows omission in that case without altering the persistence architecture.
+
+=== REF 083 ===
+TYPE: DOCUMENTATION
+TITLE: Playwright — Visual comparisons / screenshot assertions
+AUTHORS: Microsoft / Playwright contributors
+YEAR: 2026-current documentation consulted
+URL: https://playwright.dev/docs/next/test-snapshots ; https://playwright.dev/docs/api/class-pageassertions
+LICENSE_RIGHTS: Public Playwright documentation consulted for screenshot-regression workflow and rendering-environment constraints. No documentation prose, example test code, implementation, snapshot files, images, or source code is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D19 adopts Playwright only as bounded visual-regression prior art/tooling: current-build viewport screenshots, stable screenshot assertions, animation-disabled steady-state capture, and baseline comparison only within a pinned equivalent rendering environment. Playwright's own warning that rendering varies with OS, version, settings, hardware, power source and headless mode directly supports D19's environment fingerprint and the rule that environment mismatch is not automatically a UI regression. Human review remains the acceptance authority.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D19 freezes strict comparison on the eventual pinned Primary environment and does not use screenshot equality as an aesthetic/design score. Historical Legacy screenshots remain structural references rather than pixel baselines.
+
+=== REF 084 ===
+TYPE: DOCUMENTATION
+TITLE: Playwright — Electron automation API
+AUTHORS: Microsoft / Playwright contributors
+YEAR: 2026-current documentation consulted
+URL: https://playwright.dev/docs/api/class-electron ; https://playwright.dev/docs/api/class-electronapplication
+LICENSE_RIGHTS: Public Playwright documentation consulted for Electron test capability and native-dialog test limitations. No example code, source code, documentation prose, screenshots, or test assets are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D19 adopts Playwright's Electron application automation as the preferred bounded mechanism for launching the actual Electron player build, obtaining the real application window/page and capturing viewport screenshots. Native OS dialogs may be replaced by deterministic test doubles only when the visual subject is the in-app post-dialog state; such a harness cannot be cited as proof of the native dialog itself.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Playwright Electron support is treated as test tooling rather than game runtime architecture. If target-runtime launch proves incompatible, D19 permits a technical implementation change to the capture harness, not a game-design change.
+
+=== REF 085 ===
+TYPE: DOCUMENTATION
+TITLE: Application Packaging / Application Distribution
+AUTHORS: Electron project contributors; OpenJS Foundation ecosystem
+YEAR: 2026-current documentation consulted
+URL: https://www.electronjs.org/docs/latest/tutorial/application-distribution
+LICENSE_RIGHTS: Public Electron documentation consulted for packaging/distribution architecture. No documentation prose, code example, branding asset, executable, or source implementation is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D20 adopts the official recommendation to use established Electron packaging tooling rather than manually assembling/rebranding Electron binaries as the normal tester-build path. Existing Descendants renderer/runtime build remains project-owned; packaging is a later layer.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Manual binary packaging remains only a diagnostic fallback if the adopted Forge path proves incompatible.
+
+=== REF 086 ===
+TYPE: DOCUMENTATION
+TITLE: Electron Forge — ZIP Maker
+AUTHORS: Electron Forge contributors
+YEAR: 2026-current documentation consulted
+URL: https://www.electronforge.io/config/makers/zip
+LICENSE_RIGHTS: Public Electron Forge documentation consulted for distributable-format selection. No source code, examples, documentation prose, configuration blocks, or assets are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D20 selects a ZIP distributable for the first internal Windows tester artifact because the Forge ZIP maker wraps a packaged application without introducing an installer lifecycle. Descendants separately owns the human-readable tester envelope, fixture registry, manifests and acceptance gates.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D20 does not claim the ZIP archive bytes themselves are reproducible unless implementation proves that independently.
+
+=== REF 087 ===
+TYPE: DOCUMENTATION
+TITLE: Electron Code Signing
+AUTHORS: Electron project contributors
+YEAR: 2026-current documentation consulted
+URL: https://www.electronjs.org/docs/latest/tutorial/code-signing
+LICENSE_RIGHTS: Public Electron security/distribution documentation consulted conceptually. No signing scripts, credentials, certificates, code, screenshots, or documentation prose are copied.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D20 distinguishes a private/internal tester ZIP, which may be honestly distributed unsigned when no credential is available, from a future public distribution where signing must be revisited. Tester instructions never require globally disabling Windows security controls.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Signing-service/provider selection and public installer release engineering remain outside the first tester-build design.
+
+=== REF 088 ===
+TYPE: DOCUMENTATION
+TITLE: Electron app API — userData, logs, setPath and setAppLogsPath
+AUTHORS: Electron project contributors
+YEAR: 2026-current documentation consulted
+URL: https://www.electronjs.org/docs/latest/api/app
+LICENSE_RIGHTS: Public Electron API documentation consulted for application-data/log path semantics. No Electron source or documentation example is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D20 keeps ordinary packaged saves/settings in Electron's conventional per-user profile and uses explicit path override only for isolated focused-test profiles/log output. This avoids inventing a second browser storage implementation and prevents test resets from targeting the normal player profile.
+ADOPTION: ADOPTED
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Exact test directory naming may adapt to Windows write-permission constraints, but normal/test profile separation is frozen.
+
+
+=== REF 089 ===
+TYPE: PAPER
+TITLE: Methods for Game User Research: Studying Player Behavior to Enhance Game Design
+AUTHORS: Heather Desurvire; Magy Seif El-Nasr
+YEAR: 2013
+DOI: 10.1109/MCG.2013.61
+URL: https://ieeexplore.ieee.org/document/6562711/
+LICENSE_RIGHTS: Published IEEE article consulted for high-level game-user-research method selection. No article prose, figures, questionnaires, heuristic lists, or copyrighted procedure text is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D21 adopts the general Games User Research principle that game evaluation benefits from combining observed behavior with appropriate HCI/game-specific methods rather than relying on a single questionnaire or developer intuition. The paper's discussion of think-aloud/heuristic methods supports treating human observation as a distinct evidence stream from automated regression.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D21 defines its own bounded facilitator protocol and does not reproduce the paper's case-study method or heuristic content.
+
+=== REF 090 ===
+TYPE: PAPER
+TITLE: The Development and Validation of the Game User Experience Satisfaction Scale (GUESS)
+AUTHORS: Mikki H. Phan; Joseph R. Keebler; Barbara S. Chaparro
+YEAR: 2016
+DOI: 10.1177/0018720816669646
+URL: https://pubmed.ncbi.nlm.nih.gov/27647156/
+LICENSE_RIGHTS: Published Human Factors research consulted for the high-level conclusion that video-game experience/satisfaction is multi-dimensional and can be evaluated systematically. The GUESS item set, scale wording, scoring system, tables, figures, and copyrighted prose are not copied or reconstructed.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D21 avoids collapsing playtest feedback into one vague fun score. It records separate project-owned judgments of control clarity, consequence clarity, engagement, and voluntary desire to continue, alongside qualitative explanations. These are explicitly not represented as GUESS scores or psychometrically validated measures.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The validated GUESS instrument is not administered in the first-slice development protocol; D21 uses short diagnostic questions appropriate to iterative internal playtesting.
+
+=== REF 091 ===
+TYPE: STANDARD
+TITLE: ISO 9241-11:2018 — Ergonomics of human-system interaction — Part 11: Usability: Definitions and concepts
+AUTHORS: International Organization for Standardization (ISO)
+YEAR: 2018; confirmed current in 2023
+URL: https://www.iso.org/standard/63500.html
+LICENSE_RIGHTS: ISO standard metadata/preview consulted for conceptual usability definitions. The paid standard text is not bundled, copied, reproduced, or paraphrased beyond high-level public concepts.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D21 separates whether specified testers achieve a goal (effectiveness), the time/effort/interventions required (efficiency), and their resulting experience/satisfaction. This supports recording completion and intervention evidence separately from engagement/preference feedback.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: Descendants does not claim ISO 9241-11 certification or formal conformity from this internal protocol.
+
+=== REF 092 ===
+TYPE: PAPER
+TITLE: Playing Aloud: Leveraging Game Commentary Culture for Playtesting
+AUTHORS: Anthony Pellicone; David Weintrop; Diane Jass Ketelhut; Ekta Shokeen; Michel Cukier; Jandelyn Dawn Plane; Firoozeh Rahimian
+YEAR: 2022
+DOI: 10.4018/IJGCMS.296705
+URL: https://www.sciencedirect.com/org/science/article/pii/S1942388822000016
+LICENSE_RIGHTS: Open-access article consulted for methodological trade-offs around think-aloud/play-aloud in game contexts. No article prose, study protocol, examples, figures, or questionnaire content is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D21 treats continuous concurrent verbalization as potentially intrusive to ordinary gameplay/immersion and therefore uses quiet first-use play plus milestone/retrospective questions for the primary vertical slice. Concurrent think-aloud is reserved for focused diagnostic sessions and those sessions are explicitly excluded from natural pacing/immersion evidence.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D21 does not adopt the paper's Play-Aloud/streamer-role procedure as the default protocol because the first-slice question concerns ordinary uncoached play rather than performance/commentary behavior.
+
+=== REF 093 ===
+TYPE: PAPER
+TITLE: Development and validation of the player experience inventory: A scale to measure player experiences at the level of functional and psychosocial consequences
+AUTHORS: Vero Vanden Abeele; Katta Spiel; Lennart E. Nacke; Daniel Johnson; Kathrin Gerling
+YEAR: 2020
+DOI: 10.1016/j.ijhcs.2019.102370
+URL: https://doi.org/10.1016/j.ijhcs.2019.102370
+LICENSE_RIGHTS: Open-access CC BY 4.0 research consulted for the conceptual separation between immediate functional consequences of design choices and broader player-experience consequences. No PXI item text, scoring rubric, tables, figures, or implementation is copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D21 explicitly separates functional interaction evidence (ease/control clarity, discoverability, consequence legibility) from psychosocial/experiential evidence (engagement, desire to continue). The project-owned four short ratings are diagnostic prompts only and are not represented as PXI measurements.
+ADOPTION: REFERENCE_ONLY
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The full PXI is not required for the first vertical-slice development gate; adopting a validated research scale would add survey burden without being necessary to answer D21's bounded implementation questions.
+
+=== REF 094 ===
+TYPE: PAPER
+TITLE: Towards an Ontological Language for Game Analysis
+AUTHORS: José P. Zagal; Michael Mateas; Clara Fernández-Vara; Brian Hochhalter; Nolan Lichti
+YEAR: 2005
+DOI: 10.26503/dl.v2005i1.136
+URL: https://dl.digra.org/index.php/dl/article/view/136
+LICENSE_RIGHTS: DiGRA publication consulted for high-level game-analysis structure. No paper prose, figures, ontology entries, diagrams, tables, or copyrighted taxonomic content are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D22 adopts only the analytical separation between interface, rules, entities and entity manipulation when auditing a player verb. The concrete verb inventory, seven-axis coverage test and player-facing design are project-owned and derived from Descendants' frozen documents/current runtime.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: The Game Ontology Project is not implemented as a runtime ontology, data dependency, or authoring framework.
+
+=== REF 095 ===
+TYPE: PAPER
+TITLE: MDA: A Formal Approach to Game Design and Game Research
+AUTHORS: Robin Hunicke; Marc LeBlanc; Robert Zubek
+YEAR: 2004
+URL: https://www.cs.northwestern.edu/~hunicke/MDA.pdf
+ALT_URL: https://ocs.aaai.org/Library/Workshops/2004/ws04-04-001.php
+LICENSE_RIGHTS: Published workshop paper consulted for its public high-level mechanics/dynamics/aesthetics framework. No paper prose, diagrams, examples, workshop material, or copyrighted teaching content are copied into Descendants.
+CONSULTED: 2026-09-10
+DESCENDANTS_USE: D22 uses the mechanics-versus-runtime-dynamics distinction as a guard against declaring a verb complete merely because an API/control exists. A required Descendants verb must reach canonical runtime consequence, player feedback and persistent outcome where applicable.
+ADOPTION: PARTIAL
+COPY_STATUS: NO_CODE_COPIED
+NOTES: D22 does not score verbs with MDA aesthetics and does not adopt MDA as a runtime architecture.
+
+
+=== LOCAL DESIGN SOURCE — ZONE_PDA GUI ===
+TYPE: USER_PROVIDED_REFERENCE_IMPLEMENTATION
+TITLE: ZONE_PDA.zip
+SOURCE: User-provided local archive in the Descendants Human Test conversation
+CONSULTED: 2026-09-12
+DESCENDANTS_USE: Player-facing presentation reference for hardware frame/bezel, header and tab geometry, three-pane task layout, pane headers, lower ticker/status strip, border hierarchy, CRT treatment, spacing, visual density and interaction-state styling.
+ADOPTION: DESIGN_STRUCTURE_AND_CSS_METRICS
+EXCLUDED_FROM_ADOPTION: Concrete item/equipment images, concrete map/background images, concrete character/profile images, and ZONE_PDA fictional content/data.
+COPY_STATUS: Design/CSS structure adapted into Descendants runtime; prohibited concrete visual assets are not copied into production dist. Gameplay content and state remain Descendants/WorldProvider-backed.
+
+[UI-PDA-001] ZONE_PDA.zip (user-provided reference package, 2026-09-11)
+- Files specifically consulted: public/css/style.css, public/css/components.css, public/css/crt.css, public/js/audio.js, public/index.html, supplied UI screenshots.
+- Adopted: rugged PDA frame/bezel geometry, compact header/tab/pane/footer hierarchy, dark olive/amber palette, CRT scanline/RGB/flicker/vignette/glass treatment, and pure Web Audio synthesized UI-sound vocabulary.
+- Adaptation in Descendants: presentation shell and sound grammar are retained while labels/state/actions come from the WorldProvider-backed Descendants runtime.
+- Explicitly NOT adopted: concrete supplied map image, character/profile imagery, item/equipment imagery, task/background imagery, or their semantic setting content.
+- Implementation: src/styles.css; src/sandbox/app.ts; src/sandbox/pdaAudio.ts; tests/pda-presentation.test.mjs.

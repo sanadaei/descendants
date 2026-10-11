@@ -1,0 +1,1101 @@
+{
+  "schemaVersion": "1.0.0",
+  "batchId": "v6-mechanism-provenance-01",
+  "method": "formalize existing transformation provenance and attach explicit theory provenance to all transmission modes",
+  "transformationRuleCount": 60,
+  "transmissionModeCount": 25,
+  "transformationRules": [
+    {
+      "ruleId": "compression",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "loc-afc",
+          "claimId": "loc-afc:claim:transformation:compression",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "personification",
+      "claimCount": 3,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:personification",
+          "mode": "created"
+        },
+        {
+          "sourceId": "cherokee-mooney",
+          "claimId": "cherokee-mooney:claim:transformation:personification",
+          "mode": "created"
+        },
+        {
+          "sourceId": "hawaiian-thrum",
+          "claimId": "hawaiian-thrum:claim:transformation:personification",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "ritualization",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:ritualization",
+          "mode": "created"
+        },
+        {
+          "sourceId": "cherokee-mooney",
+          "claimId": "cherokee-mooney:claim:transformation:ritualization",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "localization",
+      "claimCount": 3,
+      "links": [
+        {
+          "sourceId": "loc-afc",
+          "claimId": "loc-afc:claim:transformation:localization",
+          "mode": "created"
+        },
+        {
+          "sourceId": "hawaiian-thrum",
+          "claimId": "hawaiian-thrum:claim:transformation:localization",
+          "mode": "created"
+        },
+        {
+          "sourceId": "cherokee-mooney",
+          "claimId": "cherokee-mooney:claim:transformation:localization",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "syncretism",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:syncretism",
+          "mode": "created"
+        },
+        {
+          "sourceId": "china-werner",
+          "claimId": "china-werner:claim:transformation:syncretism",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "etiological-reframing",
+      "claimCount": 3,
+      "links": [
+        {
+          "sourceId": "west-african-barker-sinclair",
+          "claimId": "west-african-barker-sinclair:claim:transformation:etiological-reframing",
+          "mode": "created"
+        },
+        {
+          "sourceId": "kalevala-crawford",
+          "claimId": "kalevala-crawford:claim:transformation:etiological-reframing",
+          "mode": "created"
+        },
+        {
+          "sourceId": "cherokee-mooney",
+          "claimId": "cherokee-mooney:claim:transformation:etiological-reframing",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "moralization",
+      "claimCount": 3,
+      "links": [
+        {
+          "sourceId": "indian-fairy-tales-jacobs",
+          "claimId": "indian-fairy-tales-jacobs:claim:transformation:moralization",
+          "mode": "created"
+        },
+        {
+          "sourceId": "korean-griffis",
+          "claimId": "korean-griffis:claim:transformation:moralization",
+          "mode": "created"
+        },
+        {
+          "sourceId": "japanese-ozaki",
+          "claimId": "japanese-ozaki:claim:transformation:moralization",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "genealogization",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "mahabharata-ganguli",
+          "claimId": "mahabharata-ganguli:claim:transformation:genealogization",
+          "mode": "created"
+        },
+        {
+          "sourceId": "norse-guerber",
+          "claimId": "norse-guerber:claim:transformation:genealogization",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "demonization",
+      "claimCount": 3,
+      "links": [
+        {
+          "sourceId": "russian-fairy-tales-ralston",
+          "claimId": "russian-fairy-tales-ralston:claim:transformation:demonization",
+          "mode": "created"
+        },
+        {
+          "sourceId": "korean-griffis",
+          "claimId": "korean-griffis:claim:transformation:demonization",
+          "mode": "created"
+        },
+        {
+          "sourceId": "arabian-nights-scott",
+          "claimId": "arabian-nights-scott:claim:transformation:demonization",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "sanctification",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:sanctification",
+          "mode": "created"
+        },
+        {
+          "sourceId": "egypt-spence",
+          "claimId": "egypt-spence:claim:transformation:sanctification",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "inversion",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "west-african-barker-sinclair",
+          "claimId": "west-african-barker-sinclair:claim:transformation:inversion",
+          "mode": "created"
+        },
+        {
+          "sourceId": "arabian-nights-scott",
+          "claimId": "arabian-nights-scott:claim:transformation:inversion",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "symbolic-substitution",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:symbolic-substitution",
+          "mode": "created"
+        },
+        {
+          "sourceId": "egypt-spence",
+          "claimId": "egypt-spence:claim:transformation:symbolic-substitution",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "authority-transfer",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "loc-afc",
+          "claimId": "loc-afc:claim:transformation:authority-transfer",
+          "mode": "created"
+        },
+        {
+          "sourceId": "mahabharata-ganguli",
+          "claimId": "mahabharata-ganguli:claim:transformation:authority-transfer",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "memorability-sharpening",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "loc-afc",
+          "claimId": "loc-afc:claim:transformation:memorability-sharpening",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "spatial-anchoring",
+      "claimCount": 3,
+      "links": [
+        {
+          "sourceId": "cherokee-mooney",
+          "claimId": "cherokee-mooney:claim:transformation:spatial-anchoring",
+          "mode": "created"
+        },
+        {
+          "sourceId": "hawaiian-thrum",
+          "claimId": "hawaiian-thrum:claim:transformation:spatial-anchoring",
+          "mode": "created"
+        },
+        {
+          "sourceId": "loc-afc",
+          "claimId": "loc-afc:claim:transformation:spatial-anchoring",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "localize-place",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:localize-place",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "ancestorize-agent",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:ancestorize-agent",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "demonize-agent",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:demonize-agent",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "sanctify-agent",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:sanctify-agent",
+          "mode": "created"
+        },
+        {
+          "sourceId": "de-gubernatis-zoological-mythology",
+          "claimId": "de-gubernatis-zoological-mythology:claim:transformation:sanctify-agent",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "moralize-causality",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:moralize-causality",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "naturalize-anomaly",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:naturalize-anomaly",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "personify-process",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:personify-process",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "depersonify-agent",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:depersonify-agent",
+          "mode": "created"
+        },
+        {
+          "sourceId": "de-gubernatis-zoological-mythology",
+          "claimId": "de-gubernatis-zoological-mythology:claim:transformation:depersonify-agent",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "compress-chronology",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:compress-chronology",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "expand-chronology",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:expand-chronology",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "merge-actors",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:merge-actors",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "split-actor",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:split-actor",
+          "mode": "created"
+        },
+        {
+          "sourceId": "de-gubernatis-zoological-mythology",
+          "claimId": "de-gubernatis-zoological-mythology:claim:transformation:split-actor",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "invert-valence",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:invert-valence",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "ritualize-event",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:ritualize-event",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "etiologize-feature",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:etiologize-feature",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "genealogize-order",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:genealogize-order",
+          "mode": "created"
+        },
+        {
+          "sourceId": "de-gubernatis-zoological-mythology",
+          "claimId": "de-gubernatis-zoological-mythology:claim:transformation:genealogize-order",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "encode-as-number",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:encode-as-number",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "taboo-amplification",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:taboo-amplification",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "taboo-relaxation",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:taboo-relaxation",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "heroize-survivor",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:heroize-survivor",
+          "mode": "created"
+        },
+        {
+          "sourceId": "de-gubernatis-zoological-mythology",
+          "claimId": "de-gubernatis-zoological-mythology:claim:transformation:heroize-survivor",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "collectivize-hero",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:collectivize-hero",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "medicalize-affliction",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:medicalize-affliction",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "spiritualize-affliction",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:spiritualize-affliction",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "technologize-magic",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:technologize-magic",
+          "mode": "created"
+        },
+        {
+          "sourceId": "de-gubernatis-zoological-mythology",
+          "claimId": "de-gubernatis-zoological-mythology:claim:transformation:technologize-magic",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "mythologize-technology",
+      "claimCount": 1,
+      "links": [
+        {
+          "sourceId": "frazer-golden-bough",
+          "claimId": "frazer-golden-bough:claim:transformation:mythologize-technology",
+          "mode": "created"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-leveling",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "bartlett-remembering-1932",
+          "claimId": "bartlett-remembering-1932:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "allport-postman-rumor",
+          "claimId": "allport-postman-rumor:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-sharpening",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "allport-postman-rumor",
+          "claimId": "allport-postman-rumor:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "bartlett-remembering-1932",
+          "claimId": "bartlett-remembering-1932:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-assimilation",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "bartlett-remembering-1932",
+          "claimId": "bartlett-remembering-1932:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "allport-postman-rumor",
+          "claimId": "allport-postman-rumor:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-rationalization",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "bartlett-remembering-1932",
+          "claimId": "bartlett-remembering-1932:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "vansina-oral-tradition-history",
+          "claimId": "vansina-oral-tradition-history:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-omission",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "bartlett-remembering-1932",
+          "claimId": "bartlett-remembering-1932:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "vansina-oral-tradition-history",
+          "claimId": "vansina-oral-tradition-history:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-substitution",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "dundes-etic-emic-motifeme",
+          "claimId": "dundes-etic-emic-motifeme:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "tehrani-little-red-phylogeny",
+          "claimId": "tehrani-little-red-phylogeny:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-localization",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "bauman-verbal-art-performance",
+          "claimId": "bauman-verbal-art-performance:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "vansina-oral-tradition-history",
+          "claimId": "vansina-oral-tradition-history:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-performance-keying",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "bauman-verbal-art-performance",
+          "claimId": "bauman-verbal-art-performance:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "lord-singer-of-tales",
+          "claimId": "lord-singer-of-tales:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-formulaic-recomposition",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "lord-singer-of-tales",
+          "claimId": "lord-singer-of-tales:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "ong-orality-literacy",
+          "claimId": "ong-orality-literacy:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-canon-fixation",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "ong-orality-literacy",
+          "claimId": "ong-orality-literacy:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "vansina-oral-tradition-history",
+          "claimId": "vansina-oral-tradition-history:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-media-remediation",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "ong-orality-literacy",
+          "claimId": "ong-orality-literacy:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "bauman-verbal-art-performance",
+          "claimId": "bauman-verbal-art-performance:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-prestige-substitution",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "henrich-gilwhite-prestige",
+          "claimId": "henrich-gilwhite-prestige:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "boyd-richerson-cultural-process",
+          "claimId": "boyd-richerson-cultural-process:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-conformist-regularization",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "boyd-richerson-cultural-process",
+          "claimId": "boyd-richerson-cultural-process:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "mesoudi-cultural-evolution-2011",
+          "claimId": "mesoudi-cultural-evolution-2011:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-content-attraction",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "boyd-richerson-cultural-process",
+          "claimId": "boyd-richerson-cultural-process:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "mesoudi-cultural-evolution-2011",
+          "claimId": "mesoudi-cultural-evolution-2011:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-innovation",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "boyd-richerson-cultural-process",
+          "claimId": "boyd-richerson-cultural-process:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "mesoudi-cultural-evolution-2011",
+          "claimId": "mesoudi-cultural-evolution-2011:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-drift",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "mesoudi-cultural-evolution-2011",
+          "claimId": "mesoudi-cultural-evolution-2011:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "cavalli-feldman-cultural-transmission",
+          "claimId": "cavalli-feldman-cultural-transmission:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-branching",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "tehrani-little-red-phylogeny",
+          "claimId": "tehrani-little-red-phylogeny:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "mesoudi-cultural-evolution-2011",
+          "claimId": "mesoudi-cultural-evolution-2011:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-blending",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "tehrani-little-red-phylogeny",
+          "claimId": "tehrani-little-red-phylogeny:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "mesoudi-cultural-evolution-2011",
+          "claimId": "mesoudi-cultural-evolution-2011:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-threshold-adoption",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "centola-macy-complex-contagion",
+          "claimId": "centola-macy-complex-contagion:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "mesoudi-cultural-evolution-2011",
+          "claimId": "mesoudi-cultural-evolution-2011:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    },
+    {
+      "ruleId": "v6-source-criticism",
+      "claimCount": 2,
+      "links": [
+        {
+          "sourceId": "vansina-oral-tradition-history",
+          "claimId": "vansina-oral-tradition-history:claim:mechanism",
+          "mode": "theory-link"
+        },
+        {
+          "sourceId": "bauman-verbal-art-performance",
+          "claimId": "bauman-verbal-art-performance:claim:mechanism",
+          "mode": "theory-link"
+        }
+      ]
+    }
+  ],
+  "transmissionModes": [
+    {
+      "modeId": "oral-household",
+      "sourceIds": [
+        "cavalli-feldman-cultural-transmission",
+        "boyd-richerson-cultural-process"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "oral-itinerant",
+      "sourceIds": [
+        "vansina-oral-tradition-history",
+        "bauman-verbal-art-performance"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "ritual-specialist",
+      "sourceIds": [
+        "bauman-verbal-art-performance",
+        "vansina-oral-tradition-history"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "institutional-record",
+      "sourceIds": [
+        "ong-orality-literacy",
+        "vansina-oral-tradition-history"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "broadcast-network",
+      "sourceIds": [
+        "ong-orality-literacy",
+        "mesoudi-cultural-evolution-2011"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "manuscript-copy",
+      "sourceIds": [
+        "ong-orality-literacy",
+        "vansina-oral-tradition-history"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "printed-popular",
+      "sourceIds": [
+        "ong-orality-literacy",
+        "mesoudi-cultural-evolution-2011"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "archival-record",
+      "sourceIds": [
+        "vansina-oral-tradition-history",
+        "ong-orality-literacy"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "ritual-performance",
+      "sourceIds": [
+        "bauman-verbal-art-performance",
+        "lord-singer-of-tales"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-vertical-kin",
+      "sourceIds": [
+        "cavalli-feldman-cultural-transmission",
+        "boyd-richerson-cultural-process"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-oblique-elder",
+      "sourceIds": [
+        "cavalli-feldman-cultural-transmission",
+        "vansina-oral-tradition-history"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-horizontal-peer",
+      "sourceIds": [
+        "cavalli-feldman-cultural-transmission",
+        "mesoudi-cultural-evolution-2011"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-prestige-model",
+      "sourceIds": [
+        "henrich-gilwhite-prestige",
+        "boyd-richerson-cultural-process"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-conformist-local",
+      "sourceIds": [
+        "boyd-richerson-cultural-process",
+        "mesoudi-cultural-evolution-2011"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-content-biased",
+      "sourceIds": [
+        "boyd-richerson-cultural-process",
+        "mesoudi-cultural-evolution-2011"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-performance-chain",
+      "sourceIds": [
+        "bauman-verbal-art-performance",
+        "lord-singer-of-tales"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-formulaic-epic",
+      "sourceIds": [
+        "lord-singer-of-tales",
+        "ong-orality-literacy"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-rumor-chain",
+      "sourceIds": [
+        "bartlett-remembering-1932",
+        "allport-postman-rumor"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-institutional-canon",
+      "sourceIds": [
+        "vansina-oral-tradition-history",
+        "ong-orality-literacy"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-written-copy",
+      "sourceIds": [
+        "ong-orality-literacy",
+        "vansina-oral-tradition-history"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-broadcast",
+      "sourceIds": [
+        "ong-orality-literacy",
+        "mesoudi-cultural-evolution-2011"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-syncretic-contact",
+      "sourceIds": [
+        "tehrani-little-red-phylogeny",
+        "mesoudi-cultural-evolution-2011"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-complex-contagion",
+      "sourceIds": [
+        "centola-macy-complex-contagion",
+        "mesoudi-cultural-evolution-2011"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-archival-revival",
+      "sourceIds": [
+        "vansina-oral-tradition-history",
+        "ong-orality-literacy"
+      ],
+      "claimCount": 2
+    },
+    {
+      "modeId": "v6-reconstructive-memory",
+      "sourceIds": [
+        "bartlett-remembering-1932",
+        "vansina-oral-tradition-history"
+      ],
+      "claimCount": 2
+    }
+  ],
+  "notes": [
+    "Empirical transformation claims are formal migrations of pre-v6 rule→source links, not new title-based inferences.",
+    "V6 theory rules/modes link to already reviewed theoretical-mechanism claims.",
+    "Legacy transmission modes receive explicit theory-source mappings; these mappings justify model families but are not universal parameter calibration."
+  ]
+}

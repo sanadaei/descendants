@@ -1,0 +1,70 @@
+{
+  "artifact": "DESCENDANTS_WORLDGEN_V6_RESEARCH_EXPANSION_COMPLETE",
+  "status": "release_complete",
+  "completion": true,
+  "engineVersion": "1.5.0",
+  "researchGeneration": "v6",
+  "sources": {
+    "total": 1971,
+    "catalogOnly": 1843,
+    "evidenceEligible": 105,
+    "uniqueRawCatalogLabels": 1280,
+    "uniqueBibliographicFamilies": 1451,
+    "verified": 857
+  },
+  "ontology": {
+    "motifs": 302,
+    "active": 282,
+    "candidate": 20,
+    "structurallyCuratedActive": 282,
+    "activeSourceUnitCoverage": 1,
+    "activeEvidenceClaimCoverage": 1,
+    "transformations": 60,
+    "transformationEvidenceClaimCoverage": 1,
+    "transmissionModes": 25,
+    "transmissionEvidenceClaimCoverage": 1,
+    "transmissionSourceProvenanceCoverage": 1
+  },
+  "audit": {
+    "valid": true,
+    "errors": 0,
+    "releaseBlockingQualityWarnings": [],
+    "dominantCatalogProvider": "project-gutenberg",
+    "dominantCatalogProviderShare": 0.5919696147585458
+  },
+  "verification": {
+    "typescript": "PASS",
+    "build": "PASS",
+    "testsDefined": 78,
+    "fullRegression": "PASS_78_OF_78_THREE_STANDARD_SHARDS",
+    "releaseMatrix": "PASS_7_OF_7",
+    "deterministicReplay": true
+  },
+  "mustRead": [
+    "../CONTINUE_HERE.md",
+    "ROADMAP.md",
+    "PROGRESS_STATUS.json",
+    "CURRENT_VERIFICATION.txt",
+    "../integration-artifacts/worldgen/LORE_AUDIT_CURRENT.json",
+    "V6_COMPLETION_REPORT.md"
+  ],
+  "oldV5CompletionEvidence": "historical_only_superseded",
+  "finalSnapshot": {
+    "digest": "c4e7d183",
+    "deterministicReplay": true,
+    "entities": 1731,
+    "relations": 3284,
+    "events": 5717,
+    "causalRecords": 7985,
+    "knowledge": 899,
+    "path": "../integration-artifacts/worldgen/descendants-default.v6-final.snapshot.json"
+  },
+  "releaseMatrixArtifact": "../integration-artifacts/worldgen/RELEASE_MATRIX_v6.json",
+  "loreAuditArtifact": "../integration-artifacts/worldgen/LORE_AUDIT_CURRENT.json",
+  "mainGameLoopReintegration": {
+    "applicationVersion": "1.0.0",
+    "mergeGates": "PASS_5_OF_5",
+    "contractSha256": "edcadd649b8f3b154af2edb9c50c4489a089c215f58697156c1d0890c961afca",
+    "mainRegression": "PASS_194_OF_194"
+  }
+}

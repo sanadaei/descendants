@@ -1,0 +1,8 @@
+{
+  "engineName": "@descendants/worldgen-engine",
+  "engineVersion": "1.5.0",
+  "recipeId": "descendants-sandbox-default",
+  "recipeSeed": 20260908,
+  "ticksPerDay": 1440,
+  "runtimeSha256": "35b1aa1287406ddcb03499f4e261231b2310259c7e0a09cd57d8ea9841ff31a1"
+}

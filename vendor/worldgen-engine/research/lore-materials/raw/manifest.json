@@ -1,0 +1,995 @@
+{
+  "recipeId": "descendants-sandbox-default",
+  "sourceCount": 99,
+  "items": [
+    {
+      "sourceId": "arabian-nights-scott",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/5668",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/5668/pg5668.txt",
+        "https://www.gutenberg.org/files/5668/5668-8.txt",
+        "https://www.gutenberg.org/files/5668/5668.txt"
+      ]
+    },
+    {
+      "sourceId": "aston-nihongi",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "babylonia-mackenzie",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/16653",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/16653/pg16653.txt",
+        "https://www.gutenberg.org/files/16653/16653-8.txt",
+        "https://www.gutenberg.org/files/16653/16653.txt"
+      ]
+    },
+    {
+      "sourceId": "bancroft-native-races-myths",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/43123",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/43123/pg43123.txt",
+        "https://www.gutenberg.org/files/43123/43123-8.txt",
+        "https://www.gutenberg.org/files/43123/43123.txt"
+      ]
+    },
+    {
+      "sourceId": "bateman-zanzibar-tales",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/37472",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/37472/pg37472.txt",
+        "https://www.gutenberg.org/files/37472/37472-8.txt",
+        "https://www.gutenberg.org/files/37472/37472.txt"
+      ]
+    },
+    {
+      "sourceId": "bengal-day",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/38488",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/38488/pg38488.txt",
+        "https://www.gutenberg.org/files/38488/38488-8.txt",
+        "https://www.gutenberg.org/files/38488/38488.txt"
+      ]
+    },
+    {
+      "sourceId": "bleek-lloyd-bushman",
+      "status": "planned",
+      "verificationUrl": "https://library.si.edu/digital-library/book/specimensofbush00blee",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://library.si.edu/digital-library/book/specimensofbush00blee"
+      ]
+    },
+    {
+      "sourceId": "boas-central-eskimo",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/42084",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/42084/pg42084.txt",
+        "https://www.gutenberg.org/files/42084/42084-8.txt",
+        "https://www.gutenberg.org/files/42084/42084.txt"
+      ]
+    },
+    {
+      "sourceId": "boyajian-armenian-legends",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/54036",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/54036/pg54036.txt",
+        "https://www.gutenberg.org/files/54036/54036-8.txt",
+        "https://www.gutenberg.org/files/54036/54036.txt"
+      ]
+    },
+    {
+      "sourceId": "brinton-new-world",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/19347",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/19347/pg19347.txt",
+        "https://www.gutenberg.org/files/19347/19347-8.txt",
+        "https://www.gutenberg.org/files/19347/19347.txt"
+      ]
+    },
+    {
+      "sourceId": "brodeur-prose-edda",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "budge-book-dead",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/7145",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/7145/pg7145.txt",
+        "https://www.gutenberg.org/files/7145/7145-8.txt",
+        "https://www.gutenberg.org/files/7145/7145.txt"
+      ]
+    },
+    {
+      "sourceId": "chamberlain-aino-folk",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/29287",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/29287/pg29287.txt",
+        "https://www.gutenberg.org/files/29287/29287-8.txt",
+        "https://www.gutenberg.org/files/29287/29287.txt"
+      ]
+    },
+    {
+      "sourceId": "chamberlain-ko-ji-ki",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "cherokee-mooney",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/45634",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/45634/pg45634.txt",
+        "https://www.gutenberg.org/files/45634/45634-8.txt",
+        "https://www.gutenberg.org/files/45634/45634.txt"
+      ]
+    },
+    {
+      "sourceId": "china-werner",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/15250",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/15250/pg15250.txt",
+        "https://www.gutenberg.org/files/15250/15250-8.txt",
+        "https://www.gutenberg.org/files/15250/15250.txt"
+      ]
+    },
+    {
+      "sourceId": "codrington-melanesians",
+      "status": "skipped-rights-review",
+      "reason": "Item-level rights jurisdiction must be recorded before raw-text acquisition."
+    },
+    {
+      "sourceId": "cole-philippine-folk",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/12545",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/12545/pg12545.txt",
+        "https://www.gutenberg.org/files/12545/12545-8.txt",
+        "https://www.gutenberg.org/files/12545/12545.txt"
+      ]
+    },
+    {
+      "sourceId": "cowell-jataka",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "cushing-zuni-folk",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/54682",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/54682/pg54682.txt",
+        "https://www.gutenberg.org/files/54682/54682-8.txt",
+        "https://www.gutenberg.org/files/54682/54682.txt"
+      ]
+    },
+    {
+      "sourceId": "darmesteter-zend-avesta",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "dasent-popular-tales-norse",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/8933",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/8933/pg8933.txt",
+        "https://www.gutenberg.org/files/8933/8933-8.txt",
+        "https://www.gutenberg.org/files/8933/8933.txt"
+      ]
+    },
+    {
+      "sourceId": "davis-myths-legends-japan",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/45723",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/45723/pg45723.txt",
+        "https://www.gutenberg.org/files/45723/45723-8.txt",
+        "https://www.gutenberg.org/files/45723/45723.txt"
+      ]
+    },
+    {
+      "sourceId": "dayrell-southern-nigeria",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/34655",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/34655/pg34655.txt",
+        "https://www.gutenberg.org/files/34655/34655-8.txt",
+        "https://www.gutenberg.org/files/34655/34655.txt"
+      ]
+    },
+    {
+      "sourceId": "de-gubernatis-zoological-mythology",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/38687",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/38687/pg38687.txt",
+        "https://www.gutenberg.org/files/38687/38687-8.txt",
+        "https://www.gutenberg.org/files/38687/38687.txt"
+      ]
+    },
+    {
+      "sourceId": "dixon-oceanic-mythology",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "egypt-spence",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/43662",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/43662/pg43662.txt",
+        "https://www.gutenberg.org/files/43662/43662-8.txt",
+        "https://www.gutenberg.org/files/43662/43662.txt"
+      ]
+    },
+    {
+      "sourceId": "fansler-filipino-popular",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/8299",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/8299/pg8299.txt",
+        "https://www.gutenberg.org/files/8299/8299-8.txt",
+        "https://www.gutenberg.org/files/8299/8299.txt"
+      ]
+    },
+    {
+      "sourceId": "frazer-golden-bough",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/3623",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/3623/pg3623.txt",
+        "https://www.gutenberg.org/files/3623/3623-8.txt",
+        "https://www.gutenberg.org/files/3623/3623.txt"
+      ]
+    },
+    {
+      "sourceId": "giles-strange-stories",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/43629",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/43629/pg43629.txt",
+        "https://www.gutenberg.org/files/43629/43629-8.txt",
+        "https://www.gutenberg.org/files/43629/43629.txt"
+      ]
+    },
+    {
+      "sourceId": "gilgamish-langdon",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/18897",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/18897/pg18897.txt",
+        "https://www.gutenberg.org/files/18897/18897-8.txt",
+        "https://www.gutenberg.org/files/18897/18897.txt"
+      ]
+    },
+    {
+      "sourceId": "gill-south-pacific",
+      "status": "skipped-rights-review",
+      "reason": "Item-level rights jurisdiction must be recorded before raw-text acquisition."
+    },
+    {
+      "sourceId": "gregory-gods-fighting-men",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/14465",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/14465/pg14465.txt",
+        "https://www.gutenberg.org/files/14465/14465-8.txt",
+        "https://www.gutenberg.org/files/14465/14465.txt"
+      ]
+    },
+    {
+      "sourceId": "grey-polynesian-mythology",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "griffis-japanese-fairy-world",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/29337",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/29337/pg29337.txt",
+        "https://www.gutenberg.org/files/29337/29337-8.txt",
+        "https://www.gutenberg.org/files/29337/29337.txt"
+      ]
+    },
+    {
+      "sourceId": "griffith-ramayana",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/24869",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/24869/pg24869.txt",
+        "https://www.gutenberg.org/files/24869/24869-8.txt",
+        "https://www.gutenberg.org/files/24869/24869.txt"
+      ]
+    },
+    {
+      "sourceId": "griffith-rigveda",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "grimm-household-hunt",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/5314",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/5314/pg5314.txt",
+        "https://www.gutenberg.org/files/5314/5314-8.txt",
+        "https://www.gutenberg.org/files/5314/5314.txt"
+      ]
+    },
+    {
+      "sourceId": "hanauer-holy-land-folklore",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "hartland-science-fairy-tales",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/24614",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/24614/pg24614.txt",
+        "https://www.gutenberg.org/files/24614/24614-8.txt",
+        "https://www.gutenberg.org/files/24614/24614.txt"
+      ]
+    },
+    {
+      "sourceId": "hawaiian-thrum",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/18450",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/18450/pg18450.txt",
+        "https://www.gutenberg.org/files/18450/18450-8.txt",
+        "https://www.gutenberg.org/files/18450/18450.txt"
+      ]
+    },
+    {
+      "sourceId": "hesiod-theogony",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/66350",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/66350/pg66350.txt",
+        "https://www.gutenberg.org/files/66350/66350-8.txt",
+        "https://www.gutenberg.org/files/66350/66350.txt"
+      ]
+    },
+    {
+      "sourceId": "homer-iliad",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/6150",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/6150/pg6150.txt",
+        "https://www.gutenberg.org/files/6150/6150-8.txt",
+        "https://www.gutenberg.org/files/6150/6150.txt"
+      ]
+    },
+    {
+      "sourceId": "homer-odyssey",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/1728",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/1728/pg1728.txt",
+        "https://www.gutenberg.org/files/1728/1728-8.txt",
+        "https://www.gutenberg.org/files/1728/1728.txt"
+      ]
+    },
+    {
+      "sourceId": "honey-south-african",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/38339",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/38339/pg38339.txt",
+        "https://www.gutenberg.org/files/38339/38339-8.txt",
+        "https://www.gutenberg.org/files/38339/38339.txt"
+      ]
+    },
+    {
+      "sourceId": "indian-fairy-tales-jacobs",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/7128",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/7128/pg7128.txt",
+        "https://www.gutenberg.org/files/7128/7128-8.txt",
+        "https://www.gutenberg.org/files/7128/7128.txt"
+      ]
+    },
+    {
+      "sourceId": "jacobs-celtic-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/7885",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/7885/pg7885.txt",
+        "https://www.gutenberg.org/files/7885/7885-8.txt",
+        "https://www.gutenberg.org/files/7885/7885.txt"
+      ]
+    },
+    {
+      "sourceId": "jacobs-english-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/7439",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/7439/pg7439.txt",
+        "https://www.gutenberg.org/files/7439/7439-8.txt",
+        "https://www.gutenberg.org/files/7439/7439.txt"
+      ]
+    },
+    {
+      "sourceId": "japanese-ozaki",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/4018",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/4018/pg4018.txt",
+        "https://www.gutenberg.org/files/4018/4018-8.txt",
+        "https://www.gutenberg.org/files/4018/4018.txt"
+      ]
+    },
+    {
+      "sourceId": "kalevala-crawford",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/5186",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/5186/pg5186.txt",
+        "https://www.gutenberg.org/files/5186/5186-8.txt",
+        "https://www.gutenberg.org/files/5186/5186.txt"
+      ]
+    },
+    {
+      "sourceId": "keightley-fairy-mythology",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/41006",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/41006/pg41006.txt",
+        "https://www.gutenberg.org/files/41006/41006-8.txt",
+        "https://www.gutenberg.org/files/41006/41006.txt"
+      ]
+    },
+    {
+      "sourceId": "king-babylonian-religion",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "king-legends-babylon-egypt",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/2030",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/2030/pg2030.txt",
+        "https://www.gutenberg.org/files/2030/2030-8.txt",
+        "https://www.gutenberg.org/files/2030/2030.txt"
+      ]
+    },
+    {
+      "sourceId": "knowles-kashmir-folk",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "korean-griffis",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/67180",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/67180/pg67180.txt",
+        "https://www.gutenberg.org/files/67180/67180-8.txt",
+        "https://www.gutenberg.org/files/67180/67180.txt"
+      ]
+    },
+    {
+      "sourceId": "kunos-turkish-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/64807",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/64807/pg64807.txt",
+        "https://www.gutenberg.org/files/64807/64807-8.txt",
+        "https://www.gutenberg.org/files/64807/64807.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-blue-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/503",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/503/pg503.txt",
+        "https://www.gutenberg.org/files/503/503-8.txt",
+        "https://www.gutenberg.org/files/503/503.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-brown-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/31201",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/31201/pg31201.txt",
+        "https://www.gutenberg.org/files/31201/31201-8.txt",
+        "https://www.gutenberg.org/files/31201/31201.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-crimson-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/2435",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/2435/pg2435.txt",
+        "https://www.gutenberg.org/files/2435/2435-8.txt",
+        "https://www.gutenberg.org/files/2435/2435.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-green-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/7277",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/7277/pg7277.txt",
+        "https://www.gutenberg.org/files/7277/7277-8.txt",
+        "https://www.gutenberg.org/files/7277/7277.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-grey-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/33547",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/33547/pg33547.txt",
+        "https://www.gutenberg.org/files/33547/33547-8.txt",
+        "https://www.gutenberg.org/files/33547/33547.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-lilac-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/3454",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/3454/pg3454.txt",
+        "https://www.gutenberg.org/files/3454/3454-8.txt",
+        "https://www.gutenberg.org/files/3454/3454.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-olive-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/27826",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/27826/pg27826.txt",
+        "https://www.gutenberg.org/files/27826/27826-8.txt",
+        "https://www.gutenberg.org/files/27826/27826.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-orange-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/36532",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/36532/pg36532.txt",
+        "https://www.gutenberg.org/files/36532/36532-8.txt",
+        "https://www.gutenberg.org/files/36532/36532.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-pink-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/5615",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/5615/pg5615.txt",
+        "https://www.gutenberg.org/files/5615/5615-8.txt",
+        "https://www.gutenberg.org/files/5615/5615.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-red-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/540",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/540/pg540.txt",
+        "https://www.gutenberg.org/files/540/540-8.txt",
+        "https://www.gutenberg.org/files/540/540.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-violet-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/641",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/641/pg641.txt",
+        "https://www.gutenberg.org/files/641/641-8.txt",
+        "https://www.gutenberg.org/files/641/641.txt"
+      ]
+    },
+    {
+      "sourceId": "lang-yellow-fairy",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/28314",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/28314/pg28314.txt",
+        "https://www.gutenberg.org/files/28314/28314-8.txt",
+        "https://www.gutenberg.org/files/28314/28314.txt"
+      ]
+    },
+    {
+      "sourceId": "legge-chinese-classics",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/3100",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/3100/pg3100.txt",
+        "https://www.gutenberg.org/files/3100/3100-8.txt",
+        "https://www.gutenberg.org/files/3100/3100.txt"
+      ]
+    },
+    {
+      "sourceId": "legge-tao-te-ching",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "leland-algonquin",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/6803",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/6803/pg6803.txt",
+        "https://www.gutenberg.org/files/6803/6803-8.txt",
+        "https://www.gutenberg.org/files/6803/6803.txt"
+      ]
+    },
+    {
+      "sourceId": "mabinogion-guest",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/5160",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/5160/pg5160.txt",
+        "https://www.gutenberg.org/files/5160/5160-8.txt",
+        "https://www.gutenberg.org/files/5160/5160.txt"
+      ]
+    },
+    {
+      "sourceId": "mahabharata-ganguli",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/15474",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/15474/pg15474.txt",
+        "https://www.gutenberg.org/files/15474/15474-8.txt",
+        "https://www.gutenberg.org/files/15474/15474.txt"
+      ]
+    },
+    {
+      "sourceId": "norse-guerber",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/28497",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/28497/pg28497.txt",
+        "https://www.gutenberg.org/files/28497/28497-8.txt",
+        "https://www.gutenberg.org/files/28497/28497.txt"
+      ]
+    },
+    {
+      "sourceId": "ogumefu-yoruba-legends",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "ovid-metamorphoses",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/21765",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/21765/pg21765.txt",
+        "https://www.gutenberg.org/files/21765/21765-8.txt",
+        "https://www.gutenberg.org/files/21765/21765.txt"
+      ]
+    },
+    {
+      "sourceId": "pausanias-description-greece",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/68946",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/68946/pg68946.txt",
+        "https://www.gutenberg.org/files/68946/68946-8.txt",
+        "https://www.gutenberg.org/files/68946/68946.txt"
+      ]
+    },
+    {
+      "sourceId": "powers-iroquois-children",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/22096",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/22096/pg22096.txt",
+        "https://www.gutenberg.org/files/22096/22096-8.txt",
+        "https://www.gutenberg.org/files/22096/22096.txt"
+      ]
+    },
+    {
+      "sourceId": "rasmussen-eskimo-folk",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/28932",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/28932/pg28932.txt",
+        "https://www.gutenberg.org/files/28932/28932-8.txt",
+        "https://www.gutenberg.org/files/28932/28932.txt"
+      ]
+    },
+    {
+      "sourceId": "rattray-hausa-folklore",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "russian-fairy-tales-ralston",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/22373",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/22373/pg22373.txt",
+        "https://www.gutenberg.org/files/22373/22373-8.txt",
+        "https://www.gutenberg.org/files/22373/22373.txt"
+      ]
+    },
+    {
+      "sourceId": "shortland-maori-religion",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/42218",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/42218/pg42218.txt",
+        "https://www.gutenberg.org/files/42218/42218-8.txt",
+        "https://www.gutenberg.org/files/42218/42218.txt"
+      ]
+    },
+    {
+      "sourceId": "skeat-malay-magic",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/47873",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/47873/pg47873.txt",
+        "https://www.gutenberg.org/files/47873/47873-8.txt",
+        "https://www.gutenberg.org/files/47873/47873.txt"
+      ]
+    },
+    {
+      "sourceId": "smith-chaldean-genesis",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/60559",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/60559/pg60559.txt",
+        "https://www.gutenberg.org/files/60559/60559-8.txt",
+        "https://www.gutenberg.org/files/60559/60559.txt"
+      ]
+    },
+    {
+      "sourceId": "smith-myths-iroquois",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/46140",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/46140/pg46140.txt",
+        "https://www.gutenberg.org/files/46140/46140-8.txt",
+        "https://www.gutenberg.org/files/46140/46140.txt"
+      ]
+    },
+    {
+      "sourceId": "spence-mexico-peru",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/53080",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/53080/pg53080.txt",
+        "https://www.gutenberg.org/files/53080/53080-8.txt",
+        "https://www.gutenberg.org/files/53080/53080.txt"
+      ]
+    },
+    {
+      "sourceId": "steel-tales-punjab",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/6145",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/6145/pg6145.txt",
+        "https://www.gutenberg.org/files/6145/6145-8.txt",
+        "https://www.gutenberg.org/files/6145/6145.txt"
+      ]
+    },
+    {
+      "sourceId": "teit-thompson-river",
+      "status": "skipped-rights-review",
+      "reason": "Item-level rights jurisdiction must be recorded before raw-text acquisition."
+    },
+    {
+      "sourceId": "theal-kaffir-folklore",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/71335",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/71335/pg71335.txt",
+        "https://www.gutenberg.org/files/71335/71335-8.txt",
+        "https://www.gutenberg.org/files/71335/71335.txt"
+      ]
+    },
+    {
+      "sourceId": "tremearne-hausa",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "turner-samoa",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/14224",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/14224/pg14224.txt",
+        "https://www.gutenberg.org/files/14224/14224-8.txt",
+        "https://www.gutenberg.org/files/14224/14224.txt"
+      ]
+    },
+    {
+      "sourceId": "wardrop-georgian-folk",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/44536",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/44536/pg44536.txt",
+        "https://www.gutenberg.org/files/44536/44536-8.txt",
+        "https://www.gutenberg.org/files/44536/44536.txt"
+      ]
+    },
+    {
+      "sourceId": "west-african-barker-sinclair",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/66923",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/66923/pg66923.txt",
+        "https://www.gutenberg.org/files/66923/66923-8.txt",
+        "https://www.gutenberg.org/files/66923/66923.txt"
+      ]
+    },
+    {
+      "sourceId": "west-pahlavi-texts",
+      "status": "skipped-unverified",
+      "verificationStatus": "provisional",
+      "reason": "External catalog verification is required before raw-text acquisition."
+    },
+    {
+      "sourceId": "westervelt-maui",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/32601",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/32601/pg32601.txt",
+        "https://www.gutenberg.org/files/32601/32601-8.txt",
+        "https://www.gutenberg.org/files/32601/32601.txt"
+      ]
+    },
+    {
+      "sourceId": "westervelt-volcanoes",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/66516",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/66516/pg66516.txt",
+        "https://www.gutenberg.org/files/66516/66516-8.txt",
+        "https://www.gutenberg.org/files/66516/66516.txt"
+      ]
+    },
+    {
+      "sourceId": "wratislaw-tibetan-tales",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/66870",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/66870/pg66870.txt",
+        "https://www.gutenberg.org/files/66870/66870-8.txt",
+        "https://www.gutenberg.org/files/66870/66870.txt"
+      ]
+    },
+    {
+      "sourceId": "yeats-irish-fairy-folk",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/33887",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/33887/pg33887.txt",
+        "https://www.gutenberg.org/files/33887/33887-8.txt",
+        "https://www.gutenberg.org/files/33887/33887.txt"
+      ]
+    },
+    {
+      "sourceId": "zitkala-american-indian-stories",
+      "status": "planned",
+      "verificationUrl": "https://www.gutenberg.org/ebooks/10376",
+      "rightsJurisdiction": "US",
+      "candidates": [
+        "https://www.gutenberg.org/cache/epub/10376/pg10376.txt",
+        "https://www.gutenberg.org/files/10376/10376-8.txt",
+        "https://www.gutenberg.org/files/10376/10376.txt"
+      ]
+    }
+  ]
+}

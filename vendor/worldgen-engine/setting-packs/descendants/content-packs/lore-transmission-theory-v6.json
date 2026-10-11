@@ -1,0 +1,1862 @@
+{
+  "id": "lore-transmission-theory-v6",
+  "version": "0.2.0",
+  "data": {
+    "loreCorpus": {
+      "sourceCatalog": [
+        {
+          "id": "bartlett-remembering-1932",
+          "title": "Remembering: A Study in Experimental and Social Psychology",
+          "creators": [
+            "Frederic C. Bartlett"
+          ],
+          "year": 1932,
+          "accessUrl": "https://www.cambridge.org/core/books/remembering/7F58B9793DAD79782D4AE989FAA287D1",
+          "verificationUrl": "https://www.cambridge.org/core/books/remembering/7F58B9793DAD79782D4AE989FAA287D1",
+          "providerId": "cambridge-core",
+          "bibliographicFamilyId": "bartlett-remembering-1932",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "bartlett-remembering-1932:unit:work",
+              "label": "Remembering: A Study in Experimental and Social Psychology",
+              "unitType": "work",
+              "evidenceClaimIds": [
+                "bartlett-remembering-1932:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "bartlett-remembering-1932:claim:mechanism",
+              "sourceUnitId": "bartlett-remembering-1932:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Memory reconstruction is socially and schematically mediated; serial reproduction can alter unfamiliar details toward familiar forms.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "dundes-etic-emic-motifeme",
+          "title": "From Etic to Emic Units in the Structural Study of Folktales",
+          "creators": [
+            "Alan Dundes"
+          ],
+          "year": 1962,
+          "accessUrl": "https://www.jstor.org/stable/j.ctt4cgrzn.9",
+          "verificationUrl": "https://www.jstor.org/stable/j.ctt4cgrzn.9",
+          "providerId": "jstor",
+          "bibliographicFamilyId": "dundes-etic-emic-motifeme",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "dundes-etic-emic-motifeme:unit:work",
+              "label": "From Etic to Emic Units in the Structural Study of Folktales",
+              "unitType": "article",
+              "evidenceClaimIds": [
+                "dundes-etic-emic-motifeme:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "dundes-etic-emic-motifeme:claim:mechanism",
+              "sourceUnitId": "dundes-etic-emic-motifeme:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Folktale structure can be decomposed into emic structural units; motifemes can admit alternative realizations rather than being treated as flat interchangeable tags.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "bauman-verbal-art-performance",
+          "title": "Verbal Art as Performance",
+          "creators": [
+            "Richard Bauman"
+          ],
+          "year": 1975,
+          "accessUrl": "https://anthrosource.onlinelibrary.wiley.com/doi/10.1525/aa.1975.77.2.02a00030",
+          "verificationUrl": "https://anthrosource.onlinelibrary.wiley.com/doi/10.1525/aa.1975.77.2.02a00030",
+          "providerId": "wiley-anthrosource",
+          "bibliographicFamilyId": "bauman-verbal-art-performance",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "bauman-verbal-art-performance:unit:work",
+              "label": "Verbal Art as Performance",
+              "unitType": "article",
+              "evidenceClaimIds": [
+                "bauman-verbal-art-performance:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "bauman-verbal-art-performance:claim:mechanism",
+              "sourceUnitId": "bauman-verbal-art-performance:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Performance context, roles, keying, and emergent event structure can reshape transmitted verbal art beyond text-only copying.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "cavalli-feldman-cultural-transmission",
+          "title": "Cultural Transmission and Evolution: A Quantitative Approach",
+          "creators": [
+            "Luigi Luca Cavalli-Sforza",
+            "Marcus W. Feldman"
+          ],
+          "year": 1981,
+          "accessUrl": "https://books.google.com/books/about/Cultural_Transmission_and_Evolution.html?id=pBGvyNXkWYcC",
+          "verificationUrl": "https://books.google.com/books/about/Cultural_Transmission_and_Evolution.html?id=pBGvyNXkWYcC",
+          "providerId": "google-books",
+          "bibliographicFamilyId": "cavalli-feldman-cultural-transmission",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "cavalli-feldman-cultural-transmission:unit:work",
+              "label": "Cultural Transmission and Evolution: A Quantitative Approach",
+              "unitType": "work",
+              "evidenceClaimIds": [
+                "cavalli-feldman-cultural-transmission:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "cavalli-feldman-cultural-transmission:claim:mechanism",
+              "sourceUnitId": "cavalli-feldman-cultural-transmission:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Cultural transmission can proceed through vertical, oblique, and horizontal pathways with different population-level dynamics.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "boyd-richerson-cultural-process",
+          "title": "Culture and the Evolutionary Process",
+          "creators": [
+            "Robert Boyd",
+            "Peter J. Richerson"
+          ],
+          "year": 1985,
+          "accessUrl": "https://press.uchicago.edu/ucp/books/book/chicago/C/bo5970597.html",
+          "verificationUrl": "https://press.uchicago.edu/ucp/books/book/chicago/C/bo5970597.html",
+          "providerId": "uchicago-press",
+          "bibliographicFamilyId": "boyd-richerson-cultural-process",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "boyd-richerson-cultural-process:unit:work",
+              "label": "Culture and the Evolutionary Process",
+              "unitType": "work",
+              "evidenceClaimIds": [
+                "boyd-richerson-cultural-process:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "boyd-richerson-cultural-process:claim:mechanism",
+              "sourceUnitId": "boyd-richerson-cultural-process:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Cultural inheritance can be shaped by guided variation, content/direct bias, frequency-dependent bias, and model-based bias.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "henrich-gilwhite-prestige",
+          "title": "The evolution of prestige: freely conferred deference as a mechanism for enhancing the benefits of cultural transmission",
+          "creators": [
+            "Joseph Henrich",
+            "Francisco J. Gil-White"
+          ],
+          "year": 2001,
+          "accessUrl": "https://pubmed.ncbi.nlm.nih.gov/11384884/",
+          "verificationUrl": "https://pubmed.ncbi.nlm.nih.gov/11384884/",
+          "providerId": "pubmed",
+          "bibliographicFamilyId": "henrich-gilwhite-prestige",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "henrich-gilwhite-prestige:unit:work",
+              "label": "The evolution of prestige: freely conferred deference as a mechanism for enhancing the benefits of cultural transmission",
+              "unitType": "article",
+              "evidenceClaimIds": [
+                "henrich-gilwhite-prestige:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "henrich-gilwhite-prestige:claim:mechanism",
+              "sourceUnitId": "henrich-gilwhite-prestige:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Prestige can bias model choice in cultural transmission, producing preferential copying of highly deferred-to individuals.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "mesoudi-cultural-evolution-2011",
+          "title": "Cultural Evolution: How Darwinian Theory Can Explain Human Culture and Synthesize the Social Sciences",
+          "creators": [
+            "Alex Mesoudi"
+          ],
+          "year": 2011,
+          "accessUrl": "https://press.uchicago.edu/ucp/books/book/chicago/C/bo8787504.html",
+          "verificationUrl": "https://press.uchicago.edu/ucp/books/book/chicago/C/bo8787504.html",
+          "providerId": "uchicago-press",
+          "bibliographicFamilyId": "mesoudi-cultural-evolution-2011",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "mesoudi-cultural-evolution-2011:unit:work",
+              "label": "Cultural Evolution: How Darwinian Theory Can Explain Human Culture and Synthesize the Social Sciences",
+              "unitType": "work",
+              "evidenceClaimIds": [
+                "mesoudi-cultural-evolution-2011:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "mesoudi-cultural-evolution-2011:claim:mechanism",
+              "sourceUnitId": "mesoudi-cultural-evolution-2011:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Cultural change can be analysed in terms of variation, inheritance, competition/selection, drift, and biased transmission without assuming literal genetic replication.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "tehrani-little-red-phylogeny",
+          "title": "The Phylogeny of Little Red Riding Hood",
+          "creators": [
+            "Jamshid J. Tehrani"
+          ],
+          "year": 2013,
+          "accessUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078871",
+          "verificationUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078871",
+          "providerId": "plos",
+          "bibliographicFamilyId": "tehrani-little-red-phylogeny",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "tehrani-little-red-phylogeny:unit:work",
+              "label": "The Phylogeny of Little Red Riding Hood",
+              "unitType": "article",
+              "evidenceClaimIds": [
+                "tehrani-little-red-phylogeny:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "tehrani-little-red-phylogeny:claim:mechanism",
+              "sourceUnitId": "tehrani-little-red-phylogeny:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Folktale lineages can show branching as well as blending; cross-cultural variants should not automatically be collapsed into one tale type.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "centola-macy-complex-contagion",
+          "title": "Complex Contagions and the Weakness of Long Ties",
+          "creators": [
+            "Damon Centola",
+            "Michael Macy"
+          ],
+          "year": 2007,
+          "accessUrl": "https://www.journals.uchicago.edu/doi/10.1086/521848",
+          "verificationUrl": "https://www.journals.uchicago.edu/doi/10.1086/521848",
+          "providerId": "uchicago-journals",
+          "bibliographicFamilyId": "centola-macy-complex-contagion",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "centola-macy-complex-contagion:unit:work",
+              "label": "Complex Contagions and the Weakness of Long Ties",
+              "unitType": "article",
+              "evidenceClaimIds": [
+                "centola-macy-complex-contagion:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "centola-macy-complex-contagion:claim:mechanism",
+              "sourceUnitId": "centola-macy-complex-contagion:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Some cultural adoptions require reinforcement from multiple sources; bridge width and adoption thresholds can matter more than simple exposure.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "vansina-oral-tradition-history",
+          "title": "Oral Tradition as History",
+          "creators": [
+            "Jan Vansina"
+          ],
+          "year": 1985,
+          "accessUrl": "https://uwpress.wisc.edu/Books/O/Oral-Tradition-as-History2",
+          "verificationUrl": "https://uwpress.wisc.edu/Books/O/Oral-Tradition-as-History2",
+          "providerId": "wisconsin-press",
+          "bibliographicFamilyId": "vansina-oral-tradition-history",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "vansina-oral-tradition-history:unit:work",
+              "label": "Oral Tradition as History",
+              "unitType": "work",
+              "evidenceClaimIds": [
+                "vansina-oral-tradition-history:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "vansina-oral-tradition-history:claim:mechanism",
+              "sourceUnitId": "vansina-oral-tradition-history:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Oral tradition should be analysed as a process with performance, social context, remembered information, testimony, and historical-source criticism.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "lord-singer-of-tales",
+          "title": "The Singer of Tales",
+          "creators": [
+            "Albert B. Lord"
+          ],
+          "year": 1960,
+          "accessUrl": "https://www-current.chs.harvard.edu/book/the-singer-of-tales-3rd-edition/",
+          "verificationUrl": "https://www-current.chs.harvard.edu/book/the-singer-of-tales-3rd-edition/",
+          "providerId": "harvard-chs",
+          "bibliographicFamilyId": "lord-singer-of-tales",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "lord-singer-of-tales:unit:work",
+              "label": "The Singer of Tales",
+              "unitType": "work",
+              "evidenceClaimIds": [
+                "lord-singer-of-tales:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "lord-singer-of-tales:claim:mechanism",
+              "sourceUnitId": "lord-singer-of-tales:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Oral epic composition can proceed through formulaic recomposition in performance rather than verbatim memorization.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "ong-orality-literacy",
+          "title": "Orality and Literacy",
+          "creators": [
+            "Walter J. Ong"
+          ],
+          "year": 1982,
+          "accessUrl": "https://www.routledge.com/Orality-and-Literacy-30th-Anniversary-Edition/Ong/p/book/9780415538381",
+          "verificationUrl": "https://www.routledge.com/Orality-and-Literacy-30th-Anniversary-Edition/Ong/p/book/9780415538381",
+          "providerId": "routledge",
+          "bibliographicFamilyId": "ong-orality-literacy",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "ong-orality-literacy:unit:work",
+              "label": "Orality and Literacy",
+              "unitType": "work",
+              "evidenceClaimIds": [
+                "ong-orality-literacy:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "ong-orality-literacy:claim:mechanism",
+              "sourceUnitId": "ong-orality-literacy:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Oral, written, print, and electronic media support different mnemonic and communicative affordances that can change transmission dynamics.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        },
+        {
+          "id": "allport-postman-rumor",
+          "title": "The Psychology of Rumor",
+          "creators": [
+            "Gordon W. Allport",
+            "Leo Postman"
+          ],
+          "year": 1947,
+          "accessUrl": "https://books.google.com/books/about/The_Psychology_of_Rumor.html?id=UjYxAAAAMAAJ",
+          "verificationUrl": "https://books.google.com/books/about/The_Psychology_of_Rumor.html?id=UjYxAAAAMAAJ",
+          "providerId": "google-books",
+          "bibliographicFamilyId": "allport-postman-rumor",
+          "traditions": [
+            "comparative"
+          ],
+          "domains": [
+            "folklore-theory",
+            "cultural-transmission"
+          ],
+          "sourceKind": "modern-scholarship",
+          "ingestionPolicy": "reference-only",
+          "rightsNote": "Bibliographic/theoretical metadata only; no copyrighted full text is redistributed.",
+          "collectionContext": "Used as theory/mechanism evidence, not as a primary record of a specific living tradition.",
+          "translationContext": "Source used in its cited publication language; no cross-language textual substitution is implied.",
+          "editionContext": "Mechanism claims are attached to the cited work/edition or article metadata; quotation requires consulting the cited source.",
+          "sensitivityNotes": [
+            "Theory sources model transmission processes and must not be treated as universal laws of all cultures."
+          ],
+          "biasNotes": [
+            "Model parameters are hypotheses/priors. Setting-specific calibration and counterevidence must be allowed."
+          ],
+          "curationReviewStatus": "evidence-reviewed",
+          "verificationStatus": "verified-catalog",
+          "verificationCheckedAt": "2026-09-08",
+          "bibliographicParseStatus": "metadata-reviewed",
+          "evidenceRole": "transmission-theory",
+          "catalogVerificationStatus": "external-catalog-verified",
+          "sourceUnits": [
+            {
+              "id": "allport-postman-rumor:unit:work",
+              "label": "The Psychology of Rumor",
+              "unitType": "work",
+              "evidenceClaimIds": [
+                "allport-postman-rumor:claim:mechanism"
+              ]
+            }
+          ],
+          "evidenceClaims": [
+            {
+              "id": "allport-postman-rumor:claim:mechanism",
+              "sourceUnitId": "allport-postman-rumor:unit:work",
+              "claimType": "theoretical-mechanism",
+              "summary": "Rumor serial reproduction has classically been analysed in terms including leveling, sharpening, and assimilation under ambiguity and interest.",
+              "confidence": 0.85,
+              "reviewStatus": "source-unit-reviewed",
+              "extractionMethod": "manual-curation"
+            }
+          ]
+        }
+      ],
+      "transformationRules": [
+        {
+          "id": "v6-leveling",
+          "label": "Leveling / detail loss",
+          "appliesTo": [
+            "uncertainty",
+            "communication",
+            "memory"
+          ],
+          "sourceIds": [
+            "bartlett-remembering-1932",
+            "allport-postman-rumor"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Compression toward fewer remembered distinctions",
+          "preconditions": [],
+          "operations": [
+            "drop:low-salience-detail"
+          ],
+          "invariants": [
+            "preserve:event-core"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "bartlett-remembering-1932:claim:mechanism",
+            "allport-postman-rumor:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-sharpening",
+          "label": "Sharpening / salience amplification",
+          "appliesTo": [
+            "uncertainty",
+            "communication"
+          ],
+          "sourceIds": [
+            "allport-postman-rumor",
+            "bartlett-remembering-1932"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Selective amplification of memorable or emotionally salient elements",
+          "preconditions": [],
+          "operations": [
+            "emphasize:high-salience-detail"
+          ],
+          "invariants": [
+            "preserve:event-core"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "allport-postman-rumor:claim:mechanism",
+            "bartlett-remembering-1932:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-assimilation",
+          "label": "Assimilation to prior schema",
+          "appliesTo": [
+            "uncertainty",
+            "memory",
+            "interpretation"
+          ],
+          "sourceIds": [
+            "bartlett-remembering-1932",
+            "allport-postman-rumor"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Reframing unfamiliar material through existing cultural categories",
+          "preconditions": [],
+          "operations": [
+            "map:unfamiliar->familiar-schema"
+          ],
+          "invariants": [],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "bartlett-remembering-1932:claim:mechanism",
+            "allport-postman-rumor:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-rationalization",
+          "label": "Causal rationalization",
+          "appliesTo": [
+            "hidden-cause",
+            "uncertainty",
+            "knowledge"
+          ],
+          "sourceIds": [
+            "bartlett-remembering-1932",
+            "vansina-oral-tradition-history"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Insert or regularize causal explanation where memory/interpretation leaves gaps",
+          "preconditions": [],
+          "operations": [
+            "add:locally-plausible-cause"
+          ],
+          "invariants": [],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "bartlett-remembering-1932:claim:mechanism",
+            "vansina-oral-tradition-history:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-omission",
+          "label": "Selective omission",
+          "appliesTo": [
+            "communication",
+            "memory"
+          ],
+          "sourceIds": [
+            "bartlett-remembering-1932",
+            "vansina-oral-tradition-history"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Remove elements with low mnemonic/social support",
+          "preconditions": [],
+          "operations": [
+            "drop:weakly-supported-element"
+          ],
+          "invariants": [
+            "preserve:lineage"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "bartlett-remembering-1932:claim:mechanism",
+            "vansina-oral-tradition-history:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-substitution",
+          "label": "Allomotif substitution",
+          "appliesTo": [
+            "transformation",
+            "identity",
+            "journey",
+            "ritual"
+          ],
+          "sourceIds": [
+            "dundes-etic-emic-motifeme",
+            "tehrani-little-red-phylogeny"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Replace a structural realization while preserving the motifeme role",
+          "preconditions": [],
+          "operations": [
+            "substitute:allomotif-same-motifeme"
+          ],
+          "invariants": [
+            "preserve:motifeme"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "dundes-etic-emic-motifeme:claim:mechanism",
+            "tehrani-little-red-phylogeny:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-localization",
+          "label": "Localization",
+          "appliesTo": [
+            "place",
+            "identity",
+            "ritual"
+          ],
+          "sourceIds": [
+            "bauman-verbal-art-performance",
+            "vansina-oral-tradition-history"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Attach transmitted material to local places, persons, institutions, or ritual categories",
+          "preconditions": [],
+          "operations": [
+            "bind:generic-element->local-place-role"
+          ],
+          "invariants": [],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "bauman-verbal-art-performance:claim:mechanism",
+            "vansina-oral-tradition-history:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-performance-keying",
+          "label": "Performance-keying transformation",
+          "appliesTo": [
+            "communication",
+            "ritual",
+            "authority"
+          ],
+          "sourceIds": [
+            "bauman-verbal-art-performance",
+            "lord-singer-of-tales"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Change style/selection according to performer, audience, occasion, and genre key",
+          "preconditions": [],
+          "operations": [
+            "shift:register-by-performance-context"
+          ],
+          "invariants": [
+            "preserve:source-lineage"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "bauman-verbal-art-performance:claim:mechanism",
+            "lord-singer-of-tales:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-formulaic-recomposition",
+          "label": "Formulaic recomposition",
+          "appliesTo": [
+            "communication",
+            "journey",
+            "hero",
+            "ritual"
+          ],
+          "sourceIds": [
+            "lord-singer-of-tales",
+            "ong-orality-literacy"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Recompose narrative using remembered formulas and thematic slots rather than verbatim copying",
+          "preconditions": [],
+          "operations": [
+            "recompose:formulaic-sequence"
+          ],
+          "invariants": [
+            "preserve:structural-role"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "lord-singer-of-tales:claim:mechanism",
+            "ong-orality-literacy:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-canon-fixation",
+          "label": "Canonical fixation",
+          "appliesTo": [
+            "authority",
+            "institution",
+            "knowledge"
+          ],
+          "sourceIds": [
+            "ong-orality-literacy",
+            "vansina-oral-tradition-history"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Institutional/written fixation lowers some forms of variation while preserving editorial mediation",
+          "preconditions": [],
+          "operations": [
+            "reduce:variant-rate",
+            "increase:reference-to-record"
+          ],
+          "invariants": [],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "ong-orality-literacy:claim:mechanism",
+            "vansina-oral-tradition-history:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-media-remediation",
+          "label": "Media remediation",
+          "appliesTo": [
+            "communication",
+            "knowledge"
+          ],
+          "sourceIds": [
+            "ong-orality-literacy",
+            "bauman-verbal-art-performance"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Change mnemonic and distribution properties when lore moves between media",
+          "preconditions": [],
+          "operations": [
+            "shift:oral-written-electronic-affordance"
+          ],
+          "invariants": [],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "ong-orality-literacy:claim:mechanism",
+            "bauman-verbal-art-performance:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-prestige-substitution",
+          "label": "Prestige-biased substitution",
+          "appliesTo": [
+            "authority",
+            "identity",
+            "communication"
+          ],
+          "sourceIds": [
+            "henrich-gilwhite-prestige",
+            "boyd-richerson-cultural-process"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Prefer variants associated with prestigious transmitters",
+          "preconditions": [],
+          "operations": [
+            "prefer:prestigious-model-variant"
+          ],
+          "invariants": [],
+          "directionalBiases": {
+            "prestige": 1
+          },
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "henrich-gilwhite-prestige:claim:mechanism",
+            "boyd-richerson-cultural-process:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-conformist-regularization",
+          "label": "Conformist regularization",
+          "appliesTo": [
+            "communication",
+            "institution"
+          ],
+          "sourceIds": [
+            "boyd-richerson-cultural-process",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Pull variants toward locally frequent forms",
+          "preconditions": [],
+          "operations": [
+            "prefer:locally-common-variant"
+          ],
+          "invariants": [],
+          "directionalBiases": {
+            "conformity": 1
+          },
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "boyd-richerson-cultural-process:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-content-attraction",
+          "label": "Content-biased attraction",
+          "appliesTo": [
+            "memory",
+            "knowledge",
+            "ritual"
+          ],
+          "sourceIds": [
+            "boyd-richerson-cultural-process",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Prefer variants with content properties that increase attention/retention",
+          "preconditions": [],
+          "operations": [
+            "prefer:memorable-content"
+          ],
+          "invariants": [],
+          "directionalBiases": {
+            "content": 1
+          },
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "boyd-richerson-cultural-process:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-innovation",
+          "label": "Guided innovation",
+          "appliesTo": [
+            "transformation",
+            "knowledge"
+          ],
+          "sourceIds": [
+            "boyd-richerson-cultural-process",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Introduce novel variants through reconstruction, learning, or problem-solving",
+          "preconditions": [],
+          "operations": [
+            "mutate:directed-learning-error"
+          ],
+          "invariants": [
+            "preserve:lineage"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "boyd-richerson-cultural-process:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-drift",
+          "label": "Unbiased drift",
+          "appliesTo": [
+            "communication",
+            "identity"
+          ],
+          "sourceIds": [
+            "mesoudi-cultural-evolution-2011",
+            "cavalli-feldman-cultural-transmission"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Random frequency change without directional preference",
+          "preconditions": [],
+          "operations": [
+            "sample:finite-population-variant"
+          ],
+          "invariants": [],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "mesoudi-cultural-evolution-2011:claim:mechanism",
+            "cavalli-feldman-cultural-transmission:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-branching",
+          "label": "Lineage branching",
+          "appliesTo": [
+            "communication",
+            "place"
+          ],
+          "sourceIds": [
+            "tehrani-little-red-phylogeny",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Create descendant variants that diverge under partially separated transmission",
+          "preconditions": [],
+          "operations": [
+            "split:lineage-by-community"
+          ],
+          "invariants": [
+            "preserve:ancestor-link"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "tehrani-little-red-phylogeny:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-blending",
+          "label": "Lineage blending / recombination",
+          "appliesTo": [
+            "communication",
+            "transformation"
+          ],
+          "sourceIds": [
+            "tehrani-little-red-phylogeny",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Combine elements from previously distinct variant lineages",
+          "preconditions": [],
+          "operations": [
+            "merge:multiple-parent-elements"
+          ],
+          "invariants": [
+            "preserve:multiple-parent-links"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "tehrani-little-red-phylogeny:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-threshold-adoption",
+          "label": "Complex-contagion gating",
+          "appliesTo": [
+            "communication",
+            "institution",
+            "uncertainty"
+          ],
+          "sourceIds": [
+            "centola-macy-complex-contagion",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Delay adoption until social reinforcement passes a threshold",
+          "preconditions": [],
+          "operations": [
+            "require:multiple-independent-exposures"
+          ],
+          "invariants": [
+            "preserve:exposure-history"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "centola-macy-complex-contagion:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-source-criticism",
+          "label": "Source-critical differentiation",
+          "appliesTo": [
+            "knowledge",
+            "uncertainty",
+            "memory"
+          ],
+          "sourceIds": [
+            "vansina-oral-tradition-history",
+            "bauman-verbal-art-performance"
+          ],
+          "weight": 1,
+          "effects": {},
+          "semanticEffect": "Preserve distinctions between testimony, performance, remembered information, and later record",
+          "preconditions": [],
+          "operations": [
+            "separate:testimony-performance-record"
+          ],
+          "invariants": [
+            "preserve:provenance"
+          ],
+          "directionalBiases": {},
+          "contextWeights": {},
+          "confidence": 0.78,
+          "evidenceClaimIds": [
+            "vansina-oral-tradition-history:claim:mechanism",
+            "bauman-verbal-art-performance:claim:mechanism"
+          ]
+        }
+      ],
+      "transmissionModes": [
+        {
+          "id": "v6-vertical-kin",
+          "label": "Vertical kin transmission",
+          "distortion": 0.08,
+          "retention": 0.92,
+          "authority": 0.55,
+          "sourceIds": [
+            "cavalli-feldman-cultural-transmission",
+            "boyd-richerson-cultural-process"
+          ],
+          "direction": "vertical",
+          "copyingBiases": {
+            "conformity": 0.25,
+            "authority": 0.4,
+            "prestige": 0.1
+          },
+          "noiseProfile": {
+            "omission": 0.06,
+            "assimilation": 0.08
+          },
+          "memoryHalfLifeDays": 3650,
+          "innovationRate": 0.02,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "household": 1,
+            "oral": 0.7
+          },
+          "evidenceClaimIds": [
+            "cavalli-feldman-cultural-transmission:claim:mechanism",
+            "boyd-richerson-cultural-process:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-oblique-elder",
+          "label": "Oblique elder transmission",
+          "distortion": 0.12,
+          "retention": 0.86,
+          "authority": 0.72,
+          "sourceIds": [
+            "cavalli-feldman-cultural-transmission",
+            "vansina-oral-tradition-history"
+          ],
+          "direction": "oblique",
+          "copyingBiases": {
+            "authority": 0.65,
+            "prestige": 0.35
+          },
+          "noiseProfile": {
+            "omission": 0.08,
+            "assimilation": 0.08,
+            "localization": 0.05
+          },
+          "memoryHalfLifeDays": 1825,
+          "innovationRate": 0.03,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "ritual": 1,
+            "oral": 0.8
+          },
+          "evidenceClaimIds": [
+            "cavalli-feldman-cultural-transmission:claim:mechanism",
+            "vansina-oral-tradition-history:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-horizontal-peer",
+          "label": "Horizontal peer transmission",
+          "distortion": 0.22,
+          "retention": 0.72,
+          "authority": 0.28,
+          "sourceIds": [
+            "cavalli-feldman-cultural-transmission",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "direction": "horizontal",
+          "copyingBiases": {
+            "conformity": 0.55,
+            "novelty": 0.22
+          },
+          "noiseProfile": {
+            "omission": 0.14,
+            "substitution": 0.12,
+            "sharpening": 0.1
+          },
+          "memoryHalfLifeDays": 365,
+          "innovationRate": 0.08,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "oral": 1,
+            "rumor": 1
+          },
+          "evidenceClaimIds": [
+            "cavalli-feldman-cultural-transmission:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-prestige-model",
+          "label": "Prestige-biased model copying",
+          "distortion": 0.1,
+          "retention": 0.86,
+          "authority": 0.82,
+          "sourceIds": [
+            "henrich-gilwhite-prestige",
+            "boyd-richerson-cultural-process"
+          ],
+          "direction": "oblique",
+          "copyingBiases": {
+            "prestige": 1,
+            "authority": 0.45
+          },
+          "noiseProfile": {
+            "assimilation": 0.05,
+            "localization": 0.04
+          },
+          "memoryHalfLifeDays": 1000,
+          "innovationRate": 0.03,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "performance": 0.8,
+            "institutional": 0.7
+          },
+          "evidenceClaimIds": [
+            "henrich-gilwhite-prestige:claim:mechanism",
+            "boyd-richerson-cultural-process:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-conformist-local",
+          "label": "Conformist local copying",
+          "distortion": 0.1,
+          "retention": 0.9,
+          "authority": 0.45,
+          "sourceIds": [
+            "boyd-richerson-cultural-process",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "direction": "many-to-one",
+          "copyingBiases": {
+            "conformity": 1
+          },
+          "noiseProfile": {
+            "substitution": 0.05,
+            "assimilation": 0.08
+          },
+          "memoryHalfLifeDays": 700,
+          "innovationRate": 0.02,
+          "complexContagionThreshold": 2,
+          "channelAffinity": {
+            "settlement": 1
+          },
+          "evidenceClaimIds": [
+            "boyd-richerson-cultural-process:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-content-biased",
+          "label": "Content-biased diffusion",
+          "distortion": 0.18,
+          "retention": 0.78,
+          "authority": 0.3,
+          "sourceIds": [
+            "boyd-richerson-cultural-process",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "direction": "horizontal",
+          "copyingBiases": {
+            "content": 1,
+            "novelty": 0.25
+          },
+          "noiseProfile": {
+            "sharpening": 0.14,
+            "omission": 0.08
+          },
+          "memoryHalfLifeDays": 450,
+          "innovationRate": 0.07,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "oral": 0.8,
+            "signal": 0.7
+          },
+          "evidenceClaimIds": [
+            "boyd-richerson-cultural-process:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-performance-chain",
+          "label": "Performance-mediated chain",
+          "distortion": 0.2,
+          "retention": 0.78,
+          "authority": 0.5,
+          "sourceIds": [
+            "bauman-verbal-art-performance",
+            "lord-singer-of-tales"
+          ],
+          "direction": "horizontal",
+          "copyingBiases": {
+            "content": 0.45,
+            "prestige": 0.35
+          },
+          "noiseProfile": {
+            "localization": 0.18,
+            "substitution": 0.12,
+            "blending": 0.08
+          },
+          "memoryHalfLifeDays": 600,
+          "innovationRate": 0.08,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "performance": 1,
+            "oral": 1
+          },
+          "evidenceClaimIds": [
+            "bauman-verbal-art-performance:claim:mechanism",
+            "lord-singer-of-tales:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-formulaic-epic",
+          "label": "Formulaic oral recomposition",
+          "distortion": 0.16,
+          "retention": 0.84,
+          "authority": 0.6,
+          "sourceIds": [
+            "lord-singer-of-tales",
+            "ong-orality-literacy"
+          ],
+          "direction": "oblique",
+          "copyingBiases": {
+            "authority": 0.35,
+            "content": 0.45
+          },
+          "noiseProfile": {
+            "omission": 0.08,
+            "sharpening": 0.1,
+            "substitution": 0.1
+          },
+          "memoryHalfLifeDays": 1400,
+          "innovationRate": 0.05,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "oral": 1,
+            "ritual": 0.6
+          },
+          "evidenceClaimIds": [
+            "lord-singer-of-tales:claim:mechanism",
+            "ong-orality-literacy:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-rumor-chain",
+          "label": "Ambiguous rumor chain",
+          "distortion": 0.42,
+          "retention": 0.48,
+          "authority": 0.12,
+          "sourceIds": [
+            "bartlett-remembering-1932",
+            "allport-postman-rumor"
+          ],
+          "direction": "horizontal",
+          "copyingBiases": {
+            "content": 0.45,
+            "novelty": 0.35
+          },
+          "noiseProfile": {
+            "leveling": 0.3,
+            "sharpening": 0.25,
+            "assimilation": 0.3,
+            "omission": 0.28
+          },
+          "memoryHalfLifeDays": 25,
+          "innovationRate": 0.14,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "rumor": 1,
+            "oral": 1
+          },
+          "evidenceClaimIds": [
+            "bartlett-remembering-1932:claim:mechanism",
+            "allport-postman-rumor:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-institutional-canon",
+          "label": "Institutional canon transmission",
+          "distortion": 0.05,
+          "retention": 0.96,
+          "authority": 0.95,
+          "sourceIds": [
+            "vansina-oral-tradition-history",
+            "ong-orality-literacy"
+          ],
+          "direction": "one-to-many",
+          "copyingBiases": {
+            "authority": 1,
+            "conformity": 0.4
+          },
+          "noiseProfile": {
+            "omission": 0.03,
+            "localization": 0.02
+          },
+          "memoryHalfLifeDays": 7300,
+          "innovationRate": 0.01,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "institutional": 1,
+            "written": 1
+          },
+          "evidenceClaimIds": [
+            "vansina-oral-tradition-history:claim:mechanism",
+            "ong-orality-literacy:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-written-copy",
+          "label": "Written-record copying",
+          "distortion": 0.04,
+          "retention": 0.97,
+          "authority": 0.68,
+          "sourceIds": [
+            "ong-orality-literacy",
+            "vansina-oral-tradition-history"
+          ],
+          "direction": "one-to-many",
+          "copyingBiases": {
+            "authority": 0.5
+          },
+          "noiseProfile": {
+            "omission": 0.02,
+            "substitution": 0.02
+          },
+          "memoryHalfLifeDays": 15000,
+          "innovationRate": 0.01,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "written": 1,
+            "archive": 1
+          },
+          "evidenceClaimIds": [
+            "ong-orality-literacy:claim:mechanism",
+            "vansina-oral-tradition-history:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-broadcast",
+          "label": "Mass one-to-many broadcast",
+          "distortion": 0.07,
+          "retention": 0.9,
+          "authority": 0.7,
+          "sourceIds": [
+            "ong-orality-literacy",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "direction": "one-to-many",
+          "copyingBiases": {
+            "authority": 0.55,
+            "prestige": 0.35,
+            "content": 0.3
+          },
+          "noiseProfile": {
+            "sharpening": 0.06
+          },
+          "memoryHalfLifeDays": 180,
+          "innovationRate": 0.04,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "signal": 1,
+            "broadcast": 1
+          },
+          "evidenceClaimIds": [
+            "ong-orality-literacy:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-syncretic-contact",
+          "label": "Cross-community syncretic contact",
+          "distortion": 0.24,
+          "retention": 0.72,
+          "authority": 0.35,
+          "sourceIds": [
+            "tehrani-little-red-phylogeny",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "direction": "many-to-one",
+          "copyingBiases": {
+            "content": 0.35,
+            "novelty": 0.4
+          },
+          "noiseProfile": {
+            "blending": 0.35,
+            "localization": 0.2,
+            "substitution": 0.15
+          },
+          "memoryHalfLifeDays": 500,
+          "innovationRate": 0.12,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "trade": 0.7,
+            "migration": 0.8
+          },
+          "evidenceClaimIds": [
+            "tehrani-little-red-phylogeny:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-complex-contagion",
+          "label": "Reinforced complex contagion",
+          "distortion": 0.1,
+          "retention": 0.82,
+          "authority": 0.45,
+          "sourceIds": [
+            "centola-macy-complex-contagion",
+            "mesoudi-cultural-evolution-2011"
+          ],
+          "direction": "mixed",
+          "copyingBiases": {
+            "conformity": 0.65,
+            "authority": 0.25
+          },
+          "noiseProfile": {
+            "assimilation": 0.06
+          },
+          "memoryHalfLifeDays": 300,
+          "innovationRate": 0.03,
+          "complexContagionThreshold": 3,
+          "channelAffinity": {
+            "peer-network": 1
+          },
+          "evidenceClaimIds": [
+            "centola-macy-complex-contagion:claim:mechanism",
+            "mesoudi-cultural-evolution-2011:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-archival-revival",
+          "label": "Archive-mediated revival",
+          "distortion": 0.08,
+          "retention": 0.9,
+          "authority": 0.75,
+          "sourceIds": [
+            "vansina-oral-tradition-history",
+            "ong-orality-literacy"
+          ],
+          "direction": "oblique",
+          "copyingBiases": {
+            "authority": 0.6,
+            "novelty": 0.2
+          },
+          "noiseProfile": {
+            "localization": 0.1,
+            "assimilation": 0.05
+          },
+          "memoryHalfLifeDays": 5000,
+          "innovationRate": 0.04,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "archive": 1,
+            "written": 1
+          },
+          "evidenceClaimIds": [
+            "vansina-oral-tradition-history:claim:mechanism",
+            "ong-orality-literacy:claim:mechanism"
+          ]
+        },
+        {
+          "id": "v6-reconstructive-memory",
+          "label": "Reconstructive memory transmission",
+          "distortion": 0.3,
+          "retention": 0.62,
+          "authority": 0.32,
+          "sourceIds": [
+            "bartlett-remembering-1932",
+            "vansina-oral-tradition-history"
+          ],
+          "direction": "mixed",
+          "copyingBiases": {
+            "content": 0.35
+          },
+          "noiseProfile": {
+            "omission": 0.2,
+            "assimilation": 0.25,
+            "rationalization": 0.18,
+            "sharpening": 0.1
+          },
+          "memoryHalfLifeDays": 90,
+          "innovationRate": 0.08,
+          "complexContagionThreshold": 1,
+          "channelAffinity": {
+            "oral": 0.8,
+            "testimony": 1
+          },
+          "evidenceClaimIds": [
+            "bartlett-remembering-1932:claim:mechanism",
+            "vansina-oral-tradition-history:claim:mechanism"
+          ]
+        }
+      ]
+    },
+    "theoryManifest": {
+      "design": "Mechanism-level priors. These parameters are explicitly defeasible and must remain separate from world truth.",
+      "sourceCount": 13,
+      "advancedTransformationCount": 20,
+      "advancedTransmissionModeCount": 16
+    }
+  }
+}

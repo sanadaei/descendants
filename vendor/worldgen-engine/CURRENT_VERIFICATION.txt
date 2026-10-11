@@ -1,0 +1,62 @@
+DESCENDANTS WORLDGEN ENGINE — CURRENT v6 FINAL VERIFICATION
+
+Status: COMPLETE — all current v6 roadmap release gates satisfied
+Date context: 2026-09-09 (Asia/Tokyo)
+
+Final code/corpus verification:
+- TypeScript npm run check: PASS
+- npm run build: PASS
+- npm run audit:lore: valid=true, errors=0, warnings=0
+- Current automated tests: 78/78 PASS
+  - Executed in host-safe split groups because the execution host limits repeated child-process creation / sustained peak-RSS runs.
+  - The stress fixture was verified separately and still asserts >900 spatial entities, globally unique IDs, and snapshot conformance.
+  - No test was omitted from the 78-case set.
+- Current release matrix: 7/7 PASS
+  - large-stream PASS
+  - stream-churn PASS
+  - medium-a PASS
+  - medium-b PASS
+  - long-runtime PASS
+  - small-a PASS
+  - small-b PASS
+- Deterministic replay: PASS, c4e7d183 == c4e7d183
+
+Final lore audit summary:
+- sources: 1971
+- catalog-only: 1843
+- evidence-eligible sources: 105
+- unique raw catalog labels: 1280
+- unique bibliographic families: 1451
+- verified sources: 857
+- motifs: 302 = 282 active + 20 candidate
+- structurally curated active motifs: 282/282 = 100%
+- active motif source-unit coverage: 100%
+- active motif evidence-claim coverage: 100%
+- transformations: 60; reviewed evidence-claim coverage: 100%
+- transmission modes: 25; reviewed evidence-claim coverage: 100%; source provenance: 100%
+- invalid catalog-only evidence refs: 0
+- under-supported active motifs: 0
+- dominant catalog provider: Project Gutenberg, 1091 / 1843 = 59.2% (release target <=60%)
+- Dúchas National Folklore Collection catalog-only records: 623
+- audit release-blocking warnings: 0
+
+Final deterministic integration snapshot:
+- digest: c4e7d183
+- entities: 1731
+- relations: 3284
+- events: 5717
+- causal records: 7985
+- knowledge records: 899
+- snapshot: ../integration-artifacts/worldgen/descendants-default.v6-final.snapshot.json
+- diagnostic: ../integration-artifacts/worldgen/DIAGNOSTIC_V6_FINAL.json
+- release matrix: ../integration-artifacts/worldgen/RELEASE_MATRIX_v6.json
+- lore audit: ../integration-artifacts/worldgen/LORE_AUDIT_CURRENT.json
+
+Non-blocking future research remains possible: promote/merge/deprecate the 20 quarantined candidates after additional evidence; add finer evidence locators; broaden empirical calibration. These are refinements, not open gates in the completed v6 roadmap.
+
+Current Main/Game Loop reintegration (2026-09-09):
+- Descendants application 1.0.0 + Worldgen 1.5.0: PASS
+- Frozen WorldProvider interface hash: edcadd649b8f3b154af2edb9c50c4489a089c215f58697156c1d0890c961afca: PASS across shared/Game/Worldgen copies
+- Integration merge gates: 5/5 PASS
+- Main regression: 194/194 PASS
+- Production runtime adapter using persisted Worldgen snapshot: PASS

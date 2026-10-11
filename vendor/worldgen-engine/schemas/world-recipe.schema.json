@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://descendants.invalid/worldgen/world-recipe.schema.json",
+  "title": "WorldRecipe v1",
+  "type": "object",
+  "required": ["recipeVersion", "id", "title", "seed", "engineRequirement", "geometry", "clock", "variables", "componentSchemas", "modules", "generationPipeline", "lodTiers", "contentPacks"],
+  "properties": {
+    "recipeVersion": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "seed": { "type": "integer" },
+    "engineRequirement": { "type": "string" },
+    "geometry": {
+      "type": "object",
+      "required": ["spaceModel", "projectionId", "extent", "continentCount"],
+      "properties": {
+        "spaceModel": { "enum": ["planar", "spherical", "custom"] },
+        "projectionId": { "type": "string", "minLength": 1 },
+        "extent": {
+          "type": "object",
+          "required": ["widthKm", "heightKm"],
+          "properties": { "widthKm": { "type": "number", "exclusiveMinimum": 0 }, "heightKm": { "type": "number", "exclusiveMinimum": 0 }, "depthKm": { "type": "number", "exclusiveMinimum": 0 } }
+        },
+        "continentCount": {
+          "type": "object",
+          "required": ["mode"],
+          "properties": { "mode": { "enum": ["fixed", "range", "generator"] }, "value": { "type": "integer", "minimum": 0 }, "min": { "type": "integer", "minimum": 0 }, "max": { "type": "integer", "minimum": 0 }, "generatorId": { "type": "string" } }
+        }
+      }
+    },
+    "clock": { "type": "object", "required": ["ticksPerDay", "calendarId", "burnInTicks"], "properties": { "ticksPerDay": { "type": "integer", "minimum": 1 }, "calendarId": { "type": "string" }, "burnInTicks": { "type": "integer", "minimum": 0 }, "startTick": { "type": "integer" } } },
+    "variables": { "type": "array" },
+    "componentSchemas": { "type": "array" },
+    "modules": { "type": "array" },
+    "generationPipeline": { "type": "array" },
+    "lodTiers": { "type": "array", "minItems": 1 },
+    "contentPacks": { "type": "array" }
+  },
+  "additionalProperties": true
+}

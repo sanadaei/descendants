@@ -1,0 +1,29 @@
+{
+  "global_complete": false,
+  "A": {
+    "file": "INSTANCE_A_BATCH112_SOURCE_WORK_RAW_CLOSURE_PASS21_2026-09-15.zip",
+    "sha256": "39d6ba4c184de28ed53f46e1d43218adb8b72b70914942fded707802aed9a411",
+    "state": "source 1607; screened/verified LB 1320; raw LB 3132; accepted sealed 2400"
+  },
+  "B": {
+    "file": "INSTANCE_B_V2_PASS22_NATIVE_EXPANSION_24_ACCEPTED_5_LEGACY_HOLD_2026-09-15.zip",
+    "sha256": "3c0ed3fe4a91d6f0816e5ec09a208bf572ce6992b6a311183e6f9ccdcb7a3958",
+    "state": "legacy 94 accepted + 5 HOLD; native total 168 accepted / 42 verified works / 336 raw; accepted subtotal 262; corrected source rows 285"
+  },
+  "C": {
+    "file": "INSTANCE_C_SHARD_060_V2_NATIVE_24_ACCEPTED_2026-09-15.zip",
+    "sha256": "986c53fec4e7e5abdc352a852b90e25d8648020865e24217b475805fcec80b6b",
+    "state": "Shard060 +24; directly proven v2 accepted 504; historical missing 936 unresolved"
+  },
+  "D": {
+    "file": "INSTANCE_D_SHARD_054_VERIFIED_30_ACCEPTED_2026-09-15.zip",
+    "sha256": "aba33f5aa17bac1bffa4b5f34dc19706b8f5e827e54365f4cc1761e088f77931",
+    "state": "Shard054 +30 accepted D1464..D1493; cumulative unknown"
+  },
+  "next": {
+    "A": "Batch113 metric closure",
+    "B": "Pass23 native expansion + remaining 5 targeted hardening",
+    "C": "Shard061 v2-native + historical recovery",
+    "D": "Shard055"
+  }
+}

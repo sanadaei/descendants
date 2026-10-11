@@ -1,0 +1,77 @@
+{
+  "engineVersion": "1.5.0",
+  "handoffGeneration": "v6-research-expansion-complete-2026-09-09",
+  "completion": true,
+  "authoritativeRoadmap": "ROADMAP.md",
+  "roadmap": {
+    "R0_kernel_contract": "done",
+    "R1_research_motif_lore": "done",
+    "R2_physical_geography": "done",
+    "R3_ecology_resources": "done",
+    "R4_population_settlements_demography": "done",
+    "R5_economy_institutions_politics_logistics": "done",
+    "R6_deep_history_archaeology_artifacts": "done",
+    "R7_agents_households_reversible_lod": "done",
+    "R8_information_ecology": "done",
+    "R9_world_law_framework": "done",
+    "R10_streaming_performance_release": "done_current_v6_verified"
+  },
+  "currentLoreAudit": {
+    "sourceCount": 1971,
+    "catalogOnlySourceCount": 1843,
+    "evidenceEligibleSourceCount": 105,
+    "uniqueCatalogRawLabelCount": 1280,
+    "uniqueBibliographicFamilyCount": 1451,
+    "verifiedSourceCount": 857,
+    "motifCount": 302,
+    "activeMotifCount": 282,
+    "candidateMotifCount": 20,
+    "structurallyCuratedActiveMotifCount": 282,
+    "structuralCoverage": 1,
+    "activeMotifSourceUnitCoverage": 1,
+    "activeMotifEvidenceClaimCoverage": 1,
+    "transformationCount": 60,
+    "transformationEvidenceClaimCoverage": 1,
+    "transmissionModeCount": 25,
+    "transmissionEvidenceClaimCoverage": 1,
+    "transmissionSourceProvenanceCoverage": 1,
+    "invalidCatalogEvidenceRefCount": 0,
+    "underSupportedActiveMotifCount": 0,
+    "dominantCatalogProvider": "project-gutenberg",
+    "dominantCatalogProviderShare": 0.5919696147585458,
+    "catalogProviderCounts": {
+      "duchas-national-folklore-collection": 623,
+      "library-of-congress-afc": 4,
+      "paradisec": 92,
+      "project-gutenberg": 1091,
+      "world-oral-literature-project": 33
+    },
+    "releaseBlockingAuditWarnings": []
+  },
+  "currentVerification": {
+    "typescriptCheck": "pass",
+    "build": "pass",
+    "loreAuditValid": true,
+    "loreAuditErrors": 0,
+    "loreAuditWarnings": 0,
+    "testsDefined": 78,
+    "fullCurrentRegression": "78/78 PASS (host-safe split execution; stress fixture separately verified and ordinary cases grouped to respect host process limits)",
+    "currentReleaseMatrix": "7/7 PASS",
+    "deterministicFinalDigest": "c4e7d183",
+    "deterministicReplay": true,
+    "finalSnapshot": {
+      "entities": 1731,
+      "relations": 3284,
+      "events": 5717,
+      "causalRecords": 7985,
+      "knowledge": 899
+    }
+  },
+  "releaseBlockers": [],
+  "nonBlockingResearchBacklog": [
+    "20 under-supported motifs remain candidate/quarantined; they may be promoted only after additional independent evidence, or merged/deprecated.",
+    "Work-level evidence claims can be refined with finer passage/item/record locators where practical.",
+    "Transformation/transmission empirical calibration can continue to broaden without changing the completed release gate or conflating theory with observed evidence."
+  ],
+  "responseRule": "All gates in the current v6 roadmap are satisfied; completion may be declared."
+}

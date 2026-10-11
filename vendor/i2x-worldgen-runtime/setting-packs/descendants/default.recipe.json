@@ -1,0 +1,486 @@
+{
+  "recipeVersion": 1,
+  "id": "descendants-sandbox-default",
+  "title": "Descendants sandbox default",
+  "seed": 20260908,
+  "engineRequirement": ">=0.1.0",
+  "geometry": {
+    "spaceModel": "planar",
+    "projectionId": "fictional-continent-km",
+    "extent": {
+      "widthKm": 600,
+      "heightKm": 400,
+      "linearScaleHintRelativeToEarth": 0.05
+    },
+    "continentCount": {
+      "mode": "fixed",
+      "value": 1
+    },
+    "wrapX": false,
+    "wrapY": false,
+    "config": {
+      "regionalVariation": "high"
+    }
+  },
+  "clock": {
+    "ticksPerDay": 1440,
+    "calendarId": "descendants-generic-solar",
+    "burnInTicks": 94608000
+  },
+  "variables": [
+    {
+      "id": "civilization_integrity",
+      "namespace": "descendants",
+      "scope": "region",
+      "kind": "number",
+      "semantic": "Degree to which modern institutions/infrastructure remain operational.",
+      "min": 0,
+      "max": 1,
+      "default": 0.55,
+      "observableByDefault": false,
+      "metadata": {
+        "motifTags": [
+          "civilization",
+          "integrity",
+          "institution",
+          "loss",
+          "survival",
+          "change"
+        ]
+      }
+    },
+    {
+      "id": "anomaly_pressure",
+      "namespace": "descendants",
+      "scope": "region",
+      "kind": "number",
+      "semantic": "Latent intensity of anomalous causal influence; not a morality or simple danger score.",
+      "min": 0,
+      "max": 1,
+      "default": 0.15,
+      "hiddenTruth": true,
+      "observableByDefault": false,
+      "metadata": {
+        "motifTags": [
+          "anomaly",
+          "hidden-cause",
+          "contamination",
+          "boundary",
+          "place",
+          "uncertainty"
+        ]
+      }
+    },
+    {
+      "id": "communication_reliability",
+      "namespace": "descendants",
+      "scope": "region",
+      "kind": "number",
+      "semantic": "Current reliability of ordinary communication infrastructure and routes.",
+      "min": 0,
+      "max": 1,
+      "default": 0.5,
+      "observableByDefault": false,
+      "metadata": {
+        "motifTags": [
+          "communication",
+          "reliability",
+          "knowledge",
+          "uncertainty",
+          "transmission"
+        ]
+      }
+    }
+  ],
+  "componentSchemas": [],
+  "modules": [
+    {
+      "id": "kernel",
+      "enabled": true,
+      "config": {}
+    },
+    {
+      "id": "geography",
+      "enabled": true,
+      "config": {
+        "regionsPerContinent": 12
+      }
+    },
+    {
+      "id": "ecology",
+      "enabled": true,
+      "config": {
+        "resourceKinds": [
+          "biomass",
+          "freshwater",
+          "mineral-access"
+        ],
+        "guildKinds": [
+          "primary-producer",
+          "consumer",
+          "decomposer"
+        ],
+        "baseResourceRegenerationPerDay": 0.0025,
+        "disturbanceRate": 0.04
+      }
+    },
+    {
+      "id": "population",
+      "enabled": true,
+      "config": {
+        "settlementsPerRegion": 2,
+        "basePopulation": 1800,
+        "populationKind": "descendants-human-population"
+      }
+    },
+    {
+      "id": "history",
+      "enabled": true,
+      "config": {
+        "epochs": 48,
+        "migrationChancePerEpoch": 0.1,
+        "settlementLifecycleChancePerEpoch": 0.055,
+        "settlementSplitPressure": 0.84,
+        "settlementAbandonmentPopulation": 50
+      }
+    },
+    {
+      "id": "society",
+      "enabled": true,
+      "config": {
+        "institutionTypes": [
+          "local-governance",
+          "exchange-network",
+          "medical-practice",
+          "communications"
+        ],
+        "resourceTypes": [
+          "staple",
+          "materials",
+          "energy"
+        ],
+        "reserveDays": 45,
+        "transportScale": 180,
+        "productionRecipes": [
+          {
+            "id": "staple-from-biomass",
+            "outputResource": "staple",
+            "laborPerUnit": 0.42,
+            "ecologicalInputs": [
+              {
+                "resourceKind": "biomass",
+                "extractionPerOutput": 0.055
+              }
+            ]
+          },
+          {
+            "id": "materials-from-minerals",
+            "outputResource": "materials",
+            "laborPerUnit": 0.68,
+            "ecologicalInputs": [
+              {
+                "resourceKind": "mineral-access",
+                "extractionPerOutput": 0.18
+              }
+            ]
+          },
+          {
+            "id": "energy-from-water-biomass",
+            "outputResource": "energy",
+            "laborPerUnit": 0.6,
+            "ecologicalInputs": [
+              {
+                "resourceKind": "freshwater",
+                "extractionPerOutput": 0.025
+              },
+              {
+                "resourceKind": "biomass",
+                "extractionPerOutput": 0.02
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "historical-depth",
+      "enabled": true,
+      "config": {
+        "traceChance": 0.75,
+        "artifactChance": 0.3,
+        "retentionThreshold": 0.55,
+        "maxTraces": 512
+      }
+    },
+    {
+      "id": "knowledge",
+      "enabled": true,
+      "config": {
+        "hiddenDiscoveryRate": 0.06,
+        "hypothesisFrames": [
+          {
+            "id": "material-cascade",
+            "semantic": "correlated material or environmental process",
+            "weight": 1
+          },
+          {
+            "id": "intentional-agency",
+            "semantic": "events interpreted as effects of intentional agency",
+            "weight": 0.75
+          },
+          {
+            "id": "ritual-covariation",
+            "semantic": "events interpreted through repeated ritual or taboo covariation",
+            "weight": 0.55
+          }
+        ]
+      }
+    },
+    {
+      "id": "information-ecology",
+      "enabled": true,
+      "config": {
+        "traceObservationChance": 0.72,
+        "baseLoss": 0.11,
+        "baseDistortion": 0.17,
+        "baseCensorship": 0.06,
+        "maxTransmissions": 256
+      }
+    },
+    {
+      "id": "motif-ontology",
+      "enabled": true,
+      "config": {
+        "ontologySeeds": [
+          "threshold-crossing",
+          "contamination-and-purity",
+          "lineage-transformation",
+          "memory-discontinuity",
+          "place-agency"
+        ],
+        "maxDerivedMotifs": 32,
+        "maxLoreVariants": 96,
+        "transmissionChance": 0.35,
+        "maxTransformationsPerVariant": 3
+      }
+    },
+    {
+      "id": "world-laws",
+      "enabled": true,
+      "config": {
+        "rules": [
+          {
+            "id": "anomaly-spread",
+            "kind": "drift",
+            "targetVariable": "descendants:anomaly_pressure",
+            "perDay": 2e-05,
+            "stochastic": 8e-05
+          },
+          {
+            "id": "infrastructure-erosion",
+            "kind": "drift",
+            "targetVariable": "descendants:civilization_integrity",
+            "perDay": -4e-06,
+            "stochastic": 1.5e-05
+          },
+          {
+            "id": "communications-instability",
+            "kind": "drift",
+            "targetVariable": "descendants:communication_reliability",
+            "perDay": -2e-06,
+            "stochastic": 3e-05
+          }
+        ]
+      }
+    },
+    {
+      "id": "lore-evolution",
+      "enabled": true,
+      "config": {
+        "evolutionChance": 0.72,
+        "maxEvolutionEvents": 128,
+        "processes": [
+          "forgetting",
+          "revival",
+          "schism",
+          "syncretism",
+          "canonization",
+          "taboo-suppression",
+          "media-channel-shift"
+        ]
+      }
+    },
+    {
+      "id": "lod",
+      "enabled": true,
+      "config": {
+        "materializationSampleCap": 32,
+        "householdSize": 4
+      }
+    }
+  ],
+  "generationPipeline": [
+    {
+      "id": "kernel:init",
+      "moduleId": "kernel"
+    },
+    {
+      "id": "geography:substrate",
+      "moduleId": "geography",
+      "dependsOn": [
+        "kernel:init"
+      ]
+    },
+    {
+      "id": "ecology:fields",
+      "moduleId": "ecology",
+      "dependsOn": [
+        "geography:substrate"
+      ]
+    },
+    {
+      "id": "population:seed",
+      "moduleId": "population",
+      "dependsOn": [
+        "ecology:fields"
+      ]
+    },
+    {
+      "id": "history:burn-in",
+      "moduleId": "history",
+      "dependsOn": [
+        "population:seed"
+      ]
+    },
+    {
+      "id": "society:present",
+      "moduleId": "society",
+      "dependsOn": [
+        "history:burn-in"
+      ]
+    },
+    {
+      "id": "history:traces",
+      "moduleId": "historical-depth",
+      "dependsOn": [
+        "history:burn-in",
+        "society:present"
+      ]
+    },
+    {
+      "id": "world-laws:truth",
+      "moduleId": "world-laws",
+      "dependsOn": [
+        "geography:substrate",
+        "history:burn-in"
+      ]
+    },
+    {
+      "id": "knowledge:interpretations",
+      "moduleId": "knowledge",
+      "dependsOn": [
+        "world-laws:truth",
+        "society:present",
+        "history:traces"
+      ]
+    },
+    {
+      "id": "knowledge:information-ecology",
+      "moduleId": "information-ecology",
+      "dependsOn": [
+        "knowledge:interpretations",
+        "history:traces",
+        "society:present"
+      ]
+    },
+    {
+      "id": "motif:transmission",
+      "moduleId": "motif-ontology",
+      "dependsOn": [
+        "knowledge:interpretations",
+        "history:burn-in",
+        "knowledge:information-ecology"
+      ]
+    },
+    {
+      "id": "lore:diachronic",
+      "moduleId": "lore-evolution",
+      "dependsOn": [
+        "motif:transmission",
+        "knowledge:information-ecology"
+      ]
+    },
+    {
+      "id": "lod:index",
+      "moduleId": "lod",
+      "dependsOn": [
+        "society:present",
+        "motif:transmission",
+        "history:traces"
+      ]
+    }
+  ],
+  "lodTiers": [
+    {
+      "id": "active",
+      "detailRank": 0,
+      "updateIntervalTicks": 1,
+      "populationMode": "individual",
+      "materializeOnDemand": true,
+      "historyRetention": "full"
+    },
+    {
+      "id": "settlement",
+      "detailRank": 1,
+      "updateIntervalTicks": 30,
+      "populationMode": "individual",
+      "materializeOnDemand": true,
+      "historyRetention": "full"
+    },
+    {
+      "id": "regional",
+      "detailRank": 2,
+      "updateIntervalTicks": 1440,
+      "populationMode": "cohort",
+      "materializeOnDemand": true,
+      "historyRetention": "significant"
+    },
+    {
+      "id": "macro",
+      "detailRank": 3,
+      "updateIntervalTicks": 10080,
+      "populationMode": "aggregate",
+      "materializeOnDemand": true,
+      "historyRetention": "aggregate"
+    }
+  ],
+  "contentPacks": [
+    {
+      "id": "descendants-core",
+      "version": "0.1.0"
+    },
+    {
+      "id": "comparative-motif-foundation",
+      "version": "0.4.0"
+    },
+    {
+      "id": "comparative-motif-expansion",
+      "version": "0.6.0"
+    },
+    {
+      "id": "project-gutenberg-mythology-catalog",
+      "version": "0.1.0"
+    },
+    {
+      "id": "lore-transmission-theory-v6",
+      "version": "0.2.0"
+    },
+    {
+      "id": "diversified-oral-archive-catalog",
+      "version": "0.2.0"
+    }
+  ],
+  "metadata": {
+    "note": "These values are Descendants defaults only. Engine must accept different continent counts, scales, modules, variables and entity domains."
+  }
+}

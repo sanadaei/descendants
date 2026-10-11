@@ -1,0 +1,14 @@
+{
+  "id": "descendants-core",
+  "version": "0.1.0",
+  "data": {
+    "settingId": "descendants",
+    "semanticDomains": [
+      "civilization-fragmentation",
+      "pathology-and-transformation",
+      "expeditionary-information",
+      "institutional-survival"
+    ],
+    "notes": "Setting data only. The engine kernel does not import or assume these domains."
+  }
+}

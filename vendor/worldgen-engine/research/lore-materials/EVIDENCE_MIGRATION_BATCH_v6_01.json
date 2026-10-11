@@ -1,0 +1,353 @@
+{
+  "schemaVersion": "1.0.0",
+  "batchId": "v6-evidence-migration-01",
+  "method": "assistant-reviewed migration of pre-v6 curated motif→source provenance into explicit work-level sourceUnits and motif-observation evidenceClaims",
+  "migratedSourceCount": 56,
+  "migratedClaimCount": 757,
+  "activeMotifCount": 282,
+  "scopeRules": [
+    "Only verified-catalog legacy records with curationReviewStatus=metadata-reviewed and no catalogVerificationStatus were migrated.",
+    "Catalog-only/catalog-context records were excluded.",
+    "Provisional source records were excluded from this migration.",
+    "Each migrated claim preserves an already-existing motif→source support link; no new motif occurrence was inferred from a catalog title.",
+    "Source units are work-level. Finer tale/chapter/page locators remain a later curation refinement where practical."
+  ],
+  "migratedSources": [
+    {
+      "sourceId": "arabian-nights-scott",
+      "title": "The Arabian Nights Entertainments - Complete",
+      "claimCount": 29,
+      "bibliographicFamilyId": "arabian-nights-scott"
+    },
+    {
+      "sourceId": "babylonia-mackenzie",
+      "title": "Myths of Babylonia and Assyria",
+      "claimCount": 3,
+      "bibliographicFamilyId": "babylonia-mackenzie"
+    },
+    {
+      "sourceId": "bengal-day",
+      "title": "Folk-Tales of Bengal",
+      "claimCount": 11,
+      "bibliographicFamilyId": "bengal-day"
+    },
+    {
+      "sourceId": "bleek-lloyd-bushman",
+      "title": "Specimens of Bushman Folklore",
+      "claimCount": 10,
+      "bibliographicFamilyId": "bleek-lloyd-bushman"
+    },
+    {
+      "sourceId": "boas-central-eskimo",
+      "title": "The Central Eskimo",
+      "claimCount": 10,
+      "bibliographicFamilyId": "boas-central-eskimo"
+    },
+    {
+      "sourceId": "brinton-new-world",
+      "title": "The Myths of the New World",
+      "claimCount": 6,
+      "bibliographicFamilyId": "brinton-new-world"
+    },
+    {
+      "sourceId": "budge-book-dead",
+      "title": "The Book of the Dead",
+      "claimCount": 15,
+      "bibliographicFamilyId": "budge-book-dead"
+    },
+    {
+      "sourceId": "chamberlain-aino-folk",
+      "title": "Aino Folk-Tales",
+      "claimCount": 10,
+      "bibliographicFamilyId": "chamberlain-aino-folk"
+    },
+    {
+      "sourceId": "cherokee-mooney",
+      "title": "Myths of the Cherokee",
+      "claimCount": 37,
+      "bibliographicFamilyId": "cherokee-mooney"
+    },
+    {
+      "sourceId": "china-werner",
+      "title": "Myths and Legends of China",
+      "claimCount": 12,
+      "bibliographicFamilyId": "china-werner"
+    },
+    {
+      "sourceId": "codrington-melanesians",
+      "title": "The Melanesians: Studies in Their Anthropology and Folk-Lore",
+      "claimCount": 5,
+      "bibliographicFamilyId": "codrington-melanesians"
+    },
+    {
+      "sourceId": "cole-philippine-folk",
+      "title": "Philippine Folk Tales",
+      "claimCount": 25,
+      "bibliographicFamilyId": "cole-philippine-folk"
+    },
+    {
+      "sourceId": "cushing-zuni-folk",
+      "title": "Zuñi Folk Tales",
+      "claimCount": 10,
+      "bibliographicFamilyId": "cushing-zuni-folk"
+    },
+    {
+      "sourceId": "davis-myths-legends-japan",
+      "title": "Myths & Legends of Japan",
+      "claimCount": 5,
+      "bibliographicFamilyId": "davis-myths-legends-japan"
+    },
+    {
+      "sourceId": "dayrell-southern-nigeria",
+      "title": "Folk Stories from Southern Nigeria",
+      "claimCount": 10,
+      "bibliographicFamilyId": "dayrell-southern-nigeria"
+    },
+    {
+      "sourceId": "de-gubernatis-zoological-mythology",
+      "title": "Zoological Mythology",
+      "claimCount": 5,
+      "bibliographicFamilyId": "de-gubernatis-zoological-mythology"
+    },
+    {
+      "sourceId": "egypt-spence",
+      "title": "Myths and Legends of Ancient Egypt",
+      "claimCount": 9,
+      "bibliographicFamilyId": "egypt-spence"
+    },
+    {
+      "sourceId": "fansler-filipino-popular",
+      "title": "Filipino Popular Tales",
+      "claimCount": 10,
+      "bibliographicFamilyId": "fansler-filipino-popular"
+    },
+    {
+      "sourceId": "frazer-golden-bough",
+      "title": "The Golden Bough: A Study of Magic and Religion",
+      "claimCount": 33,
+      "bibliographicFamilyId": "frazer-golden-bough"
+    },
+    {
+      "sourceId": "giles-strange-stories",
+      "title": "Strange Stories from a Chinese Studio",
+      "claimCount": 20,
+      "bibliographicFamilyId": "giles-strange-stories"
+    },
+    {
+      "sourceId": "gilgamish-langdon",
+      "title": "The Epic of Gilgamish: A Fragment of the Gilgamish Legend in Old-Babylonian Cuneiform",
+      "claimCount": 21,
+      "bibliographicFamilyId": "gilgamish-langdon"
+    },
+    {
+      "sourceId": "ginzberg-legends-jews",
+      "title": "The Legends of the Jews",
+      "claimCount": 15,
+      "bibliographicFamilyId": "ginzberg-legends-jews"
+    },
+    {
+      "sourceId": "gregory-gods-fighting-men",
+      "title": "Gods and Fighting Men",
+      "claimCount": 5,
+      "bibliographicFamilyId": "gregory-gods-fighting-men"
+    },
+    {
+      "sourceId": "griffith-ramayana",
+      "title": "The Ramayan of Valmiki",
+      "claimCount": 10,
+      "bibliographicFamilyId": "griffith-ramayana"
+    },
+    {
+      "sourceId": "grimm-household-hunt",
+      "title": "Grimm’s Household Tales",
+      "claimCount": 25,
+      "bibliographicFamilyId": "grimm-household-hunt"
+    },
+    {
+      "sourceId": "hawaiian-thrum",
+      "title": "Hawaiian Folk Tales: A Collection of Native Legends",
+      "claimCount": 4,
+      "bibliographicFamilyId": "hawaiian-thrum"
+    },
+    {
+      "sourceId": "hesiod-theogony",
+      "title": "The Theogony",
+      "claimCount": 5,
+      "bibliographicFamilyId": "hesiod-theogony"
+    },
+    {
+      "sourceId": "homer-iliad",
+      "title": "The Iliad of Homer",
+      "claimCount": 10,
+      "bibliographicFamilyId": "homer-iliad"
+    },
+    {
+      "sourceId": "homer-odyssey",
+      "title": "The Odyssey of Homer",
+      "claimCount": 35,
+      "bibliographicFamilyId": "homer-odyssey"
+    },
+    {
+      "sourceId": "honey-south-african",
+      "title": "South-African Folk-Tales",
+      "claimCount": 5,
+      "bibliographicFamilyId": "honey-south-african"
+    },
+    {
+      "sourceId": "indian-fairy-tales-jacobs",
+      "title": "Indian Fairy Tales",
+      "claimCount": 10,
+      "bibliographicFamilyId": "indian-fairy-tales-jacobs"
+    },
+    {
+      "sourceId": "japanese-ozaki",
+      "title": "Japanese Fairy Tales",
+      "claimCount": 42,
+      "bibliographicFamilyId": "japanese-ozaki"
+    },
+    {
+      "sourceId": "kalevala-crawford",
+      "title": "Kalevala: The Epic Poem of Finland",
+      "claimCount": 7,
+      "bibliographicFamilyId": "kalevala-crawford"
+    },
+    {
+      "sourceId": "king-legends-babylon-egypt",
+      "title": "Legends of Babylon and Egypt",
+      "claimCount": 5,
+      "bibliographicFamilyId": "king-legends-babylon-egypt"
+    },
+    {
+      "sourceId": "korean-griffis",
+      "title": "Korean Fairy Tales",
+      "claimCount": 4,
+      "bibliographicFamilyId": "korean-griffis"
+    },
+    {
+      "sourceId": "kunos-turkish-fairy",
+      "title": "Forty-four Turkish Fairy Tales",
+      "claimCount": 10,
+      "bibliographicFamilyId": "kunos-turkish-fairy"
+    },
+    {
+      "sourceId": "lang-blue-fairy",
+      "title": "The Blue Fairy Book",
+      "claimCount": 5,
+      "bibliographicFamilyId": "lang-blue-fairy"
+    },
+    {
+      "sourceId": "leland-algonquin",
+      "title": "The Algonquin Legends of New England",
+      "claimCount": 10,
+      "bibliographicFamilyId": "leland-algonquin"
+    },
+    {
+      "sourceId": "loc-afc",
+      "title": "Archive of Folk Culture / American Folklife Center Collections",
+      "claimCount": 4,
+      "bibliographicFamilyId": "loc-afc"
+    },
+    {
+      "sourceId": "mabinogion-guest",
+      "title": "The Mabinogion",
+      "claimCount": 28,
+      "bibliographicFamilyId": "mabinogion-guest"
+    },
+    {
+      "sourceId": "mahabharata-ganguli",
+      "title": "The Mahabharata of Krishna-Dwaipayana Vyasa, Volume 1",
+      "claimCount": 25,
+      "bibliographicFamilyId": "mahabharata-ganguli"
+    },
+    {
+      "sourceId": "norse-guerber",
+      "title": "Myths of the Norsemen: From the Eddas and Sagas",
+      "claimCount": 17,
+      "bibliographicFamilyId": "norse-guerber"
+    },
+    {
+      "sourceId": "ovid-metamorphoses",
+      "title": "Metamorphoses",
+      "claimCount": 5,
+      "bibliographicFamilyId": "ovid-metamorphoses"
+    },
+    {
+      "sourceId": "powers-iroquois-children",
+      "title": "Stories the Iroquois Tell Their Children",
+      "claimCount": 5,
+      "bibliographicFamilyId": "powers-iroquois-children"
+    },
+    {
+      "sourceId": "rasmussen-eskimo-folk",
+      "title": "Eskimo Folk-Tales",
+      "claimCount": 5,
+      "bibliographicFamilyId": "rasmussen-eskimo-folk"
+    },
+    {
+      "sourceId": "russian-fairy-tales-ralston",
+      "title": "Russian Fairy Tales: A Choice Collection of Muscovite Folk-lore",
+      "claimCount": 31,
+      "bibliographicFamilyId": "russian-fairy-tales-ralston"
+    },
+    {
+      "sourceId": "skeat-malay-magic",
+      "title": "Malay Magic",
+      "claimCount": 20,
+      "bibliographicFamilyId": "skeat-malay-magic"
+    },
+    {
+      "sourceId": "smith-chaldean-genesis",
+      "title": "The Chaldean Account of Genesis",
+      "claimCount": 5,
+      "bibliographicFamilyId": "smith-chaldean-genesis"
+    },
+    {
+      "sourceId": "smith-myths-iroquois",
+      "title": "Myths of the Iroquois",
+      "claimCount": 15,
+      "bibliographicFamilyId": "smith-myths-iroquois"
+    },
+    {
+      "sourceId": "spence-mexico-peru",
+      "title": "The Myths of Mexico and Peru",
+      "claimCount": 5,
+      "bibliographicFamilyId": "spence-mexico-peru"
+    },
+    {
+      "sourceId": "teit-thompson-river",
+      "title": "Traditions of the Thompson River Indians",
+      "claimCount": 5,
+      "bibliographicFamilyId": "teit-thompson-river"
+    },
+    {
+      "sourceId": "theal-kaffir-folklore",
+      "title": "Kaffir Folk-Lore",
+      "claimCount": 5,
+      "bibliographicFamilyId": "theal-kaffir-folklore"
+    },
+    {
+      "sourceId": "turner-samoa",
+      "title": "Samoa, A Hundred Years Ago and Long Before",
+      "claimCount": 30,
+      "bibliographicFamilyId": "turner-samoa"
+    },
+    {
+      "sourceId": "west-african-barker-sinclair",
+      "title": "West African Folk-Tales",
+      "claimCount": 24,
+      "bibliographicFamilyId": "west-african-barker-sinclair"
+    },
+    {
+      "sourceId": "westervelt-maui",
+      "title": "Legends of Maui",
+      "claimCount": 10,
+      "bibliographicFamilyId": "westervelt-maui"
+    },
+    {
+      "sourceId": "westervelt-volcanoes",
+      "title": "Hawaiian Legends of Volcanoes",
+      "claimCount": 15,
+      "bibliographicFamilyId": "westervelt-volcanoes"
+    }
+  ]
+}

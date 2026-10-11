@@ -1,0 +1,4724 @@
+{
+  "generatedAt": "2026-09-08",
+  "method": "lexical-structural proposal generator; proposals require curator review before promotion to structuralReviewStatus=curated",
+  "proposalCount": 302,
+  "alreadyCuratedCount": 46,
+  "proposals": [
+    {
+      "motifId": "threshold-crossing",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "liminality: threshold crossing",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "forbidden-place",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "liminality: forbidden place",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "constraint",
+        "environment",
+        "norm",
+        "spatial-anchor",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "norms",
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "return-with-transformation",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "liminality: return transformation",
+      "proposedAllomotifMotifIds": [
+        "one-way-passage"
+      ],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "one-way-passage",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "liminality: one way passage",
+      "proposedAllomotifMotifIds": [
+        "return-with-transformation"
+      ],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.6500000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "hospitality-threshold",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "liminality: hospitality threshold",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "exchange",
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "contagious-mark",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "contamination: contagious mark",
+      "proposedAllomotifMotifIds": [
+        "purification"
+      ],
+      "proposedStructuralRoles": [
+        "movement",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "polluted-place",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "contamination: polluted place",
+      "proposedAllomotifMotifIds": [
+        "purification"
+      ],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "irreversible-body-change",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "transformation: irreversible bodily change",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "movement",
+        "state-change",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "borrowed-form",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "transformation: borrowed form",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "embodiment",
+        "identity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "double-self",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "transformation: double substitute self",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "embodiment",
+        "identity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "devouring-change",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "transformation: incorporation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "forbidden-knowledge",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "knowledge: forbidden",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "information",
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "unreliable-testimony",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "knowledge: unreliable testimony",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "epistemic",
+        "information"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "memory-gap",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "knowledge: memory discontinuity",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "epistemic",
+        "information"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "secret-name",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "knowledge: secret powerful name",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "information"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "deceptive-map",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "knowledge: deceptive orientation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "information",
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prophetic-fragment",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "knowledge: fragmentary warning",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "lost-record",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "knowledge: lost broken record",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "epistemic",
+        "information"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "dream-warning",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "knowledge: dream warning evidence",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "epistemic",
+        "information"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "sentient-place",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "place: agency",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "haunted-route",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "place: dangerous route",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "movement",
+        "spatial-anchor",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "sacred-center",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "place: sacred center",
+      "proposedAllomotifMotifIds": [
+        "moving-boundary"
+      ],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "dangerous-depth",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "place: dangerous depth",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "environment",
+        "spatial-anchor",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "moving-boundary",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "place: moving boundary",
+      "proposedAllomotifMotifIds": [
+        "sacred-center"
+      ],
+      "proposedStructuralRoles": [
+        "boundary",
+        "embodiment",
+        "environment",
+        "spatial-anchor",
+        "state-change",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-as-agent",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "place: weather intentional agent",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "environment",
+        "nonhuman-agent",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "scapegoat",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "ritual: transferred burden",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "taboo-violation",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "ritual: taboo violation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "constraint",
+        "norm",
+        "ritual-action",
+        "social-regulation",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "norms",
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "purification",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "ritual: purification after contact",
+      "proposedAllomotifMotifIds": [
+        "polluted-place",
+        "contagious-mark"
+      ],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.7000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "sacrifice-exchange",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "ritual: sacrifice exchange",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "ritual-action",
+        "social-regulation",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange",
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ordeal",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "ritual: ordeal proof",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "oath-binding",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "ritual: binding oath",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-substitution",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "ritual: substitution",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "ritual-action",
+        "social-regulation",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-return",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "lineage: ancestor return",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "cursed-lineage",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "lineage: inherited burden",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "embodiment",
+        "identity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "miraculous-birth",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "lineage: extraordinary birth",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "descent-and-return",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "lineage: descent return",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "continuity",
+        "embodiment",
+        "identity",
+        "state-change",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "information",
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-rebirth-cycle",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "lineage: death renewal cycle",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "continuity",
+        "embodiment",
+        "identity",
+        "mortality",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "temporality"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-theft",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "trickster: appropriation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange",
+        "information"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-with-cost",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "exchange: gift hidden cost",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "impossible-bargain",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "exchange: impossible bargain",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-helper",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "exchange: nonhuman helper",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange",
+        "information",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "riddle-test",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "knowledge: riddle interpretation test",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "flood-survival",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "catastrophe: flood survival",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "world-renewal",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "catastrophe: world renewal",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "survivor-remnant",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "catastrophe: survivor remnant",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "information",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "signal-from-ruin",
+      "currentStructuralReviewStatus": "curated",
+      "proposedMotifeme": "catastrophe: signal ruin",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "epistemic",
+        "information"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-guarded-threshold",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: guarded threshold",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-wrong-side-return",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: wrong side return",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-seasonal-gate",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: seasonal gate",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-invisible-border",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: invisible border",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-boundary-toll",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: boundary toll",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-threshold-witness",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: threshold witness",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-contagious-crossing",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: contagious crossing",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-one-night-elsewhere",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: one night elsewhere",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "temporality"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-reversed-orientation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: reversed orientation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "liminality-name-changes-at-crossing",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "liminality: name changes crossing",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "continuity",
+        "embodiment",
+        "identity",
+        "state-change",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-impossible-road",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: impossible road",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "movement",
+        "spatial-anchor",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-compelled-pilgrimage",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: compelled pilgrimage",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "movement",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-lost-route",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: lost route",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "movement",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-guide-with-hidden-motive",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: guide hidden motive",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "movement",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-journey-by-taboo",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: taboo",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "movement",
+        "norm",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-return-by-alternate-path",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: return alternate path",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "movement",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-road-that-remembers",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: road that remembers",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "movement",
+        "spatial-anchor",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-waypoint-bargain",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: waypoint bargain",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "movement",
+        "obligation",
+        "reciprocity",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-pursuit-across-domains",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: pursuit across domains",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "movement",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "journey-homeward-test",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "journey: homeward test",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "movement",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-exchange-dangerous-gift",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "gift-exchange: dangerous",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-exchange-reciprocity-debt",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "gift-exchange: reciprocity debt",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-exchange-gift-that-cannot-be-refused",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "gift-exchange: that cannot refused",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-exchange-counter-gift-escalation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "gift-exchange: counter escalation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-exchange-hospitality-test",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "gift-exchange: hospitality test",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-exchange-gift-that-changes-status",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "gift-exchange: that changes status",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-exchange-sacred-loan",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "gift-exchange: sacred loan",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-exchange-stolen-offering",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "gift-exchange: stolen offering",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "gift-exchange-gift-returned-transformed",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "gift-exchange: returned transformed",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prohibition-forbidden-sight",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "prohibition: forbidden sight",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prohibition-forbidden-speech",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "prohibition: forbidden speech",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "epistemic",
+        "information",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "information",
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prohibition-forbidden-name",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "prohibition: forbidden name",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "continuity",
+        "identity",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prohibition-forbidden-time",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "prohibition: forbidden time",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prohibition-forbidden-touch",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "prohibition: forbidden touch",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prohibition-forbidden-room",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "prohibition: forbidden room",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prohibition-forbidden-route",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "prohibition: forbidden route",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "movement",
+        "norm",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "norms",
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prohibition-conditional-taboo",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "prohibition: conditional taboo",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "prohibition-inherited-prohibition",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "prohibition: inherited",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-hidden-lineage",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: hidden lineage",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-exchanged-identity",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: exchanged",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "embodiment",
+        "identity",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange",
+        "identity"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-true-name-leverage",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: true name leverage",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "temporality"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-disguised-ruler",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: disguised ruler",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-double-or-fetch",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: double fetch",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-mistaken-kinship",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: mistaken kinship",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-identity-proven-by-object",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: proven object",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-identity-erased-by-journey",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: erased journey",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity",
+        "movement",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-adopted-outsider",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: adopted outsider",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "identity-ancestral-resemblance",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "identity: ancestral resemblance",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-animal-transformation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: animal",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "embodiment",
+        "nonhuman-agent",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-stone-transformation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: stone",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-tree-transformation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: tree",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-age-reversal",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: age reversal",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-giant-diminution",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: giant diminution",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-wound-as-mark",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: wound mark",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-body-assembled",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: assembled",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-body-divided",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: divided",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-voice-transformed",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: voice transformed",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "body-transformation-shadow-separated",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "body-transformation: shadow separated",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-journey-of-the-dead",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: journey dead",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "mortality",
+        "movement",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-improper-burial-consequence",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: improper burial consequence",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "mortality"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-dead-return-for-debt",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: dead return for debt",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "mortality",
+        "obligation",
+        "reciprocity"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.65,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-psychopomp-guide",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: psychopomp guide",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "mortality"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-weighing-or-judgment",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: weighing judgment",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "mortality"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-dangerous-corpse",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: dangerous corpse",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "mortality"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-ancestor-intervention",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: ancestor intervention",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "agency",
+        "continuity",
+        "identity",
+        "mortality",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-death-omen",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: omen",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "mortality"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-second-death",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: second",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "mortality"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "death-afterlife-boundary-of-the-grave",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "death-afterlife: boundary grave",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "boundary",
+        "mortality",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-ancestor-mandate",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: mandate",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-forgotten-ancestor",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: forgotten",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-founder-relic",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: founder relic",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-genealogical-dispute",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: genealogical dispute",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-ancestral-curse",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: ancestral curse",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-ancestral-protection",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: ancestral protection",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-name-inheritance",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: name inheritance",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-buried-lineage",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: buried lineage",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-ritual-remembrance",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: ritual remembrance",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent",
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ancestor-memory-false-ancestry-claim",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ancestor-memory: false ancestry claim",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "epistemic",
+        "identity",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-speaking-landscape",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: speaking landscape",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-hungry-place",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: hungry",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-moving-landmark",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: moving landmark",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-sacred-spring",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: sacred spring",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-hostile-mountain",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: hostile mountain",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-haunted-road",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: haunted road",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "movement",
+        "spatial-anchor",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-memory-bearing-ruin",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: memory bearing ruin",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "epistemic",
+        "information",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-forbidden-grove",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: forbidden grove",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "environment",
+        "norm",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "norms",
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-island-that-appears",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: island that appears",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "place-agency-place-chooses-inhabitant",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "place-agency: chooses inhabitant",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-stolen-sun",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: stolen sun",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-delayed-dawn",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: delayed dawn",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-storm-as-punishment",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: storm punishment",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-rainmaking-rite",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: rainmaking rite",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-cosmic-axis",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: cosmic axis",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-eclipse-omen",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: eclipse omen",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-wind-messenger",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: wind messenger",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-seasonal-inversion",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: seasonal inversion",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-sky-descent",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: sky descent",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "weather-cosmos-star-as-ancestor",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "weather-cosmos: star ancestor",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "identity",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "water-river-bargain",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "water: river bargain",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "obligation",
+        "reciprocity",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "water-water-guardian",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "water: guardian",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "water-dangerous-well",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "water: dangerous well",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "water-submerged-settlement",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "water: submerged settlement",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "water-healing-spring",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "water: healing spring",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "environment",
+        "restoration",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment",
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "water-crossing-by-sacrifice",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "water: crossing sacrifice",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "ritual-action",
+        "social-regulation",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "water-sea-monster-passage",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "water: sea monster passage",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "temporality"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "water-water-as-boundary",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "water: boundary",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "space"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "water-drought-broken-by-taboo",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "water: drought broken taboo",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "norms"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-stolen-fire",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: stolen",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-sacred-hearth",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: sacred hearth",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-fire-from-heaven",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: heaven",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-fire-taboo",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: taboo",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-trial-by-fire",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: trial",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-living-flame",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: living flame",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-extinguished-ritual",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: extinguished ritual",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-volcanic-agency",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: volcanic agency",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-fire-as-purifier",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: purifier",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fire-fire-that-remembers",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fire: that remembers",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "environment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-relations-animal-helper",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "animal-relations: helper",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-relations-animal-spouse",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "animal-relations: spouse",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-relations-animal-ancestor",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "animal-relations: ancestor",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "identity",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-relations-animal-judge",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "animal-relations: judge",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-relations-animal-thief",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "animal-relations: thief",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-relations-animal-guide",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "animal-relations: guide",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-relations-animal-taboo",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "animal-relations: taboo",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "constraint",
+        "nonhuman-agent",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-relations-animal-transformation-bargain",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "animal-relations: transformation bargain",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "embodiment",
+        "nonhuman-agent",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "animal-relations-animal-predicts-disaster",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "animal-relations: predicts disaster",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-trickster-steals-resource",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: steals resource",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-trickster-creates-accident",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: creates accident",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-trickster-fooled-in-return",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: fooled return",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-comic-taboo-violation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: comic taboo violation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-shape-shifting-trickster",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: shape shifting",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-trickster-mediates-worlds",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: mediates worlds",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-trickster-misnames-things",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: misnames things",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-trickster-hunger",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: hunger",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-trickster-death-escape",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: death escape",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "afterlife",
+        "mortality"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "trickster-trickster-leaves-cultural-rule",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "trickster: leaves cultural rule",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-at-boundary",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: boundary",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-demands-tribute",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: demands tribute",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-born-from-violation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: born violation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-as-former-human",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: former human",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-guards-resource",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: guards resource",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-imitates-kin",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: imitates kin",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-defeated-by-knowledge",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: defeated knowledge",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-cannot-cross-threshold",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: cannot cross threshold",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-returns-cyclically",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: returns cyclically",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "monster-monster-remains-as-landscape",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "monster: remains landscape",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-substitution-sacrifice",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: substitution sacrifice",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-purification-sequence",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: purification sequence",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-ritual-inversion",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: inversion",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-first-fruits-offering",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: first fruits offering",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "obligation",
+        "reciprocity",
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "exchange",
+        "norms"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-night-vigil",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: night vigil",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-processional-boundary",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: processional boundary",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "boundary",
+        "ritual-action",
+        "social-regulation",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "norms",
+        "space"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-ritual-silence",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: silence",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-masked-embodiment",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: masked embodiment",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-ordeal",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: ordeal",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "ritual-renewal-festival",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "ritual: renewal festival",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-enchanted-tool",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: enchanted tool",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-self-acting-object",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: self acting object",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-protective-inscription",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: protective inscription",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-binding-knot",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: binding knot",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-curse-object",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: curse object",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-healing-substance",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: healing substance",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "restoration"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-divination-device",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: divination device",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-invisibility-medium",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: invisibility medium",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-flying-conveyance",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: flying conveyance",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "magic-technology-impossible-container",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "magic-technology: impossible container",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-secret-teaching",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: secret teaching",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-dangerous-knowledge",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: dangerous",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-knowledge-bought-with-loss",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: bought loss",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-riddle-contest",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: riddle contest",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-prophecy-misread",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: prophecy misread",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-dream-revelation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: dream revelation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "epistemic",
+        "information"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-forbidden-book",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: forbidden book",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "information",
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-knowledge-from-animal",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: animal",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-knowledge-from-dead",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: dead",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "knowledge-map-to-hidden-place",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "knowledge: map hidden place",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "environment",
+        "spatial-anchor"
+      ],
+      "proposedOntologyFacets": [
+        "information",
+        "space"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-sacred-kingship",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: sacred kingship",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-king-in-disguise",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: king disguise",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-succession-test",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: succession test",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-outsider-becomes-ruler",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: outsider becomes ruler",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-broken-oath-causes-crisis",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: broken oath causes crisis",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.65,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-guest-right-violated",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: guest right violated",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-feud-inheritance",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: feud inheritance",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-council-of-animals",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: council animals",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-law-founded-by-catastrophe",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: law founded catastrophe",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "social-order-ritualized-rebellion",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "social-order: ritualized rebellion",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-lost-sibling-recognition",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: lost sibling recognition",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-incest-prohibition",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: incest prohibition",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-foster-kin-loyalty",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: foster kin loyalty",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-step-parent-conflict",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: step parent conflict",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-child-of-unusual-birth",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: child unusual birth",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-marriage-to-outsider",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: marriage outsider",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "identity",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-kin-sacrifice",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: kin sacrifice",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-ancestor-child-recurrence",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: ancestor child recurrence",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "continuity",
+        "identity",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-foundling-with-sign",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: foundling sign",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "kinship-kinship-proven-by-ordeal",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "kinship: proven ordeal",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-fate-announced-at-birth",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: announced birth",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-attempted-fate-avoidance",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: attempted avoidance",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-fortune-exchange",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: exchange",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "obligation",
+        "reciprocity",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "exchange"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-luck-object",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: luck object",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-threefold-destiny",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: threefold destiny",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-doom-by-minor-omission",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: doom minor omission",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-curse-transferred",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: curse transferred",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-blessing-conditional",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: blessing conditional",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-choice-among-fates",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: choice among fates",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "fortune-fate-fate-fulfilled-indirectly",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "fortune-fate: fulfilled indirectly",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-three-trials",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: three trials",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-sevenfold-repetition",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: sevenfold repetition",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-twelve-part-order",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: twelve part order",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-paired-opposites",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: paired opposites",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-single-forbidden-exception",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: single forbidden exception",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-countdown-to-danger",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: countdown danger",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-repeated-failure-then-success",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: repeated failure then success",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.65,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-cyclic-recurrence",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: cyclic recurrence",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-generation-triad",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: generation triad",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "number-pattern-ritual-count",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "number-pattern: ritual count",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-message-distorted",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: message distorted",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "epistemic",
+        "information"
+      ],
+      "proposedOntologyFacets": [
+        "information",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-animal-messenger",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: animal messenger",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-dream-message",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: dream message",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "epistemic",
+        "information"
+      ],
+      "proposedOntologyFacets": [
+        "information",
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-dead-messenger",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: dead messenger",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-signal-misunderstood",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: signal misunderstood",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "agency",
+        "epistemic",
+        "information",
+        "nonhuman-agent"
+      ],
+      "proposedOntologyFacets": [
+        "information"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-secret-language",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: secret language",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "temporality"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-taboo-word",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: taboo word",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-name-summons-presence",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: name summons presence",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "continuity",
+        "identity"
+      ],
+      "proposedOntologyFacets": [
+        "identity"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-song-carries-memory",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: song carries memory",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "epistemic",
+        "information"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "communication-rumor-creates-consequence",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "communication: rumor creates consequence",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-disease-as-intrusion",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: intrusion",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "restoration"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-disease-as-imbalance",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: imbalance",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "restoration"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-healer-bargains-with-spirit",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: healer bargains spirit",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "agency",
+        "nonhuman-agent",
+        "obligation",
+        "reciprocity",
+        "restoration"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment",
+        "exchange"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-plant-remedy-revealed",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: plant remedy revealed",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "restoration"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-wound-cannot-close",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: wound cannot close",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "embodiment",
+        "restoration",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-healing-taboo",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: taboo",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "constraint",
+        "norm",
+        "restoration"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment",
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-contagion-from-violation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: contagion violation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "restoration"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-ritual-diagnosis",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: ritual diagnosis",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "restoration",
+        "ritual-action",
+        "social-regulation"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment",
+        "norms"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-substitution-cure",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: substitution cure",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "restoration"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "healing-disease-healing-spring-journey",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "healing-disease: spring journey",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "affliction",
+        "environment",
+        "movement",
+        "restoration",
+        "spatial-anchor",
+        "transition"
+      ],
+      "proposedOntologyFacets": [
+        "embodiment"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-impossible-building",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: impossible building",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-sacred-foundation-deposit",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: sacred foundation deposit",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-bridge-demands-cost",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: bridge demands cost",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-house-with-forbidden-chamber",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: house forbidden chamber",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-labyrinth",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: labyrinth",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-craft-secret-stolen",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: secret stolen",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-builder-curse",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: builder curse",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-living-statue",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: living statue",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-tower-reaches-forbidden-realm",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: tower reaches forbidden realm",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.65,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "craft-architecture-ruin-preserves-warning",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "craft-architecture: ruin preserves warning",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-endless-hunger",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: endless",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-forbidden-food",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: forbidden",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-food-of-otherworld",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: otherworld",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.5,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-hospitality-meal-test",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: hospitality meal test",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-magical-abundance-vessel",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: magical abundance vessel",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-famine-from-broken-rite",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: famine broken rite",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-food-transforms-eater",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: transforms eater",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "embodiment",
+        "state-change"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-stolen-harvest",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: stolen harvest",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.55,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-first-meal-with-stranger",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: first meal stranger",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "narrative-function"
+      ],
+      "proposedOntologyFacets": [
+        "social-meaning"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    },
+    {
+      "motifId": "food-hunger-hunger-drives-taboo-violation",
+      "currentStructuralReviewStatus": "unreviewed",
+      "proposedMotifeme": "food-hunger: drives taboo violation",
+      "proposedAllomotifMotifIds": [],
+      "proposedStructuralRoles": [
+        "constraint",
+        "norm"
+      ],
+      "proposedOntologyFacets": [
+        "norms"
+      ],
+      "proposalConfidence": 0.6000000000000001,
+      "reviewStatus": "heuristic-proposal-not-runtime-authoritative"
+    }
+  ]
+}

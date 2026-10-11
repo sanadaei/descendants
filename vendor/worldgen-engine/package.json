@@ -1,0 +1,27 @@
+{
+  "name": "@descendants/worldgen-engine",
+  "version": "1.5.0",
+  "private": true,
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "generate:descendants": "npm run build && node cli.mjs generate setting-packs/descendants/default.recipe.json ../integration-artifacts/worldgen/descendants-default.snapshot.json",
+    "diagnose:descendants": "npm run build && node cli.mjs diagnose setting-packs/descendants/default.recipe.json",
+    "audit:lore": "npm run build && node cli.mjs audit-lore setting-packs/descendants/default.recipe.json",
+    "fetch:lore-sources": "npm run build && node scripts/fetch-lore-sources.mjs",
+    "test:single": "npm run build && node --test tests/*.test.mjs",
+    "verify:release": "npm run check && npm run test:shard -- 1 3 && npm run test:shard -- 2 3 && npm run test:shard -- 3 3 && npm run generate:descendants && npm run diagnose:descendants && npm run audit:lore",
+    "test:shard": "node scripts/run-one-test-shard.mjs",
+    "verify:matrix": "npm run verify:matrix:a && npm run verify:matrix:b && npm run verify:matrix:merge",
+    "verify:matrix:a": "npm run build && WORLDGEN_MATRIX_COOLDOWN_MS=1500 WORLDGEN_MATRIX_CASES=long-runtime,large-stream,stream-churn,medium-a,medium-b node --expose-gc scripts/run-release-matrix.mjs ../integration-artifacts/worldgen/RELEASE_MATRIX_PART_A.json",
+    "verify:matrix:b": "npm run build && WORLDGEN_MATRIX_COOLDOWN_MS=500 WORLDGEN_MATRIX_CASES=small-a,small-b node --expose-gc scripts/run-release-matrix.mjs ../integration-artifacts/worldgen/RELEASE_MATRIX_PART_B.json",
+    "verify:matrix:merge": "node scripts/merge-release-matrix.mjs ../integration-artifacts/worldgen/RELEASE_MATRIX_PART_A.json ../integration-artifacts/worldgen/RELEASE_MATRIX_PART_B.json ../integration-artifacts/worldgen/RELEASE_MATRIX_v6.json"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}

@@ -1,0 +1,2239 @@
+{
+  "schemaVersion": "1.0.0",
+  "batchId": "v6-02",
+  "method": "assistant-reviewed controlled-vocabulary structural abstraction; source-unit/evidence-claim review remains separate",
+  "families": [
+    "ancestor-memory",
+    "body-transformation",
+    "communication",
+    "craft-architecture",
+    "death-afterlife",
+    "fortune-fate",
+    "healing-disease",
+    "kinship",
+    "liminality",
+    "magic-technology",
+    "number-pattern",
+    "place-agency",
+    "prohibition",
+    "trickster",
+    "water",
+    "weather-cosmos"
+  ],
+  "curatedCount": 138,
+  "entries": [
+    {
+      "motifId": "liminality-wrong-side-return",
+      "family": "liminality",
+      "motifeme": "a return crosses the threshold but restores the actor to an altered or inappropriate side of the boundary; structurally, a threshold between states or domains changes identity, access, orientation, duration, or the terms of return.",
+      "structuralRoles": [
+        "boundary",
+        "transition",
+        "state-change"
+      ],
+      "ontologyFacets": [
+        "liminality",
+        "space",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "liminality-invisible-border",
+      "family": "liminality",
+      "motifeme": "a consequential boundary exists without ordinary visible marking; structurally, a threshold between states or domains changes identity, access, orientation, duration, or the terms of return.",
+      "structuralRoles": [
+        "boundary",
+        "transition",
+        "state-change"
+      ],
+      "ontologyFacets": [
+        "liminality",
+        "space",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "liminality-threshold-witness",
+      "family": "liminality",
+      "motifeme": "crossing status depends on an observer, guardian, or recognized witness at the boundary; structurally, a threshold between states or domains changes identity, access, orientation, duration, or the terms of return.",
+      "structuralRoles": [
+        "boundary",
+        "transition",
+        "state-change"
+      ],
+      "ontologyFacets": [
+        "liminality",
+        "space",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "liminality-one-night-elsewhere",
+      "family": "liminality",
+      "motifeme": "brief subjective duration across a threshold maps to altered time or status on return; structurally, a threshold between states or domains changes identity, access, orientation, duration, or the terms of return.",
+      "structuralRoles": [
+        "boundary",
+        "transition",
+        "state-change"
+      ],
+      "ontologyFacets": [
+        "liminality",
+        "space",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "liminality-name-changes-at-crossing",
+      "family": "liminality",
+      "motifeme": "crossing a boundary requires or causes a change of name and social identity; structurally, a threshold between states or domains changes identity, access, orientation, duration, or the terms of return.",
+      "structuralRoles": [
+        "boundary",
+        "transition",
+        "state-change"
+      ],
+      "ontologyFacets": [
+        "liminality",
+        "space",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "prohibition-forbidden-sight",
+      "family": "prohibition",
+      "motifeme": "seeing a protected person, object, act, or domain constitutes the prohibited crossing; structurally, a rule restricts perception, timing, space, speech, touch, or access, and the condition or breach of that rule changes consequences.",
+      "structuralRoles": [
+        "constraint",
+        "norm-enforcement",
+        "consequence"
+      ],
+      "ontologyFacets": [
+        "prohibition",
+        "norms",
+        "access"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "prohibition-forbidden-time",
+      "family": "prohibition",
+      "motifeme": "an otherwise permitted act becomes prohibited during a specified temporal interval; structurally, a rule restricts perception, timing, space, speech, touch, or access, and the condition or breach of that rule changes consequences.",
+      "structuralRoles": [
+        "constraint",
+        "norm-enforcement",
+        "consequence"
+      ],
+      "ontologyFacets": [
+        "prohibition",
+        "norms",
+        "access"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "prohibition-forbidden-room",
+      "family": "prohibition",
+      "motifeme": "entry into a specific interior space is prohibited and consequential; structurally, a rule restricts perception, timing, space, speech, touch, or access, and the condition or breach of that rule changes consequences.",
+      "structuralRoles": [
+        "constraint",
+        "norm-enforcement",
+        "consequence"
+      ],
+      "ontologyFacets": [
+        "prohibition",
+        "norms",
+        "access"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "prohibition-conditional-taboo",
+      "family": "prohibition",
+      "motifeme": "a prohibition applies only under stated relational, temporal, spatial, or status conditions; structurally, a rule restricts perception, timing, space, speech, touch, or access, and the condition or breach of that rule changes consequences.",
+      "structuralRoles": [
+        "constraint",
+        "norm-enforcement",
+        "consequence"
+      ],
+      "ontologyFacets": [
+        "prohibition",
+        "norms",
+        "access"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-animal-transformation",
+      "family": "body-transformation",
+      "motifeme": "an actor takes animal form; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-stone-transformation",
+      "family": "body-transformation",
+      "motifeme": "an actor or body becomes stone; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-tree-transformation",
+      "family": "body-transformation",
+      "motifeme": "an actor or body becomes a tree or plant form; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-age-reversal",
+      "family": "body-transformation",
+      "motifeme": "apparent or embodied age moves backward; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-giant-diminution",
+      "family": "body-transformation",
+      "motifeme": "a giant or oversized body is reduced in scale; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-wound-as-mark",
+      "family": "body-transformation",
+      "motifeme": "a wound persists as a visible sign of identity, event, or status; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-body-assembled",
+      "family": "body-transformation",
+      "motifeme": "a divided or incomplete body is reassembled into an acting whole; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-body-divided",
+      "family": "body-transformation",
+      "motifeme": "one body is partitioned into multiple meaningful parts or agents; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-voice-transformed",
+      "family": "body-transformation",
+      "motifeme": "a change of voice alters recognition, identity, or communicative power; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "body-transformation-shadow-separated",
+      "family": "body-transformation",
+      "motifeme": "a shadow becomes separable from the person whose identity it normally indexes; structurally, embodied state is altered in a way that changes identity, capability, recognizability, or social classification.",
+      "structuralRoles": [
+        "embodied-state",
+        "transformation",
+        "identity"
+      ],
+      "ontologyFacets": [
+        "body-transformation",
+        "embodiment",
+        "identity"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "death-afterlife-journey-of-the-dead",
+      "family": "death-afterlife",
+      "motifeme": "the dead undergo movement through ordered stages or places after death; structurally, relations between living and dead are structured through passage, obligation, judgment, intervention, return, or repeated loss of status.",
+      "structuralRoles": [
+        "mortality",
+        "afterlife",
+        "continuity"
+      ],
+      "ontologyFacets": [
+        "death-afterlife",
+        "mortality",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "death-afterlife-dead-return-for-debt",
+      "family": "death-afterlife",
+      "motifeme": "an unresolved obligation permits or causes a dead person to return; structurally, relations between living and dead are structured through passage, obligation, judgment, intervention, return, or repeated loss of status.",
+      "structuralRoles": [
+        "mortality",
+        "afterlife",
+        "continuity"
+      ],
+      "ontologyFacets": [
+        "death-afterlife",
+        "mortality",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "death-afterlife-weighing-or-judgment",
+      "family": "death-afterlife",
+      "motifeme": "postmortem status is determined through evaluation of conduct, substance, or balance; structurally, relations between living and dead are structured through passage, obligation, judgment, intervention, return, or repeated loss of status.",
+      "structuralRoles": [
+        "mortality",
+        "afterlife",
+        "continuity"
+      ],
+      "ontologyFacets": [
+        "death-afterlife",
+        "mortality",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "death-afterlife-ancestor-intervention",
+      "family": "death-afterlife",
+      "motifeme": "a dead ancestor acts in the affairs of living descendants; structurally, relations between living and dead are structured through passage, obligation, judgment, intervention, return, or repeated loss of status.",
+      "structuralRoles": [
+        "mortality",
+        "afterlife",
+        "continuity"
+      ],
+      "ontologyFacets": [
+        "death-afterlife",
+        "mortality",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "death-afterlife-second-death",
+      "family": "death-afterlife",
+      "motifeme": "an already-dead being can lose a further form of identity, memory, presence, or afterlife status; structurally, relations between living and dead are structured through passage, obligation, judgment, intervention, return, or repeated loss of status.",
+      "structuralRoles": [
+        "mortality",
+        "afterlife",
+        "continuity"
+      ],
+      "ontologyFacets": [
+        "death-afterlife",
+        "mortality",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-ancestor-mandate",
+      "family": "ancestor-memory",
+      "motifeme": "an ancestor legitimates or commands present action; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-forgotten-ancestor",
+      "family": "ancestor-memory",
+      "motifeme": "loss of ancestral memory weakens identity, claim, or protection; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-founder-relic",
+      "family": "ancestor-memory",
+      "motifeme": "a material remnant of a founder anchors present lineage or authority; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-genealogical-dispute",
+      "family": "ancestor-memory",
+      "motifeme": "competing genealogies contest identity, inheritance, or legitimacy; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-ancestral-curse",
+      "family": "ancestor-memory",
+      "motifeme": "harm is inherited or justified through ancestral action; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-ancestral-protection",
+      "family": "ancestor-memory",
+      "motifeme": "benefit or protection is inherited through ancestral relation; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-name-inheritance",
+      "family": "ancestor-memory",
+      "motifeme": "a name transfers continuity, role, or expectation across generations; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-buried-lineage",
+      "family": "ancestor-memory",
+      "motifeme": "concealed descent is recovered and changes present identity or claim; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-ritual-remembrance",
+      "family": "ancestor-memory",
+      "motifeme": "prescribed remembrance renews a relationship with ancestors; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "ancestor-memory-false-ancestry-claim",
+      "family": "ancestor-memory",
+      "motifeme": "a fabricated lineage is used to claim identity, privilege, or legitimacy; structurally, present identity, authority, obligation, or danger is organized through remembered, disputed, or materialized ancestry.",
+      "structuralRoles": [
+        "lineage",
+        "continuity",
+        "memory"
+      ],
+      "ontologyFacets": [
+        "ancestor-memory",
+        "identity",
+        "memory"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-speaking-landscape",
+      "family": "place-agency",
+      "motifeme": "a landscape communicates information or intention; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-hungry-place",
+      "family": "place-agency",
+      "motifeme": "a place demands consumption, tribute, victims, or repeated loss; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-moving-landmark",
+      "family": "place-agency",
+      "motifeme": "a landmark changes location or fails to remain spatially fixed; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-sacred-spring",
+      "family": "place-agency",
+      "motifeme": "a spring concentrates sacred, healing, or legitimating significance; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-hostile-mountain",
+      "family": "place-agency",
+      "motifeme": "a mountain actively resists approach, passage, or habitation; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-haunted-road",
+      "family": "place-agency",
+      "motifeme": "a travel route preserves recurring danger or presence; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-memory-bearing-ruin",
+      "family": "place-agency",
+      "motifeme": "a ruin stores or communicates consequences of past events; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-forbidden-grove",
+      "family": "place-agency",
+      "motifeme": "a grove is spatially protected by prohibition and consequence; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-island-that-appears",
+      "family": "place-agency",
+      "motifeme": "an island is intermittently available or conditionally visible; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "place-agency-place-chooses-inhabitant",
+      "family": "place-agency",
+      "motifeme": "a place selects, accepts, rejects, or binds a particular inhabitant; structurally, a location functions as an active constraint, agent, repository, or selector that changes the options of those who encounter it.",
+      "structuralRoles": [
+        "spatial-anchor",
+        "place-agency",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "place-agency",
+        "geography",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-stolen-sun",
+      "family": "weather-cosmos",
+      "motifeme": "the sun is removed from ordinary circulation by an agent; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-delayed-dawn",
+      "family": "weather-cosmos",
+      "motifeme": "the expected transition to daylight is postponed; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-storm-as-punishment",
+      "family": "weather-cosmos",
+      "motifeme": "a storm is interpreted as sanction for conduct or breach; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-rainmaking-rite",
+      "family": "weather-cosmos",
+      "motifeme": "ritual action is used to negotiate or induce rainfall; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-cosmic-axis",
+      "family": "weather-cosmos",
+      "motifeme": "a vertical or central feature connects ordered cosmic domains; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-eclipse-omen",
+      "family": "weather-cosmos",
+      "motifeme": "an eclipse is interpreted as advance evidence of consequential change; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-wind-messenger",
+      "family": "weather-cosmos",
+      "motifeme": "wind carries agency, information, command, or presence across distance; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-seasonal-inversion",
+      "family": "weather-cosmos",
+      "motifeme": "ordinary seasonal order is temporarily reversed or displaced; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-sky-descent",
+      "family": "weather-cosmos",
+      "motifeme": "the sky or a sky-being moves downward into the human domain; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "weather-cosmos-star-as-ancestor",
+      "family": "weather-cosmos",
+      "motifeme": "a star is linked genealogically to an ancestor or lineage; structurally, an atmospheric or celestial phenomenon structures causality, timing, authority, omen, ancestry, or access between domains.",
+      "structuralRoles": [
+        "cosmic-order",
+        "environmental-agency",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "weather-cosmos",
+        "environment",
+        "cosmology"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "water-river-bargain",
+      "family": "water",
+      "motifeme": "crossing or using a river requires negotiation, offering, or reciprocal cost; structurally, water or a water-mediated place structures danger, exchange, boundary, healing, access, or obligation.",
+      "structuralRoles": [
+        "environmental-medium",
+        "boundary",
+        "exchange"
+      ],
+      "ontologyFacets": [
+        "water",
+        "environment",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "water-water-guardian",
+      "family": "water",
+      "motifeme": "access to water or passage through it is controlled by an agentive guardian; structurally, water or a water-mediated place structures danger, exchange, boundary, healing, access, or obligation.",
+      "structuralRoles": [
+        "environmental-medium",
+        "boundary",
+        "exchange"
+      ],
+      "ontologyFacets": [
+        "water",
+        "environment",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "water-dangerous-well",
+      "family": "water",
+      "motifeme": "a well concentrates hidden risk beneath an ordinary access point; structurally, water or a water-mediated place structures danger, exchange, boundary, healing, access, or obligation.",
+      "structuralRoles": [
+        "environmental-medium",
+        "boundary",
+        "exchange"
+      ],
+      "ontologyFacets": [
+        "water",
+        "environment",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "water-submerged-settlement",
+      "family": "water",
+      "motifeme": "a former inhabited place persists beneath water as memory, warning, or alternate domain; structurally, water or a water-mediated place structures danger, exchange, boundary, healing, access, or obligation.",
+      "structuralRoles": [
+        "environmental-medium",
+        "boundary",
+        "exchange"
+      ],
+      "ontologyFacets": [
+        "water",
+        "environment",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "water-healing-spring",
+      "family": "water",
+      "motifeme": "contact with a spring changes afflicted bodily or social state toward restoration; structurally, water or a water-mediated place structures danger, exchange, boundary, healing, access, or obligation.",
+      "structuralRoles": [
+        "environmental-medium",
+        "boundary",
+        "exchange"
+      ],
+      "ontologyFacets": [
+        "water",
+        "environment",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "water-crossing-by-sacrifice",
+      "family": "water",
+      "motifeme": "safe passage over or through water is conditional on costly offering or loss; structurally, water or a water-mediated place structures danger, exchange, boundary, healing, access, or obligation.",
+      "structuralRoles": [
+        "environmental-medium",
+        "boundary",
+        "exchange"
+      ],
+      "ontologyFacets": [
+        "water",
+        "environment",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "water-sea-monster-passage",
+      "family": "water",
+      "motifeme": "movement across sea space is constrained by a threatening nonhuman agent; structurally, water or a water-mediated place structures danger, exchange, boundary, healing, access, or obligation.",
+      "structuralRoles": [
+        "environmental-medium",
+        "boundary",
+        "exchange"
+      ],
+      "ontologyFacets": [
+        "water",
+        "environment",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "water-water-as-boundary",
+      "family": "water",
+      "motifeme": "water marks a meaningful separation between social, spatial, or cosmological domains; structurally, water or a water-mediated place structures danger, exchange, boundary, healing, access, or obligation.",
+      "structuralRoles": [
+        "environmental-medium",
+        "boundary",
+        "exchange"
+      ],
+      "ontologyFacets": [
+        "water",
+        "environment",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "water-drought-broken-by-taboo",
+      "family": "water",
+      "motifeme": "water scarcity is causally linked to a violated prohibition and ends through its repair or reversal; structurally, water or a water-mediated place structures danger, exchange, boundary, healing, access, or obligation.",
+      "structuralRoles": [
+        "environmental-medium",
+        "boundary",
+        "exchange"
+      ],
+      "ontologyFacets": [
+        "water",
+        "environment",
+        "transition"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-trickster-steals-resource",
+      "family": "trickster",
+      "motifeme": "a trickster transfers a valued resource through deceptive appropriation; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-trickster-creates-accident",
+      "family": "trickster",
+      "motifeme": "a trickster produces an unintended-looking event that becomes causally decisive; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-trickster-fooled-in-return",
+      "family": "trickster",
+      "motifeme": "the deceiver becomes the target of a reciprocal deception; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-comic-taboo-violation",
+      "family": "trickster",
+      "motifeme": "a prohibition is broken in a comic frame that exposes or reworks the rule; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-shape-shifting-trickster",
+      "family": "trickster",
+      "motifeme": "a trickster changes form to cross classifications or evade constraints; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-trickster-mediates-worlds",
+      "family": "trickster",
+      "motifeme": "a trickster moves between otherwise separated social or cosmological domains; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-trickster-misnames-things",
+      "family": "trickster",
+      "motifeme": "deliberate or incompetent naming destabilizes classification and consequence; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-trickster-hunger",
+      "family": "trickster",
+      "motifeme": "appetite drives boundary crossing, deception, or rule-breaking; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-trickster-death-escape",
+      "family": "trickster",
+      "motifeme": "a trickster evades a terminal condition through deception or reclassification; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "trickster-trickster-leaves-cultural-rule",
+      "family": "trickster",
+      "motifeme": "disruptive action becomes the precedent or origin of a durable rule; structurally, a boundary-crossing strategic agent disrupts rules or expectations and redistributes resources, knowledge, status, or causal responsibility.",
+      "structuralRoles": [
+        "strategic-agent",
+        "norm-disruption",
+        "mediation"
+      ],
+      "ontologyFacets": [
+        "trickster",
+        "agency",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-enchanted-tool",
+      "family": "magic-technology",
+      "motifeme": "a tool performs beyond ordinary material capability; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-self-acting-object",
+      "family": "magic-technology",
+      "motifeme": "an object acts without continuous human operation; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-protective-inscription",
+      "family": "magic-technology",
+      "motifeme": "written or carved signs create a protective condition; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-binding-knot",
+      "family": "magic-technology",
+      "motifeme": "a knot or binding structure constrains agency, relation, or outcome; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-curse-object",
+      "family": "magic-technology",
+      "motifeme": "an object carries persistent harmful consequence across holders or contexts; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-healing-substance",
+      "family": "magic-technology",
+      "motifeme": "a material substance restores bodily or social state; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-divination-device",
+      "family": "magic-technology",
+      "motifeme": "an object mediates access to hidden, distant, or future information; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-invisibility-medium",
+      "family": "magic-technology",
+      "motifeme": "an object or substance suppresses ordinary detection; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-flying-conveyance",
+      "family": "magic-technology",
+      "motifeme": "a conveyance permits movement through air or otherwise inaccessible routes; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "magic-technology-impossible-container",
+      "family": "magic-technology",
+      "motifeme": "a bounded object contains, produces, or preserves more than ordinary capacity allows; structurally, extraordinary capability is localized in an object, inscription, substance, device, or conveyance that mediates otherwise unavailable action.",
+      "structuralRoles": [
+        "artifact-agency",
+        "capability-mediation",
+        "constraint"
+      ],
+      "ontologyFacets": [
+        "magic-technology",
+        "material-culture",
+        "agency"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-lost-sibling-recognition",
+      "family": "kinship",
+      "motifeme": "separated siblings are recognized through a sign, memory, resemblance, or test; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-incest-prohibition",
+      "family": "kinship",
+      "motifeme": "a kin relation defines a prohibited sexual or marital boundary; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-foster-kin-loyalty",
+      "family": "kinship",
+      "motifeme": "socially created kinship generates obligations comparable to descent; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-step-parent-conflict",
+      "family": "kinship",
+      "motifeme": "a step-parent relation concentrates competition, exclusion, or divided obligation; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-child-of-unusual-birth",
+      "family": "kinship",
+      "motifeme": "an atypical birth establishes exceptional identity or claim; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-marriage-to-outsider",
+      "family": "kinship",
+      "motifeme": "marriage crosses a social, ethnic, spatial, or cosmological boundary; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-kin-sacrifice",
+      "family": "kinship",
+      "motifeme": "a kin relation intensifies the cost or legitimacy of sacrifice; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-ancestor-child-recurrence",
+      "family": "kinship",
+      "motifeme": "a child is interpreted as recurrence, return, or continuation of an ancestor; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-foundling-with-sign",
+      "family": "kinship",
+      "motifeme": "an abandoned or unknown child carries a sign that later resolves identity; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "kinship-kinship-proven-by-ordeal",
+      "family": "kinship",
+      "motifeme": "a dangerous or formal test establishes disputed kinship; structurally, social identity and obligation are established, contested, transferred, or tested through kinship relations.",
+      "structuralRoles": [
+        "kinship",
+        "social-classification",
+        "obligation"
+      ],
+      "ontologyFacets": [
+        "kinship",
+        "identity",
+        "social-order"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-fate-announced-at-birth",
+      "family": "fortune-fate",
+      "motifeme": "a future outcome is declared at or near birth; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-attempted-fate-avoidance",
+      "family": "fortune-fate",
+      "motifeme": "actors change conduct to escape a predicted outcome and thereby reshape its path; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-fortune-exchange",
+      "family": "fortune-fate",
+      "motifeme": "luck or future advantage is transferred between persons or groups; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-luck-object",
+      "family": "fortune-fate",
+      "motifeme": "fortune is attached to possession, loss, or transfer of an object; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-threefold-destiny",
+      "family": "fortune-fate",
+      "motifeme": "multiple fated outcomes are partitioned into a salient triadic structure; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-doom-by-minor-omission",
+      "family": "fortune-fate",
+      "motifeme": "a small failure or omission becomes the hinge for disproportionate future harm; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-curse-transferred",
+      "family": "fortune-fate",
+      "motifeme": "a harmful future condition moves from one bearer to another; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-blessing-conditional",
+      "family": "fortune-fate",
+      "motifeme": "beneficial fate depends on maintaining a stated condition; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-choice-among-fates",
+      "family": "fortune-fate",
+      "motifeme": "an actor is presented with multiple constrained future outcomes; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "fortune-fate-fate-fulfilled-indirectly",
+      "family": "fortune-fate",
+      "motifeme": "a prediction is realized through an unexpected causal route rather than its obvious interpretation; structurally, future outcomes constrain present action through prediction, transfer, condition, avoidance, choice, or indirect fulfillment.",
+      "structuralRoles": [
+        "future-constraint",
+        "causal-closure",
+        "choice"
+      ],
+      "ontologyFacets": [
+        "fortune-fate",
+        "temporality",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-three-trials",
+      "family": "number-pattern",
+      "motifeme": "three sequential trials organize escalation and resolution; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-sevenfold-repetition",
+      "family": "number-pattern",
+      "motifeme": "an event or action gains force through sevenfold recurrence; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-twelve-part-order",
+      "family": "number-pattern",
+      "motifeme": "a system is partitioned into twelve ordered positions or phases; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-paired-opposites",
+      "family": "number-pattern",
+      "motifeme": "meaning is organized through a repeated binary contrast; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-single-forbidden-exception",
+      "family": "number-pattern",
+      "motifeme": "one excluded case defines the boundary of an otherwise general permission or rule; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-countdown-to-danger",
+      "family": "number-pattern",
+      "motifeme": "decreasing count marks approach to a harmful threshold; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-repeated-failure-then-success",
+      "family": "number-pattern",
+      "motifeme": "a fixed sequence of failed attempts establishes the conditions for a final success; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-cyclic-recurrence",
+      "family": "number-pattern",
+      "motifeme": "an event returns according to a recurring interval or ordered cycle; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-generation-triad",
+      "family": "number-pattern",
+      "motifeme": "three generations or generational positions organize continuity and difference; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "number-pattern-ritual-count",
+      "family": "number-pattern",
+      "motifeme": "prescribed numerical repetition is required for ritual completion or efficacy; structurally, salient counting, repetition, pairing, sequence, or cycle organizes expectation and the resolution of events.",
+      "structuralRoles": [
+        "patterning",
+        "recurrence",
+        "expectation"
+      ],
+      "ontologyFacets": [
+        "number-pattern",
+        "temporality",
+        "structure"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-message-distorted",
+      "family": "communication",
+      "motifeme": "a message changes during transmission and the altered version drives later action; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-animal-messenger",
+      "family": "communication",
+      "motifeme": "an animal carries information between otherwise separated actors or domains; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-dream-message",
+      "family": "communication",
+      "motifeme": "a dream conveys information treated as actionable, revelatory, or binding; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-dead-messenger",
+      "family": "communication",
+      "motifeme": "a dead person or being communicates information to the living; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-signal-misunderstood",
+      "family": "communication",
+      "motifeme": "an ambiguous signal is interpreted incorrectly and produces consequence; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-secret-language",
+      "family": "communication",
+      "motifeme": "restricted language controls who can understand, belong, or act; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-taboo-word",
+      "family": "communication",
+      "motifeme": "uttering or withholding a particular word is normatively and causally significant; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-name-summons-presence",
+      "family": "communication",
+      "motifeme": "speaking a name establishes presence, access, attention, or control; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-song-carries-memory",
+      "family": "communication",
+      "motifeme": "song preserves and transmits memory across persons, places, or generations; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "communication-rumor-creates-consequence",
+      "family": "communication",
+      "motifeme": "uncertain circulating information alters behavior enough to create real effects; structurally, the transmission, withholding, distortion, interpretation, or performative force of a message becomes causally consequential.",
+      "structuralRoles": [
+        "information",
+        "transmission",
+        "interpretation"
+      ],
+      "ontologyFacets": [
+        "communication",
+        "information",
+        "causality"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "healing-disease-disease-as-intrusion",
+      "family": "healing-disease",
+      "motifeme": "affliction is modeled as an external agent, object, or substance entering the body; structurally, affliction and restoration are structured through intrusion, exchange, persistence, violation, diagnosis, or substitution.",
+      "structuralRoles": [
+        "affliction",
+        "restoration",
+        "causal-model"
+      ],
+      "ontologyFacets": [
+        "healing-disease",
+        "embodiment",
+        "restoration"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "healing-disease-healer-bargains-with-spirit",
+      "family": "healing-disease",
+      "motifeme": "restoration depends on negotiation with a nonhuman agent linked to the affliction; structurally, affliction and restoration are structured through intrusion, exchange, persistence, violation, diagnosis, or substitution.",
+      "structuralRoles": [
+        "affliction",
+        "restoration",
+        "causal-model"
+      ],
+      "ontologyFacets": [
+        "healing-disease",
+        "embodiment",
+        "restoration"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "healing-disease-wound-cannot-close",
+      "family": "healing-disease",
+      "motifeme": "injury persists until an unresolved causal, moral, or ritual condition is repaired; structurally, affliction and restoration are structured through intrusion, exchange, persistence, violation, diagnosis, or substitution.",
+      "structuralRoles": [
+        "affliction",
+        "restoration",
+        "causal-model"
+      ],
+      "ontologyFacets": [
+        "healing-disease",
+        "embodiment",
+        "restoration"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "healing-disease-contagion-from-violation",
+      "family": "healing-disease",
+      "motifeme": "affliction spreads or appears as a consequence of prohibited conduct; structurally, affliction and restoration are structured through intrusion, exchange, persistence, violation, diagnosis, or substitution.",
+      "structuralRoles": [
+        "affliction",
+        "restoration",
+        "causal-model"
+      ],
+      "ontologyFacets": [
+        "healing-disease",
+        "embodiment",
+        "restoration"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "healing-disease-substitution-cure",
+      "family": "healing-disease",
+      "motifeme": "illness or injury is transferred to a substitute bearer, object, or medium; structurally, affliction and restoration are structured through intrusion, exchange, persistence, violation, diagnosis, or substitution.",
+      "structuralRoles": [
+        "affliction",
+        "restoration",
+        "causal-model"
+      ],
+      "ontologyFacets": [
+        "healing-disease",
+        "embodiment",
+        "restoration"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-impossible-building",
+      "family": "craft-architecture",
+      "motifeme": "a structure exceeds ordinary constraints of construction, scale, stability, or access; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-sacred-foundation-deposit",
+      "family": "craft-architecture",
+      "motifeme": "an object or offering embedded at construction legitimates or protects a structure; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-bridge-demands-cost",
+      "family": "craft-architecture",
+      "motifeme": "passage created by a bridge is conditioned on sacrifice, payment, or loss; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-house-with-forbidden-chamber",
+      "family": "craft-architecture",
+      "motifeme": "built space contains an internal zone whose access is prohibited; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-labyrinth",
+      "family": "craft-architecture",
+      "motifeme": "architecture converts movement into a problem of orientation, knowledge, and constrained choice; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-craft-secret-stolen",
+      "family": "craft-architecture",
+      "motifeme": "specialized making knowledge changes hands through unauthorized acquisition; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-builder-curse",
+      "family": "craft-architecture",
+      "motifeme": "construction creates a persistent harmful obligation or consequence tied to maker or structure; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-living-statue",
+      "family": "craft-architecture",
+      "motifeme": "a crafted representation acquires agency or autonomous action; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-tower-reaches-forbidden-realm",
+      "family": "craft-architecture",
+      "motifeme": "vertical construction crosses a prohibited spatial or cosmological boundary; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    },
+    {
+      "motifId": "craft-architecture-ruin-preserves-warning",
+      "family": "craft-architecture",
+      "motifeme": "surviving architecture communicates a danger, prohibition, or precedent from the past; structurally, built form or skilled making encodes a constraint, secret, cost, agency, memory, or passage between domains.",
+      "structuralRoles": [
+        "material-form",
+        "construction",
+        "encoded-constraint"
+      ],
+      "ontologyFacets": [
+        "craft-architecture",
+        "material-culture",
+        "space"
+      ],
+      "allomotifs": []
+    }
+  ],
+  "notes": [
+    "This batch closes structural ontology fields only; it does not assert that underlying source units were newly read or evidence-reviewed.",
+    "All 20 candidate motifs remain candidate and were not promoted.",
+    "Empty allomotifs means no reviewed functional-equivalence set was asserted for that motif in this batch; it is not evidence that variants do not exist."
+  ]
+}
