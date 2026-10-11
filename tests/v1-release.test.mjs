@@ -13,7 +13,7 @@ test('current release promotes the provider-backed sandbox with generated-world 
   const pkg = JSON.parse(await read('package.json'));
   const contract = JSON.parse(await read('VERSION_CONTRACT.json'));
   const worldgen = JSON.parse(await read('public/worldgen/runtime-manifest.json'));
-  assert.equal(version, '1.1.0');
+  assert.equal(version, '1.1.1');
   assert.equal(pkg.version, version);
   assert.equal(contract.appVersion, version);
   assert.equal(worldgen.engineVersion, '1.5.0');
@@ -60,11 +60,12 @@ test('current release production tree has no Content Studio or fixed Legacy ADV 
   const readme = await read('README.md');
   const versioning = await read('docs/VERSIONING.md');
   const architecture = await read('docs/ARCHITECTURE.md');
-  assert.match(readme, /The Descendants of Criminals 1\.1\.0/);
+  const version = (await read('VERSION')).trim();
+  assert.ok(readme.includes(`The Descendants of Criminals ${version}`));
   assert.doesNotMatch(main, /params\.get\('legacy'\)|params\.get\('lineage'\)/);
   assert.doesNotMatch(main, /GameApp|loadRuntimeContent|debugScene|studio/i);
   assert.match(readme, /Content Studio.*removed/i);
-  assert.match(versioning, /製品版は \*\*1\.1\.0\*\*/);
+  assert.ok(versioning.includes(`製品版は **${version}**`));
   assert.match(architecture, /Active product runtime/);
   for (const rel of ['public/studio.html','public/studio.js','public/studio.css','public/studio','release/authoring-studio','tools/package-studio-app.mjs','src/studio-runtime.ts','src/content','src/core','src/ui','src/persistence','src/lineage','content','public/content','public/golden','resources']) {
     await assert.rejects(access(path.join(root, rel)), undefined, `legacy Studio artifact must be absent: ${rel}`);

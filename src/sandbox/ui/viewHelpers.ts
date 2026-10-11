@@ -53,6 +53,8 @@ export function compactSubjectIds(ids: string[], visible = 5): string {
 }
 
 export function pdaKnowledgeClaimLabel(claim: string): string {
+  const reviewPrefix = 'Local research provisionally reviews the available evidence: ';
+  if (claim.startsWith(reviewPrefix)) return compactText(`証拠の検討: ${pdaKnowledgeClaimLabel(claim.slice(reviewPrefix.length))}`, 132);
   const normalized = claim.replace(/\s+/g, ' ').trim();
   if (!normalized.startsWith('{') || !normalized.endsWith('}')) return compactText(normalized, 132);
   try {
@@ -74,6 +76,7 @@ export function pdaKnowledgeClaimLabel(claim: string): string {
       const point = center as Record<string, unknown>;
       if (typeof point.x === 'number' && typeof point.y === 'number') parts.push(`中心 ${point.x.toFixed(1)}, ${point.y.toFixed(1)}`);
     }
+    if (typeof parsed.uncertaintyRadiusKm === 'number' && Number.isFinite(parsed.uncertaintyRadiusKm)) parts.push(`誤差半径 ${parsed.uncertaintyRadiusKm.toFixed(1)} km`);
     if (parts.length) return compactText(parts.join(' · '), 132);
   } catch { /* preserve non-JSON or malformed evidence verbatim */ }
   return compactText(normalized, 132);

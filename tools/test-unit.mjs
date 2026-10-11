@@ -6,6 +6,7 @@ const projectRoot = fileURLToPath(new URL('..', import.meta.url));
 const compileCode = await compileTestDist();
 if (compileCode !== 0) process.exit(compileCode);
 const testFiles = [
+  fileURLToPath(new URL('../tests/evidence-connections.test.mjs', import.meta.url)),
   fileURLToPath(new URL('../tests/generations-naming.test.mjs', import.meta.url)),
   fileURLToPath(new URL('../tests/sandbox-game-loop.test.mjs', import.meta.url)),
   fileURLToPath(new URL('../tests/generated-ui-contract.test.mjs', import.meta.url)),

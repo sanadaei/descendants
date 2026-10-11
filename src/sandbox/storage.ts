@@ -391,6 +391,29 @@ function assertState(value: unknown): asserts value is SandboxGameState {
     assertFinite(`knowledge ${String(entry.id)} confidence`, entry.confidence, 0, 1);
     if (entry.physicalEvidenceSourceEntityId !== undefined && typeof entry.physicalEvidenceSourceEntityId !== 'string') throw new Error(`Sandbox save knowledge ${String(entry.id)} has invalid physical evidence source.`);
     if (entry.requiresPhysicalSample !== undefined && typeof entry.requiresPhysicalSample !== 'boolean') throw new Error(`Sandbox save knowledge ${String(entry.id)} has invalid physical sample requirement.`);
+    if (entry.entityObservation !== undefined) {
+      const observation = entry.entityObservation;
+      if (!isRecord(observation) || typeof observation.entityId !== 'string' || !(entry.subjectIds as unknown[]).includes(observation.entityId)) throw new Error('Knowledge observation requires its recorded subject.');
+      assertId('knowledge observation kind', observation.kind);
+      if (observation.subtype !== undefined) assertId('knowledge observation subtype', observation.subtype);
+      if (!Array.isArray(observation.resourceKeys) || observation.resourceKeys.some((key) => !['food','water','medicine','timber','scrap','fuel','cloth','records'].includes(String(key)))) throw new Error('Knowledge observation has invalid resource semantics.');
+      if (entry.physicalEvidenceSourceEntityId !== undefined && observation.entityId !== entry.physicalEvidenceSourceEntityId) throw new Error('Knowledge observation and physical source disagree.');
+      if (observation.position !== undefined) {
+        if (!isRecord(observation.position)) throw new Error('Invalid observed position.');
+        assertId('observed position frame', observation.position.frameId);
+        assertFinite('observed position x', observation.position.x);
+        assertFinite('observed position y', observation.position.y);
+        if (observation.position.z !== undefined) assertFinite('observed position z', observation.position.z);
+      }
+    }
+    if (entry.treatmentObservation !== undefined) {
+      const observation = entry.treatmentObservation;
+      if (!isRecord(observation) || typeof observation.patientId !== 'string' || !agentIds.has(observation.patientId)) throw new Error('Invalid treatment observation patient.');
+      for (const key of ['caseId','pathologyId','practice']) assertId(`treatment observation ${key}`, observation[key]);
+      if (!(entry.subjectIds as unknown[]).includes(`pathology:${observation.pathologyId}`) || !(entry.subjectIds as unknown[]).includes(`treatment:${observation.practice}`)) throw new Error('Treatment observation does not match its knowledge subjects.');
+      assertFinite('treatment severity before', observation.severityBefore, 0, 100);
+      assertFinite('treatment severity after', observation.severityAfter, 0, 100);
+    }
     for (const holder of entry.holderIds) if (typeof holder !== 'string' || !agentIds.has(holder)) throw new Error(`Sandbox save knowledge ${String(entry.id)} has unknown holder ${String(holder)}.`);
   }
   for (const raw of agents) {
