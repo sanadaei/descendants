@@ -1,4 +1,5 @@
 import { researchWorkMultiplier } from './researchApplications.js';
+import { simulateLegacyProjects } from './legacyProject.js';
 import { simulateEducationInterval } from './educationSimulation.js';
 import { generatePersonName } from './naming.js';
 import { agentAbilityFactors } from './aging.js';
@@ -675,10 +676,11 @@ function dailyDecay(state: SandboxGameState, hours: number): void {
 export function simulateSettlementInterval(state: SandboxGameState, hours: number, summary: SandboxStepSummary): void {
   matureChildren(state);
   const educationHours = simulateEducationInterval(state,hours,summary);
+  const projectHours = simulateLegacyProjects(state,hours,summary,educationHours);
   const local = settlementAgents(state);
   for (const agent of local) {
     const reservedHours = reservedHoursDuringCurrentInterval(state, agent.id, hours);
-    const laborHours = Math.max(0, hours - reservedHours - (educationHours.get(agent.id) ?? 0));
+    const laborHours = Math.max(0, hours - reservedHours - (educationHours.get(agent.id) ?? 0) - (projectHours.get(agent.id) ?? 0));
     if (reservedHours >= hours - 1e-9) {
       agent.currentPlan = { id: nextStateId(state, 'plan'), kind: 'rest', priority: 100, reason: 'time reserved by direct player activity' };
       agent.currentTask = 'rest';

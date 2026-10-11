@@ -22,7 +22,7 @@ test('survival release is self-contained around the original Worldgen 1.5 author
   assert.equal(runtime.buildSource, 'vendor/worldgen-engine/src');
 });
 
-test('survival release identifies the open-ended generations game and contains no Inquiry product route', async () => {
+test('survival release identifies the open-ended generations game and keeps Pass22 Inquiry archived while connecting observation notes', async () => {
   const readFirst = await read('SURVIVAL_GENERATIONS_READ_FIRST.md');
   assert.doesNotMatch(readFirst, /30年/);
   assert.match(readFirst, /勝敗[^\n]*ありません|勝利条件[^\n]*ありません|敗北条件[^\n]*ありません/i);
@@ -32,7 +32,10 @@ test('survival release identifies the open-ended generations game and contains n
   assert.match(readFirst, /世代/);
   assert.match(readFirst, /推理[^\n]*Inquiry[^\n]*使いません/i);
   const app = await readSandboxUiSource();
-  assert.doesNotMatch(app, /Inquiry|INQUIRY|inquiry/);
+  assert.doesNotMatch(app, /from ['"][^'"]*\/(?:inquiry|inquirySimulation|pass22)[./]/i);
+  assert.doesNotMatch(app, /pass22-original|FOUR_INSTANCE_STATE_PASS22/);
+  assert.match(app, /data-action="inquiry-survey"/);
+  assert.match(app, /surveyInquiry/);
 });
 
 test('Pass22 remains archived provenance and is not imported by production source', async () => {

@@ -30,13 +30,14 @@ function replayDigest(state: SandboxGameState): string {
     anomalyPractices: (state.anomalyPractices ?? []).map((entry) => [entry.id, entry.domain, entry.attempts, Math.round(entry.mastery * 100) / 100, Math.round(entry.stability * 100) / 100, entry.lastOutcome]),
     learning: state.agents.map((a)=>[a.id,a.bornDay,a.deathDay,a.causeOfDeath,a.skills,a.aptitude??null,a.education??null,a.naming??null]),
     researchApplications: state.researchApplications??[],
+    inquiries: state.inquiries ?? [], legacyProjects: state.legacyProjects ?? [],
     policies: (state.policyProposals ?? []).map((entry) => [entry.id, entry.task, entry.delta, entry.status, entry.supporterIds.length, entry.opponentIds.length]),
     external: state.externalActors.map((entry) => [entry.entityId, Math.round(entry.localTrust * 100) / 100, entry.tradeExperience, entry.migrationBalance, Math.round(entry.conflictPressure * 100) / 100]),
     externalContacts: (state.externalContacts ?? []).map((entry) => [entry.externalPersonId, entry.societyEntityId ?? null, entry.interactionCount, entry.lastContactDay, entry.lastContactMinute, entry.knowledgeIds.length]),
     providerMutations: state.providerMutations ? [state.providerMutations.nextCommandOrdinal, state.providerMutations.retiredThroughOrdinal ?? 0, state.providerMutations.retiredAcceptedCount ?? 0, state.providerMutations.retiredRejectedCount ?? 0, state.providerMutations.retiredEventCount ?? 0, state.providerMutations.retiredCausalRecordCount ?? 0, state.providerMutations.commandReceipts.map((entry) => [entry.commandId, entry.accepted, entry.providerTick])] : null,
     directPlay: state.directPlay ? {
       equipment: state.directPlay.equipment.map((entry) => [entry.id, entry.ownerId, entry.equipped]),
-      inventory: state.directPlay.inventory.map((entry) => [entry.id, entry.ownerId, entry.kind, entry.quantity, entry.sourceEntityId ?? null, entry.resourceKey ?? null, entry.resourceSubtype ?? null, entry.resourceUnit ?? null, entry.resourceSourceId ?? null, entry.resourceCondition ?? null, entry.resourceFreshness ?? null, entry.resourceContaminationRisk ?? null, entry.resourceWaterQuality ?? null, entry.acquiredDay, entry.acquiredMinuteOfDay ?? null]),
+      inventory: state.directPlay.inventory.map((entry) => [entry.id, entry.ownerId, entry.kind, entry.quantity, entry.sourceEntityId ?? null, entry.resourceKey ?? null, entry.resourceSubtype ?? null, entry.resourceUnit ?? null, entry.resourceSourceId ?? null, entry.resourceCondition ?? null, entry.resourceFreshness ?? null, entry.resourceContaminationRisk ?? null, entry.resourceWaterQuality ?? null, entry.acquiredDay, entry.acquiredMinuteOfDay ?? null, entry.reading ?? null]),
       activities: state.directPlay.directActivities.slice(-32).map((entry) => [entry.id, entry.kind, entry.startAbsoluteMinute, entry.endAbsoluteMinute, entry.completed]),
     } : null,
     incidentLedger: state.incidentLedger ? [

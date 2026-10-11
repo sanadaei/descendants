@@ -1,8 +1,8 @@
-# Architecture 1.1.1
+# Architecture 1.2.0
 
 ## Active product runtime
 
-アプリケーションは `1.1.1` です。Production startup は `src/main.ts` から provider-backed sandbox を起動します。
+アプリケーションは `1.2.0` です。Production startup は `src/main.ts` から provider-backed sandbox を起動します。
 
 ```text
 src/main.ts
@@ -127,3 +127,16 @@ Evidence kinds are deliberately narrow: medicine is permitted for `recorded-case
 `knowledgeSpatial.ts` は操作人物が保持する、または現地で制度知として参照できる地図推定の中心・誤差半径を返す。WORLD表示、遠征準備、移動命令は同じ読取を使う。推定地点にはProviderの正準座標やそこまでの正準topology routeを代入しない。不正な推定値は座標なしで扱い、直接観測した位置で確認できる。WorldGraph selectorとProviderの元オブジェクトは変更しない。
 
 異常医療は集落に同席し、遠征に出ていない生存者の活動中症例だけに作用する。死亡者・遠隔地・外部居住者は患者候補に含めない。
+
+
+## Exploration and continuity (1.2.0)
+
+`evidenceAccess.ts` は生きた保持者・同席する制度知からの参照を共通化する。`explorationInquiry.ts` は根拠の写し、固定された観測予測・範囲、現地照合、改訂履歴、1Lの実測試行を保持する。予測・各観測報告・試行はそれぞれ既存のKnowledgeEntryに結びつき、ノートだけを共有しても未共有の報告は見えない。0.35kmの現地照合はObserver付きProvider射影と実際の座標から判断し、広域の一部に何も見えないことを全域の反証へ昇格しない。水試行は持ち帰った採取元ロットを分割し、燃料・布を消費して既存の加工を実行する。
+
+`loreArtifacts.ts` は既に保持された伝承・証言の主張を読める文章へ変換する。現物の写しは既存の携行Inventoryで所有・相続し、読解には時間が必要。文章に原典がない物体について日誌や碑文の引用を捏造せず、物的記述と保持済みの解釈を分ける。見えていた近隣関係と座標を次の観測予測へ渡し、Canonical originEvent/biography/catalogを開かない。
+
+`legacyProject.ts` は水管理設備と記録庫の三工程・投入元ロット・実作業・担い手交代を保持する。水管理設備の根拠には水の実測試行から完成した研究が必要。設計記録へ根拠を書き込み、保持者の死亡後も物理記録によって継承する。担い手一人につき1日1時間の作業を直接行動・教育の残時間から確保し、通常労働から差し引く。資材は着手時に台帳から一度消費し、進捗・設備・履歴は死亡時に消さない。作業中はその時間を使って設計図も維持する。
+
+`legacyProjectBenefits.ts` は設計・根拠の制度知と物理記録が残る場合だけ設備を有効化する。水設備は既存ろ過の微生物・濁度改善に作用し、化学汚染を除去しない。記録庫は既存の物理記録の劣化を半減する。保存検証とReplay digestに新しい任意フィールドを含め、旧Schema 1のセーブは空の状態から導入する。
+
+操作・所要作業量・検証範囲は [EXPLORATION_AND_CONTINUITY.md](EXPLORATION_AND_CONTINUITY.md) を参照。

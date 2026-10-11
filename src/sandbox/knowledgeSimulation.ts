@@ -1,4 +1,5 @@
 import { chance, choose, randomInt } from './rng.js';
+import { legacyFacilityActive } from './legacyProjectBenefits.js';
 import { reserveDirectActivity } from './directPlay.js';
 import { addChronicle, findAgent, nextStateId, settlementAgents } from './stateUtils.js';
 import type { KnowledgeEntry, SandboxAgent, SandboxGameState, SandboxStepSummary, SocialRecord } from './types.js';
@@ -81,7 +82,7 @@ function degradeRecords(state: SandboxGameState, hours: number): void {
   const factor = hours / (24 * 365);
   for (const record of state.records) {
     const protection = state.settlement.sanitation / 250 + Math.min(0.3, record.copies * 0.03);
-    record.integrity = Math.max(0, record.integrity - Math.max(0.0001, (0.08 - protection * 0.05) * factor));
+    record.integrity = Math.max(0, record.integrity - Math.max(0.0001, (0.08 - protection * 0.05) * factor) * (legacyFacilityActive(state,'archive') ? .5 : 1));
     if (record.integrity <= 0.05) state.settlement.activeRecordIds = state.settlement.activeRecordIds.filter((id) => id !== record.id);
   }
 }
@@ -202,7 +203,8 @@ export function simulateKnowledgeInterval(state: SandboxGameState, hours: number
   degradeRecords(state, hours);
   const lostOrReassigned = detectLostKnowledge(state, summary);
   if (state.records.length > 300) {
-    const removable = state.records.filter((record) => record.integrity <= 0.05).slice(0, state.records.length - 300);
+    const projectRecordIds = new Set((state.legacyProjects ?? []).map((project) => project.recordId));
+    const removable = state.records.filter((record) => record.integrity <= 0.05 && !projectRecordIds.has(record.id)).slice(0, state.records.length - 300);
     const ids = new Set(removable.map((record) => record.id)); state.records = state.records.filter((record) => !ids.has(record.id));
   }
   if (transmitted || recorded || lostOrReassigned) syncLegacyKnowledgeShadow(state);

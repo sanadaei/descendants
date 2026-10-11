@@ -1,4 +1,5 @@
 import type { WorldEntity } from '../worldbridge/contract.js';
+import { legacyFacilityActive } from './legacyProjectBenefits.js';
 import type {
   ResourceCanonicalUnit,
   ResourceLedgerStateV1,
@@ -458,6 +459,15 @@ export function deterministicProductionPreference(agentId: string, resourceKey: 
   return ['institutional','records'];
 }
 
+/** Split a measured aliquot without creating new stock or losing provenance. */
+export function splitResourceLot(state: SandboxGameState, lotId: string, amount: number): ResourceLotState {
+  const ledger = ensureResourceLedgerState(state), source = ledger.lots.find((lot) => lot.id === lotId);
+  if (!source || !Number.isFinite(amount) || amount <= 0 || source.quantity < amount) throw new Error('Invalid resource aliquot.');
+  source.quantity = round(source.quantity - amount);
+  const aliquot = {...structuredClone(source),id:nextLedgerId(state,'resource-lot'),quantity:amount,parentLotIds:[source.id]};
+  ledger.lots.push(aliquot); syncSettlementResourceAggregates(state); return aliquot;
+}
+
 export function processResourceLot(
   state: SandboxGameState,
   lotId: string,
@@ -477,7 +487,8 @@ export function processResourceLot(
     if (waterQuality) waterQuality.microbialRisk = clamp01(waterQuality.microbialRisk * 0.08);
     contaminationRisk = clamp01(contaminationRisk * 0.2);
   } else if (kind === 'filtered') {
-    if (waterQuality) { waterQuality.microbialRisk = clamp01(waterQuality.microbialRisk * 0.55); waterQuality.turbidity = clamp01(waterQuality.turbidity * 0.2); }
+    const equipped = legacyFacilityActive(state,'waterworks');
+    if (waterQuality) { waterQuality.microbialRisk = clamp01(waterQuality.microbialRisk * (equipped ? .3 : .55)); waterQuality.turbidity = clamp01(waterQuality.turbidity * (equipped ? .1 : .2)); }
     contaminationRisk = clamp01(contaminationRisk * 0.65);
   } else if (kind === 'cooked') {
     contaminationRisk = clamp01(contaminationRisk * 0.25);

@@ -379,6 +379,7 @@ export interface KnowledgeEntry {
     entityId: string;
     kind: string;
     subtype?: string;
+    traceType?: string;
     resourceKeys: SettlementResourceKey[];
     position?: SpatialRef;
   };
@@ -874,6 +875,7 @@ export interface PhysicalInventoryItem {
   provenanceIds: string[];
   acquiredDay: number;
   acquiredMinuteOfDay?: number;
+  reading?: import('./loreArtifacts.js').ArtifactReading;
   /** Optional C-depth resource cargo metadata. Resource cargo remains physically carried until deposited. */
   resourceKey?: SettlementResourceKey;
   resourceSubtype?: string;
@@ -1380,6 +1382,8 @@ export interface DailyLoopStateV1 {
 }
 
 export interface SandboxGameState {
+  inquiries?: import('./explorationInquiry.js').ExplorationInquiry[];
+  legacyProjects?: import('./legacyProject.js').LegacyProject[];
   researchApplications?: import('./researchApplications.js').ResearchApplication[];
   schemaVersion: 1;
   saveId: string;

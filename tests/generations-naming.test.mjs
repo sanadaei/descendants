@@ -128,7 +128,7 @@ test('incident reservations remain excluded during other lot mutations and refun
 
 function viewContext(state,holder,live=false) {
   return {state,inspectedAgentId:holder.id,controlledAgent:()=>holder,canInspectLiveState:()=>live,lastReportForAgent:()=>undefined,
-    selectedPreparationDoctrine:()=>undefined,knowledgeAgent:()=>holder,knowledgeEligibleAgents:()=>[holder],conversationPartners:()=>[],conversationTargetId:'',controlledExpedition:()=>null};
+    visibleWorldEntities:()=>[],selectedWorldEntity:()=>undefined,selectedPreparationDoctrine:()=>undefined,knowledgeAgent:()=>holder,knowledgeEligibleAgents:()=>[holder],conversationPartners:()=>[],conversationTargetId:'',controlledExpedition:()=>null};
 }
 
 test('active F2, resident view and index redact remote measurements and death status',async()=>{

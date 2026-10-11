@@ -51,3 +51,6 @@ npm run preview:portable
 ```bash
 npm run desktop
 ```
+
+
+1.2.0では、F3の調査ノートから根拠・観測予測・現地照合・水の実測研究へ進めます。現地の記録物を写して読み、次の調査先を選び、水管理設備・記録庫の作業を次の担い手へ継承できます。操作と長期作業量は `docs/EXPLORATION_AND_CONTINUITY.md` を参照してください。
