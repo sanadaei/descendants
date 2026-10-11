@@ -61,7 +61,9 @@ async function firstExistingTarget(provider: WorldProvider, state: SandboxGameSt
 
 function applyPracticalEffect(state: SandboxGameState, domain: AnomalyUtilizationDomain, efficacy: number): string {
   if (domain === 'medicine') {
-    const active = state.agents.flatMap((agent) => agent.pathology.map((entry) => ({ agent, entry }))).filter(({ entry }) => entry.status === 'active').sort((a, b) => b.entry.severity - a.entry.severity)[0];
+    const active = settlementAgents(state).filter((agent) => !agent.expeditionId).flatMap((agent) => agent.pathology.map((entry) => ({ agent, entry })))
+      .filter(({ entry }) => entry.status === 'active')
+      .sort((a, b) => b.entry.severity - a.entry.severity || a.agent.id.localeCompare(b.agent.id) || a.entry.id.localeCompare(b.entry.id))[0];
     if (active) {
       const reduction = Math.max(0.5, efficacy * 3.5);
       active.entry.severity = Math.max(0, active.entry.severity - reduction);

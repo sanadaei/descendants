@@ -1,5 +1,6 @@
 import { executeContinuityDays } from './continuityProgression.js';
 import { setEducationMentor } from './educationSimulation.js';
+import { knownMapLocation } from './knowledgeSpatial.js';
 import type { AreaProjection, SpatialRef, WorldEntity, WorldProvider } from '../worldbridge/contract.js';
 import { advanceSandbox, advanceSandboxHours } from './engine.js';
 import { addExpeditionOrder, campExpedition, expeditionMemberReadiness, launchExpedition, launchRescueExpedition, resolveControlledEncounterRound, saveDoctrine } from './expeditionSimulation.js';
@@ -256,6 +257,8 @@ export class SandboxApp {
 
   private selectedWorldEntity(): WorldEntity | undefined { return this.visibleWorldEntities().find((entry)=>entry.id===this.#selectedWorldEntityId); }
 
+  private worldMapLocation(entity: WorldEntity) { return knownMapLocation(this.state, this.controlledAgent()?.id ?? '', entity); }
+
   private mapMarkerStyle(spatial: SpatialRef | undefined, center: SpatialRef, radiusKm: number): string {
     if (!spatial || spatial.frameId !== center.frameId || radiusKm <= 0) return 'left:50%;top:50%';
     const x = Math.max(3, Math.min(97, 50 + (spatial.x - center.x) / radiusKm * 46));
@@ -416,6 +419,12 @@ export class SandboxApp {
   }
 
   private initializeExpeditionPreparation(): void {
+    if (this.#prepTargetEntityId && this.#worldProjection) {
+      const entity = this.visibleWorldEntities().find((entry) => entry.id === this.#prepTargetEntityId);
+      const location = entity ? this.worldMapLocation(entity) : undefined;
+      this.#prepTarget = location?.position ? structuredClone(location.position) : null;
+      if (!location?.position || location.estimated) this.#prepRouteEntityId = '';
+    }
     if (!this.#prepDoctrineId || !this.state.doctrines.some((entry)=>entry.id===this.#prepDoctrineId)) this.#prepDoctrineId = this.state.doctrines[0]?.id ?? '';
     const doctrine = this.selectedPreparationDoctrine();
     const adults = settlementAgents(this.state).filter((agent)=>agentAgeYears(this.state,agent)>=16);
@@ -929,8 +938,8 @@ export class SandboxApp {
     if (action==='select-local-entity') { this.#selectedLocalEntityId = button.dataset.entityId ?? ''; this.render(); return; }
     if (action==='map-scope') { const scope=button.dataset.scope; if(scope==='world'||(scope==='local'&&this.controlledExpedition())){this.#mapScope=scope;this.render();if(scope==='world')void this.refreshWorldProjection();else void this.refreshLocalProjection();} return; }
     if (action==='select-world-entity') { this.#selectedWorldEntityId=button.dataset.entityId??''; this.render(); return; }
-    if (action==='set-prep-target') { const entity=this.visibleWorldEntities().find((entry)=>entry.id===button.dataset.entityId); if(!entity?.spatial)return; this.#prepTarget=structuredClone(entity.spatial); this.#prepTargetEntityId=entity.id; this.#prepRouteEntityId=''; this.#pdaTaskPanel='expedition'; this.#pdaTab='task'; this.render(); this.toast(`Expedition target selected: ${entityName(entity)}.`); return; }
-    if (action==='move-world-target') { const field=this.controlledExpedition(), entity=this.visibleWorldEntities().find((entry)=>entry.id===button.dataset.entityId); if(!field||!entity?.spatial)return; try{addExpeditionOrder(this.state,field.id,'move',`Move toward known WORLD marker ${entityName(entity)}.`,{target:structuredClone(entity.spatial),targetEntityId:entity.id});this.#mapScope='local';void this.save(`Field destination set: ${entityName(entity)}.`);}catch(error){this.toast(error instanceof Error?error.message:String(error));} return; }
+    if (action==='set-prep-target') { const entity=this.visibleWorldEntities().find((entry)=>entry.id===button.dataset.entityId); if(!entity)return; const location=this.worldMapLocation(entity);if(!location.position)return; this.#prepTarget=structuredClone(location.position); this.#prepTargetEntityId=entity.id; this.#prepRouteEntityId=''; this.#pdaTaskPanel='expedition'; this.#pdaTab='task'; this.render(); this.toast(`Expedition target selected: ${entityName(entity)}${location.estimated?' · 推定範囲の中心':''}.`); return; }
+    if (action==='move-world-target') { const field=this.controlledExpedition(), entity=this.visibleWorldEntities().find((entry)=>entry.id===button.dataset.entityId); if(!field||!entity)return; const location=this.worldMapLocation(entity);if(!location.position)return; try{addExpeditionOrder(this.state,field.id,'move',`Move toward ${location.estimated?'estimated area':'known WORLD marker'} ${entityName(entity)}.`,{target:structuredClone(location.position),targetEntityId:entity.id});this.#mapScope='local';void this.save(`Field destination set: ${entityName(entity)}${location.estimated?' · 推定範囲の中心':''}.`);}catch(error){this.toast(error instanceof Error?error.message:String(error));} return; }
     if (action==='walk-local-target') {
       const field=this.controlledExpedition(), entity=this.#localProjection?.entities.find((entry)=>entry.id===button.dataset.entityId);
       if(!field||!entity?.spatial)return; try { addExpeditionOrder(this.state,field.id,'move',`Approach ${entityName(entity)} from the charted LOCAL view.`,{target:structuredClone(entity.spatial)}); void this.save(`Walking toward ${entityName(entity)}.`); } catch(error){this.toast(error instanceof Error?error.message:String(error));} return;
@@ -1006,9 +1015,10 @@ export class SandboxApp {
       const target = this.#prepTarget ? structuredClone(this.#prepTarget) : null;
       const visibleWorldEntities = this.visibleWorldEntities();
       const targetEntity = this.#prepTargetEntityId ? visibleWorldEntities.find((entry)=>entry.id===this.#prepTargetEntityId) : undefined;
-      const topologyRoutes = targetEntity ? providerVisibleRouteAlternatives(this.#worldProjection, visibleWorldEntities, this.state.world.originEntityId, targetEntity.id, 3) : [];
+      const targetEstimated = Boolean(targetEntity && this.worldMapLocation(targetEntity).estimated);
+      const topologyRoutes = targetEntity && !targetEstimated ? providerVisibleRouteAlternatives(this.#worldProjection, visibleWorldEntities, this.state.world.originEntityId, targetEntity.id, 3) : [];
       const selectedTopologyRoute = this.#prepRouteEntityId ? topologyRoutes.find((entry)=>entry.id===this.#prepRouteEntityId) : undefined;
-      const selectedRoute = this.#prepRouteEntityId ? visibleWorldEntities.find((entry)=>entry.id===this.#prepRouteEntityId && entry.kind==='route') : undefined;
+      const selectedRoute = !targetEstimated && this.#prepRouteEntityId ? visibleWorldEntities.find((entry)=>entry.id===this.#prepRouteEntityId && entry.kind==='route') : undefined;
       if (!leader || !memberIds.includes(leader.id) || !doctrine || !target) { this.toast('Expedition preparation requires crew, doctrine and a selected known WORLD target.'); return; }
       try {
         const expedition=launchExpedition(this.state,{
@@ -1442,6 +1452,7 @@ export class SandboxApp {
       visibleWorldEntities: app.visibleWorldEntities.bind(app),
       selectedLocalEntity: app.selectedLocalEntity.bind(app),
       selectedWorldEntity: app.selectedWorldEntity.bind(app),
+      worldMapLocation: app.worldMapLocation.bind(app),
       mapMarkerStyle: app.mapMarkerStyle.bind(app),
       initializeExpeditionPreparation: app.initializeExpeditionPreparation.bind(app),
       chronicleViewpoint: app.chronicleViewpoint.bind(app),

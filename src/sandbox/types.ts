@@ -374,6 +374,23 @@ export interface KnowledgeEntry {
   /** Optional direct-play evidence metadata; kept separate from provider truthLink provenance. */
   physicalEvidenceSourceEntityId?: string;
   requiresPhysicalSample?: boolean;
+  /** Only fields actually projected during close observation; never read from hidden snapshots. */
+  entityObservation?: {
+    entityId: string;
+    kind: string;
+    subtype?: string;
+    resourceKeys: SettlementResourceKey[];
+    position?: SpatialRef;
+  };
+  /** A recorded local treatment outcome, not a universal causal claim. */
+  treatmentObservation?: {
+    patientId: string;
+    caseId: string;
+    pathologyId: string;
+    practice: string;
+    severityBefore: number;
+    severityAfter: number;
+  };
 }
 
 export interface ResearchProject {

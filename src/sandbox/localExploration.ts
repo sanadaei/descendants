@@ -50,6 +50,14 @@ export function isSampleableEntity(entity: WorldEntity): boolean {
   return Boolean(entity.spatial) && (entity.kind === 'anomaly' || /resource|ecolog|archaeolog|histor|ruin|trace|material/i.test(`${entity.kind} ${entity.subtype ?? ''} ${(entity.tags ?? []).join(' ')}`));
 }
 
+function entityObservation(entity: WorldEntity): NonNullable<KnowledgeEntry['entityObservation']> {
+  return {
+    entityId: entity.id, kind: entity.kind, ...(entity.subtype ? { subtype: entity.subtype } : {}),
+    resourceKeys: resourceSourceKeysForWorldEntity(entity),
+    ...(entity.spatial ? { position: structuredClone(entity.spatial) } : {}),
+  };
+}
+
 export function observeGeneratedEntity(state: SandboxGameState, agentId: string, entity: WorldEntity): KnowledgeEntry {
   const agent = findAgent(state, agentId);
   if (!agent?.alive) throw new Error('Controlled person is unavailable.');
@@ -67,6 +75,7 @@ export function observeGeneratedEntity(state: SandboxGameState, agentId: string,
   );
   knowledge.physicalEvidenceSourceEntityId = entity.id;
   knowledge.requiresPhysicalSample = isSampleableEntity(entity);
+  knowledge.entityObservation = entityObservation(entity);
   return knowledge;
 }
 
@@ -90,6 +99,7 @@ export function takeGeneratedSample(state: SandboxGameState, agentId: string, en
   );
   knowledge.physicalEvidenceSourceEntityId = entity.id;
   knowledge.requiresPhysicalSample = true;
+  knowledge.entityObservation = entityObservation(entity);
   return { item, knowledge };
 }
 

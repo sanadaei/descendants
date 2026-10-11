@@ -1,8 +1,8 @@
-# Architecture 1.1.0
+# Architecture 1.1.1
 
 ## Active product runtime
 
-アプリケーションは `1.1.0` です。Production startup は `src/main.ts` から provider-backed sandbox を起動します。
+アプリケーションは `1.1.1` です。Production startup は `src/main.ts` から provider-backed sandbox を起動します。
 
 ```text
 src/main.ts
@@ -117,3 +117,13 @@ Evidence kinds are deliberately narrow: medicine is permitted for `recorded-case
 `app.ts` の画面描画を `src/sandbox/ui` の画面別モジュールへ分離し、イベント・Provider操作・保存はアプリケーションに残します。資源スカラーはロット台帳の集計射影、Incident資源は元ロットを参照する引当です。移行用Knowledge射影とIncidentのdefault OFFは維持します。
 
 仕様・既存セーブへの影響・改善順序は [GENERATIONS_AND_NAMING.md](GENERATIONS_AND_NAMING.md) を参照してください。
+
+## Evidence connections (1.1.1)
+
+現地の観察・採取は `KnowledgeEntry.entityObservation` に観測済みの種別・資源キー・座標を保持する。研究分野はこの記録または明示的な旧形式の意味IDから選び、opaqueなWorldProvider IDの部分文字列から推測しない。診療は `treatmentObservation` に症例と処置前後の重症度を記録する。医学研究の実用改善は測定された改善がある場合に限る。診療手順の選択は患者・担当医の知識または集落の制度知だけを参照し、改善を支持、悪化を反証として扱う。同じ記録の複製を加算しない。これは局所的な観測に基づく手順改善であり、因果関係や世界の真実の証明ではない。
+
+研究の作業時間・技能は進捗に作用し、それだけでは確度を増やさない。元の主張の変更・喪失は計画を中止し、参加する知識保持者または物理サンプルが離れれば進行を停止する。成果には根拠の観測情報を引き継ぐ。
+
+`knowledgeSpatial.ts` は操作人物が保持する、または現地で制度知として参照できる地図推定の中心・誤差半径を返す。WORLD表示、遠征準備、移動命令は同じ読取を使う。推定地点にはProviderの正準座標やそこまでの正準topology routeを代入しない。不正な推定値は座標なしで扱い、直接観測した位置で確認できる。WorldGraph selectorとProviderの元オブジェクトは変更しない。
+
+異常医療は集落に同席し、遠征に出ていない生存者の活動中症例だけに作用する。死亡者・遠隔地・外部居住者は患者候補に含めない。

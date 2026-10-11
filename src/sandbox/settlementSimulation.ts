@@ -334,11 +334,20 @@ function treatmentSubjects(pathologyId: string, practice: FolkPractice): [string
   return [`pathology:${pathologyId}`, `treatment:${practice}`];
 }
 
-function learnedTreatmentConfidence(state: SandboxGameState, pathologyId: string, practice: FolkPractice): number {
+function learnedTreatmentSupport(state: SandboxGameState, pathologyId: string, practice: FolkPractice, participantIds: string[]): number {
   const [pathologySubject, treatmentSubject] = treatmentSubjects(pathologyId, practice);
-  return state.knowledge
-    .filter((entry) => !entry.lost && entry.subjectIds.includes(pathologySubject) && entry.subjectIds.includes(treatmentSubject))
-    .reduce((best, entry) => Math.max(best, entry.confidence), 0);
+  const accessible = new Set([...state.settlement.localKnowledgeIds, ...participantIds.flatMap((id) => findAgent(state, id)?.knowledgeIds ?? [])]);
+  let improvement = 0, worsening = 0;
+  for (const entry of state.knowledge) {
+    const observation = entry.treatmentObservation;
+    if (entry.lost || !accessible.has(entry.id) || !observation || observation.pathologyId !== pathologyId || observation.practice !== practice
+      || !entry.subjectIds.includes(pathologySubject) || !entry.subjectIds.includes(treatmentSubject)) continue;
+    const delta = observation.severityBefore - observation.severityAfter;
+    if (delta > .35) improvement = Math.max(improvement, entry.confidence);
+    else if (delta < -.2) worsening = Math.max(worsening, entry.confidence);
+  }
+  // Copies of one report do not multiply support; a confident adverse outcome counts against use.
+  return improvement - worsening;
 }
 
 function treatmentCandidates(pathologyId: string): FolkPractice[] {
@@ -348,11 +357,12 @@ function treatmentCandidates(pathologyId: string): FolkPractice[] {
   return [...FOLK_PRACTICES];
 }
 
-function chooseTreatmentPractice(state: SandboxGameState, pathologyId: string, tried: string[], medic: SandboxAgent | undefined): FolkPractice {
+function chooseTreatmentPractice(state: SandboxGameState, pathologyId: string, tried: string[], medic: SandboxAgent | undefined, patient: SandboxAgent): FolkPractice {
   const candidates = treatmentCandidates(pathologyId);
+  const participants = [patient.id, ...(medic ? [medic.id] : [])];
   return [...candidates].sort((a, b) => {
-    const learnedA = learnedTreatmentConfidence(state, pathologyId, a) * 100;
-    const learnedB = learnedTreatmentConfidence(state, pathologyId, b) * 100;
+    const learnedA = learnedTreatmentSupport(state, pathologyId, a, participants) * 100;
+    const learnedB = learnedTreatmentSupport(state, pathologyId, b, participants) * 100;
     const noveltyA = tried.includes(a) ? 0 : 18;
     const noveltyB = tried.includes(b) ? 0 : 18;
     const embodiedA = medic ? (medic.experience[`treatment:${pathologyId}:${a}`] ?? 0) * 0.3 : 0;
@@ -361,16 +371,20 @@ function chooseTreatmentPractice(state: SandboxGameState, pathologyId: string, t
   })[0] ?? 'supportive-care';
 }
 
-function recordTreatmentInference(state: SandboxGameState, patient: SandboxAgent, medics: SandboxAgent[], pathologyId: string, practice: FolkPractice, severityDelta: number): void {
+function recordTreatmentInference(state: SandboxGameState, patient: SandboxAgent, medics: SandboxAgent[], pathology: PathologyCase, practice: FolkPractice, severityBefore: number): void {
+  const pathologyId = pathology.pathologyId;
+  const severityDelta = severityBefore - pathology.severity;
   const subjects = treatmentSubjects(pathologyId, practice);
   const holders = [...new Set([patient.id, ...medics.slice(0, 2).map((entry) => entry.id)])];
   const existing = state.knowledge.find((entry) => !entry.lost && subjects.every((subject) => entry.subjectIds.includes(subject)));
   const outcome = severityDelta > 0.35 ? 'improvement' : severityDelta < -0.2 ? 'worsening' : 'no clear change';
   const claim = `Practice observation: ${practice} was followed by ${outcome} in ${pathologyId}; repeated cases are needed before treating this as causal knowledge.`;
   const evidenceStrength = clamp(0.22 + Math.abs(severityDelta) / 18, 0.22, 0.62);
+  const observation = { patientId: patient.id, caseId: pathology.id, pathologyId, practice, severityBefore, severityAfter: pathology.severity };
   if (existing) {
     existing.confidence = Math.min(0.92, existing.confidence * 0.78 + evidenceStrength * 0.22);
     existing.claim = claim;
+    existing.treatmentObservation = observation;
     existing.holderIds = [...new Set([...existing.holderIds, ...holders])];
     for (const holderId of holders) {
       const holder = findAgent(state, holderId);
@@ -379,6 +393,7 @@ function recordTreatmentInference(state: SandboxGameState, patient: SandboxAgent
   } else {
     const knowledge = addObservedKnowledge(state, holders, subjects, claim, evidenceStrength);
     knowledge.carrier = 'oral';
+    knowledge.treatmentObservation = observation;
   }
 }
 
@@ -389,7 +404,7 @@ function applyClinicTreatment(state: SandboxGameState, patient: SandboxAgent, en
   const efficacy = (medic ? effectiveSkill(state,medic,'medicine') : 36) / 100 * researchWorkMultiplier(state,'medicine',true);
   const medicineUsed = state.settlement.resources.medicine >= 0.25 ? 0.25 : 0;
   if (medicineUsed > 0) consumeResourceLots(state,{resourceKey:'medicine',amount:medicineUsed});
-  const practice = chooseTreatmentPractice(state, entry.pathologyId, entry.treatmentsTried, medic);
+  const practice = chooseTreatmentPractice(state, entry.pathologyId, entry.treatmentsTried, medic, patient);
   const severityBefore = entry.severity;
   const practiceSignal = treatmentSignal(state, entry.pathologyId, practice);
   const traumaticWound = entry.pathologyId === 'traumatic-wound';
@@ -405,7 +420,7 @@ function applyClinicTreatment(state: SandboxGameState, patient: SandboxAgent, en
   if (entry.observedSymptoms.length === 0) entry.observedSymptoms.push(traumaticWound ? 'visible wound / pain-limited movement' : 'fever/malaise pattern recorded');
   if (!entry.treatmentsTried.includes(practice)) entry.treatmentsTried.push(practice);
   if (medic) medic.experience[`treatment:${entry.pathologyId}:${practice}`] = (medic.experience[`treatment:${entry.pathologyId}:${practice}`] ?? 0) + hours;
-  recordTreatmentInference(state, patient, medics, entry.pathologyId, practice, severityDelta);
+  recordTreatmentInference(state, patient, medics, entry, practice, severityBefore);
   const resolved = entry.severity <= 2;
   if (resolved) {
     entry.status = 'resolved'; patient.health = clamp(patient.health + 3);
